@@ -465,7 +465,7 @@ export const LoginForm = ({ onSuccess, onError, onStart }: LoginFormProps) => {
         <button
           type="button"
           onClick={() => setMagicLinkMode(!magicLinkMode)}
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+          className="text-sm font-semibold text-gray-900 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors inline-flex items-center gap-1.5 drop-shadow-sm"
         >
           {magicLinkMode ? (
             <span>Use password instead</span>

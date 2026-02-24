@@ -7,6 +7,7 @@ import { CheckCircle2, AlertCircle, ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LoginForm, ForgotPasswordLink, AuthLogo } from '@/components/auth';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 function LoginContent() {
   const router = useRouter();
@@ -54,6 +55,11 @@ function LoginContent() {
 
       {/* Subtle gradient accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Theme Toggle */}
+      <div className="absolute top-6 right-6 z-50 rounded-lg border border-border/50 bg-background/50 backdrop-blur-md p-0.5">
+        <ThemeToggle iconOnly />
+      </div>
 
       {/* Success message from URL params */}
       <AnimatePresence>
@@ -166,7 +172,7 @@ function LoginContent() {
             </span>
             <Link
               href="/auth/register"
-              className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              className="text-sm font-bold text-gray-900 dark:text-primary transition-colors hover:opacity-80 drop-shadow-sm"
             >
               Sign up
             </Link>

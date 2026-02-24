@@ -311,8 +311,8 @@ export function SortableBudgetList({ budgets, categorySpending, onReorder, onEdi
       {/* Enhanced Filter Controls */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4 sm:mb-6 px-4 sm:px-5">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
-            <BarChart3 className="h-5 w-5 text-primary" />
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 shadow-md flex items-center justify-center">
+            <BarChart3 className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">

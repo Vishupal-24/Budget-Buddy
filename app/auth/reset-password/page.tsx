@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, ArrowLeft, CheckCircle, AlertCircle, Clock, Loader2 } from 'lucide-react';
 import { AuthLogo } from '@/components/auth';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -44,6 +45,11 @@ export default function ResetPasswordPage() {
       {/* Subtle grain texture */}
       <div className="fixed inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Theme Toggle */}
+      <div className="absolute top-6 right-6 z-50 rounded-lg border border-border/50 bg-background/50 backdrop-blur-md p-0.5">
+        <ThemeToggle iconOnly />
+      </div>
 
       <div className="w-full max-w-[400px] relative z-10">
         {/* Back link */}

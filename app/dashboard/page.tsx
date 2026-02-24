@@ -1557,7 +1557,7 @@ export default function DashboardPage() {
         <div className="flex flex-col sm:flex-row items-center justify-center text-xs font-mono font-bold uppercase tracking-widest text-foreground gap-4 bg-foreground/5 p-4 border-2 border-foreground shadow-[4px_4px_0px_hsl(var(--foreground))]">
           <div className="flex items-center">
             <div className="w-3 h-3 bg-green-500 mr-2 animate-pulse border-2 border-foreground shadow-[2px_2px_0px_hsl(var(--green-500))]"></div>
-            <span>Real-time Data</span>
+            <span>Live Sync Active</span>
           </div>
           <span className="hidden sm:inline text-foreground/30">|</span>
           <div className="flex items-center">

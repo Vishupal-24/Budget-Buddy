@@ -61,6 +61,12 @@ const nextConfig = {
   // This prevents the build from trying to statically generate error pages
   distDir: '.next',
 
+  // Disable dev indicators that might obstruct UI during development
+  devIndicators: {
+    appIsrStatus: false,
+    buildActivity: false,
+  },
+
   // Experimental features
   experimental: {
     // Optimized package imports for better tree-shaking

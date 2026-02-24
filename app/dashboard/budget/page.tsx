@@ -660,8 +660,8 @@ export default function BudgetPage() {
                 {budgets.length} budget{budgets.length !== 1 ? 's' : ''} set
               </div>
             </div>
-            <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-              <DollarSign className="h-5 w-5 text-primary" />
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 shadow-md flex items-center justify-center">
+              <DollarSign className="h-5 w-5 text-white" />
             </div>
           </div>
         </div>
@@ -679,8 +679,8 @@ export default function BudgetPage() {
                 {categorySpending.length !== 1 ? 'ies' : 'y'}
               </div>
             </div>
-            <div className="h-10 w-10 rounded-lg bg-red-500/10 flex items-center justify-center">
-              <BarChart3 className="h-5 w-5 text-red-500" />
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-red-500 to-rose-600 shadow-md flex items-center justify-center">
+              <BarChart3 className="h-5 w-5 text-white" />
             </div>
           </div>
         </div>
@@ -706,16 +706,16 @@ export default function BudgetPage() {
               </div>
             </div>
             <div
-              className={`h-10 w-10 rounded-lg ${
+              className={`h-10 w-10 rounded-xl shadow-md ${
                 categorySpending.some((cat) => cat.percentage > 100)
-                  ? 'bg-red-500/10'
-                  : 'bg-emerald-500/10'
+                  ? 'bg-gradient-to-r from-red-500 to-rose-600'
+                  : 'bg-gradient-to-r from-emerald-400 to-emerald-600'
               } flex items-center justify-center`}
             >
               {categorySpending.some((cat) => cat.percentage > 100) ? (
-                <AlertTriangle className="h-5 w-5 text-red-500" />
+                <AlertTriangle className="h-5 w-5 text-white" />
               ) : (
-                <CheckCircle className="h-5 w-5 text-emerald-500" />
+                <CheckCircle className="h-5 w-5 text-white" />
               )}
             </div>
           </div>

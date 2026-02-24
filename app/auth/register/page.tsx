@@ -19,6 +19,7 @@ import {
   Check,
 } from 'lucide-react';
 import { AuthLogo } from '@/components/auth';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -148,6 +149,11 @@ export default function RegisterPage() {
       {/* Subtle grain texture */}
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Theme Toggle */}
+      <div className="absolute top-6 right-6 z-50 rounded-lg border border-border/50 bg-background/50 backdrop-blur-md p-0.5">
+        <ThemeToggle iconOnly />
+      </div>
 
       {/* Success Message Overlay */}
       <AnimatePresence>
@@ -403,11 +409,11 @@ export default function RegisterPage() {
                 </div>
                 <span className="text-sm text-muted-foreground leading-snug">
                   I agree to the{' '}
-                  <Link href="/legal/terms-of-service" className="text-primary hover:text-primary/80 transition-colors">
+                  <Link href="/legal/terms-of-service" className="text-gray-900 dark:text-primary transition-colors font-bold drop-shadow-sm hover:opacity-80">
                     Terms of Service
                   </Link>{' '}
                   and{' '}
-                  <Link href="/legal/privacy-policy" className="text-primary hover:text-primary/80 transition-colors">
+                  <Link href="/legal/privacy-policy" className="text-gray-900 dark:text-primary transition-colors font-bold drop-shadow-sm hover:opacity-80">
                     Privacy Policy
                   </Link>
                 </span>
@@ -445,7 +451,7 @@ export default function RegisterPage() {
             </span>
             <Link
               href="/auth/login"
-              className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              className="text-sm font-bold text-gray-900 dark:text-primary transition-colors hover:opacity-80 drop-shadow-sm"
             >
               Sign in
             </Link>

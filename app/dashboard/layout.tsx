@@ -178,12 +178,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             icon: <LifeBuoy className="h-5 w-5" />,
             label: 'About',
           },
-          {
-            title: 'Nitrolite',
-            href: 'https://nitrolite.vercel.app',
-            icon: <Globe className="h-5 w-5" />,
-            label: 'Nitrolite',
-          },
         ],
       },
     ],
