@@ -115,7 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Critical resource hints */}
         <meta name="color-scheme" content="light dark" />
       </head>
-      <body className="font-sans antialiased" suppressHydrationWarning>
+      <body className="font-sans antialiased overflow-x-hidden max-w-[100vw]" suppressHydrationWarning>
         <ThemeProviderShell>{children}</ThemeProviderShell>
       </body>
     </html>

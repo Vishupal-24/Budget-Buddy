@@ -60,7 +60,7 @@ const PricingCard = memo(function PricingCard({
               <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                 <Check className="h-3 w-3" strokeWidth={2.5} />
               </div>
-              <span className="text-foreground/80">{feature}</span>
+              <span className="text-foreground dark:text-gray-200">{feature}</span>
             </div>
           ))}
 
@@ -109,7 +109,7 @@ export const PricingSection = memo(function PricingSection() {
             <span>Simple pricing</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-4 text-foreground">
             Choose the right plan <span className="text-primary">for you</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

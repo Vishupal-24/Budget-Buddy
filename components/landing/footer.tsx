@@ -1,7 +1,6 @@
 'use client';
 
 import { Logo } from '@/components/ui/logo';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { ArrowUpRight, Heart, Sparkles } from 'lucide-react';
 import { SOCIAL_LINKS, FOOTER_SECTIONS, TRUST_INDICATORS } from './config/landing-config';
 import { scrollToTop } from './utils/scroll-utils';
@@ -153,11 +152,6 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Theme toggle */}
-            <div className="rounded-lg border border-border p-0.5">
-              <ThemeToggle iconOnly />
-            </div>
-
             {/* Back to top button */}
             <button
               onClick={scrollToTop}

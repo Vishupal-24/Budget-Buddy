@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { NAV_ITEMS } from './config/landing-config';
 import { scrollToSection as scrollToSectionUtil } from './utils/scroll-utils';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -77,6 +78,7 @@ export function Header() {
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
+              <ThemeToggle iconOnly />
               <Link href="/auth/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Sign in
               </Link>
@@ -88,8 +90,9 @@ export function Header() {
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
+            {/* Mobile Menu Button  and Theme Toggle */}
+            <div className="md:hidden flex items-center gap-2">
+              <ThemeToggle iconOnly />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-lg text-foreground hover:bg-muted/50 transition-colors"
@@ -105,7 +108,7 @@ export function Header() {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              className="fixed inset-x-0 top-full bg-background/95 backdrop-blur-xl border-b border-border z-[60] flex flex-col md:hidden"
+              className="fixed inset-x-0 top-full bg-background backdrop-blur-2xl border-b border-border z-[60] flex flex-col md:hidden"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

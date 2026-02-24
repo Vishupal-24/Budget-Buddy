@@ -14,7 +14,7 @@ export const LoginButton = ({ loading, isSubmitting, disabled }: LoginButtonProp
     <div className="pt-1">
       <Button
         type="submit"
-        className="w-full h-11 bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg font-medium transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.1)]"
+        className="w-full h-11 bg-primary text-gray-900 hover:text-gray-900 hover:bg-primary/90 rounded-lg font-medium transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.1)]"
         disabled={loading || disabled}
       >
         <span className="flex items-center justify-center gap-2">
