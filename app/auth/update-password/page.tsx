@@ -58,11 +58,11 @@ export default function UpdatePasswordPage() {
 
   const getStrengthColor = () => {
     const strength = passwordStrength();
-    if (strength >= 90) return 'bg-emerald-500';
-    if (strength >= 70) return 'bg-emerald-400';
-    if (strength >= 50) return 'bg-amber-400';
-    if (strength >= 30) return 'bg-orange-400';
-    return 'bg-red-400';
+    if (strength >= 90) return 'bg-emerald-500 dark:bg-emerald-400';
+    if (strength >= 70) return 'bg-emerald-400 dark:bg-emerald-500';
+    if (strength >= 50) return 'bg-amber-400 dark:bg-amber-500';
+    if (strength >= 30) return 'bg-orange-400 dark:bg-orange-500';
+    return 'bg-red-500 dark:bg-red-400';
   };
 
   const getStrengthTextColor = () => {
@@ -70,7 +70,7 @@ export default function UpdatePasswordPage() {
     if (strength >= 70) return 'text-emerald-600 dark:text-emerald-400';
     if (strength >= 50) return 'text-amber-600 dark:text-amber-400';
     if (strength >= 30) return 'text-orange-600 dark:text-orange-400';
-    return 'text-red-500';
+    return 'text-red-600 dark:text-red-400';
   };
 
   const getPasswordRequirements = () => {
@@ -254,7 +254,7 @@ export default function UpdatePasswordPage() {
                             confirmPassword && password !== confirmPassword
                               ? 'border-destructive/60 focus:border-destructive focus:ring-2 focus:ring-destructive/15'
                               : confirmPassword && password === confirmPassword
-                                ? 'border-emerald-500/60 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15'
+                                ? 'border-emerald-500/60 dark:border-emerald-400/60 focus:border-emerald-500 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/15 dark:focus:ring-emerald-400/15'
                                 : 'border-border focus:border-primary/60 focus:ring-2 focus:ring-primary/10'
                           }`}
                           placeholder="Confirm your new password"

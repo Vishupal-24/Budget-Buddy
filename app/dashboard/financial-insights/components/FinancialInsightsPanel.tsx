@@ -48,26 +48,26 @@ export function FinancialInsightsPanel({
     }
   };
 
-  const getInsightColor = (type: string) => {
-    switch (type) {
-      case 'warning':
-      case 'budget_warning':
-        return 'border-orange-200 bg-orange-50';
-      case 'success':
-        return 'border-green-200 bg-green-50';
-      case 'trend':
-      case 'spending_pattern':
-        return 'border-blue-200 bg-blue-50';
-      case 'decline':
-        return 'border-red-200 bg-red-50';
-      case 'budget_alert':
-        return 'border-purple-200 bg-purple-50';
-      case 'category_analysis':
-        return 'border-indigo-200 bg-indigo-50';
-      default:
-        return 'border-gray-200 bg-gray-50';
-    }
-  };
+    const getInsightColor = (type: string) => {
+      switch (type) {
+        case 'warning':
+        case 'budget_warning':
+          return 'border-orange-200 dark:border-orange-900/50 bg-orange-50 dark:bg-orange-900/10';
+        case 'success':
+          return 'border-green-200 dark:border-green-900/50 bg-green-50 dark:bg-green-900/10';
+        case 'trend':
+        case 'spending_pattern':
+          return 'border-blue-200 dark:border-blue-900/50 bg-blue-50 dark:bg-blue-900/10';
+        case 'decline':
+          return 'border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-900/10';
+        case 'budget_alert':
+          return 'border-purple-200 dark:border-purple-900/50 bg-purple-50 dark:bg-purple-900/10';
+        case 'category_analysis':
+          return 'border-indigo-200 dark:border-indigo-900/50 bg-indigo-50 dark:bg-indigo-900/10';
+        default:
+          return 'border-border bg-muted/50';
+      }
+    };
 
   const getPriorityBadge = (insight: RealFinancialInsight) => {
     // Determine priority based on insight type and amount
@@ -79,9 +79,9 @@ export function FinancialInsightsPanel({
     }
     
     const colors = {
-      high: 'bg-red-100 text-red-800 border-red-200',
-      medium: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-      low: 'bg-green-100 text-green-800 border-green-200'
+      high: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 border-red-200 dark:border-red-900/50',
+      medium: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 border-yellow-200 dark:border-yellow-900/50',
+      low: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 border-green-200 dark:border-green-900/50'
     };
     
     return (
@@ -114,8 +114,8 @@ export function FinancialInsightsPanel({
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
               <div key={i} className="animate-pulse">
-                <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+                <div className="h-3 bg-muted rounded w-1/2"></div>
               </div>
             ))}
           </div>
@@ -144,14 +144,14 @@ export function FinancialInsightsPanel({
         </CardHeader>
         <CardContent>
           <div className="text-center py-8">
-            <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-              <TrendingUp className="h-8 w-8 text-gray-400" />
+            <div className="mx-auto w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center mb-4">
+              <TrendingUp className="h-8 w-8 text-muted-foreground" />
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No insights available</h3>
-            <p className="text-gray-500 mb-4">
+            <h3 className="text-lg font-medium text-foreground mb-2">No insights available</h3>
+            <p className="text-muted-foreground mb-4">
               We need more transaction and budget data to generate meaningful insights.
             </p>
-            <div className="space-y-2 text-sm text-gray-600">
+            <div className="space-y-2 text-sm text-muted-foreground">
               <p>• Add more transactions to see spending patterns</p>
               <p>• Set up budgets to get budget alerts</p>
               <p>• Check back after a few days of activity</p>
@@ -229,18 +229,18 @@ export function FinancialInsightsPanel({
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-medium text-gray-900 truncate">
+                      <h3 className="font-medium text-foreground truncate">
                         {insight.title}
                       </h3>
                       {getPriorityBadge(insight)}
                     </div>
                     
-                    <p className="text-gray-700 mb-3 leading-relaxed">
+                    <p className="text-muted-foreground mb-3 leading-relaxed">
                       {insight.description}
                     </p>
                     
                     {insight.rawData && (
-                      <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                         {insight.rawData.amount && (
                           <span className="flex items-center gap-1">
                             <DollarSign className="h-3 w-3" />
@@ -262,9 +262,9 @@ export function FinancialInsightsPanel({
                     )}
                     
                     {(insight.type === 'saving_suggestion' || insight.type === 'investment_tip') && (
-                      <div className="mt-3 p-3 bg-white/50 rounded-lg border border-gray-200">
-                        <p className="text-sm font-medium text-gray-900 mb-1">Recommended Action:</p>
-                        <p className="text-sm text-gray-700">Consider implementing this suggestion to improve your financial health.</p>
+                      <div className="mt-3 p-3 bg-muted/30 dark:bg-muted/10 rounded-lg border border-border">
+                        <p className="text-sm font-medium text-foreground mb-1">Recommended Action:</p>
+                        <p className="text-sm text-muted-foreground">Consider implementing this suggestion to improve your financial health.</p>
                       </div>
                     )}
                   </div>
@@ -276,32 +276,32 @@ export function FinancialInsightsPanel({
       ) : (
         <Card>
           <CardContent className="p-0">
-            <div className="divide-y">
+            <div className="divide-y divide-border">
               {insights.map((insight, index) => (
                 <div 
                   key={index}
-                  className="p-4 hover:bg-gray-50 transition-colors cursor-pointer"
+                  className="p-4 hover:bg-muted/50 transition-colors cursor-pointer"
                   onClick={() => setSelectedInsight(selectedInsight === index ? null : index)}
                 >
                   <div className="flex items-center gap-3">
                     {getInsightIcon(insight.type)}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
-                        <h4 className="font-medium text-gray-900 truncate">
+                        <h4 className="font-medium text-foreground truncate">
                           {insight.title}
                         </h4>
                         {getPriorityBadge(insight)}
                       </div>
-                      <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                      <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                         {insight.description}
                       </p>
                     </div>
                   </div>
                   
                   {selectedInsight === index && (insight.type === 'saving_suggestion' || insight.type === 'investment_tip') && (
-                    <div className="mt-3 ml-8 p-3 bg-gray-50 rounded-lg">
-                      <p className="text-sm font-medium text-gray-900 mb-1">Recommended Action:</p>
-                      <p className="text-sm text-gray-700">Consider implementing this suggestion to improve your financial health.</p>
+                    <div className="mt-3 ml-8 p-3 bg-muted/50 rounded-lg">
+                      <p className="text-sm font-medium text-foreground mb-1">Recommended Action:</p>
+                      <p className="text-sm text-muted-foreground">Consider implementing this suggestion to improve your financial health.</p>
                     </div>
                   )}
                 </div>
@@ -322,25 +322,25 @@ export function FinancialInsightsPanel({
               <div className="text-2xl font-bold text-red-600">
                 {insights.filter(i => i.type === 'budget_warning' || i.type === 'warning').length}
               </div>
-              <div className="text-sm text-gray-600">High Priority</div>
+              <div className="text-sm text-muted-foreground">High Priority</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-yellow-600">
+              <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-500">
                 {insights.filter(i => i.type === 'spending_pattern' || i.type === 'trend').length}
               </div>
-              <div className="text-sm text-gray-600">Medium Priority</div>
+              <div className="text-sm text-muted-foreground">Medium Priority</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">
+              <div className="text-2xl font-bold text-green-600 dark:text-green-500">
                 {insights.filter(i => i.type === 'success' || i.type === 'saving_suggestion').length}
               </div>
-              <div className="text-sm text-gray-600">Low Priority</div>
+              <div className="text-sm text-muted-foreground">Low Priority</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">
+              <div className="text-2xl font-bold text-blue-600 dark:text-blue-500">
                 {insights.filter(i => i.type === 'saving_suggestion' || i.type === 'investment_tip').length}
               </div>
-              <div className="text-sm text-gray-600">Actionable</div>
+              <div className="text-sm text-muted-foreground">Actionable</div>
             </div>
           </div>
         </CardContent>

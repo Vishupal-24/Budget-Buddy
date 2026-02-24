@@ -37,9 +37,9 @@ const StatsCard = memo(function StatsCard() {
 
 export const CTASection = memo(function CTASection() {
   return (
-    <section className="py-24 md:py-32 bg-foreground text-background relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-muted/30 dark:bg-card border-y border-border/50 relative overflow-hidden">
       {/* Subtle texture */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-0" style={{
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05] z-0" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
       }}></div>
 
@@ -47,16 +47,16 @@ export const CTASection = memo(function CTASection() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-5 gap-12 lg:gap-16 items-center">
             <div className="md:col-span-3 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/10 text-sm font-medium mb-8">
-                <CheckCircle className="w-4 h-4 text-primary" />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
+                <CheckCircle className="w-4 h-4" />
                 <span>Ready to get started?</span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight tracking-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight tracking-tight text-foreground">
                 Take control of your <span className="text-primary">financial future</span>
               </h2>
 
-              <p className="mb-10 text-lg text-background/70 max-w-xl mx-auto md:mx-0">
+              <p className="mb-10 text-lg text-muted-foreground max-w-xl mx-auto md:mx-0">
                 Smart budgeting tools designed to help you save more, spend wisely, and achieve your financial goals with precision.
               </p>
 
@@ -78,7 +78,7 @@ export const CTASection = memo(function CTASection() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-background/20 text-background hover:bg-background/10 rounded-xl text-base py-6 px-8"
+                  className="border-primary/20 text-foreground hover:bg-primary/5 rounded-xl text-base py-6 px-8"
                 >
                   <Link href="/demo">
                     <span className="flex items-center gap-2">

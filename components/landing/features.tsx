@@ -40,7 +40,7 @@ export const FeaturesSection = memo(function FeaturesSection() {
         style={{ animationDelay: '0s' }}
       />
       <div
-        className="absolute bottom-20 right-10 w-24 h-24 bg-violet-500/10 rounded-full blur-xl animate-float"
+        className="absolute bottom-20 right-10 w-24 h-24 bg-primary/20 rounded-full blur-xl animate-float"
         style={{ animationDelay: '2s' }}
       />
 
@@ -70,7 +70,7 @@ export const FeaturesSection = memo(function FeaturesSection() {
               <span className="text-gradient-primary relative inline-block">
                 <span className="block sm:inline">manage your money</span>
                 <motion.div
-                  className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-violet-500 to-primary rounded-full"
+                  className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary/50 to-primary rounded-full"
                   initial={{ width: 0, opacity: 0 }}
                   whileInView={{ width: '100%', opacity: 1 }}
                   viewport={{ once: true }}
