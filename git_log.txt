@@ -1,0 +1,30 @@
+3579a1a|2026-02-24|Update auth pages, financial insights, and landing components
+0cea9cf|2026-02-24|Update auth pages, dashboard and budget components
+a482fab|2026-02-24|Update auth pages, landing components, and global styles
+e3fbd32|2026-02-21|Update budget, transactions, and landing page components
+be33053|2026-02-21|Update auth components and UI improvements
+69d395e|2026-02-20|fix: update auth login and footer styles
+0ce1342|2026-02-20|Update auth pages and configuration
+a31849c|2026-02-20|chore: run npm audit fix to address security vulnerabilities
+f5b9a84|2026-02-20|fix: escape apostrophes to pass ESLint validation
+e7be8aa|2026-02-20|feat: apply editorial brutalism ui redesign and fix tests
+ed51816|2026-02-20|chore: update all dependencies to latest versions
+f8871ba|2026-02-20|Update LoginForm and add new components
+e24b6b9|2025-12-16|Remove non-required .md files
+cafa84e|2025-12-16|fix: Use default Next.js build instead of custom script
+e560580|2025-12-16|fix: Exclude Go functions from Vercel build
+ffc91d2|2025-12-16|fix: Change API handler return types to Promise<void>
+8d6982c|2025-12-16|fix: Remove Go runtime from vercel.json - Vercel auto-detects Go files
+4a93d46|2025-12-16|fix: Remove routes from vercel.json to fix deployment conflict
+a159298|2025-12-16|docs: Add security fixes report and Git LFS troubleshooting guide
+163492c|2025-12-16|fix: Resolve 8 security vulnerabilities
+cd0c216|2025-12-16|fix: Remove package-lock.json from Git LFS tracking
+447deb8|2025-12-16|fix: Regenerate package-lock.json (remove LFS reference)
+56c7715|2025-12-16|chore: Resolve merge conflict in package-lock.json - keep Go implementation changes
+34c991d|2025-12-16|feat: Replace Node.js with Go serverless functions
+1626a87|2025-12-13|Merge pull request #6 from Xenonesis/vercel/react-server-components-cve-vu-gs6q2s
+4cfdd1b|2025-12-13|Fix React Server Components CVE vulnerabilities
+871a778|2025-12-06|feat: Add comprehensive test suite with 418 tests
+8be43e9|2025-12-06|Add test files and summary
+8faf787|2025-12-06|Update project configurations and add test files
+f93bc7b|2025-12-06|Remove obsolete README and enhancement documentation for AI Insights, Budget Page, Financial Insights, Dashboard Components, Sidebar, Landing Page, and Page Skeletons; streamline codebase and improve maintainability.

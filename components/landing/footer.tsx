@@ -112,7 +112,7 @@ export function Footer() {
                   {section.links.map((item) => (
                     <li key={item}>
                       <a
-                        href={`/${section.title.toLowerCase()}/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                        href={item === 'Changelog' ? '/changelog' : `/${section.title.toLowerCase()}/${item.toLowerCase().replace(/\s+/g, '-')}`}
                         className="text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {item}
