@@ -14,8 +14,11 @@
 
 /* Enable smooth scrolling with GPU acceleration */
 html {
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+}
+
+html[data-scroll-behavior="smooth"] {
+  scroll-behavior: smooth;
 }
 
 /* Optimize scroll performance with content-visibility */
@@ -1094,10 +1097,6 @@ html {
 
 .floating-animation {
   animation: float 6s ease-in-out infinite;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 .animate-float {

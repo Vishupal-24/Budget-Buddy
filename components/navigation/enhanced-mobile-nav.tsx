@@ -46,8 +46,8 @@ const navItems: NavItem[] = [
     color: 'text-purple-600 dark:text-purple-400',
   },
   {
-    href: '/dashboard/goals',
-    label: 'Goals',
+    href: '/dashboard/analytics',
+    label: 'Analytics',
     icon: Target,
     color: 'text-orange-600 dark:text-orange-400',
   },

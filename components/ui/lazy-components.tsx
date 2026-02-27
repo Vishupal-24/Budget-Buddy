@@ -39,16 +39,22 @@ export const LazyComponent = memo(function LazyComponent({
   onVisible,
 }: LazyComponentProps) {
   const elementRef = useRef<HTMLDivElement>(null);
-  // Initialize as true if IntersectionObserver is not available
-  const [hasLoaded, setHasLoaded] = useState(!isIntersectionObserverAvailable);
+  // Always start false for consistent SSR/client hydration
+  const [hasLoaded, setHasLoaded] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    // Skip if already loaded or no observer support
+    // Skip if already loaded
     if (hasLoaded) return;
 
     const element = elementRef.current;
     if (!element) return;
+
+    // If IntersectionObserver is not available, load immediately
+    if (typeof IntersectionObserver === 'undefined') {
+      setHasLoaded(true);
+      return;
+    }
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -116,8 +122,8 @@ export const LazyImage = memo(function LazyImage({
   priority = false,
 }: LazyImageProps) {
   const elementRef = useRef<HTMLDivElement>(null);
-  // Initialize based on priority or lack of IntersectionObserver
-  const [shouldLoad, setShouldLoad] = useState(priority || !isIntersectionObserverAvailable);
+  // Priority items load immediately; others start false for consistent SSR/client hydration
+  const [shouldLoad, setShouldLoad] = useState(priority);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
 
@@ -127,6 +133,12 @@ export const LazyImage = memo(function LazyImage({
 
     const element = elementRef.current;
     if (!element) return;
+
+    // If IntersectionObserver is not available, load immediately
+    if (typeof IntersectionObserver === 'undefined') {
+      setShouldLoad(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -203,8 +215,8 @@ export const LazySection = memo(function LazySection({
   animateIn = true,
 }: LazySectionProps) {
   const elementRef = useRef<HTMLElement>(null);
-  // Initialize as true if IntersectionObserver is not available
-  const [hasLoaded, setHasLoaded] = useState(!isIntersectionObserverAvailable);
+  // Always start false for consistent SSR/client hydration
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
     // Skip if already loaded
@@ -212,6 +224,12 @@ export const LazySection = memo(function LazySection({
 
     const element = elementRef.current;
     if (!element) return;
+
+    // If IntersectionObserver is not available, load immediately
+    if (typeof IntersectionObserver === 'undefined') {
+      setHasLoaded(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {

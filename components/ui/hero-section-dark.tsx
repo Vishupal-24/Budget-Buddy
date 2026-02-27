@@ -83,7 +83,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                 </Link>
                 
                 <Link 
-                  href="/demo" 
+                  href="/dashboard/enhanced-demo" 
                   className="group inline-flex items-center justify-center font-semibold bg-transparent text-foreground border border-border px-8 py-4 text-lg rounded-xl hover:bg-muted/50 transition-all active:scale-[0.98]"
                 >
                   Live Demo

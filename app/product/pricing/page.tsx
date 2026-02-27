@@ -116,7 +116,7 @@ export default function PricingPage() {
             Contact us for tailored enterprise solutions with advanced features and dedicated support.
           </p>
           <Button variant="outline" size="sm" asChild>
-            <Link href="/contact">Contact Sales</Link>
+            <Link href="/resources/contact-us">Contact Sales</Link>
           </Button>
         </div>
         

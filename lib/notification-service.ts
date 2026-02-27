@@ -5,7 +5,7 @@ export class NotificationService {
   // Get all notifications for the current user
   static async getNotifications(limit = 50, offset = 0): Promise<Notification[]> {
     const { data: userData } = await supabase.auth.getUser();
-    if (!userData.user) throw new Error('User not authenticated');
+    if (!userData.user) return [];
 
     const { data, error } = await supabase
       .from('notifications')
@@ -14,7 +14,11 @@ export class NotificationService {
       .order('created_at', { ascending: false })
       .range(offset, offset + limit - 1);
 
-    if (error) throw error;
+    if (error) {
+      // Silently return empty on CORS/network errors
+      if (error.message?.includes('Failed to fetch') || error.code === 'PGRST301') return [];
+      throw error;
+    }
     return data || [];
   }
 
@@ -29,7 +33,11 @@ export class NotificationService {
       .eq('user_id', userData.user.id)
       .eq('is_read', false);
 
-    if (error) throw error;
+    if (error) {
+      // Silently return 0 on CORS/network errors
+      if (error.message?.includes('Failed to fetch') || error.code === 'PGRST301') return 0;
+      throw error;
+    }
     return count || 0;
   }
 

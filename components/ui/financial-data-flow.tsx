@@ -30,11 +30,6 @@ const FinancialDataFlow = React.memo(({
   title,
   lightColor,
 }: FinancialDataFlowProps) => {
-  // Early return if critical dependencies are missing
-  if (typeof window === 'undefined') {
-    return null;
-  }
-
   return (
     <div
       className={cn(

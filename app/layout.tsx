@@ -104,7 +104,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${syne.variable} ${manrope.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className={`${syne.variable} ${manrope.variable} ${jetbrainsMono.variable}`}>
       <head>
         {/* Preconnect to external domains for faster resource loading */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />

@@ -58,15 +58,15 @@ export const SOCIAL_LINKS = [
 export const FOOTER_SECTIONS = [
   {
     title: 'Product',
-    links: ['Features', 'Integrations', 'Pricing', 'Changelog'],
+    links: ['Features', 'Pricing', 'Changelog'],
   },
   {
     title: 'Company',
-    links: ['About Us', 'Careers', 'Blog', 'Press'],
+    links: ['About Us'],
   },
   {
     title: 'Resources',
-    links: ['Help Center', 'Contact Us', 'Community', 'Status'],
+    links: ['Contact Us'],
   },
   {
     title: 'Legal',

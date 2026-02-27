@@ -35,6 +35,7 @@ export function ThemeToggle() {
     themeAnalytics,
   } = useThemeContext();
 
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'themes' | 'presets' | 'schedule' | 'analytics'>(
     'themes'
@@ -63,6 +64,9 @@ export function ThemeToggle() {
     { id: 'focus', label: 'Focus', icon: '🎯', description: 'Purple theme, high contrast' },
     { id: 'creative', label: 'Creative', icon: '🎨', description: 'Orange theme, normal contrast' },
   ] as const;
+
+  // Avoid hydration mismatch by only rendering theme-dependent UI after mount
+  useEffect(() => setMounted(true), []);
 
   // Keyboard shortcuts effect
   useEffect(() => {
@@ -108,10 +112,12 @@ export function ThemeToggle() {
         aria-label="Theme settings"
         title="Theme Settings (Ctrl+Shift+T)"
       >
-        {theme === 'light' ? (
+        {mounted && theme === 'light' ? (
           <Sun className="h-5 w-5 group-hover:rotate-12 transition-transform" />
-        ) : (
+        ) : mounted && theme !== 'light' ? (
           <Moon className="h-5 w-5 group-hover:rotate-12 transition-transform" />
+        ) : (
+          <Sun className="h-5 w-5 opacity-0" />
         )}
         <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>

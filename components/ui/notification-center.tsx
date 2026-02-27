@@ -32,8 +32,15 @@ export function NotificationCenter({ className, onNotificationClick }: Notificat
       setNotifications(notificationData);
       setUnreadCount(unreadCountData);
     } catch (error) {
+      // Silently handle auth errors and network/CORS errors
+      if (error instanceof Error && error.message === 'User not authenticated') return;
+      if (error instanceof TypeError && error.message === 'Failed to fetch') return;
+      // Suppress Supabase CORS / network errors silently
+      if (error && typeof error === 'object' && 'message' in error) {
+        const msg = (error as { message: string }).message;
+        if (msg.includes('CORS') || msg.includes('Failed to fetch') || msg.includes('NetworkError')) return;
+      }
       console.error('Error loading notifications:', error);
-      toast.error('Failed to load notifications');
     } finally {
       setLoading(false);
     }

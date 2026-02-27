@@ -119,7 +119,7 @@ const nextConfig = {
       `script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ''} https://cdnjs.cloudflare.com https://unpkg.com https://vercel.live`.trim(),
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://*.supabase.co https://lh3.googleusercontent.com",
+      "img-src 'self' data: blob: https: https://*.supabase.co https://lh3.googleusercontent.com",
       // Connect sources for API calls
       [
         "connect-src 'self'",
@@ -146,7 +146,6 @@ const nextConfig = {
       "worker-src 'self' blob:",
       "frame-src 'self' https://vercel.live",
       "object-src 'none'",
-      "img-src 'self' data: https: blob:",
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'self'",

@@ -80,7 +80,7 @@ export const CTASection = memo(function CTASection() {
                   variant="outline"
                   className="border-primary/20 text-foreground hover:bg-primary/5 rounded-xl text-base py-6 px-8"
                 >
-                  <Link href="/demo">
+                  <Link href="/dashboard/enhanced-demo">
                     <span className="flex items-center gap-2">
                       View demo
                       <ArrowRight className="h-4 w-4" />

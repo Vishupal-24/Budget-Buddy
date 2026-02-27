@@ -525,6 +525,11 @@ export default function TransactionsPage() {
         await query.order('date', { ascending: false }).limit(itemsPerPage);
 
       if (error) {
+        // Silently handle CORS/network errors
+        if (error.message instanceof TypeError || String(error.message).includes('Failed to fetch')) {
+          console.warn('Network error fetching transactions - Supabase may be unreachable');
+          return;
+        }
         console.error('Error fetching transactions:', error);
         throw error;
       }
@@ -548,8 +553,14 @@ export default function TransactionsPage() {
       setHasMore(data.length === itemsPerPage);
       calculateSummary(transactions);
     } catch (error) {
-      console.error('Error fetching transactions:', error);
-      toast.error('Failed to load transactions');
+      // Silently handle CORS/network errors
+      const msg = error instanceof Error ? error.message : String(error);
+      if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('CORS')) {
+        console.warn('Network error fetching transactions');
+      } else {
+        console.error('Error fetching transactions:', error);
+        toast.error('Failed to load transactions');
+      }
     } finally {
       setLoading(false);
     }
@@ -614,6 +625,11 @@ export default function TransactionsPage() {
         .order('name');
 
       if (error) {
+        // Silently handle CORS/network errors - Supabase may be unreachable
+        if (error.message instanceof TypeError || String(error.message).includes('Failed to fetch')) {
+          console.warn('Network error fetching categories - Supabase may be unreachable');
+          return;
+        }
         console.error('Error fetching categories:', error);
         toast.error('Failed to load categories');
         return;
@@ -681,8 +697,14 @@ export default function TransactionsPage() {
       // Also update frequent categories based on transaction history
       loadFrequentCategories();
     } catch (error) {
-      console.error('Error fetching categories:', error);
-      toast.error('Failed to load categories');
+      // Silently handle CORS/network errors
+      const msg = error instanceof Error ? error.message : String(error);
+      if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('CORS')) {
+        console.warn('Network error fetching categories');
+      } else {
+        console.error('Error fetching categories:', error);
+        toast.error('Failed to load categories');
+      }
     }
   };
 
@@ -743,20 +765,18 @@ export default function TransactionsPage() {
         return;
       }
 
-      // Insert only the categories that don't exist
-      const { data, error } = await supabase.from('categories').insert(categoriesToCreate).select();
+      // Upsert categories to avoid 409 conflicts from concurrent calls
+      const { data, error } = await supabase
+        .from('categories')
+        .upsert(categoriesToCreate, { onConflict: 'name,user_id', ignoreDuplicates: true })
+        .select();
 
       if (error) {
-        console.error('Error creating default categories:', error);
-        // If batch insert fails, try one by one as fallback
-        console.log('Trying individual category creation as fallback...');
-        for (const category of categoriesToCreate) {
-          const { error: individualError } = await supabase.from('categories').insert([category]);
-          if (individualError) {
-            console.error(`Error creating category ${category.name}:`, individualError);
-          } else {
-            console.log(`Category ${category.name} created successfully`);
-          }
+        // 409 means categories already exist — not a real error
+        if (error.code === '23505' || error.message?.includes('duplicate') || error.message?.includes('conflict')) {
+          console.log('Default categories already exist, skipping creation');
+        } else {
+          console.error('Error creating default categories:', error);
         }
       } else {
         console.log(`Successfully created ${data?.length || 0} default categories`);

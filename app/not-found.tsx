@@ -68,8 +68,8 @@ export default function NotFound() {
             Looking for something specific?
           </p>
           <div className="flex flex-wrap gap-4 justify-center text-sm">
-            <Link href="/resources" className="text-primary hover:underline underline-offset-4">
-              Resources
+            <Link href="/resources/contact-us" className="text-primary hover:underline underline-offset-4">
+              Contact Us
             </Link>
             <Link href="/product/features" className="text-primary hover:underline underline-offset-4">
               Features
@@ -77,8 +77,8 @@ export default function NotFound() {
             <Link href="/product/pricing" className="text-primary hover:underline underline-offset-4">
               Pricing
             </Link>
-            <Link href="/resources/help" className="text-primary hover:underline underline-offset-4">
-              Help Center
+            <Link href="/changelog" className="text-primary hover:underline underline-offset-4">
+              Changelog
             </Link>
           </div>
         </div>
