@@ -190,20 +190,29 @@ export const LoginForm = ({ onSuccess, onError, onStart }: LoginFormProps) => {
     onStart?.();
 
     try {
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${globalThis.location.origin}/dashboard`,
-        },
+      const res = await fetch('/api/auth/magic-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          redirectTo: `${globalThis.location.origin}/dashboard`,
+        }),
       });
 
-      if (error) throw error;
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Failed to send magic link');
 
       setMagicLinkSent(true);
       resetRateLimit();
     } catch (error: any) {
       recordFailedAttempt();
-      onError(error.message || 'Failed to send magic link');
+      const msg = error?.message || '';
+      if (msg === 'Failed to fetch' || msg.includes('NetworkError') || msg.includes('network')) {
+        onError('Unable to reach the authentication server. Please check your internet connection and try again.');
+      } else {
+        onError(msg || 'Failed to send magic link');
+      }
     } finally {
       setLoading(false);
     }
@@ -244,16 +253,27 @@ export const LoginForm = ({ onSuccess, onError, onStart }: LoginFormProps) => {
 
       resetPreferences();
 
-      console.log('[LoginForm] Calling supabase.auth.signInWithPassword...');
+      console.log('[LoginForm] Calling server-side auth proxy...');
 
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       });
 
-      console.log('[LoginForm] SignIn response:', { error });
+      const data = await res.json();
 
-      if (error) throw error;
+      console.log('[LoginForm] Auth proxy response:', { ok: res.ok, status: res.status });
+
+      if (!res.ok) throw new Error(data.error || 'Failed to sign in');
+
+      // Hydrate the client-side Supabase session
+      if (data.session) {
+        await supabase.auth.setSession({
+          access_token: data.session.access_token,
+          refresh_token: data.session.refresh_token,
+        });
+      }
 
       resetRateLimit();
 
@@ -268,7 +288,12 @@ export const LoginForm = ({ onSuccess, onError, onStart }: LoginFormProps) => {
       onSuccess();
     } catch (error: any) {
       recordFailedAttempt();
-      onError(error.message || 'Failed to sign in');
+      const msg = error?.message || '';
+      if (msg === 'Failed to fetch' || msg.includes('NetworkError') || msg.includes('network')) {
+        onError('Unable to reach the authentication server. Please check your internet connection and try again.');
+      } else {
+        onError(msg || 'Failed to sign in');
+      }
       setIsSubmitting(false);
     } finally {
       setLoading(false);

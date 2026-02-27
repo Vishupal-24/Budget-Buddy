@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { useUserPreferences } from '@/hooks/use-user-preferences';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -59,32 +58,20 @@ export default function RegisterPage() {
     try {
       resetPreferences();
 
-      const { data, error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            name,
-            preferred_currency: 'USD',
-          },
-          emailRedirectTo: `${window.location.origin}/auth/login?message=Account confirmed! Please sign in.`,
-        },
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          password,
+          name,
+          redirectTo: `${window.location.origin}/auth/login?message=Account confirmed! Please sign in.`,
+        }),
       });
 
-      if (signUpError) throw signUpError;
+      const data = await res.json();
 
-      if (data.user) {
-        const { error: profileError } = await supabase.from('profiles').insert({
-          id: data.user.id,
-          email: email,
-          name: name,
-          currency: 'USD',
-        });
-
-        if (profileError && profileError.code !== '23505') {
-          console.warn('Profile creation failed, but user account was created.');
-        }
-      }
+      if (!res.ok) throw new Error(data.error || 'Failed to create account');
 
       setShowSuccessMessage(true);
     } catch (error: any) {

@@ -26,7 +26,12 @@ export const SocialLoginButtons = ({ onError }: SocialLoginButtonsProps) => {
 
       if (error) throw error;
     } catch (error: any) {
-      onError(error.message || `Failed to sign in with ${provider}`);
+      const msg = error?.message || '';
+      if (msg === 'Failed to fetch' || msg.includes('NetworkError') || msg.includes('network')) {
+        onError('Unable to reach the authentication server. Please check your internet connection and try again.');
+      } else {
+        onError(msg || `Failed to sign in with ${provider}`);
+      }
       setLoadingProvider(null);
     }
   };
