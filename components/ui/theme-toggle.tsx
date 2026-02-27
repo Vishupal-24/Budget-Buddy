@@ -34,7 +34,7 @@ const ThemeMenuItems = memo(function ThemeMenuItems({
     <>
       <DropdownMenuItem 
         onClick={() => onSelectTheme("light")} 
-        className="focus:bg-amber-50 dark:focus:bg-amber-950/30"
+        className="focus:bg-amber-50 focus:text-amber-900 dark:focus:bg-amber-950/30 dark:focus:text-amber-100"
         aria-current={currentTheme === 'light' ? 'true' : undefined}
       >
         <div className="flex items-center justify-between w-full">
@@ -49,7 +49,7 @@ const ThemeMenuItems = memo(function ThemeMenuItems({
       </DropdownMenuItem>
       <DropdownMenuItem 
         onClick={() => onSelectTheme("dark")} 
-        className="focus:bg-violet-50 dark:focus:bg-violet-950/30"
+        className="focus:bg-violet-50 focus:text-violet-900 dark:focus:bg-violet-950/30 dark:focus:text-violet-100"
         aria-current={currentTheme === 'dark' ? 'true' : undefined}
       >
         <div className="flex items-center justify-between w-full">
@@ -64,7 +64,7 @@ const ThemeMenuItems = memo(function ThemeMenuItems({
       </DropdownMenuItem>
       <DropdownMenuItem 
         onClick={() => onSelectTheme("system")} 
-        className="focus:bg-blue-50 dark:focus:bg-blue-950/30"
+        className="focus:bg-blue-50 focus:text-blue-900 dark:focus:bg-blue-950/30 dark:focus:text-blue-100"
         aria-current={currentTheme === 'system' ? 'true' : undefined}
       >
         <div className="flex items-center justify-between w-full">

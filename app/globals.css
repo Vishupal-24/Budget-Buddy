@@ -1847,6 +1847,16 @@ html[data-scroll-behavior="smooth"] {
     0 0 0 4px hsla(var(--primary), 0.4);
 }
 
+/* Remove aggressive focus outline from overlay/popup elements */
+[data-radix-popper-content-wrapper] *:focus-visible,
+[role="menu"]:focus-visible,
+[role="listbox"]:focus-visible,
+[data-radix-menu-content]:focus-visible,
+[data-radix-dropdown-menu-content]:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 /* Accessibility improvements for active sidebar elements */
 .active-indicator {
   box-shadow: 0 0 12px 0 rgba(var(--primary-rgb), 0.5);
