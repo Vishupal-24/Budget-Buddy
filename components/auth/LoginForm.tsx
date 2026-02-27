@@ -199,6 +199,11 @@ export const LoginForm = ({ onSuccess, onError, onStart }: LoginFormProps) => {
         }),
       });
 
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned an unexpected response. Please try again.');
+      }
+
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.error || 'Failed to send magic link');
@@ -260,6 +265,11 @@ export const LoginForm = ({ onSuccess, onError, onStart }: LoginFormProps) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
+
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned an unexpected response. Please try again.');
+      }
 
       const data = await res.json();
 

@@ -41,6 +41,11 @@ export class ClientFinanceNewsService {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned an unexpected response');
+      }
+
       const data: FinanceNewsResponse = await response.json();
       
       if (data.success) {
@@ -65,6 +70,11 @@ export class ClientFinanceNewsService {
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned an unexpected response');
       }
 
       const data: FinanceNewsResponse = await response.json();
