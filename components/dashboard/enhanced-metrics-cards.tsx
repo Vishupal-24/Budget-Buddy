@@ -271,15 +271,15 @@ export function CompactMetricsCards({ metrics, className }: EnhancedMetricsCards
 
       <Card className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted border-border dark:border-border">
         <CardContent className="p-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-muted dark:bg-muted text-foreground dark:text-foreground">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="p-2 rounded-lg bg-muted dark:bg-muted text-foreground dark:text-foreground flex-shrink-0">
               <Tag className="h-4 w-4" />
             </div>
-            <div>
-              <div className="text-lg font-bold text-foreground dark:text-foreground">
+            <div className="min-w-0">
+              <div className="text-lg font-bold text-foreground dark:text-foreground truncate" title={formatCategory(metrics.mostActiveCategory)}>
                 {formatCategory(metrics.mostActiveCategory)}
               </div>
-              <div className="text-xs text-muted-foreground">Top Category</div>
+              <div className="text-xs text-muted-foreground truncate">Top Category</div>
             </div>
           </div>
         </CardContent>

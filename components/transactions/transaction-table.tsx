@@ -168,7 +168,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
         <thead>
           <tr>
             <th
-              className={styles.sortableHeader}
+              className={`${styles.sortableHeader} text-left`}
               onClick={() => onSort('date')}
               role="columnheader"
               tabIndex={0}
@@ -189,7 +189,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
             </th>
 
             <th
-              className={styles.sortableHeader}
+              className={`${styles.sortableHeader} text-left`}
               onClick={() => onSort('category_name')}
               role="columnheader"
               tabIndex={0}
@@ -202,7 +202,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
             </th>
 
             <th
-              className={styles.sortableHeader}
+              className={`${styles.sortableHeader} text-left`}
               onClick={() => onSort('description')}
               role="columnheader"
               tabIndex={0}
@@ -215,7 +215,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
             </th>
 
             <th
-              className={styles.sortableHeader}
+              className={`${styles.sortableHeader} text-right`}
               onClick={() => onSort('amount')}
               role="columnheader"
               tabIndex={0}
@@ -270,9 +270,9 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
               </td>
 
               <td className={styles.categoryColumn}>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-primary/60" />
-                  <span className="truncate">{transaction.category_name || 'Uncategorized'}</span>
+                <div className="flex items-center gap-2 min-w-0">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-primary/60 flex-shrink-0" />
+                  <span className="truncate flex-1 min-w-0">{transaction.category_name || 'Uncategorized'}</span>
                 </div>
               </td>
 

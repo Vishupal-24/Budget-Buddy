@@ -406,7 +406,7 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
 
               <CartesianGrid 
                 strokeDasharray="2 4" 
-                stroke="var(--border)" 
+                stroke="hsl(var(--border))" 
                 opacity={0.3}
                 horizontal={true}
                 vertical={false}
@@ -415,12 +415,12 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
               <XAxis
                 dataKey="name"
                 tick={{ 
-                  fill: 'var(--muted-foreground)', 
+                  fill: 'hsl(var(--muted-foreground))', 
                   fontSize: chartConfig.fontSize,
                   fontWeight: 500
                 }}
-                tickLine={{ stroke: 'var(--border)', strokeWidth: 1 }}
-                axisLine={{ stroke: 'var(--border)', strokeWidth: 1 }}
+                tickLine={{ stroke: 'hsl(var(--border))', strokeWidth: 1 }}
+                axisLine={{ stroke: 'hsl(var(--border))', strokeWidth: 1 }}
                 interval={chartConfig.tickInterval}
                 angle={windowWidth < 768 ? -45 : 0}
                 textAnchor={windowWidth < 768 ? "end" : "middle"}
@@ -430,7 +430,7 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
               
               <YAxis
                 tick={{ 
-                  fill: 'var(--muted-foreground)', 
+                  fill: 'hsl(var(--muted-foreground))', 
                   fontSize: chartConfig.fontSize - 1
                 }}
                 tickFormatter={(value) => {
@@ -440,8 +440,8 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
                   if (value >= 1000) return `₹${(value/1000).toFixed(0)}K`;
                   return `₹${value}`;
                 }}
-                tickLine={{ stroke: 'var(--border)', strokeWidth: 1 }}
-                axisLine={{ stroke: 'var(--border)', strokeWidth: 1 }}
+                tickLine={{ stroke: 'hsl(var(--border))', strokeWidth: 1 }}
+                axisLine={{ stroke: 'hsl(var(--border))', strokeWidth: 1 }}
                 width={chartConfig.margin.left}
               />
               

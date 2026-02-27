@@ -690,25 +690,25 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
               >
                 <defs>
                   <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="var(--primary)" stopOpacity={0.05}/>
+                    <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.05}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid 
                   strokeDasharray="3 3" 
-                  stroke="var(--border)" 
+                  stroke="hsl(var(--border))" 
                   opacity={0.3}
                   vertical={false}
                 />
                 <XAxis
                   dataKey="period"
                   tick={{ 
-                    fill: 'var(--muted-foreground)', 
+                    fill: 'hsl(var(--muted-foreground))', 
                     fontSize: 12,
                     fontWeight: 500
                   }}
-                  tickLine={{ stroke: 'var(--border)' }}
-                  axisLine={{ stroke: 'var(--border)' }}
+                  tickLine={{ stroke: 'hsl(var(--border))' }}
+                  axisLine={{ stroke: 'hsl(var(--border))' }}
                   angle={viewMode === 'monthly' ? -35 : 0}
                   textAnchor={viewMode === 'monthly' ? 'end' : 'middle'}
                   height={viewMode === 'monthly' ? 80 : 50}
@@ -717,7 +717,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                 />
                 <YAxis
                   tick={{ 
-                    fill: 'var(--muted-foreground)', 
+                    fill: 'hsl(var(--muted-foreground))', 
                     fontSize: 12,
                     fontWeight: 500
                   }}
@@ -726,16 +726,16 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                     if (value >= 1000) return `₹${(value/1000).toFixed(0)}k`;
                     return `₹${value}`;
                   }}
-                  tickLine={{ stroke: 'var(--border)' }}
-                  axisLine={{ stroke: 'var(--border)' }}
+                  tickLine={{ stroke: 'hsl(var(--border))' }}
+                  axisLine={{ stroke: 'hsl(var(--border))' }}
                   width={80}
                 />
                 <Tooltip 
                   content={<CustomTooltip />} 
                   cursor={{ 
-                    fill: 'var(--primary)', 
+                    fill: 'hsl(var(--primary))', 
                     fillOpacity: 0.1,
-                    stroke: 'var(--primary)',
+                    stroke: 'hsl(var(--primary))',
                     strokeWidth: 1,
                     strokeDasharray: '3 3'
                   }} 
@@ -749,7 +749,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                   formatter={(value) => (
                     <span style={{ 
                       fontSize: '14px', 
-                      color: 'var(--foreground)',
+                      color: 'hsl(var(--foreground))',
                       fontWeight: 500
                     }}>
                       {value}
@@ -794,14 +794,14 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                         r: 5, 
                         strokeWidth: 2,
                         fill: color,
-                        stroke: 'var(--background)',
+                        stroke: 'hsl(var(--background))',
                         filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
                       } : false}
                       activeDot={chartType === 'line' ? { 
                         r: 7, 
                         strokeWidth: 2,
                         fill: color,
-                        stroke: 'var(--background)',
+                        stroke: 'hsl(var(--background))',
                         filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))'
                       } : undefined}
                       fillOpacity={chartType === 'area' ? 0.4 : 0.95}
@@ -832,7 +832,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                     x="50%" 
                     y="50%" 
                     textAnchor="middle" 
-                    fill="var(--muted-foreground)"
+                    fill="hsl(var(--muted-foreground))"
                     fontSize="16"
                     fontWeight="500"
                   >

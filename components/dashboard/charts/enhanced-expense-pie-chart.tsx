@@ -262,7 +262,7 @@ function EnhancedExpensePieChartComponent({ categoryData, onCategoryClick }: Enh
                   maxWidth: '150px'
                 }}
                 formatter={(value: string, entry: any) => (
-                  <span style={{ color: 'var(--foreground)' }}>
+                  <span style={{ color: 'hsl(var(--foreground))' }}>
                     {value}: {((entry.payload.value / displayTotal) * 100).toFixed(1)}%
                   </span>
                 )}

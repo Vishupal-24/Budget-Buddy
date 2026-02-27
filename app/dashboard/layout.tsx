@@ -44,7 +44,7 @@ import {
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { ensureUserProfile } from '@/lib/utils';
-import { BottomNavigation } from '@/components/ui/bottom-navigation';
+import { EnhancedMobileNav } from '@/components/navigation/enhanced-mobile-nav';
 import { useUserPreferences } from '@/hooks/use-user-preferences';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Logo } from '@/components/ui/logo';
@@ -747,13 +747,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             )}
           >
             {!collapsed && (
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center justify-center min-w-0 pr-8">
                 <Logo
                   size="md"
-                className=""
-                animated
-              />
-                <span className="text-[10px] sm:text-xs text-muted-foreground mt-1 tracking-wide">
+                  className=""
+                  animated
+                />
+                <span className="text-[10px] text-muted-foreground mt-1 tracking-wide truncate w-full text-center">
                   Smart Money Management
                 </span>
               </div>
@@ -945,6 +945,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {children}
         </div>
       </main>
+      
+      <div className="md:hidden">
+        <EnhancedMobileNav />
+      </div>
     </div>
   );
 }

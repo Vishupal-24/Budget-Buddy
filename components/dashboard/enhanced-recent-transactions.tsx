@@ -91,24 +91,24 @@ function TransactionItem({ transaction, index }: { transaction: Transaction; ind
   return (
     <div className="group relative">
       <div className="flex items-center justify-between p-4 rounded-lg border border-border/50 hover:border-border transition-colors bg-card">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 min-w-0 flex-1">
           {/* Category icon */}
           <div className={cn(
-            "flex items-center justify-center w-10 h-10 rounded-lg",
+            "flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-lg",
             categoryStyle.bg
           )}>
             <span className="text-base"><IconComponent className="h-4 w-4" /></span>
           </div>
           
           {/* Transaction details */}
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-0.5 min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <h4 className="font-medium text-foreground capitalize text-sm">
+              <h4 className="font-medium text-foreground capitalize text-sm truncate">
                 {transaction.category}
               </h4>
               <Badge 
                 variant="secondary" 
-                className="text-xs px-1.5 py-0 font-medium"
+                className="text-xs px-1.5 py-0 font-medium flex-shrink-0"
               >
                 {isIncome ? "Income" : "Expense"}
               </Badge>

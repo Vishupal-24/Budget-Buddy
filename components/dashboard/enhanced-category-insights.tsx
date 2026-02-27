@@ -41,21 +41,21 @@ function CategoryProgressBar({
   
   return (
     <div className="group p-4 rounded-lg border border-transparent hover:border-border hover:bg-muted/30 transition-all duration-200">
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <div className="flex items-center gap-3 min-w-0">
           <div 
             className="w-4 h-4 rounded-full flex-shrink-0"
             style={{ backgroundColor: category.color }}
           />
-          <div>
-            <h4 className="font-medium text-sm">{category.name}</h4>
-            <p className="text-xs text-muted-foreground">
+          <div className="min-w-0">
+            <h4 className="font-medium text-sm truncate">{category.name}</h4>
+            <p className="text-xs text-muted-foreground truncate">
               {category.count} transaction{category.count !== 1 ? 's' : ''}
             </p>
           </div>
         </div>
         
-        <div className="text-right">
+        <div className="text-right flex-shrink-0">
           <div className="font-semibold text-sm">
             {formatCurrency(category.total)}
           </div>

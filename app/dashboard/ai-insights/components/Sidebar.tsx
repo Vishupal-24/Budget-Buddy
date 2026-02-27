@@ -211,7 +211,7 @@ export function Sidebar({
                     `}
                   >
                     <button
-                      className="w-full p-3 text-left cursor-pointer"
+                      className="w-full p-3 pr-10 text-left cursor-pointer"
                       onClick={() => onLoadConversation(conversation.id)}
                     >
                       <div className="flex items-start justify-between gap-2">
@@ -253,15 +253,15 @@ export function Sidebar({
                     </button>
 
                     {/* Action buttons - separate from main button */}
-                    <div className="absolute top-3 right-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute top-2.5 right-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           onDeleteConversation(conversation.id);
                         }}
-                        className="h-6 w-6 p-0 rounded-md hover:bg-destructive/10 hover:text-destructive transition-colors flex items-center justify-center"
+                        className="h-7 w-7 p-0 rounded-md bg-background/95 backdrop-blur-sm border border-border shadow-sm hover:bg-destructive hover:text-destructive-foreground hover:border-destructive transition-all flex items-center justify-center"
                       >
-                        <Trash2 className="h-3 w-3" />
+                        <Trash2 className="h-3.5 w-3.5" />
                       </button>
                     </div>
 

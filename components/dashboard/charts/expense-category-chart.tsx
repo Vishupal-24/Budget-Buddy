@@ -85,7 +85,7 @@ function ExpenseCategoryChartComponent({ categoryData }: ExpenseCategoryChartPro
 
   // Custom legend formatter
   const renderLegendFormatter = (value: string, entry: any, total: number) => (
-    <span style={{ color: 'var(--foreground)', display: 'inline-flex', alignItems: 'center' }}>
+    <span style={{ color: 'hsl(var(--foreground))', display: 'inline-flex', alignItems: 'center' }}>
       {value}: {((entry.payload.value / total) * 100).toFixed(1)}%
     </span>
   );
@@ -147,13 +147,13 @@ function ExpenseCategoryChartComponent({ categoryData }: ExpenseCategoryChartPro
                     props.payload.name
                   ]}
                   contentStyle={{
-                    backgroundColor: 'var(--card)',
-                    borderColor: 'var(--border)',
+                    backgroundColor: 'hsl(var(--card))',
+                    borderColor: 'hsl(var(--border))',
                     borderRadius: '0.5rem',
                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                     padding: '0.5rem'
                   }}
-                  itemStyle={{ color: 'var(--foreground)' }}
+                  itemStyle={{ color: 'hsl(var(--foreground))' }}
                 />
                 <Legend
                   layout="vertical"
