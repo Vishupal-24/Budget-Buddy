@@ -41,73 +41,71 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
   ) => {
     return (
       <div
-        className={cn('relative min-h-[90vh] flex flex-col pt-32 lg:pt-40 overflow-hidden isolate', className)}
+        className={cn('relative min-h-[90vh] flex flex-col pt-28 lg:pt-36 overflow-hidden isolate', className)}
         ref={ref}
         {...props}
       >
-        {/* Subtle grid background */}
+        {/* Subtle ambient gradient */}
         <div 
           className="absolute inset-0 pointer-events-none z-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
-            backgroundSize: `32px 32px`,
-            opacity: 0.04
+            background: `radial-gradient(ellipse 80% 60% at 50% 0%, hsl(var(--primary) / 0.06) 0%, transparent 60%)`,
           }}
         />
 
         <div className="container relative z-10 px-4 md:px-8 mx-auto flex-1 flex flex-col justify-center">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 h-full">
             
-            <div className="lg:col-span-8 flex flex-col justify-center items-start lg:pr-12 lg:border-r lg:border-border pb-12 lg:pb-0">
-              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary-foreground font-medium text-sm tracking-wide px-4 py-2 rounded-full mb-8">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-foreground">{title}</span>
+            <div className="lg:col-span-7 flex flex-col justify-center items-start lg:pr-16 pb-12 lg:pb-0">
+              <div className="inline-flex items-center gap-2 bg-primary/8 border border-primary/15 font-medium text-sm tracking-wide px-4 py-2 rounded-full mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span className="text-foreground/80">{title}</span>
               </div>
               
-              <h1 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-black leading-[0.9] tracking-tight text-foreground">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black leading-[0.95] tracking-tight text-foreground">
                 <span className="block">{subtitle.regular}</span>
-                <span className="block text-primary">{subtitle.gradient}</span>
+                <span className="block bg-gradient-to-r from-primary to-emerald-400 dark:to-emerald-300 bg-clip-text text-transparent">{subtitle.gradient}</span>
               </h1>
               
-              <p className="mt-8 text-xl md:text-2xl max-w-2xl text-muted-foreground leading-relaxed">
+              <p className="mt-6 text-lg md:text-xl max-w-xl text-muted-foreground leading-relaxed">
                 {description}
               </p>
               
-              <div className="mt-12 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <div className="mt-10 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                 <Link
                   href={ctaHref}
-                  className="group relative inline-flex items-center justify-center font-semibold bg-primary text-primary-foreground px-8 py-4 text-lg rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-0.5 active:scale-[0.98]"
+                  className="group relative inline-flex items-center justify-center font-semibold bg-primary text-primary-foreground px-7 py-3.5 text-base rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.05),0_0_0_1px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(16,185,129,0.2)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
                 >
                   {ctaText}
-                  <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
                 
                 <Link 
                   href="/dashboard/enhanced-demo" 
-                  className="group inline-flex items-center justify-center font-semibold bg-transparent text-foreground border border-border px-8 py-4 text-lg rounded-xl hover:bg-muted/50 transition-all active:scale-[0.98]"
+                  className="group inline-flex items-center justify-center font-semibold bg-transparent text-foreground border border-border/80 px-7 py-3.5 text-base rounded-xl hover:bg-muted/50 hover:border-border transition-all duration-200 active:scale-[0.98]"
                 >
                   Live Demo
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col lg:border-l lg:border-border lg:-ml-px mt-8 lg:mt-0">
-              {/* Info blocks in the sidebar */}
-              <div className="h-full flex flex-col gap-4 lg:gap-0">
-                <div className="flex-1 p-8 lg:border-b lg:border-border flex flex-col justify-center rounded-xl lg:rounded-none bg-primary/5 relative group cursor-pointer hover:bg-primary/10 transition-colors">
-                  <span className="text-xs tracking-wider text-muted-foreground mb-3 block">System Status</span>
-                  <div className="font-display text-5xl font-bold tracking-tighter">100%</div>
-                  <div className="font-medium mt-2 text-foreground">Operational Efficiency</div>
+            <div className="lg:col-span-5 flex flex-col mt-8 lg:mt-0">
+              {/* Premium metric cards */}
+              <div className="h-full flex flex-col gap-3 lg:pl-8">
+                <div className="flex-1 p-6 lg:p-8 flex flex-col justify-center rounded-2xl bg-card border border-border/60 relative group cursor-pointer hover:border-primary/20 hover:shadow-[0_0_30px_-10px_rgba(16,185,129,0.1)] transition-all duration-300">
+                  <span className="text-xs tracking-widest uppercase text-muted-foreground mb-2 block">System Status</span>
+                  <div className="font-display text-4xl lg:text-5xl font-bold tracking-tighter">100%</div>
+                  <div className="font-medium mt-1.5 text-muted-foreground text-sm">Operational Efficiency</div>
                 </div>
-                <div className="flex-1 p-8 lg:border-b lg:border-border flex flex-col justify-center rounded-xl lg:rounded-none bg-blue-500/5 relative group cursor-pointer hover:bg-blue-500/10 transition-colors">
-                  <span className="text-xs tracking-wider text-muted-foreground mb-3 block">Global Scale</span>
-                  <div className="font-display text-5xl font-bold tracking-tighter text-blue-500">50K+</div>
-                  <div className="font-medium mt-2 text-foreground">Active Workspaces</div>
+                <div className="flex-1 p-6 lg:p-8 flex flex-col justify-center rounded-2xl bg-card border border-border/60 relative group cursor-pointer hover:border-blue-500/20 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.1)] transition-all duration-300">
+                  <span className="text-xs tracking-widest uppercase text-muted-foreground mb-2 block">Global Scale</span>
+                  <div className="font-display text-4xl lg:text-5xl font-bold tracking-tighter text-blue-500 dark:text-blue-400">50K+</div>
+                  <div className="font-medium mt-1.5 text-muted-foreground text-sm">Active Workspaces</div>
                 </div>
-                <div className="flex-1 p-8 flex flex-col justify-center rounded-xl lg:rounded-none bg-emerald-500/5 relative group cursor-pointer hover:bg-emerald-500/10 transition-colors">
-                  <span className="text-xs tracking-wider text-muted-foreground mb-3 block">Security level</span>
-                  <div className="font-display text-5xl font-bold tracking-tighter text-emerald-500">AES-256</div>
-                  <div className="font-medium mt-2 text-foreground">Military Grade Auth</div>
+                <div className="flex-1 p-6 lg:p-8 flex flex-col justify-center rounded-2xl bg-card border border-border/60 relative group cursor-pointer hover:border-emerald-500/20 hover:shadow-[0_0_30px_-10px_rgba(16,185,129,0.1)] transition-all duration-300">
+                  <span className="text-xs tracking-widest uppercase text-muted-foreground mb-2 block">Security Level</span>
+                  <div className="font-display text-4xl lg:text-5xl font-bold tracking-tighter text-emerald-500 dark:text-emerald-400">AES-256</div>
+                  <div className="font-medium mt-1.5 text-muted-foreground text-sm">Military Grade Auth</div>
                 </div>
               </div>
             </div>
@@ -115,14 +113,14 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
         </div>
 
         {/* Dashboard Preview */}
-        <div className="relative w-full bg-muted/30 p-4 md:p-8 mt-12 lg:mt-0 z-20">
+        <div className="relative w-full bg-muted/20 p-4 md:p-8 mt-8 lg:mt-0 z-20">
           <div className="container mx-auto">
-            <div className="relative max-w-6xl mx-auto rounded-xl border border-border bg-card overflow-hidden shadow-xl">
-              <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b border-border">
-                <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                <div className="w-3 h-3 rounded-full bg-amber-400/80" />
-                <div className="w-3 h-3 rounded-full bg-emerald-400/80" />
-                <span className="ml-4 text-xs text-muted-foreground font-medium">Budget Buddy Dashboard</span>
+            <div className="relative max-w-5xl mx-auto rounded-2xl border border-border/60 bg-card overflow-hidden shadow-2xl shadow-black/5 dark:shadow-black/20">
+              <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border/50">
+                <div className="w-3 h-3 rounded-full bg-red-400/70" />
+                <div className="w-3 h-3 rounded-full bg-amber-400/70" />
+                <div className="w-3 h-3 rounded-full bg-emerald-400/70" />
+                <span className="ml-4 text-xs text-muted-foreground font-medium tracking-wide">Budget Buddy Dashboard</span>
               </div>
               <Image
                 src={bottomImage.light}

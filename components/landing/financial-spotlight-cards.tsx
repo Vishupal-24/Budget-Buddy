@@ -107,14 +107,8 @@ const FeatureCard = memo(function FeatureCard({
   return (
     <div className="w-full group">
       <div
-        className="h-full bg-card rounded-2xl border border-border p-6 sm:p-8 relative transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+        className="h-full bg-card rounded-2xl border border-border/60 p-6 sm:p-8 relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-border"
       >
-        {/* Highlight Badge */}
-        <div className="absolute -top-3 right-4 z-10">
-          <div className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
-            {feature.highlight}
-          </div>
-        </div>
 
         {/* Icon */}
         <div
@@ -135,7 +129,7 @@ const FeatureCard = memo(function FeatureCard({
           </p>
 
           {/* Steps List */}
-          <div className="space-y-3 text-sm border-t border-border pt-5">
+          <div className="space-y-3 text-sm border-t border-border/60 pt-5">
             {feature.steps.map((step, stepIndex) => (
               <div
                 key={stepIndex}
@@ -152,6 +146,11 @@ const FeatureCard = memo(function FeatureCard({
                 </span>
               </div>
             ))}
+          </div>
+
+          {/* Highlight */}
+          <div className="mt-5 pt-4 border-t border-border/60">
+            <span className="text-xs font-semibold tracking-wide uppercase text-muted-foreground">{feature.highlight}</span>
           </div>
         </div>
       </div>

@@ -8,12 +8,12 @@ import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="relative bg-muted/30 border-t border-border overflow-hidden pt-20 pb-8">
+    <footer className="relative bg-card/50 border-t border-border/60 overflow-hidden pt-20 pb-8">
       <div className="container mx-auto px-4 relative z-10">
         {/* Newsletter section */}
-        <div className="mb-16 rounded-2xl bg-card border border-border p-8 md:p-12 shadow-sm relative overflow-hidden">
+        <div className="mb-16 rounded-2xl bg-card border border-border/60 p-8 md:p-12 shadow-sm relative overflow-hidden">
           {/* Subtle gradient accent */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/60 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-sm font-medium mb-6">
             <Sparkles className="w-3.5 h-3.5 text-primary" />

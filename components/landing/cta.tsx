@@ -37,11 +37,7 @@ const StatsCard = memo(function StatsCard() {
 
 export const CTASection = memo(function CTASection() {
   return (
-    <section className="py-24 md:py-32 bg-muted/30 dark:bg-card border-y border-border/50 relative overflow-hidden">
-      {/* Subtle texture */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05] z-0" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-      }}></div>
+    <section className="py-24 md:py-32 bg-muted/20 dark:bg-card/50 border-y border-border/40 relative overflow-hidden">
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -53,7 +49,8 @@ export const CTASection = memo(function CTASection() {
               </div>
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight tracking-tight text-foreground">
-                Take control of your <span className="text-primary">financial future</span>
+                Take control of your{' '}
+                <span className="bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">financial future</span>
               </h2>
 
               <p className="mb-10 text-lg text-muted-foreground max-w-xl mx-auto md:mx-0">

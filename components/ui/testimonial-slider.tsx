@@ -261,10 +261,9 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = memo(function Testim
           <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-medium text-xs sm:text-sm uppercase tracking-wider">
             {title}
           </span>
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mt-3 sm:mt-4 px-4">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mt-3 sm:mt-4 px-4">
             {subtitle}
           </h3>
-          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-primary/70 mx-auto mt-4 sm:mt-6"></div>
         </motion.div>
 
         <div className="relative" ref={containerRef}>

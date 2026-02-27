@@ -110,7 +110,8 @@ export const PricingSection = memo(function PricingSection() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-4 text-foreground">
-            Choose the right plan <span className="text-primary">for you</span>
+            Choose the right plan{' '}
+            <span className="bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">for you</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Start free and scale as you grow. All plans include core features with zero hidden fees.

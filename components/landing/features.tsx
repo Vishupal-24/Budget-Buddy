@@ -27,21 +27,9 @@ export const FeaturesSection = memo(function FeaturesSection() {
       id="features"
       className="py-12 sm:py-16 md:py-20 lg:py-32 relative overflow-hidden transform-gpu"
     >
-      {/* Enhanced background with better visual depth */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-5"></div>
+      {/* Subtle background gradient */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 opacity-20"
-        style={{ willChange: 'opacity' }}
-      />
-
-      {/* Floating orbs for visual interest - using CSS animations instead of motion */}
-      <div
-        className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float"
-        style={{ animationDelay: '0s' }}
-      />
-      <div
-        className="absolute bottom-20 right-10 w-24 h-24 bg-primary/20 rounded-full blur-xl animate-float"
-        style={{ animationDelay: '2s' }}
+        className="absolute inset-0 bg-gradient-to-b from-muted/30 via-transparent to-muted/30"
       />
 
       <div className="container mx-auto px-4 relative">
@@ -67,15 +55,8 @@ export const FeaturesSection = memo(function FeaturesSection() {
 
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl mb-4 sm:mb-6 relative px-2 sm:px-0">
               Everything you need to{' '}
-              <span className="text-gradient-primary relative inline-block">
-                <span className="block sm:inline">manage your money</span>
-                <motion.div
-                  className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary/50 to-primary rounded-full"
-                  initial={{ width: 0, opacity: 0 }}
-                  whileInView={{ width: '100%', opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                />
+              <span className="text-primary">
+                manage your money
               </span>
             </h2>
           </div>

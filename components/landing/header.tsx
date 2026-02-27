@@ -27,22 +27,22 @@ export function Header() {
   return (
     <>
       {/* Refined top banner */}
-      <div className="bg-primary text-primary-foreground border-b border-primary/20 py-1.5 overflow-hidden relative z-[60]">
+      <div className="bg-foreground text-background border-b border-foreground/10 py-1.5 overflow-hidden relative z-[60]">
         <div className="whitespace-nowrap animate-marquee flex items-center text-xs font-medium tracking-wide">
-          <span className="mx-4">✨ Smart budgeting for everyone</span>
-          <span className="mx-4 opacity-40">·</span>
+          <span className="mx-4">Smart budgeting for everyone</span>
+          <span className="mx-4 opacity-30">·</span>
           <span className="mx-4">AI-powered insights</span>
-          <span className="mx-4 opacity-40">·</span>
+          <span className="mx-4 opacity-30">·</span>
           <span className="mx-4">Bank-grade security</span>
-          <span className="mx-4 opacity-40">·</span>
+          <span className="mx-4 opacity-30">·</span>
           <span className="mx-4">Real-time tracking</span>
-          <span className="mx-4 opacity-40">·</span>
-          <span className="mx-4">✨ Smart budgeting for everyone</span>
-          <span className="mx-4 opacity-40">·</span>
+          <span className="mx-4 opacity-30">·</span>
+          <span className="mx-4">Smart budgeting for everyone</span>
+          <span className="mx-4 opacity-30">·</span>
           <span className="mx-4">AI-powered insights</span>
-          <span className="mx-4 opacity-40">·</span>
+          <span className="mx-4 opacity-30">·</span>
           <span className="mx-4">Bank-grade security</span>
-          <span className="mx-4 opacity-40">·</span>
+          <span className="mx-4 opacity-30">·</span>
           <span className="mx-4">Real-time tracking</span>
         </div>
       </div>
