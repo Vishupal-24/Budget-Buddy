@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -19,6 +19,21 @@ export function Header() {
     setScrolled(latest > 50);
   });
 
+  // Close mobile menu when resizing to desktop
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setMobileMenuOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileMenuOpen]);
+
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
     scrollToSectionUtil(id, 80);
@@ -26,50 +41,50 @@ export function Header() {
 
   return (
     <>
-      {/* Refined top banner */}
-      <div className="bg-foreground text-background border-b border-foreground/10 py-1.5 overflow-hidden relative z-[60]">
-        <div className="whitespace-nowrap animate-marquee flex items-center text-xs font-medium tracking-wide">
-          <span className="mx-4">Smart budgeting for everyone</span>
-          <span className="mx-4 opacity-30">·</span>
-          <span className="mx-4">AI-powered insights</span>
-          <span className="mx-4 opacity-30">·</span>
-          <span className="mx-4">Bank-grade security</span>
-          <span className="mx-4 opacity-30">·</span>
-          <span className="mx-4">Real-time tracking</span>
-          <span className="mx-4 opacity-30">·</span>
-          <span className="mx-4">Smart budgeting for everyone</span>
-          <span className="mx-4 opacity-30">·</span>
-          <span className="mx-4">AI-powered insights</span>
-          <span className="mx-4 opacity-30">·</span>
-          <span className="mx-4">Bank-grade security</span>
-          <span className="mx-4 opacity-30">·</span>
-          <span className="mx-4">Real-time tracking</span>
+      {/* Top banner — hidden on small screens to save space */}
+      <div className="hidden sm:block bg-foreground text-background border-b border-foreground/10 py-1 sm:py-1.5 overflow-hidden relative z-[60]">
+        <div className="whitespace-nowrap animate-marquee flex items-center text-[10px] sm:text-xs font-medium tracking-wide">
+          <span className="mx-3 sm:mx-4">Smart budgeting for everyone</span>
+          <span className="mx-3 sm:mx-4 opacity-30">·</span>
+          <span className="mx-3 sm:mx-4">AI-powered insights</span>
+          <span className="mx-3 sm:mx-4 opacity-30">·</span>
+          <span className="mx-3 sm:mx-4">Bank-grade security</span>
+          <span className="mx-3 sm:mx-4 opacity-30">·</span>
+          <span className="mx-3 sm:mx-4">Real-time tracking</span>
+          <span className="mx-3 sm:mx-4 opacity-30">·</span>
+          <span className="mx-3 sm:mx-4">Smart budgeting for everyone</span>
+          <span className="mx-3 sm:mx-4 opacity-30">·</span>
+          <span className="mx-3 sm:mx-4">AI-powered insights</span>
+          <span className="mx-3 sm:mx-4 opacity-30">·</span>
+          <span className="mx-3 sm:mx-4">Bank-grade security</span>
+          <span className="mx-3 sm:mx-4 opacity-30">·</span>
+          <span className="mx-3 sm:mx-4">Real-time tracking</span>
         </div>
       </div>
 
       <motion.header
         className={cn(
           'fixed w-full z-50 transition-all duration-300 border-b border-border bg-background/80 backdrop-blur-xl',
-          scrolled ? 'top-0' : 'top-[30px]'
+          scrolled ? 'top-0' : 'top-0 sm:top-[30px]'
         )}
       >
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-18">
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex-shrink-0">
               <Link href="/" className="flex items-center group">
-                <span className="font-display font-bold text-xl tracking-tight text-foreground">
+                <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-foreground">
                   Budget Buddy
                 </span>
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1">
+            {/* Desktop Navigation — appears at lg to avoid tablet cramping */}
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1">
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.name}
-                  className="px-4 py-2 flex items-center text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                  className="px-3 xl:px-4 py-2 flex items-center text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors whitespace-nowrap"
                   onClick={() => scrollToSection(item.href.substring(1))}
                 >
                   {item.name}
@@ -77,9 +92,10 @@ export function Header() {
               ))}
             </nav>
 
-            <div className="hidden md:flex items-center gap-3">
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-2 xl:gap-3">
               <ThemeToggle iconOnly />
-              <Link href="/auth/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/auth/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
                 Sign in
               </Link>
               <Button asChild size="sm" className="rounded-lg">
@@ -90,12 +106,12 @@ export function Header() {
               </Button>
             </div>
 
-            {/* Mobile Menu Button  and Theme Toggle */}
-            <div className="md:hidden flex items-center gap-2">
+            {/* Mobile / Tablet Menu Button + Theme Toggle */}
+            <div className="lg:hidden flex items-center gap-1.5 sm:gap-2">
               <ThemeToggle iconOnly />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg text-foreground hover:bg-muted/50 transition-colors"
+                className="p-2 rounded-lg text-foreground hover:bg-muted/50 active:bg-muted transition-colors"
                 aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               >
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -104,33 +120,37 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile / Tablet menu — full-viewport overlay */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              className="fixed inset-x-0 top-full bg-background backdrop-blur-2xl border-b border-border z-[60] flex flex-col md:hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              className="fixed inset-x-0 top-full h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-2xl border-t border-border z-[60] flex flex-col lg:hidden overflow-y-auto"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
             >
-              <div className="flex flex-col py-2">
-                {NAV_ITEMS.map((item) => (
-                  <button
+              <div className="flex flex-col py-3 sm:py-4">
+                {NAV_ITEMS.map((item, index) => (
+                  <motion.button
                     key={item.name}
-                    className="flex text-left px-6 py-3 text-base font-medium text-foreground hover:bg-muted/50 transition-colors"
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="flex text-left px-5 sm:px-6 py-3.5 text-base sm:text-lg font-medium text-foreground hover:bg-muted/50 active:bg-muted transition-colors"
                     onClick={() => scrollToSection(item.href.substring(1))}
                   >
                     {item.name}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
-              <div className="p-4 border-t border-border flex flex-col gap-3">
-                <Button variant="outline" className="w-full justify-center" asChild>
+              <div className="mt-auto p-4 sm:p-6 border-t border-border flex flex-col sm:flex-row gap-3">
+                <Button variant="outline" className="w-full sm:flex-1 justify-center h-11" asChild>
                   <Link href="/auth/login" prefetch={true}>
                     Sign in
                   </Link>
                 </Button>
-                <Button className="w-full justify-center" asChild>
+                <Button className="w-full sm:flex-1 justify-center h-11" asChild>
                   <Link href="/auth/register" prefetch={true}>
                     Get started
                   </Link>
