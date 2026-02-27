@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User, Loader2, Volume2, VolumeX, BarChart3, Sparkles, MessageCircle, Settings, Maximize2, Minimize2 } from "lucide-react";
+import { Send, Bot, User, Loader2, Volume2, VolumeX, BarChart3, Sparkles, MessageCircle, Settings, Maximize2, Minimize2, DollarSign, Lightbulb, PiggyBank } from "lucide-react";
 import { AIMessage, AIModelConfig, FinancialInsight, AIProvider } from "@/lib/ai";
 import { AIProviderModelSelector } from "./AIProviderModelSelector";
 import { VoiceInterface } from "./VoiceInterface";
@@ -200,60 +200,60 @@ export function MobileResponsiveChatPanel({
     {
       text: "Show me my financial insights",
       icon: BarChart3,
-      gradient: "from-primary/5 to-blue-50/50",
-      hoverGradient: "from-primary/10 to-blue-100/80",
+      gradient: "from-primary/5 to-muted",
+      hoverGradient: "from-primary/10 to-muted",
       borderColor: "border-primary/20",
       hoverBorderColor: "border-primary/40",
       iconColor: "text-primary"
     },
     {
       text: "How much did I spend this month?",
-      emoji: "💰",
-      gradient: "from-green-50/50 to-emerald-50/50",
-      hoverGradient: "from-green-100/80 to-emerald-100/80",
-      borderColor: "border-green-200/50",
-      hoverBorderColor: "border-green-300/70",
-      textColor: "text-green-700"
+      icon: DollarSign,
+      gradient: "from-muted to-muted",
+      hoverGradient: "from-muted to-muted",
+      borderColor: "border-border",
+      hoverBorderColor: "border-border",
+      textColor: "text-foreground"
     },
     {
       text: "Give me budget recommendations",
-      emoji: "💡",
-      gradient: "from-purple-50/50 to-pink-50/50",
-      hoverGradient: "from-purple-100/80 to-pink-100/80",
-      borderColor: "border-purple-200/50",
-      hoverBorderColor: "border-purple-300/70",
-      textColor: "text-purple-700"
+      icon: Lightbulb,
+      gradient: "from-muted to-muted",
+      hoverGradient: "from-muted to-muted",
+      borderColor: "border-border",
+      hoverBorderColor: "border-border",
+      textColor: "text-foreground"
     },
     {
       text: "What are some ways I can save money?",
-      emoji: "🎯",
-      gradient: "from-orange-50/50 to-yellow-50/50",
-      hoverGradient: "from-orange-100/80 to-yellow-100/80",
-      borderColor: "border-orange-200/50",
-      hoverBorderColor: "border-orange-300/70",
-      textColor: "text-orange-700"
+      icon: PiggyBank,
+      gradient: "from-muted to-muted",
+      hoverGradient: "from-muted to-muted",
+      borderColor: "border-border",
+      hoverBorderColor: "border-border",
+      textColor: "text-foreground"
     }
   ];
 
   return (
-    <Card className={`flex flex-col h-full bg-gradient-to-br from-background via-background to-muted/20 border-2 shadow-lg chat-container overflow-hidden ${
+    <Card className={`flex flex-col h-full bg-gradient-to-br from-background via-background to-muted/20 border-2  chat-container overflow-hidden ${
       isFullscreen && isMobile ? 'fixed inset-0 z-50 rounded-none' : ''
     } ${className}`}>
-      <CardHeader className={`border-b bg-gradient-to-r from-primary/5 via-blue-50/50 to-purple-50/30 dark:from-primary/10 dark:via-blue-950/20 dark:to-purple-950/10 ${
+      <CardHeader className={`border-b bg-gradient-to-r from-primary/5 via-muted to-muted dark:from-primary/10 dark:via-muted dark:to-muted ${
         isMobile ? 'pb-3' : 'pb-4'
       }`}>
         <div className="flex items-center justify-between">
           <CardTitle className={`flex items-center gap-3 ${isMobile ? 'text-base' : 'text-lg'}`}>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-blue-600 rounded-full blur-sm opacity-20"></div>
-              <div className={`relative bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center ${
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-muted rounded-full blur-sm opacity-20"></div>
+              <div className={`relative bg-gradient-to-br from-primary to-muted rounded-full flex items-center justify-center ${
                 isMobile ? 'w-6 h-6' : 'w-8 h-8'
               }`}>
                 <Sparkles className={`text-white ${isMobile ? 'h-3 w-3' : 'h-4 w-4'}`} />
               </div>
             </div>
             <div>
-              <div className="font-semibold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              <div className="font-semibold bg-gradient-to-r from-primary to-muted bg-clip-text text-transparent">
                 AI Financial Assistant
               </div>
               <div className={`text-muted-foreground font-normal ${isMobile ? 'text-xs' : 'text-xs'}`}>
@@ -289,7 +289,7 @@ export function MobileResponsiveChatPanel({
             {!isMobile && (
               <>
                 <Badge variant="outline" className="text-xs bg-primary/5 border-primary/20">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-1 animate-pulse"></div>
+                  <div className="w-2 h-2 bg-muted rounded-full mr-1 animate-pulse"></div>
                   {currentModelConfig.provider}
                 </Badge>
                 {onRequestInsights && (
@@ -394,8 +394,8 @@ export function MobileResponsiveChatPanel({
           {displayMessages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center py-8">
               <div className="relative mb-6">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-blue-600/20 rounded-full blur-xl"></div>
-                <div className={`relative bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center shadow-lg ${
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-muted rounded-full blur-xl"></div>
+                <div className={`relative bg-gradient-to-br from-primary to-muted rounded-full flex items-center justify-center  ${
                   isMobile ? 'w-12 h-12' : 'w-16 h-16'
                 }`}>
                   <Bot className={`text-white ${isMobile ? 'h-6 w-6' : 'h-8 w-8'}`} />
@@ -427,11 +427,7 @@ export function MobileResponsiveChatPanel({
                     <div className={`flex items-center gap-2 ${isMobile ? '' : 'flex-col'}`}>
                       {action.icon ? (
                         <action.icon className={`group-hover:scale-110 transition-transform ${action.iconColor} ${isMobile ? 'h-4 w-4' : 'h-4 w-4'}`} />
-                      ) : (
-                        <div className={`group-hover:scale-110 transition-transform ${isMobile ? 'text-base' : 'text-lg'}`}>
-                          {action.emoji}
-                        </div>
-                      )}
+                      ) : null}
                       <span className={`font-medium ${action.textColor || ''} ${isMobile ? 'text-left' : ''}`}>
                         {isMobile ? action.text : action.text.split(' ').slice(0, 2).join(' ')}
                       </span>
@@ -467,14 +463,14 @@ export function MobileResponsiveChatPanel({
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {message.role === 'assistant' && (
-                    <div className={`flex-shrink-0 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shadow-lg ring-2 ring-primary/20 ${
+                    <div className={`flex-shrink-0 rounded-full bg-gradient-to-br from-primary to-muted flex items-center justify-center  ring-2 ring-primary/20 ${
                       isMobile ? 'w-8 h-8' : 'w-10 h-10'
                     }`}>
                       <Bot className={`text-white ${isMobile ? 'h-4 w-4' : 'h-5 w-5'}`} />
                     </div>
                   )}
                   
-                  <div className={`flex-1 min-w-0 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md group overflow-hidden message-bubble ${
+                  <div className={`flex-1 min-w-0 rounded-2xl shadow-sm transition-all duration-300  group overflow-hidden message-bubble ${
                     isMobile ? 'max-w-[90%]' : 'max-w-[85%]'
                   } ${
                     message.role === 'user' 
@@ -505,7 +501,7 @@ export function MobileResponsiveChatPanel({
                   </div>
                   
                   {message.role === 'user' && (
-                    <div className={`flex-shrink-0 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 flex items-center justify-center shadow-lg ring-2 ring-muted-foreground/10 ${
+                    <div className={`flex-shrink-0 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 flex items-center justify-center  ring-2 ring-muted-foreground/10 ${
                       isMobile ? 'w-8 h-8' : 'w-10 h-10'
                     }`}>
                       <User className={`text-muted-foreground ${isMobile ? 'h-4 w-4' : 'h-5 w-5'}`} />
@@ -516,7 +512,7 @@ export function MobileResponsiveChatPanel({
               })}
               {loading && (
                 <div className={`flex justify-start ${isMobile ? 'gap-2' : 'gap-4'}`}>
-                  <div className={`flex-shrink-0 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shadow-lg ring-2 ring-primary/20 ${
+                  <div className={`flex-shrink-0 rounded-full bg-gradient-to-br from-primary to-muted flex items-center justify-center  ring-2 ring-primary/20 ${
                     isMobile ? 'w-8 h-8' : 'w-10 h-10'
                   }`}>
                     <Bot className={`text-white ${isMobile ? 'h-4 w-4' : 'h-5 w-5'}`} />
@@ -539,7 +535,7 @@ export function MobileResponsiveChatPanel({
                   variant="outline"
                   size="sm"
                   onClick={scrollToBottom}
-                  className={`p-0 rounded-full bg-background/90 backdrop-blur-sm border-2 shadow-lg hover:shadow-xl transition-all hover:scale-110 ${
+                  className={`p-0 rounded-full bg-background/90 backdrop-blur-sm border-2  hover: transition-all hover:scale-110 ${
                     isMobile ? 'h-8 w-8' : 'h-10 w-10'
                   }`}
                   title="Scroll to latest message"
@@ -558,7 +554,7 @@ export function MobileResponsiveChatPanel({
                 variant="outline"
                 size="sm"
                 onClick={scrollToTop}
-                className={`p-0 rounded-full bg-background/90 backdrop-blur-sm border-2 shadow-lg hover:shadow-xl transition-all hover:scale-110 ${
+                className={`p-0 rounded-full bg-background/90 backdrop-blur-sm border-2  hover: transition-all hover:scale-110 ${
                   isMobile ? 'h-8 w-8' : 'h-10 w-10'
                 }`}
                 title="Scroll to top"
@@ -580,20 +576,20 @@ export function MobileResponsiveChatPanel({
         <div className={`border-t bg-gradient-to-r from-background via-muted/10 to-background ${isMobile ? 'p-4' : 'p-6'}`}>
           {/* Voice Listening Feedback */}
           {isListening && (
-            <div className={`flex items-center gap-3 text-sm bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-200/50 dark:border-blue-700/50 rounded-xl shadow-sm ${
+            <div className={`flex items-center gap-3 text-sm bg-gradient-to-r from-muted to-muted dark:from-muted dark:to-muted border border-border dark:border-border rounded-xl shadow-sm ${
               isMobile ? 'mb-3 p-3' : 'mb-4 p-4'
             }`}>
               <div className="relative">
-                <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 w-3 h-3 bg-blue-400 rounded-full animate-ping opacity-75"></div>
+                <div className="w-3 h-3 bg-muted rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 w-3 h-3 bg-muted rounded-full animate-ping opacity-75"></div>
               </div>
               <div className="flex-1">
-                <span className="text-blue-700 dark:text-blue-300 font-medium flex items-center gap-2">
+                <span className="text-foreground dark:text-foreground font-medium flex items-center gap-2">
                   <MessageCircle className="h-4 w-4" />
                   Listening for your voice...
                 </span>
                 {currentTranscript && (
-                  <div className="text-blue-600 dark:text-blue-400 italic mt-1 text-xs">
+                  <div className="text-foreground dark:text-foreground italic mt-1 text-xs">
                     "{currentTranscript}"
                   </div>
                 )}
@@ -612,8 +608,8 @@ export function MobileResponsiveChatPanel({
                 disabled={loading}
                 className={`text-sm bg-background/80 backdrop-blur border-2 transition-all duration-300 focus:ring-2 focus:ring-primary/20 ${
                   isListening 
-                    ? "border-blue-300 dark:border-blue-600 bg-blue-50/30 dark:bg-blue-950/20 focus:border-blue-500 shadow-blue-200/50 shadow-lg" 
-                    : "border-border/50 hover:border-border focus:border-primary/50 shadow-sm hover:shadow-md"
+                    ? "border-border dark:border-border bg-muted dark:bg-muted focus:border-border shadow-blue-200/50 " 
+                    : "border-border/50 hover:border-border focus:border-primary/50 shadow-sm "
                 } ${inputMessage.trim() ? "border-primary/30" : ""} ${
                   isMobile ? 'h-10 px-3' : 'h-12 px-4'
                 }`}
@@ -622,9 +618,9 @@ export function MobileResponsiveChatPanel({
               {isListening && (
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
                   <div className="flex gap-1">
-                    <div className="w-1 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                    <div className="w-1 h-4 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.1s'}}></div>
-                    <div className="w-1 h-2 bg-blue-600 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                    <div className="w-1 h-3 bg-muted rounded-full animate-pulse"></div>
+                    <div className="w-1 h-4 bg-muted rounded-full animate-pulse" style={{animationDelay: '0.1s'}}></div>
+                    <div className="w-1 h-2 bg-muted rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
                   </div>
                 </div>
               )}
@@ -633,7 +629,7 @@ export function MobileResponsiveChatPanel({
               onClick={handleSend} 
               disabled={loading || !inputMessage.trim()}
               size={isMobile ? "default" : "lg"}
-              className={`bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 disabled:hover:scale-100 ${
+              className={`bg-gradient-to-r from-primary to-muted hover:from-primary/90 hover:to-muted  hover: transition-all duration-200 hover:scale-105 disabled:hover:scale-100 ${
                 isMobile ? 'h-10 px-4' : 'h-12 px-6'
               }`}
             >

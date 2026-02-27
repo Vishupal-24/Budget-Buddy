@@ -117,22 +117,22 @@ export function SidebarTest() {
   const getStatusIcon = (status: TestResult['status']) => {
     switch (status) {
       case 'pass':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <CheckCircle className="h-4 w-4 text-foreground" />;
       case 'fail':
-        return <XCircle className="h-4 w-4 text-red-500" />;
+        return <XCircle className="h-4 w-4 text-foreground" />;
       case 'warning':
-        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
+        return <AlertCircle className="h-4 w-4 text-foreground" />;
     }
   };
 
   const getStatusBadge = (status: TestResult['status']) => {
     switch (status) {
       case 'pass':
-        return <Badge variant="default" className="bg-green-100 text-green-800">Pass</Badge>;
+        return <Badge variant="default" className="bg-muted text-foreground">Pass</Badge>;
       case 'fail':
         return <Badge variant="destructive">Fail</Badge>;
       case 'warning':
-        return <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">Warning</Badge>;
+        return <Badge variant="secondary" className="bg-muted text-foreground">Warning</Badge>;
     }
   };
 
@@ -158,15 +158,15 @@ export function SidebarTest() {
         {testResults.length > 0 && (
           <div className="mb-4 flex gap-4 text-sm">
             <span className="flex items-center gap-1">
-              <CheckCircle className="h-4 w-4 text-green-500" />
+              <CheckCircle className="h-4 w-4 text-foreground" />
               {passCount} Passed
             </span>
             <span className="flex items-center gap-1">
-              <XCircle className="h-4 w-4 text-red-500" />
+              <XCircle className="h-4 w-4 text-foreground" />
               {failCount} Failed
             </span>
             <span className="flex items-center gap-1">
-              <AlertCircle className="h-4 w-4 text-yellow-500" />
+              <AlertCircle className="h-4 w-4 text-foreground" />
               {warningCount} Warnings
             </span>
           </div>

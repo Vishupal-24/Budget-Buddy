@@ -162,7 +162,7 @@ export class SmartLearningEngine {
     if (profile.learningMetrics.accuracyImprovement > 0) {
       insights.push({
         type: 'accuracy_improvement',
-        title: 'Your OCR is getting smarter! 🧠',
+        title: 'Your OCR is getting smarter! ',
         description: `Accuracy improved by ${profile.learningMetrics.accuracyImprovement.toFixed(1)}% from your corrections`,
         impact: 'high',
         actionable: false
@@ -174,7 +174,7 @@ export class SmartLearningEngine {
     if (learnedMerchants.length > 0) {
       insights.push({
         type: 'merchant_learning',
-        title: `Learned ${learnedMerchants.length} of your favorite places! 🏪`,
+        title: `Learned ${learnedMerchants.length} of your favorite places! `,
         description: `Now recognizing: ${learnedMerchants.slice(0, 3).join(', ')}${learnedMerchants.length > 3 ? '...' : ''}`,
         impact: 'medium',
         actionable: false
@@ -532,7 +532,7 @@ export class SmartLearningEngine {
 
         insights.push({
           type: 'spending_pattern',
-          title: `You usually buy ${category} in the ${timeDescription} 🕐`,
+          title: `You usually buy ${category} in the ${timeDescription} `,
           description: `Average time: ${Math.round(avgHour)}:00`,
           impact: 'low',
           actionable: true

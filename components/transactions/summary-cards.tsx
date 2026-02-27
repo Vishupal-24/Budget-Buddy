@@ -14,24 +14,22 @@ interface TransactionSummaryCardsProps {
 export const TransactionSummaryCards: React.FC<TransactionSummaryCardsProps> = ({ summary }) => {
   return (
     <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-      <div className="rounded-lg border bg-card p-4 shadow-sm transition-all hover:shadow-md">
+      <div className="rounded-lg border bg-card p-4">
         <h2 className="text-sm font-medium text-muted-foreground">Total Income</h2>
-        <p className="mt-1 text-2xl font-bold text-green-500">
+        <p className="mt-1 text-2xl font-bold text-foreground">
           <Currency value={summary.totalIncome} />
         </p>
       </div>
-      <div className="rounded-lg border bg-card p-4 shadow-sm transition-all hover:shadow-md">
+      <div className="rounded-lg border bg-card p-4">
         <h2 className="text-sm font-medium text-muted-foreground">Total Expenses</h2>
         <p className="mt-1 text-2xl font-bold text-destructive">
           <Currency value={summary.totalExpense} />
         </p>
       </div>
-      <div className="rounded-lg border bg-card p-4 shadow-sm transition-all hover:shadow-md sm:col-span-2 md:col-span-1">
+      <div className="rounded-lg border bg-card p-4 sm:col-span-2 md:col-span-1">
         <h2 className="text-sm font-medium text-muted-foreground">Net Balance</h2>
         <p
-          className={`mt-1 text-2xl font-bold ${
-            summary.balance >= 0 ? "text-green-500" : "text-destructive"
-          }`}
+          className="mt-1 text-2xl font-bold text-foreground"
         >
           <Currency value={summary.balance} />
         </p>

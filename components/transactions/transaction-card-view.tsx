@@ -71,11 +71,7 @@ export const TransactionCardView: React.FC<TransactionCardViewProps> = ({
               {formatDate(transaction.date)}
             </span>
             <span
-              className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                transaction.type === "income"
-                  ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
-                  : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
-              }`}
+              className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-muted text-foreground`}
             >
               {transaction.type}
             </span>
@@ -90,9 +86,7 @@ export const TransactionCardView: React.FC<TransactionCardViewProps> = ({
 
           <div className="flex items-center justify-between mt-2">
             <div
-              className={`text-lg font-bold ${
-                transaction.type === "income" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"
-              }`}
+              className={`text-lg font-bold text-foreground`}
             >
               <Currency value={transaction.amount} />
             </div>

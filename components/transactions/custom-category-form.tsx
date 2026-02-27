@@ -125,7 +125,7 @@ export const CustomCategoryForm: React.FC<CustomCategoryFormProps> = ({
           onChange={handleInputChange}
           onBlur={() => updateParentState(inputValue)}
           placeholder={`New ${categoryType} category name`}
-          className={`w-full rounded-md border-2 ${customCategoryError ? 'border-red-500' : 'border-input'} bg-transparent px-3 py-2 text-sm font-medium`}
+          className={`w-full rounded-md border-2 ${customCategoryError ? 'border-destructive' : 'border-input'} bg-transparent px-3 py-2 text-sm font-medium`}
         />
 
         {/* This hidden input ensures we maintain the correct category type */}
@@ -146,7 +146,7 @@ export const CustomCategoryForm: React.FC<CustomCategoryFormProps> = ({
             setTimeout(() => onAddCategory(), 50);
           }}
           disabled={isSavingCategory || !inputValue.trim()}
-          className={`w-full ${isIncome ? 'bg-green-600 hover:bg-green-700' : 'bg-primary hover:bg-primary/90'} text-primary-foreground`}
+          className={`w-full ${isIncome ? 'bg-primary hover:bg-primary/90' : 'bg-primary hover:bg-primary/90'} text-primary-foreground`}
         >
           {isSavingCategory ? (
             <>
@@ -159,7 +159,7 @@ export const CustomCategoryForm: React.FC<CustomCategoryFormProps> = ({
         </Button>
 
         {customCategoryError && (
-          <p className="text-sm text-red-500">
+          <p className="text-sm text-destructive">
             Please create a category or select an existing one
           </p>
         )}
@@ -179,7 +179,7 @@ export const CustomCategoryForm: React.FC<CustomCategoryFormProps> = ({
                   className="h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                   onClick={() => onDeleteCategory(category)}
                 >
-                  <Trash className="h-3.5 w-3.5 text-red-500" />
+                  <Trash className="h-3.5 w-3.5 text-foreground" />
                   <span className="sr-only">Delete {category.name}</span>
                 </Button>
               </div>
@@ -191,7 +191,7 @@ export const CustomCategoryForm: React.FC<CustomCategoryFormProps> = ({
       {/* Confirmation dialog for deleting categories */}
       {showDeleteCategoryConfirm && categoryToDelete && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-card rounded-lg p-6 max-w-md w-full shadow-lg">
+          <div className="bg-card rounded-lg p-6 max-w-md w-full ">
             <h3 className="text-lg font-bold mb-2">Delete Category</h3>
             <p className="mb-4">
               Are you sure you want to delete the category &quot;{categoryToDelete.name}&quot;?

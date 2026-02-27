@@ -338,7 +338,7 @@ export function BudgetManagementTools({ budgets, categorySpending, onBudgetsUpda
   };
 
   return (
-    <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex items-center justify-between">
           <div>
@@ -491,7 +491,7 @@ export function BudgetManagementTools({ budgets, categorySpending, onBudgetsUpda
                           onClick={() => deleteTemplate(template.id)}
                           size="sm"
                           variant="outline"
-                          className="text-red-600 hover:text-red-700"
+                          className="text-foreground hover:text-foreground"
                         >
                           <Trash2 className="h-3 w-3" />
                         </Button>

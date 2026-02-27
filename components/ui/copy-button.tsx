@@ -71,9 +71,9 @@ export function CopyButton({
             }
           >
             {status === 'copied' ? (
-              <Check size={iconSize} className="text-green-500" />
+              <Check size={iconSize} className="text-foreground" />
             ) : status === 'error' ? (
-              <AlertCircle size={iconSize} className="text-red-500" />
+              <AlertCircle size={iconSize} className="text-foreground" />
             ) : (
               <Copy size={iconSize} />
             )}

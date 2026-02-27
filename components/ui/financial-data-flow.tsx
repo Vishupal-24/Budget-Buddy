@@ -109,7 +109,7 @@ const FinancialDataFlow = React.memo(({
           {/* Income Tracking */}
           <g>
             <rect
-              fill="#16a34a"
+              fill="#737373"
               x="14"
               y="5"
               width="34"
@@ -131,7 +131,7 @@ const FinancialDataFlow = React.memo(({
           {/* Budget Planning */}
           <g>
             <rect
-              fill="#2563eb"
+              fill="#525252"
               x="60"
               y="5"
               width="34"
@@ -153,7 +153,7 @@ const FinancialDataFlow = React.memo(({
           {/* Analytics */}
           <g>
             <rect
-              fill="#7c3aed"
+              fill="#404040"
               x="108"
               y="5"
               width="34"
@@ -175,7 +175,7 @@ const FinancialDataFlow = React.memo(({
           {/* Insights */}
           <g>
             <rect
-              fill="#dc2626"
+              fill="#6B7280"
               x="150"
               y="5"
               width="40"
@@ -230,7 +230,7 @@ const FinancialDataFlow = React.memo(({
           </mask>
           {/* Green Gradient for financial success */}
           <radialGradient id="financial-green-grad" fx="1">
-            <stop offset="0%" stopColor={lightColor ?? "#22c55e"} />
+            <stop offset="0%" stopColor={lightColor ?? "#9CA3AF"} />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
         </defs>
@@ -254,16 +254,16 @@ const FinancialDataFlow = React.memo(({
         <div className="relative z-10 flex h-[150px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background shadow-md">
           {/* Financial Badges */}
           <div className="absolute bottom-8 left-12 z-10 h-7 rounded-full bg-card text-card-foreground px-3 text-xs border flex items-center gap-2 shadow-sm">
-            <DollarSign className="size-4 text-green-500" />
+            <DollarSign className="size-4 text-foreground" />
             <span>{buttonTexts?.first ?? "Budget Buddy"}</span>
           </div>
           <div className="absolute right-16 z-10 hidden h-7 rounded-full bg-card text-card-foreground px-3 text-xs sm:flex border items-center gap-2 shadow-sm">
-            <BarChart3 className="size-4 text-blue-500" />
+            <BarChart3 className="size-4 text-foreground" />
             <span>{buttonTexts?.second ?? "Smart Analytics"}</span>
           </div>
           {/* Animated Financial Circles */}
           <SafeMotionDiv
-            className="absolute -bottom-14 h-[100px] w-[100px] rounded-full border-t bg-green-500/10"
+            className="absolute -bottom-14 h-[100px] w-[100px] rounded-full border-t bg-muted/50"
             initial={{ scale: 0.98 }}
             animate={{ scale: 1.02 }}
             transition={{ 
@@ -274,7 +274,7 @@ const FinancialDataFlow = React.memo(({
             }}
           />
           <SafeMotionDiv
-            className="absolute -bottom-20 h-[145px] w-[145px] rounded-full border-t bg-blue-500/10"
+            className="absolute -bottom-20 h-[145px] w-[145px] rounded-full border-t bg-muted/50"
             initial={{ scale: 0.98 }}
             animate={{ scale: 1.02 }}
             transition={{ 
@@ -285,7 +285,7 @@ const FinancialDataFlow = React.memo(({
             }}
           />
           <SafeMotionDiv
-            className="absolute -bottom-[100px] h-[190px] w-[190px] rounded-full border-t bg-purple-500/10"
+            className="absolute -bottom-[100px] h-[190px] w-[190px] rounded-full border-t bg-muted/50"
             initial={{ scale: 0.98 }}
             animate={{ scale: 1.02 }}
             transition={{ 
@@ -296,7 +296,7 @@ const FinancialDataFlow = React.memo(({
             }}
           />
           <SafeMotionDiv
-            className="absolute -bottom-[120px] h-[235px] w-[235px] rounded-full border-t bg-red-500/10"
+            className="absolute -bottom-[120px] h-[235px] w-[235px] rounded-full border-t bg-muted/50"
             initial={{ scale: 0.98 }}
             animate={{ scale: 1.02 }}
             transition={{ 

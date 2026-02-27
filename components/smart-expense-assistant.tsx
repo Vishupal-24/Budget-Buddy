@@ -197,7 +197,7 @@ export function SmartExpenseAssistant({
       
       // Show welcome message for new users
       if (assistantState.receiptsProcessed === 0) {
-        toast.success('Smart Assistant Ready! 🤖', {
+        toast.success('Smart Assistant Ready! ', {
           description: 'Upload your first receipt to start learning your spending patterns'
         });
       }
@@ -340,7 +340,7 @@ export function SmartExpenseAssistant({
   };
 
   const handleReportGenerated = (report: ExpenseReport) => {
-    toast.success('Expense Report Generated! 📊', {
+    toast.success('Expense Report Generated! ', {
       description: `${report.transactionCount} transactions analyzed`,
       action: {
         label: 'Download',
@@ -370,8 +370,8 @@ export function SmartExpenseAssistant({
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <Brain className="h-6 w-6 text-blue-600" />
+              <div className="p-2 bg-muted rounded-lg">
+                <Brain className="h-6 w-6 text-foreground" />
               </div>
               <div>
                 <CardTitle className="flex items-center space-x-2">
@@ -410,7 +410,7 @@ export function SmartExpenseAssistant({
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="p-4 border rounded-lg">
                     <div className="flex items-center space-x-2 mb-2">
-                      <DollarSign className="h-4 w-4 text-green-600" />
+                      <DollarSign className="h-4 w-4 text-foreground" />
                       <span className="text-sm font-medium">This Month</span>
                     </div>
                     <div className="text-2xl font-bold">₹{dashboardMetrics.thisMonth.spending.toLocaleString()}</div>
@@ -421,7 +421,7 @@ export function SmartExpenseAssistant({
 
                   <div className="p-4 border rounded-lg">
                     <div className="flex items-center space-x-2 mb-2">
-                      <PieChart className="h-4 w-4 text-blue-600" />
+                      <PieChart className="h-4 w-4 text-foreground" />
                       <span className="text-sm font-medium">Budget Usage</span>
                     </div>
                     <div className="text-2xl font-bold">{dashboardMetrics.thisMonth.budgetUsage.toFixed(1)}%</div>
@@ -432,7 +432,7 @@ export function SmartExpenseAssistant({
 
                   <div className="p-4 border rounded-lg">
                     <div className="flex items-center space-x-2 mb-2">
-                      <TrendingUp className="h-4 w-4 text-purple-600" />
+                      <TrendingUp className="h-4 w-4 text-foreground" />
                       <span className="text-sm font-medium">Savings Found</span>
                     </div>
                     <div className="text-2xl font-bold">₹{assistantState.totalSavingsIdentified.toLocaleString()}</div>
@@ -443,7 +443,7 @@ export function SmartExpenseAssistant({
 
                   <div className="p-4 border rounded-lg">
                     <div className="flex items-center space-x-2 mb-2">
-                      <Brain className="h-4 w-4 text-orange-600" />
+                      <Brain className="h-4 w-4 text-foreground" />
                       <span className="text-sm font-medium">Learning Score</span>
                     </div>
                     <div className="text-2xl font-bold">{assistantState.learningScore}%</div>
@@ -500,9 +500,9 @@ export function SmartExpenseAssistant({
                       <Alert key={index}>
                         <div className="flex items-start space-x-3">
                           <div className="flex-shrink-0">
-                            {insight.type === 'warning' && <AlertTriangle className="h-4 w-4 text-amber-500" />}
-                            {insight.type === 'suggestion' && <TrendingUp className="h-4 w-4 text-blue-500" />}
-                            {insight.type === 'achievement' && <CheckCircle className="h-4 w-4 text-green-500" />}
+                            {insight.type === 'warning' && <AlertTriangle className="h-4 w-4 text-foreground" />}
+                            {insight.type === 'suggestion' && <TrendingUp className="h-4 w-4 text-foreground" />}
+                            {insight.type === 'achievement' && <CheckCircle className="h-4 w-4 text-foreground" />}
                           </div>
                           <div className="flex-1">
                             <AlertDescription>
@@ -542,8 +542,8 @@ export function SmartExpenseAssistant({
                       <Card key={achievement.id}>
                         <CardContent className="p-4">
                           <div className="flex items-start space-x-3">
-                            <div className="p-2 bg-yellow-100 rounded-lg">
-                              <Star className="h-5 w-5 text-yellow-600" />
+                            <div className="p-2 bg-muted rounded-lg">
+                              <Star className="h-5 w-5 text-foreground" />
                             </div>
                             <div className="flex-1">
                               <h4 className="font-medium">{achievement.title}</h4>

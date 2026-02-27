@@ -31,31 +31,26 @@ const navItems: NavItem[] = [
     href: '/dashboard',
     label: 'Dashboard',
     icon: Home,
-    color: 'text-blue-600 dark:text-blue-400',
   },
   {
     href: '/dashboard/transactions',
     label: 'Transactions',
     icon: CreditCard,
-    color: 'text-green-600 dark:text-green-400',
   },
   {
     href: '/dashboard/budget',
     label: 'Budget',
     icon: PieChart,
-    color: 'text-purple-600 dark:text-purple-400',
   },
   {
     href: '/dashboard/analytics',
     label: 'Analytics',
     icon: Target,
-    color: 'text-orange-600 dark:text-orange-400',
   },
   {
     href: '/dashboard/settings',
     label: 'Settings',
     icon: Settings,
-    color: 'text-gray-600 dark:text-gray-400',
   },
 ];
 
@@ -87,9 +82,9 @@ export function EnhancedMobileNav({ className, showLabels = true }: EnhancedMobi
               href={item.href}
               className={cn(
                 'flex flex-col items-center justify-center min-w-[60px] py-2 px-3 rounded-lg',
-                'transition-all duration-200 touch-manipulation',
-                'hover:bg-muted/50 active:scale-95',
-                isActive && 'bg-primary/10'
+                'transition-colors duration-150 touch-manipulation',
+                'hover:bg-muted/50',
+                isActive && 'bg-muted/30'
               )}
               onClick={() => setActiveItem(item.href)}
             >
@@ -97,7 +92,7 @@ export function EnhancedMobileNav({ className, showLabels = true }: EnhancedMobi
                 <Icon
                   className={cn(
                     'h-5 w-5 transition-colors duration-200',
-                    isActive ? 'text-primary' : item.color || 'text-muted-foreground'
+                    isActive ? 'text-foreground' : 'text-muted-foreground'
                   )}
                 />
                 {item.badge && item.badge > 0 && (
@@ -111,7 +106,7 @@ export function EnhancedMobileNav({ className, showLabels = true }: EnhancedMobi
 
                 {/* Active indicator */}
                 {isActive && (
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-foreground rounded-full" />
                 )}
               </div>
 
@@ -136,9 +131,9 @@ export function EnhancedMobileNav({ className, showLabels = true }: EnhancedMobi
           asChild
           size="lg"
           className={cn(
-            'h-12 w-12 rounded-full shadow-lg',
+            'h-12 w-12 rounded-full ',
             'bg-primary hover:bg-primary/90',
-            'transition-all duration-300 hover:scale-110 active:scale-95'
+            'transition-colors duration-150'
           )}
         >
           <Link href="/dashboard/transactions/new">
@@ -166,9 +161,9 @@ export function AdvancedMobileNav({
   const [showQuickActions, setShowQuickActions] = useState(false);
 
   const quickActions = [
-    { label: 'Add Income', icon: TrendingUp, color: 'bg-green-500' },
-    { label: 'Add Expense', icon: CreditCard, color: 'bg-red-500' },
-    { label: 'Transfer', icon: Wallet, color: 'bg-blue-500' },
+    { label: 'Add Income', icon: TrendingUp, color: 'bg-secondary' },
+    { label: 'Add Expense', icon: CreditCard, color: 'bg-secondary' },
+    { label: 'Transfer', icon: Wallet, color: 'bg-secondary' },
   ];
 
   return (
@@ -184,7 +179,7 @@ export function AdvancedMobileNav({
               <Button
                 key={action.label}
                 className={cn(
-                  'h-12 w-12 rounded-full shadow-lg',
+                  'h-12 w-12 rounded-full ',
                   action.color,
                   'animate-in slide-in-from-bottom-2',
                   `animation-delay-${index * 100}`
@@ -220,16 +215,16 @@ export function AdvancedMobileNav({
                 href={item.href}
                 className={cn(
                   'flex flex-col items-center justify-center min-w-[60px] py-2 px-3 rounded-lg',
-                  'transition-all duration-200 touch-manipulation',
-                  'hover:bg-muted/50 active:scale-95',
-                  isActive && 'bg-primary/10'
+                  'transition-colors duration-150 touch-manipulation',
+                  'hover:bg-muted/50',
+                  isActive && 'bg-muted/30'
                 )}
               >
                 <div className="relative">
                   <Icon
                     className={cn(
                       'h-5 w-5 transition-colors duration-200',
-                      isActive ? 'text-primary' : item.color || 'text-muted-foreground'
+                      isActive ? 'text-foreground' : 'text-muted-foreground'
                     )}
                   />
 
@@ -246,7 +241,7 @@ export function AdvancedMobileNav({
                 <span
                   className={cn(
                     'text-xs mt-1 font-medium transition-colors duration-200',
-                    isActive ? 'text-primary' : 'text-muted-foreground'
+                    isActive ? 'text-foreground' : 'text-muted-foreground'
                   )}
                 >
                   {item.label}
@@ -275,7 +270,7 @@ export function AdvancedMobileNav({
                 )}
               />
               {notifications > 0 && (
-                <div className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full" />
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-muted rounded-full" />
               )}
             </div>
             <span
@@ -297,7 +292,7 @@ export function AdvancedMobileNav({
             size="lg"
             onClick={() => setShowQuickActions(!showQuickActions)}
             className={cn(
-              'h-12 w-12 rounded-full shadow-lg',
+              'h-12 w-12 rounded-full ',
               'bg-primary hover:bg-primary/90',
               'transition-all duration-300 hover:scale-110 active:scale-95',
               showQuickActions && 'rotate-45'

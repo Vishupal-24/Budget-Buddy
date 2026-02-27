@@ -319,7 +319,7 @@ export async function handleFinancialCommand(userId: string, message: string): P
 export function getAvailableFinancialCommands(): string {
   return `I can help you with these specialized financial topics:
 
-${FINANCIAL_COMMANDS.map(cmd => `💡 **${cmd.description}**
+${FINANCIAL_COMMANDS.map(cmd => `**${cmd.description}**
    Try saying: "${cmd.keywords[0]}"`).join('\n\n')}
 
 Just ask me about any of these topics, and I'll provide personalized advice based on your actual financial data!`;

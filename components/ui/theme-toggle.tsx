@@ -34,12 +34,12 @@ const ThemeMenuItems = memo(function ThemeMenuItems({
     <>
       <DropdownMenuItem 
         onClick={() => onSelectTheme("light")} 
-        className="focus:bg-amber-50 focus:text-amber-900 dark:focus:bg-amber-950/30 dark:focus:text-amber-100"
+        className="focus:bg-muted focus:text-foreground dark:focus:bg-muted dark:focus:text-foreground"
         aria-current={currentTheme === 'light' ? 'true' : undefined}
       >
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-amber-300 to-yellow-500 mr-2.5 text-white">
+            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-muted to-muted mr-2.5 text-white">
               <Sun className="h-4 w-4" />
             </div>
             <span>Light</span>
@@ -49,12 +49,12 @@ const ThemeMenuItems = memo(function ThemeMenuItems({
       </DropdownMenuItem>
       <DropdownMenuItem 
         onClick={() => onSelectTheme("dark")} 
-        className="focus:bg-violet-50 focus:text-violet-900 dark:focus:bg-violet-950/30 dark:focus:text-violet-100"
+        className="focus:bg-muted focus:text-foreground dark:focus:bg-muted dark:focus:text-foreground"
         aria-current={currentTheme === 'dark' ? 'true' : undefined}
       >
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 mr-2.5 text-white">
+            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-muted to-muted mr-2.5 text-white">
               <Moon className="h-4 w-4" />
             </div>
             <span>Dark</span>
@@ -64,12 +64,12 @@ const ThemeMenuItems = memo(function ThemeMenuItems({
       </DropdownMenuItem>
       <DropdownMenuItem 
         onClick={() => onSelectTheme("system")} 
-        className="focus:bg-blue-50 focus:text-blue-900 dark:focus:bg-blue-950/30 dark:focus:text-blue-100"
+        className="focus:bg-muted focus:text-foreground dark:focus:bg-muted dark:focus:text-foreground"
         aria-current={currentTheme === 'system' ? 'true' : undefined}
       >
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-blue-400 to-sky-500 mr-2.5 text-white">
+            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-muted to-muted mr-2.5 text-white">
               <Laptop className="h-4 w-4" />
             </div>
             <span>System</span>
@@ -146,11 +146,11 @@ function ThemeToggleComponent({
     const getThemeIcon = () => {
       switch(theme) {
         case 'light':
-          return <Sun className="h-4 w-4 text-amber-600" />;
+          return <Sun className="h-4 w-4 text-foreground" />;
         case 'dark':
-          return <Moon className="h-4 w-4 text-violet-300" />;
+          return <Moon className="h-4 w-4 text-foreground" />;
         default:
-          return <Laptop className="h-4 w-4 text-sky-600 dark:text-sky-400" />;
+          return <Laptop className="h-4 w-4 text-foreground dark:text-foreground" />;
       }
     };
 

@@ -100,8 +100,8 @@ export function EnhancedDashboard({ expenses, onExport, onRefresh }: EnhancedDas
     });
 
     const categoryColors = [
-      '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6',
-      '#EC4899', '#F97316', '#6366F1', '#14B8A6', '#A855F7'
+      '#374151', '#6B7280', '#9CA3AF', '#4B5563', '#D1D5DB',
+      '#1F2937', '#A3A3A3', '#525252', '#737373', '#E5E7EB'
     ];
 
     const categoryData: CategoryData[] = Array.from(categoryMap.entries()).map(([name, data], index) => ({

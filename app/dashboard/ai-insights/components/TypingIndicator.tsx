@@ -41,8 +41,8 @@ export function TypingIndicator() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-blue-600/20 rounded-full blur-sm animate-pulse"></div>
-              <div className="relative w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-muted rounded-full blur-sm animate-pulse"></div>
+              <div className="relative w-8 h-8 bg-gradient-to-br from-primary to-muted rounded-full flex items-center justify-center">
                 <Sparkles className="h-4 w-4 text-white animate-pulse" />
               </div>
             </div>
@@ -57,7 +57,7 @@ export function TypingIndicator() {
                       key={dot}
                       className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                         dot <= dots 
-                          ? 'bg-gradient-to-r from-primary to-blue-600 opacity-100 scale-110' 
+                          ? 'bg-gradient-to-r from-primary to-muted opacity-100 scale-110' 
                           : 'bg-muted-foreground/30 opacity-50 scale-90'
                       }`}
                       style={{ 
@@ -76,7 +76,7 @@ export function TypingIndicator() {
             {[1, 2, 3, 4, 5].map((wave) => (
               <div
                 key={wave}
-                className="w-0.5 bg-gradient-to-t from-primary to-blue-600 rounded-full animate-pulse"
+                className="w-0.5 bg-gradient-to-t from-primary to-muted rounded-full animate-pulse"
                 style={{
                   height: `${Math.sin(wave * 0.5) * 8 + 12}px`,
                   animationDelay: `${wave * 0.1}s`,
@@ -90,7 +90,7 @@ export function TypingIndicator() {
         {/* Progress bar */}
         <div className="mt-3 pt-3 border-t border-border/30">
           <div className="w-full bg-muted/50 rounded-full h-1.5 overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-primary to-blue-600 rounded-full animate-pulse" 
+            <div className="h-full bg-gradient-to-r from-primary to-muted rounded-full animate-pulse" 
                  style={{
                    width: '60%',
                    animation: 'loading-bar 3s ease-in-out infinite'

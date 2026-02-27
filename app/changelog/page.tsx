@@ -14,7 +14,7 @@ const changelogData = [
     date: "2026-02-24",
     title: "Major UI Refinement",
     badge: "Feature",
-    badgeColor: "bg-blue-500/10 text-blue-500",
+    badgeColor: "bg-muted text-foreground",
     icon: Zap,
     commits: [
       { hash: "3579a1a", message: "Update auth pages, financial insights, and landing components" },
@@ -26,7 +26,7 @@ const changelogData = [
     date: "2026-02-21",
     title: "Budget & Transactions Updates",
     badge: "Enhancement",
-    badgeColor: "bg-purple-500/10 text-purple-500",
+    badgeColor: "bg-muted text-foreground",
     icon: Wrench,
     commits: [
       { hash: "e3fbd32", message: "Update budget, transactions, and landing page components" },
@@ -37,7 +37,7 @@ const changelogData = [
     date: "2026-02-20",
     title: "UI Brutalism & Security",
     badge: "Major Update",
-    badgeColor: "bg-green-500/10 text-green-500",
+    badgeColor: "bg-muted text-foreground",
     icon: Shield,
     commits: [
       { hash: "69d395e", message: "fix: update auth login and footer styles" },
@@ -53,7 +53,7 @@ const changelogData = [
     date: "2025-12-16",
     title: "Serverless Go Migration & Security",
     badge: "Architecture",
-    badgeColor: "bg-amber-500/10 text-amber-500",
+    badgeColor: "bg-muted text-foreground",
     icon: GitCommit,
     commits: [
       { hash: "e24b6b9", message: "Remove non-required .md files" },
@@ -74,7 +74,7 @@ const changelogData = [
     date: "2025-12-13",
     title: "React Server Components Fixes",
     badge: "Security Fix",
-    badgeColor: "bg-red-500/10 text-red-500",
+    badgeColor: "bg-muted text-foreground",
     icon: Shield,
     commits: [
       { hash: "1626a87", message: "Merge pull request #6 from Xenonesis/vercel/react-server-components-cve-vu-gs6q2s" },
@@ -85,7 +85,7 @@ const changelogData = [
     date: "2025-12-06",
     title: "Testing Foundation",
     badge: "Testing",
-    badgeColor: "bg-cyan-500/10 text-cyan-500",
+    badgeColor: "bg-muted text-foreground",
     icon: CheckCircle2,
     commits: [
       { hash: "871a778", message: "feat: Add comprehensive test suite with 418 tests" },

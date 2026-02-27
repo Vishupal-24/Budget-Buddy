@@ -126,7 +126,7 @@ export function SectionVisibility({
                       {section.title}
                     </Label>
                     {section.visible ? (
-                      <Eye className="h-3 w-3 text-green-600" />
+                      <Eye className="h-3 w-3 text-foreground" />
                     ) : (
                       <EyeOff className="h-3 w-3 text-muted-foreground" />
                     )}
@@ -146,12 +146,12 @@ export function SectionVisibility({
         </div>
 
         {visibleCount === 0 && (
-          <div className="mt-4 p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-            <div className="flex items-center gap-2 text-amber-800 dark:text-amber-200">
+          <div className="mt-4 p-4 bg-muted dark:bg-muted border border-border dark:border-border rounded-lg">
+            <div className="flex items-center gap-2 text-foreground dark:text-foreground">
               <EyeOff className="h-4 w-4" />
               <span className="text-sm font-medium">All sections hidden</span>
             </div>
-            <p className="text-xs text-amber-700 dark:text-amber-300 mt-1">
+            <p className="text-xs text-foreground dark:text-foreground mt-1">
               Your dashboard will appear empty. Enable at least one section to see content.
             </p>
           </div>

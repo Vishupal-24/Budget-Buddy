@@ -212,7 +212,7 @@ export function RecurringTransactions({
                   variant="ghost"
                   size="sm"
                   onClick={() => handleDelete(recurring.id)}
-                  className="h-8 w-8 p-0 text-red-500 hover:text-red-700"
+                  className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
                 >
                   <Trash className="w-4 h-4" />
                 </Button>
@@ -222,7 +222,7 @@ export function RecurringTransactions({
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>
                 <span className="text-muted-foreground">Amount:</span>
-                <div className={`font-medium ${recurring.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
+                <div className={`font-medium text-foreground`}>
                   {formatCurrency(recurring.amount, userPrefs.currency)}
                 </div>
               </div>

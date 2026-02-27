@@ -736,7 +736,7 @@ export default function AddTransactionForm({
       } else {
         // Create suggestion for new category if confidence is high
         if (result.confidence > 0.8) {
-          toast.info(`💡 Suggestion: Create "${extractedData.category}" category for better tracking`);
+          toast.info(`Suggestion: Create "${extractedData.category}" category for better tracking`);
         }
       }
     }
@@ -746,20 +746,20 @@ export default function AddTransactionForm({
     
     // Enhanced success message based on confidence
     if (result.confidence >= 0.9) {
-      toast.success(`🎉 Excellent! AI extracted data with ${Math.round(result.confidence * 100)}% confidence. Ready to save!`);
+      toast.success(`Excellent! AI extracted data with ${Math.round(result.confidence * 100)}% confidence. Ready to save!`);
     } else if (result.confidence >= 0.8) {
-      toast.success(`✅ Great extraction! ${Math.round(result.confidence * 100)}% confidence. Please review and save.`);
+      toast.success(`Great extraction! ${Math.round(result.confidence * 100)}% confidence. Please review and save.`);
     } else if (result.confidence >= 0.7) {
-      toast.success(`👍 Good extraction with ${Math.round(result.confidence * 100)}% confidence. Please verify details.`);
+      toast.success(`Good extraction with ${Math.round(result.confidence * 100)}% confidence. Please verify details.`);
     } else {
-      toast.warning(`⚠️ Extraction completed with ${Math.round(result.confidence * 100)}% confidence. Please review carefully.`);
+      toast.warning(`Extraction completed with ${Math.round(result.confidence * 100)}% confidence. Please review carefully.`);
     }
 
     // Show validation insights if available
     if (result.validationResults.length > 0) {
       const highConfidenceFields = result.validationResults.filter(v => v.confidence > 0.8).length;
       if (highConfidenceFields > 0) {
-        toast.info(`🔍 AI validated ${highConfidenceFields} fields with high confidence`);
+        toast.info(`AI validated ${highConfidenceFields} fields with high confidence`);
       }
     }
   };
@@ -768,7 +768,7 @@ export default function AddTransactionForm({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm md:items-center">
-      <div className="flex flex-col w-full h-[95vh] md:h-auto md:max-h-[90vh] md:w-[90vw] max-w-md bg-card rounded-t-lg md:rounded-lg border shadow-lg md:mt-0 mt-8 relative">
+      <div className="flex flex-col w-full h-[95vh] md:h-auto md:max-h-[90vh] md:w-[90vw] max-w-md bg-card rounded-t-lg md:rounded-lg border md:mt-0 mt-8 relative">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b bg-card sticky top-0 z-10">
           <h2 className="text-xl font-bold">
@@ -802,7 +802,7 @@ export default function AddTransactionForm({
         <div className="overflow-y-auto flex-grow py-4 px-4 pb-24">
           {/* OCR Upload Section */}
           {!isEditing && (
-            <div className="mb-6 p-4 bg-muted/40 rounded-xl border border-border/60 shadow-sm transition-all hover:bg-muted/60">
+            <div className="mb-6 p-4 bg-muted/40 rounded-xl border border-border/60 transition-all hover:bg-muted/60">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className="p-2.5 bg-primary/10 rounded-lg text-primary">
@@ -832,7 +832,7 @@ export default function AddTransactionForm({
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="transaction-type" className="mb-2 block text-sm font-medium">
-                  Type <span className="text-red-500">*</span>
+                  Type <span className="text-destructive">*</span>
                 </label>
                 <select
                   id="transaction-type"
@@ -850,7 +850,7 @@ export default function AddTransactionForm({
 
               <div>
                 <label htmlFor="transaction-amount" className="mb-2 block text-sm font-medium">
-                  Amount <span className="text-red-500">*</span>
+                  Amount <span className="text-destructive">*</span>
                 </label>
                 <input
                   id="transaction-amount"
@@ -875,7 +875,7 @@ export default function AddTransactionForm({
             {/* Category */}
             <div>
               <label htmlFor="transaction-category" className="mb-2 block text-sm font-medium">
-                Category <span className="text-red-500">*</span>
+                Category <span className="text-destructive">*</span>
               </label>
               <select
                 id="transaction-category"
@@ -883,7 +883,7 @@ export default function AddTransactionForm({
                 value={formData.category_id}
                 onChange={handleInputChange}
                 disabled={formLoading}
-                className={`w-full rounded-md border ${customCategoryError ? 'border-red-500' : 'border-input'} bg-transparent px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-primary`}
+                className={`w-full rounded-md border ${customCategoryError ? 'border-destructive' : 'border-input'} bg-transparent px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-primary`}
                 required
               >
                 <option value="">Select a category</option>
@@ -897,18 +897,18 @@ export default function AddTransactionForm({
                 <option value="custom">+ Add new category</option>
               </select>
               {customCategoryError && (
-                <p className="mt-1 text-xs text-red-500" role="alert">
+                <p className="mt-1 text-xs text-destructive" role="alert">
                   Please select a valid category or create a new one
                 </p>
               )}
               
-              <p className="mt-1 mb-2 text-sm text-blue-600 font-medium">
+              <p className="mt-1 mb-2 text-sm text-muted-foreground font-medium">
                 To delete categories, select &quot;+ Add new category&quot; option
               </p>
 
               {/* Show custom category form when "custom" is selected */}
               {formData.category_id === "custom" && (
-                <div className="mt-3 p-4 border-2 border-primary rounded-md bg-primary/5 shadow-md">
+                <div className="mt-3 p-4 border-2 border-primary rounded-md bg-primary/5">
                   <h4 className="text-base font-medium mb-3 flex items-center text-primary">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-white text-xs mr-2">+</span>
                     Create New Category
@@ -936,7 +936,7 @@ export default function AddTransactionForm({
             {/* Date */}
             <div>
               <label htmlFor="transaction-date" className="mb-2 block text-sm font-medium">
-                Date <span className="text-red-500">*</span>
+                Date <span className="text-destructive">*</span>
               </label>
               <input
                 id="transaction-date"
@@ -1066,7 +1066,7 @@ export default function AddTransactionForm({
         {/* Confirmation dialog for deleting categories */}
         {showDeleteCategoryConfirm && categoryToDelete && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4">
-            <div className="bg-card rounded-lg p-6 max-w-md w-full shadow-lg">
+            <div className="bg-card rounded-lg p-6 max-w-md w-full border">
               <h3 className="text-lg font-bold mb-2">Delete Category</h3>
               <p className="mb-4">
                 Are you sure you want to delete the category &quot;{categoryToDelete.name}&quot;?
@@ -1104,7 +1104,7 @@ export default function AddTransactionForm({
         {/* OCR Upload Modal */}
         {showOCRUpload && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[70] p-4">
-            <div className="bg-card rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
+            <div className="bg-card rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto border">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold">Upload Invoice or Receipt</h3>
                 <button

@@ -22,12 +22,12 @@
  * 3. Responsive padding that scales appropriately
  * 4. Professional, cohesive user experience
  *
- * ⚠️ Do NOT use:
+ * Do NOT use:
  * - `p-4 md:p-6` (doesn't scale properly on large screens)
  * - `pr-4` or `pl-4` only (creates inconsistent horizontal spacing)
  * - `px-3 sm:px-4` (non-standard breakpoints)
  *
- * ✅ Use the standard pattern above for all new dashboard pages
+ * Use the standard pattern above for all new dashboard pages
  */
 
 import Link from 'next/link';
@@ -620,7 +620,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         id="mobile-sidebar"
         className={cn(
           'fixed top-0 left-0 z-[70] h-full bg-background border-r border-border md:hidden',
-          'transition-transform duration-300 ease-in-out transform shadow-xl',
+          'transition-transform duration-300 ease-in-out transform',
           isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         )}
         aria-hidden={!isMobileSidebarOpen}
@@ -633,7 +633,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="flex items-center gap-2">
               <Logo
                 size="md"
-                className="transition-transform duration-300 hover:scale-105"
+                className=""
                 animated
               />
               <span className="font-display font-semibold tracking-tight">
@@ -642,7 +642,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
             <button
               type="button"
-              className="rounded-lg text-muted-foreground p-2 hover:bg-muted/50 hover:text-foreground focus:outline-none transition-all"
+              className="rounded-lg text-muted-foreground p-2 hover:bg-muted/50 hover:text-foreground focus:outline-none transition-colors"
               onClick={() => setIsMobileSidebarOpen(false)}
               aria-label="Close sidebar"
             >
@@ -750,9 +750,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="flex flex-col items-center">
                 <Logo
                   size="md"
-                  className="transition-transform duration-300 hover:scale-105"
-                  animated
-                />
+                className=""
+                animated
+              />
                 <span className="text-[10px] sm:text-xs text-muted-foreground mt-1 tracking-wide">
                   Smart Money Management
                 </span>
@@ -762,7 +762,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="flex flex-col items-center">
                 <Logo
                   size="xs"
-                  className="transition-transform duration-300 hover:scale-105"
+                  className=""
                   animated
                 />
                 <span className="text-[8px] text-muted-foreground mt-0.5 tracking-wide opacity-70">
@@ -785,7 +785,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="relative z-10">
                 <ChevronLeft
                   className={cn(
-                    'h-5 w-5 transition-transform duration-300 group-hover:scale-110',
+                    'h-5 w-5 transition-transform duration-300',
                     collapsed ? 'rotate-180' : 'rotate-0'
                   )}
                 />
@@ -797,7 +797,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               {/* Tooltip */}
               <div
                 className={cn(
-                  'absolute px-3 py-2 bg-card/95 backdrop-blur-sm rounded-md text-sm opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg whitespace-nowrap border border-border/50 z-50',
+                  'absolute px-3 py-2 bg-card/95 rounded-md text-sm opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap border border-border/50 z-50',
                   collapsed ? 'left-full ml-3 top-1/2 -translate-y-1/2' : 'left-full ml-3'
                 )}
               >

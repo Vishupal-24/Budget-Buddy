@@ -40,7 +40,7 @@ export function DashboardPreview({
   }, []);
 
   return (
-    <div className={`relative rounded-xl overflow-hidden border shadow-2xl ${className}`}>
+    <div className={`relative rounded-xl overflow-hidden border ${className}`}>
       {!prefersReducedMotion && (
         <>
           <motion.div
@@ -55,7 +55,7 @@ export function DashboardPreview({
             }}
           />
           <motion.div
-            className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/20 via-violet-500/20 to-primary/20 opacity-0"
+            className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/20 via-muted to-primary/20 opacity-0"
             animate={{
               opacity: [0, 0.3, 0],
               backgroundPosition: ['0% 0%', '100% 100%'],

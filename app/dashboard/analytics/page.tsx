@@ -12,6 +12,9 @@ import {
   ArrowRightLeft,
   Plus,
   AlertCircle,
+  BarChart3,
+  Calendar,
+  DollarSign,
 } from 'lucide-react';
 import {
   LineChart,
@@ -42,7 +45,7 @@ import { Currency } from '@/components/ui/currency';
 // Custom styles for enhanced chart interactions
 const styles = {
   chartCard:
-    'rounded-xl border border-border/80 bg-card p-4 sm:p-5 shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden',
+    'rounded-xl border border-border bg-card p-4 sm:p-5 relative overflow-hidden',
   chartTitle: 'text-base sm:text-lg font-semibold text-foreground',
   tooltipStyles: {
     backgroundColor: 'rgba(0, 0, 0, 0.85)',
@@ -69,32 +72,32 @@ const styles = {
     paddingBottom: '0.5rem',
   },
   fadeUp: 'animate-in fade-in-50 slide-in-from-bottom-5',
-  hoverCard: 'hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300',
+  hoverCard: 'transition-colors duration-200',
   cardDecoration:
-    'after:absolute after:top-0 after:right-0 after:h-24 after:w-24 after:bg-gradient-to-br after:from-primary/10 after:to-transparent after:rounded-bl-full after:-z-10 after:opacity-50',
+    '',
   emptyState: 'flex flex-col items-center justify-center p-6 text-center space-y-3',
   emptyStateIcon: 'h-12 w-12 text-muted-foreground/40',
   emptyStateText: 'text-sm text-muted-foreground',
   badge: 'inline-flex items-center rounded-full px-2 py-1 text-xs font-medium',
   badgePrimary: 'bg-primary/10 text-primary',
-  glassCard: 'backdrop-blur-sm bg-card/80 border-muted/30',
+  glassCard: 'bg-card border-border',
   statBadge: 'flex items-center justify-center h-6 px-2 rounded-full text-xs font-medium',
-  positiveStatBadge: 'bg-green-100 dark:bg-green-950/30 text-green-700 dark:text-green-400',
-  negativeStatBadge: 'bg-red-100 dark:bg-red-950/30 text-red-700 dark:text-red-400',
-  neutralStatBadge: 'bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400',
+  positiveStatBadge: 'bg-muted text-foreground',
+  negativeStatBadge: 'bg-muted text-foreground',
+  neutralStatBadge: 'bg-muted text-foreground',
   // Add gradient overlay to cards
   cardGradientOverlay:
-    'before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:to-transparent before:opacity-50 before:rounded-xl before:-z-10',
+    '',
   // Card headers with subtle gradient
   cardHeader:
-    'bg-gradient-to-r from-muted/60 to-transparent p-4 rounded-t-xl border-b border-primary/20',
+    'p-4 rounded-t-xl border-b border-border',
   customScroll:
     'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted-foreground/10 hover:scrollbar-thumb-muted-foreground/20',
   shimmer:
-    'animate-shimmer bg-gradient-to-r from-transparent via-muted-foreground/10 to-transparent bg-[length:400%_100%]',
+    '',
   // New enhanced legend style
   chartLegend:
-    'flex flex-wrap items-center gap-4 mb-5 justify-center sm:justify-end bg-card/80 p-3 rounded-lg border border-primary/30 shadow-md',
+    'flex flex-wrap items-center gap-4 mb-5 justify-center sm:justify-end bg-card p-3 rounded-lg border border-border',
 };
 
 // Helper function to format currency values
@@ -495,7 +498,7 @@ export default function AnalyticsPage() {
                 <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300"></div>
               </div>
               <div>
-                <h1 className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-violet-500">
+                <h1 className="text-xl sm:text-2xl font-bold text-foreground">
                   Analytics Dashboard
                 </h1>
                 <p className="text-xs sm:text-sm text-muted-foreground">
@@ -506,11 +509,11 @@ export default function AnalyticsPage() {
 
             <div className="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
               <div className="h-8 px-3 rounded-lg border bg-card/80 backdrop-blur-sm shadow-sm text-xs font-medium flex items-center">
-                <span className="text-primary mr-2">📊</span>
+                <BarChart3 className="h-3.5 w-3.5 text-primary mr-2" />
                 <span>{transactions.length} transactions</span>
               </div>
               <div className="h-8 px-3 rounded-lg border bg-primary/5 text-primary text-xs font-medium flex items-center">
-                <span className="mr-2">🗓️</span>
+                <Calendar className="h-3.5 w-3.5 mr-2" />
                 <span>
                   {selectedTimeframe === '1m'
                     ? 'Last Month'
@@ -524,7 +527,7 @@ export default function AnalyticsPage() {
                 </span>
               </div>
               <div className="h-8 px-3 rounded-lg border bg-card/80 backdrop-blur-sm shadow-sm text-xs font-medium flex items-center">
-                <span className="text-green-500 mr-2">💰</span>
+                <DollarSign className="h-3.5 w-3.5 mr-2" />
                 <span>
                   Net: <Currency value={netBalance} />
                 </span>
@@ -538,14 +541,14 @@ export default function AnalyticsPage() {
                 className={`rounded-lg border ${styles.glassCard} p-3 flex items-center justify-between`}
               >
                 <div className="flex items-center gap-2">
-                  <div className="h-9 w-9 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
+                  <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center text-foreground">
                     <TrendingUp size={18} />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground dark:text-muted-foreground/80">
                       Total Income
                     </p>
-                    <p className="font-semibold text-green-600 dark:text-green-300">
+                    <p className="font-semibold text-foreground">
                       <Currency value={totalIncome} />
                     </p>
                   </div>
@@ -564,14 +567,14 @@ export default function AnalyticsPage() {
                 className={`rounded-lg border ${styles.glassCard} p-3 flex items-center justify-between`}
               >
                 <div className="flex items-center gap-2">
-                  <div className="h-9 w-9 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                  <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center text-foreground">
                     <TrendingUp size={18} className="rotate-180" />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground dark:text-muted-foreground/80">
                       Total Expenses
                     </p>
-                    <p className="font-semibold text-red-600 dark:text-red-300">
+                    <p className="font-semibold text-foreground">
                       <Currency value={totalExpenses} />
                     </p>
                   </div>
@@ -590,7 +593,7 @@ export default function AnalyticsPage() {
                 className={`rounded-lg border ${styles.glassCard} p-3 flex items-center justify-between`}
               >
                 <div className="flex items-center gap-2">
-                  <div className="h-9 w-9 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                  <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center text-foreground">
                     <PieChartIcon size={18} />
                   </div>
                   <div>
@@ -614,11 +617,11 @@ export default function AnalyticsPage() {
 
       {/* Error message if needed */}
       {error && (
-        <div className="mb-6 rounded-lg border border-red-200 bg-red-50 dark:bg-red-950/20 dark:border-red-900/20 p-4 flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-red-500 mt-0.5" />
+        <div className="mb-6 rounded-lg border border-border bg-muted p-4 flex items-start gap-3">
+          <AlertCircle className="h-5 w-5 text-muted-foreground mt-0.5" />
           <div>
-            <h3 className="font-medium text-red-800 dark:text-red-400">Error Loading Data</h3>
-            <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
+            <h3 className="font-medium text-foreground">Error Loading Data</h3>
+            <p className="text-sm text-muted-foreground">{error}</p>
             <Button
               className="mt-2"
               size="sm"
@@ -748,7 +751,7 @@ export default function AnalyticsPage() {
                   className={`rounded-xl border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-primary to-violet-400 text-white shadow-md">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted text-foreground">
                       <Activity size={16} className="sm:h-5 sm:w-5" />
                     </div>
                     <div>
@@ -765,14 +768,14 @@ export default function AnalyticsPage() {
                   className={`rounded-xl border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-green-500 to-emerald-400 text-white shadow-md">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted text-foreground">
                       <TrendingUp size={16} className="sm:h-5 sm:w-5" />
                     </div>
                     <div>
                       <div className="text-xs sm:text-sm font-medium text-muted-foreground">
                         Income
                       </div>
-                      <p className="text-lg sm:text-2xl font-bold mt-0.5 text-green-600">
+                      <p className="text-lg sm:text-2xl font-bold mt-0.5 text-foreground">
                         <Currency value={totalIncome} />
                       </p>
                     </div>
@@ -784,14 +787,14 @@ export default function AnalyticsPage() {
                   className={`rounded-xl border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-md">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted text-foreground">
                       <TrendingUp size={16} className="rotate-180 sm:h-5 sm:w-5" />
                     </div>
                     <div>
                       <div className="text-xs sm:text-sm font-medium text-muted-foreground">
                         Expenses
                       </div>
-                      <p className="text-lg sm:text-2xl font-bold mt-0.5 text-red-600">
+                      <p className="text-lg sm:text-2xl font-bold mt-0.5 text-foreground">
                         <Currency value={totalExpenses} />
                       </p>
                     </div>
@@ -803,7 +806,7 @@ export default function AnalyticsPage() {
                   className={`rounded-xl border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-md">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted text-foreground">
                       <PieChartIcon size={16} className="sm:h-5 sm:w-5" />
                     </div>
                     <div>
@@ -857,7 +860,7 @@ export default function AnalyticsPage() {
                   >
                     <div className={`${styles.cardHeader}`}>
                       <h2 className={styles.chartTitle}>Financial Snapshot</h2>
-                      <p className="text-sm text-blue-400 mt-1 font-semibold">
+                      <p className="text-sm text-foreground mt-1 font-semibold">
                         Monthly income vs. expenses for the selected period
                       </p>
                     </div>
@@ -865,15 +868,15 @@ export default function AnalyticsPage() {
                     <div className="p-4">
                       <div className={styles.chartLegend}>
                         <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-emerald-500"></div>
+                          <div className="w-4 h-4 rounded-full bg-muted"></div>
                           <span className="text-sm font-semibold text-foreground">Income</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-rose-500"></div>
+                          <div className="w-4 h-4 rounded-full bg-muted"></div>
                           <span className="text-sm font-semibold text-foreground">Expenses</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-blue-500"></div>
+                          <div className="w-4 h-4 rounded-full bg-muted"></div>
                           <span className="text-sm font-semibold text-foreground">Net Balance</span>
                         </div>
                       </div>
@@ -888,16 +891,16 @@ export default function AnalyticsPage() {
                           >
                             <defs>
                               <linearGradient id="incomeGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#10b981" stopOpacity={1.0} />
-                                <stop offset="100%" stopColor="#10b981" stopOpacity={0.6} />
+                                <stop offset="0%" stopColor="#6B7280" stopOpacity={1.0} />
+                                <stop offset="100%" stopColor="#6B7280" stopOpacity={0.6} />
                               </linearGradient>
                               <linearGradient id="expenseGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#f43f5e" stopOpacity={1.0} />
-                                <stop offset="100%" stopColor="#f43f5e" stopOpacity={0.6} />
+                                <stop offset="0%" stopColor="#404040" stopOpacity={1.0} />
+                                <stop offset="100%" stopColor="#404040" stopOpacity={0.6} />
                               </linearGradient>
                               <linearGradient id="balanceGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#3b82f6" stopOpacity={1.0} />
-                                <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.6} />
+                                <stop offset="0%" stopColor="#525252" stopOpacity={1.0} />
+                                <stop offset="100%" stopColor="#525252" stopOpacity={0.6} />
                               </linearGradient>
                             </defs>
                             <CartesianGrid
@@ -930,11 +933,11 @@ export default function AnalyticsPage() {
                             <YAxis
                               axisLine={{ stroke: 'var(--primary)', strokeWidth: 2 }}
                               tick={{
-                                fill: '#10b981',
+                                fill: '#6B7280',
                                 fontSize: 13,
                                 fontWeight: 700,
                               }}
-                              tickLine={{ stroke: '#10b981', strokeWidth: 1.5 }}
+                              tickLine={{ stroke: '#6B7280', strokeWidth: 1.5 }}
                               width={50}
                               tickCount={5}
                               domain={[0, 'auto']}
@@ -944,7 +947,7 @@ export default function AnalyticsPage() {
                                 position: 'insideLeft',
                                 style: {
                                   textAnchor: 'middle',
-                                  fill: '#10b981',
+                                  fill: '#6B7280',
                                   fontSize: 13,
                                   fontWeight: 700,
                                 },
@@ -993,10 +996,10 @@ export default function AnalyticsPage() {
                                   style={{
                                     color:
                                       value === 'Income'
-                                        ? '#10b981'
+                                        ? '#6B7280'
                                         : value === 'Expense'
-                                          ? '#f43f5e'
-                                          : '#3b82f6',
+                                          ? '#404040'
+                                          : '#525252',
                                     fontSize: '14px',
                                     fontWeight: 'bold',
                                   }}
@@ -1009,7 +1012,7 @@ export default function AnalyticsPage() {
                               dataKey="income"
                               name="Income"
                               fill="url(#incomeGradient)"
-                              stroke="#10b981"
+                              stroke="#6B7280"
                               strokeWidth={1}
                               radius={[6, 6, 0, 0]}
                               animationDuration={1500}
@@ -1018,7 +1021,7 @@ export default function AnalyticsPage() {
                               dataKey="expense"
                               name="Expense"
                               fill="url(#expenseGradient)"
-                              stroke="#f43f5e"
+                              stroke="#404040"
                               strokeWidth={1}
                               radius={[6, 6, 0, 0]}
                               animationDuration={1500}
@@ -1028,10 +1031,10 @@ export default function AnalyticsPage() {
                               type="monotone"
                               dataKey="balance"
                               name="Balance"
-                              stroke="#3b82f6"
+                              stroke="#525252"
                               strokeWidth={3}
-                              dot={{ r: 6, fill: '#3b82f6', stroke: '#fff', strokeWidth: 2 }}
-                              activeDot={{ r: 8, fill: '#3b82f6', stroke: '#fff', strokeWidth: 2 }}
+                              dot={{ r: 6, fill: '#525252', stroke: '#fff', strokeWidth: 2 }}
+                              activeDot={{ r: 8, fill: '#525252', stroke: '#fff', strokeWidth: 2 }}
                               animationDuration={2000}
                               animationBegin={600}
                             />
@@ -1047,7 +1050,7 @@ export default function AnalyticsPage() {
                   >
                     <div className={`${styles.cardHeader}`}>
                       <h2 className={styles.chartTitle}>Income vs Expense Trend</h2>
-                      <p className="text-sm text-blue-400 mt-1 font-semibold">
+                      <p className="text-sm text-foreground mt-1 font-semibold">
                         Visualize your income and expense patterns over time
                       </p>
                     </div>
@@ -1061,12 +1064,12 @@ export default function AnalyticsPage() {
                           >
                             <defs>
                               <linearGradient id="incomeAreaGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#10b981" stopOpacity={0.4} />
-                                <stop offset="100%" stopColor="#10b981" stopOpacity={0.1} />
+                                <stop offset="0%" stopColor="#6B7280" stopOpacity={0.4} />
+                                <stop offset="100%" stopColor="#6B7280" stopOpacity={0.1} />
                               </linearGradient>
                               <linearGradient id="expenseAreaGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#f43f5e" stopOpacity={0.4} />
-                                <stop offset="100%" stopColor="#f43f5e" stopOpacity={0.1} />
+                                <stop offset="0%" stopColor="#404040" stopOpacity={0.4} />
+                                <stop offset="100%" stopColor="#404040" stopOpacity={0.1} />
                               </linearGradient>
                             </defs>
                             <CartesianGrid
@@ -1099,11 +1102,11 @@ export default function AnalyticsPage() {
                             <YAxis
                               axisLine={{ stroke: 'var(--primary)', strokeWidth: 2 }}
                               tick={{
-                                fill: '#10b981',
+                                fill: '#6B7280',
                                 fontSize: 13,
                                 fontWeight: 700,
                               }}
-                              tickLine={{ stroke: '#10b981', strokeWidth: 1.5 }}
+                              tickLine={{ stroke: '#6B7280', strokeWidth: 1.5 }}
                               width={50}
                               tickCount={5}
                               domain={[0, 'auto']}
@@ -1113,7 +1116,7 @@ export default function AnalyticsPage() {
                                 position: 'insideLeft',
                                 style: {
                                   textAnchor: 'middle',
-                                  fill: '#10b981',
+                                  fill: '#6B7280',
                                   fontSize: 13,
                                   fontWeight: 700,
                                 },
@@ -1159,7 +1162,7 @@ export default function AnalyticsPage() {
                               formatter={(value) => (
                                 <span
                                   style={{
-                                    color: value === 'Income' ? '#10b981' : '#f43f5e',
+                                    color: value === 'Income' ? '#6B7280' : '#404040',
                                     fontSize: '13px',
                                     fontWeight: 'bold',
                                   }}
@@ -1172,7 +1175,7 @@ export default function AnalyticsPage() {
                               type="monotone"
                               dataKey="income"
                               name="Income"
-                              stroke="#10b981"
+                              stroke="#6B7280"
                               strokeWidth={2.5}
                               fill="url(#incomeAreaGradient)"
                               activeDot={{ r: 6, stroke: '#fff', strokeWidth: 2 }}
@@ -1182,7 +1185,7 @@ export default function AnalyticsPage() {
                               type="monotone"
                               dataKey="expense"
                               name="Expense"
-                              stroke="#f43f5e"
+                              stroke="#404040"
                               strokeWidth={2.5}
                               fill="url(#expenseAreaGradient)"
                               activeDot={{ r: 6, stroke: '#fff', strokeWidth: 2 }}
@@ -1241,7 +1244,7 @@ export default function AnalyticsPage() {
                                   labelLine={false}
                                   outerRadius={100}
                                   innerRadius={60}
-                                  fill="#8884d8"
+                                  fill="#9CA3AF"
                                   dataKey="value"
                                   paddingAngle={2}
                                   animationDuration={1500}
@@ -1446,7 +1449,7 @@ export default function AnalyticsPage() {
                                 labelLine={false}
                                 outerRadius={90}
                                 innerRadius={50}
-                                fill="#8884d8"
+                                fill="#9CA3AF"
                                 dataKey="value"
                                 paddingAngle={2}
                                 animationDuration={1500}
@@ -1617,7 +1620,7 @@ export default function AnalyticsPage() {
                       {/* Insights Grid - Enhanced for mobile */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Income vs Expense Card */}
-                        <div className="rounded-lg border bg-card/60 p-4 hover:shadow-md transition-all">
+                        <div className="rounded-lg border bg-card/60 p-4 transition-colors">
                           <div className="flex items-center justify-between mb-3">
                             <h3 className="text-sm font-medium">Income vs Expense</h3>
                             <ArrowRightLeft size={16} className="text-muted-foreground" />
@@ -1626,20 +1629,20 @@ export default function AnalyticsPage() {
                           <div className="flex flex-col space-y-3.5">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center">
-                                <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
+                                <div className="w-3 h-3 rounded-full bg-foreground mr-2"></div>
                                 <span className="text-sm">Total Income</span>
                               </div>
-                              <span className="text-sm font-medium text-green-600 dark:text-green-400">
+                              <span className="text-sm font-medium text-foreground">
                                 <Currency value={totalIncome} />
                               </span>
                             </div>
 
                             <div className="flex items-center justify-between">
                               <div className="flex items-center">
-                                <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                                <div className="w-3 h-3 rounded-full bg-foreground/60 mr-2"></div>
                                 <span className="text-sm">Total Expense</span>
                               </div>
-                              <span className="text-sm font-medium text-red-600 dark:text-red-400">
+                              <span className="text-sm font-medium text-foreground">
                                 <Currency value={totalExpenses} />
                               </span>
                             </div>
@@ -1676,7 +1679,7 @@ export default function AnalyticsPage() {
                               </div>
                               <div className="h-2 rounded-full bg-muted overflow-hidden">
                                 <div
-                                  className="h-full rounded-full bg-gradient-to-r from-green-400 to-blue-500"
+                                  className="h-full rounded-full bg-foreground/40"
                                   style={{
                                     width: `${totalIncome > 0 ? (netBalance / totalIncome) * 100 : 0}%`,
                                   }}
@@ -1687,7 +1690,7 @@ export default function AnalyticsPage() {
                         </div>
 
                         {/* Top Spending Categories Card */}
-                        <div className="rounded-lg border bg-card/60 p-4 hover:shadow-md transition-all">
+                        <div className="rounded-lg border bg-card/60 p-4 transition-colors">
                           <div className="flex items-center justify-between mb-3">
                             <h3 className="text-sm font-medium">Top Spending Categories</h3>
                             <PieChartIcon size={16} className="text-muted-foreground" />
@@ -1792,7 +1795,7 @@ export default function AnalyticsPage() {
                                     <td className="py-3 px-4">
                                       <div className="flex items-center space-x-2">
                                         <div
-                                          className={`w-2.5 h-2.5 rounded-full ${transaction.type === 'income' ? 'bg-green-500' : 'bg-red-500'}`}
+                                          className={`w-2.5 h-2.5 rounded-full ${transaction.type === 'income' ? 'bg-foreground' : 'bg-foreground/50'}`}
                                         ></div>
                                         <span className="truncate max-w-[140px] sm:max-w-[180px]">
                                           {transaction.description}
@@ -1814,8 +1817,8 @@ export default function AnalyticsPage() {
                                       <span
                                         className={
                                           transaction.type === 'income'
-                                            ? 'text-green-600 dark:text-green-400'
-                                            : 'text-red-600 dark:text-red-400'
+                                            ? 'text-foreground'
+                                            : 'text-muted-foreground'
                                         }
                                       >
                                         {transaction.type === 'income' ? '+' : '-'}

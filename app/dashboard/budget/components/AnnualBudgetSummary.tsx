@@ -70,7 +70,7 @@ export function AnnualBudgetSummary({ budgets, categorySpending }: AnnualBudgetS
   const currentYear = new Date().getFullYear();
   
   return (
-    <div className="rounded-xl border bg-card shadow-sm overflow-hidden mb-6">
+    <div className="rounded-xl border bg-card overflow-hidden mb-6">
       <div className="border-b p-5">
         <div className="flex items-center justify-between">
           <div>
@@ -118,10 +118,10 @@ export function AnnualBudgetSummary({ budgets, categorySpending }: AnnualBudgetS
             <div className="flex justify-between items-start">
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground">Projected Annual Spending</h3>
-                <p className="text-2xl font-bold mt-1 text-red-500">{formatCurrency(yearlyTotals.projectedAnnualSpending)}</p>
+                <p className="text-2xl font-bold mt-1 text-foreground">{formatCurrency(yearlyTotals.projectedAnnualSpending)}</p>
               </div>
-              <div className="h-10 w-10 rounded-full bg-red-500/10 flex items-center justify-center">
-                <CreditCard className="h-5 w-5 text-red-500" />
+              <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
+                <CreditCard className="h-5 w-5 text-foreground" />
               </div>
             </div>
             <div className="mt-3 text-xs space-y-1">
@@ -143,33 +143,25 @@ export function AnnualBudgetSummary({ budgets, categorySpending }: AnnualBudgetS
                 <h3 className="text-sm font-medium text-muted-foreground">
                   Projected {yearlyTotals.projectedSavingsOrOverage >= 0 ? 'Savings' : 'Overage'}
                 </h3>
-                <p className={`text-2xl font-bold mt-1 ${
-                  yearlyTotals.projectedSavingsOrOverage >= 0 
-                    ? 'text-emerald-500' 
-                    : 'text-red-500'
-                }`}>
+                <p className="text-2xl font-bold mt-1 text-foreground">
                   {formatCurrency(Math.abs(yearlyTotals.projectedSavingsOrOverage))}
                 </p>
               </div>
-              <div className={`h-10 w-10 rounded-full ${
-                yearlyTotals.projectedSavingsOrOverage >= 0 
-                  ? 'bg-emerald-500/10' 
-                  : 'bg-red-500/10'
-              } flex items-center justify-center`}>
+              <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
                 {yearlyTotals.projectedSavingsOrOverage >= 0 ? (
-                  <TrendingUp className="h-5 w-5 text-emerald-500" />
+                  <TrendingUp className="h-5 w-5 text-foreground" />
                 ) : (
-                  <TrendingDown className="h-5 w-5 text-red-500" />
+                  <TrendingDown className="h-5 w-5 text-muted-foreground" />
                 )}
               </div>
             </div>
             <div className="mt-3 text-xs">
               {yearlyTotals.projectedSavingsOrOverage >= 0 ? (
-                <p className="text-emerald-600">
+                <p className="text-muted-foreground">
                   You&apos;re projected to stay under budget for the year! Keep up the good work.
                 </p>
               ) : (
-                <p className="text-red-600">
+                <p className="text-muted-foreground">
                   Based on your current spending, you&apos;re projected to go over budget this year.
                 </p>
               )}

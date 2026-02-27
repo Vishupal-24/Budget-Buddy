@@ -318,7 +318,7 @@ export function WidgetSystem({
                       <Card className={cn(
                         "h-full relative group",
                         isEditMode && "ring-2 ring-primary/20",
-                        snapshot.isDragging && "shadow-2xl ring-2 ring-primary"
+                        snapshot.isDragging && " ring-2 ring-primary"
                       )}>
                         {/* Edit Mode Controls */}
                         {isEditMode && (

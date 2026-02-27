@@ -134,11 +134,11 @@ export function BudgetAnalyticsEnhanced({ budgets, categorySpending, onBudgetsUp
 
   const getQualityColor = (quality: string) => {
     switch (quality) {
-      case 'excellent': return 'text-green-600 bg-green-50 border-green-200';
-      case 'good': return 'text-blue-600 bg-blue-50 border-blue-200';
-      case 'fair': return 'text-orange-600 bg-orange-50 border-orange-200';
-      case 'poor': return 'text-red-600 bg-red-50 border-red-200';
-      default: return 'text-gray-600 bg-gray-50 border-gray-200';
+      case 'excellent': return 'text-foreground bg-muted border-border';
+      case 'good': return 'text-foreground bg-muted border-border';
+      case 'fair': return 'text-foreground bg-muted border-border';
+      case 'poor': return 'text-foreground bg-muted border-border';
+      default: return 'text-foreground bg-muted border-border';
     }
   };
 
@@ -154,7 +154,7 @@ export function BudgetAnalyticsEnhanced({ budgets, categorySpending, onBudgetsUp
 
   if (isAnalyzing) {
     return (
-      <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+      <div className="rounded-2xl border bg-card overflow-hidden mb-8">
         <div className="p-12 text-center">
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto mb-4"></div>
           <p className="text-muted-foreground">Analyzing your budget data...</p>
@@ -170,7 +170,7 @@ export function BudgetAnalyticsEnhanced({ budgets, categorySpending, onBudgetsUp
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl border bg-card shadow-lg overflow-hidden"
+          className="rounded-2xl border bg-card overflow-hidden"
         >
           <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
             <div className="flex items-center justify-between">

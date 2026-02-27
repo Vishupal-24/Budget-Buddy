@@ -58,10 +58,10 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
   
   // Get financial health status
   const getFinancialHealth = () => {
-    if (savingsRate >= 20) return { status: 'Excellent', color: 'text-green-600', bgColor: 'from-green-500 to-emerald-400' };
-    if (savingsRate >= 10) return { status: 'Good', color: 'text-blue-600', bgColor: 'from-blue-500 to-indigo-500' };
-    if (savingsRate >= 0) return { status: 'Fair', color: 'text-amber-600', bgColor: 'from-amber-500 to-orange-500' };
-    return { status: 'Poor', color: 'text-red-600', bgColor: 'from-red-500 to-pink-500' };
+    if (savingsRate >= 20) return { status: 'Excellent', color: 'text-foreground', bgColor: 'from-foreground to-foreground/80' };
+    if (savingsRate >= 10) return { status: 'Good', color: 'text-foreground', bgColor: 'from-foreground to-foreground/80' };
+    if (savingsRate >= 0) return { status: 'Fair', color: 'text-muted-foreground', bgColor: 'from-muted-foreground to-muted-foreground/80' };
+    return { status: 'Poor', color: 'text-muted-foreground', bgColor: 'from-muted-foreground to-muted-foreground/80' };
   };
   
   const healthStatus = getFinancialHealth();
@@ -150,23 +150,23 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
   const getInsightTypeStyle = (type: string) => {
     switch (type) {
       case 'spending_pattern':
-        return { icon: TrendingDown, color: 'text-blue-600', bgColor: 'from-blue-500 to-indigo-500' };
+        return { icon: TrendingDown, color: 'text-foreground', bgColor: 'from-foreground to-foreground/80' };
       case 'saving_suggestion':
-        return { icon: Target, color: 'text-green-600', bgColor: 'from-green-500 to-emerald-400' };
+        return { icon: Target, color: 'text-foreground', bgColor: 'from-foreground to-foreground/80' };
       case 'budget_warning':
-        return { icon: AlertCircle, color: 'text-amber-600', bgColor: 'from-amber-500 to-orange-500' };
+        return { icon: AlertCircle, color: 'text-muted-foreground', bgColor: 'from-muted-foreground to-muted-foreground/80' };
       case 'investment_tip':
-        return { icon: TrendingUp, color: 'text-purple-600', bgColor: 'from-purple-500 to-violet-500' };
+        return { icon: TrendingUp, color: 'text-foreground', bgColor: 'from-foreground to-foreground/80' };
       case 'warning':
-        return { icon: AlertCircle, color: 'text-red-600', bgColor: 'from-red-500 to-pink-500' };
+        return { icon: AlertCircle, color: 'text-muted-foreground', bgColor: 'from-muted-foreground to-muted-foreground/80' };
       case 'success':
-        return { icon: Activity, color: 'text-green-600', bgColor: 'from-green-500 to-emerald-400' };
+        return { icon: Activity, color: 'text-foreground', bgColor: 'from-foreground to-foreground/80' };
       case 'trend':
-        return { icon: TrendingUp, color: 'text-cyan-600', bgColor: 'from-cyan-500 to-blue-500' };
+        return { icon: TrendingUp, color: 'text-foreground', bgColor: 'from-foreground to-foreground/80' };
       case 'decline':
-        return { icon: TrendingDown, color: 'text-red-600', bgColor: 'from-red-500 to-pink-500' };
+        return { icon: TrendingDown, color: 'text-muted-foreground', bgColor: 'from-muted-foreground to-muted-foreground/80' };
       default:
-        return { icon: Brain, color: 'text-gray-600', bgColor: 'from-gray-500 to-gray-400' };
+        return { icon: Brain, color: 'text-muted-foreground', bgColor: 'from-muted-foreground to-muted-foreground/80' };
     }
   };
 
@@ -184,7 +184,7 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
     if (insightsError) {
       return (
         <div className="text-center py-4">
-          <AlertCircle className="h-8 w-8 text-amber-500 mx-auto mb-2" />
+          <AlertCircle className="h-8 w-8 text-foreground mx-auto mb-2" />
           <p className="text-sm text-muted-foreground">{insightsError}</p>
           <p className="text-xs text-muted-foreground mt-2">Showing basic financial metrics below</p>
         </div>
@@ -282,10 +282,10 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
           </div>
           
           <div className="text-center">
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-violet-500 text-white mx-auto mb-2">
+            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground mx-auto mb-2">
               <PieChart className="h-4 w-4" />
             </div>
-            <div className="text-lg md:text-xl font-bold text-purple-600">
+            <div className="text-lg md:text-xl font-bold text-foreground">
               {expenseRatio.toFixed(1)}%
             </div>
             <div className="text-xs text-muted-foreground">Expense Ratio</div>
@@ -305,10 +305,10 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
           </div>
           
           <div className="text-center">
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white mx-auto mb-2">
+            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground mx-auto mb-2">
               <Calendar className="h-4 w-4" />
             </div>
-            <div className="text-sm md:text-base font-bold text-cyan-600">
+            <div className="text-sm md:text-base font-bold text-foreground">
               {formatCurrency(avgDailySpend)}
             </div>
             <div className="text-xs text-muted-foreground">Daily Avg Spend</div>
@@ -319,10 +319,10 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
         {balance > 0 && avgDailySpend > 0 && (
           <div className="pt-4 border-t">
             <div className="text-center">
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white mx-auto mb-2">
+              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground mx-auto mb-2">
                 <TrendingUp className="h-4 w-4" />
               </div>
-              <div className="text-lg md:text-xl font-bold text-indigo-600">
+              <div className="text-lg md:text-xl font-bold text-foreground">
                 {daysUntilBroke} days
               </div>
               <div className="text-xs text-muted-foreground">
@@ -336,10 +336,10 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
   };
 
   return (
-    <div className="rounded-xl border bg-card p-5 md:p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+    <div className="rounded-xl border bg-card p-5 md:p-6">
       {/* Header */}
       <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground mb-3 md:mb-4">
-        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-primary to-violet-400 text-white">
+        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground">
           <Brain className="h-4 w-4" />
         </div>
         Financial Insights
@@ -363,20 +363,20 @@ export function BudgetProgressWidget({ data }: Readonly<{ data: any }>) {
     if (percentage >= 100) {
       return {
         status: 'Over Budget',
-        iconGradient: 'from-red-500 to-pink-500',
-        textColor: 'text-red-600'
+        iconGradient: 'from-foreground to-foreground/80',
+        textColor: 'text-foreground'
       };
     } else if (percentage >= 80) {
       return {
         status: 'Near Limit',
-        iconGradient: 'from-amber-500 to-orange-500',
-        textColor: 'text-amber-600'
+        iconGradient: 'from-muted-foreground to-muted-foreground/80',
+        textColor: 'text-muted-foreground'
       };
     } else {
       return {
         status: 'On Track',
-        iconGradient: 'from-green-500 to-emerald-400',
-        textColor: 'text-green-600'
+        iconGradient: 'from-foreground to-foreground/80',
+        textColor: 'text-foreground'
       };
     }
   };
@@ -384,10 +384,10 @@ export function BudgetProgressWidget({ data }: Readonly<{ data: any }>) {
   const statusInfo = getStatusInfo();
 
   return (
-    <div className="rounded-xl border bg-card p-5 md:p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+    <div className="rounded-xl border bg-card p-5 md:p-6">
       {/* Header */}
       <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground mb-3 md:mb-4">
-        <div className={`flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r ${statusInfo.iconGradient} text-white`}>
+        <div className={`flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground`}>
           <Target className="h-4 w-4" />
         </div>
         Budget Progress
@@ -422,26 +422,20 @@ export function BudgetProgressWidget({ data }: Readonly<{ data: any }>) {
         {/* Budget Stats */}
         <div className="grid grid-cols-2 gap-4 pt-4 border-t">
           <div className="text-center">
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white mx-auto mb-2">
+            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground mx-auto mb-2">
               <DollarSign className="h-4 w-4" />
             </div>
-            <div className="text-lg md:text-xl font-bold text-blue-600">
+            <div className="text-lg md:text-xl font-bold text-foreground">
               {formatCurrency(budgetUsed)}
             </div>
             <div className="text-xs text-muted-foreground">Used</div>
           </div>
           
           <div className="text-center">
-            <div className={`flex items-center justify-center w-8 h-8 rounded-full mx-auto mb-2 ${
-              remaining >= 0 
-                ? 'bg-gradient-to-r from-green-500 to-emerald-400' 
-                : 'bg-gradient-to-r from-red-500 to-pink-500'
-            } text-white`}>
+            <div className="flex items-center justify-center w-8 h-8 rounded-full mx-auto mb-2 bg-muted text-foreground">
               <Target className="h-4 w-4" />
             </div>
-            <div className={`text-lg md:text-xl font-bold ${
-              remaining >= 0 ? 'text-green-600' : 'text-red-600'
-            }`}>
+            <div className="text-lg md:text-xl font-bold text-foreground">
               {formatCurrency(Math.abs(remaining))}
             </div>
             <div className="text-xs text-muted-foreground">
@@ -474,8 +468,8 @@ export function RecentTransactionsWidget({ data }: Readonly<{ data: any }>) {
               <div className="flex items-center gap-3">
                 <div className={`p-2 rounded-full ${
                   transaction.type === 'income' 
-                    ? 'bg-green-100 text-green-600' 
-                    : 'bg-red-100 text-red-600'
+                    ? 'bg-muted text-foreground' 
+                    : 'bg-muted text-foreground'
                 }`}>
                   {transaction.type === 'income' ? (
                     <TrendingUp className="h-3 w-3" />
@@ -491,7 +485,7 @@ export function RecentTransactionsWidget({ data }: Readonly<{ data: any }>) {
                 </div>
               </div>
               <span className={`text-sm font-medium ${
-                transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
+                transaction.type === 'income' ? 'text-foreground' : 'text-foreground'
               }`}>
                 {transaction.type === 'income' ? '+' : '-'}
                 {formatCurrency(transaction.amount)}
@@ -519,17 +513,17 @@ export function MonthlySummaryWidget({ data }: Readonly<{ data: any }>) {
       </CardHeader>
       <CardContent className="p-0">
         <div className="grid grid-cols-2 gap-4">
-          <div className="text-center p-3 bg-green-50 rounded-lg">
-            <DollarSign className="h-6 w-6 text-green-600 mx-auto mb-2" />
-            <p className="text-sm text-green-600 font-medium">Income</p>
-            <p className="text-lg font-bold text-green-700">
+          <div className="text-center p-3 bg-muted rounded-lg">
+            <DollarSign className="h-6 w-6 text-foreground mx-auto mb-2" />
+            <p className="text-sm text-foreground font-medium">Income</p>
+            <p className="text-lg font-bold text-foreground">
               {formatCurrency(data?.monthlyIncome || 0)}
             </p>
           </div>
-          <div className="text-center p-3 bg-red-50 rounded-lg">
-            <CreditCard className="h-6 w-6 text-red-600 mx-auto mb-2" />
-            <p className="text-sm text-red-600 font-medium">Expenses</p>
-            <p className="text-lg font-bold text-red-700">
+          <div className="text-center p-3 bg-muted rounded-lg">
+            <CreditCard className="h-6 w-6 text-foreground mx-auto mb-2" />
+            <p className="text-sm text-foreground font-medium">Expenses</p>
+            <p className="text-lg font-bold text-foreground">
               {formatCurrency(data?.monthlyExpense || 0)}
             </p>
           </div>

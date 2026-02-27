@@ -75,19 +75,19 @@ interface RealMonthlyData {
   spendingVsBudget: number;
 }
 
-// Enhanced color palette with better accessibility
+// Neutral color palette
 const CATEGORY_COLORS = [
-  '#2563EB', '#059669', '#D97706', '#DC2626', '#7C3AED',
-  '#DB2777', '#EA580C', '#4F46E5', '#0D9488', '#9333EA',
-  '#BE185D', '#B45309', '#1D4ED8', '#047857', '#C2410C'
+  '#374151', '#6B7280', '#9CA3AF', '#4B5563', '#D1D5DB',
+  '#1F2937', '#A3A3A3', '#525252', '#737373', '#E5E7EB',
+  '#404040', '#262626', '#171717', '#78716C', '#A8A29E'
 ];
 
-// Modern gradient colors for different chart elements
+// Neutral gradient colors for chart elements
 const CHART_GRADIENTS = {
-  spending: ['#EF4444', '#DC2626'],
-  income: ['#10B981', '#059669'],
-  budget: ['#8B5CF6', '#7C3AED'],
-  savings: ['#3B82F6', '#2563EB']
+  spending: ['#4B5563', '#374151'],
+  income: ['#6B7280', '#4B5563'],
+  budget: ['#9CA3AF', '#6B7280'],
+  savings: ['#D1D5DB', '#9CA3AF']
 };
 
 function MonthlySpendingTrendComponent({ 
@@ -387,7 +387,7 @@ function MonthlySpendingTrendComponent({
       const data = payload[0].payload;
       
       return (
-        <div className="bg-card/95 backdrop-blur-sm border border-border rounded-xl shadow-2xl p-5 max-w-sm">
+        <div className="bg-card/95 backdrop-blur-sm border border-border rounded-xl  p-5 max-w-sm">
           <div className="flex items-center gap-2 mb-3">
             <Calendar className="h-4 w-4 text-primary" />
             <span className="font-semibold text-foreground">{label}</span>
@@ -398,18 +398,18 @@ function MonthlySpendingTrendComponent({
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1">
                 <div className="text-xs text-muted-foreground">Spending</div>
-                <div className="font-bold text-red-500">{formatCurrency(data.totalSpending)}</div>
+                <div className="font-bold text-foreground">{formatCurrency(data.totalSpending)}</div>
               </div>
               <div className="space-y-1">
                 <div className="text-xs text-muted-foreground">Income</div>
-                <div className="font-bold text-green-500">{formatCurrency(data.totalIncome || 0)}</div>
+                <div className="font-bold text-foreground">{formatCurrency(data.totalIncome || 0)}</div>
               </div>
             </div>
 
             {/* Net savings */}
             <div className="flex justify-between items-center p-2 bg-muted/50 rounded-lg">
               <span className="text-sm text-muted-foreground">Net Savings:</span>
-              <span className={`font-semibold ${data.netSavings >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+              <span className={`font-semibold ${data.netSavings >= 0 ? 'text-foreground' : 'text-foreground'}`}>
                 {formatCurrency(data.netSavings || 0)}
               </span>
             </div>
@@ -440,7 +440,7 @@ function MonthlySpendingTrendComponent({
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-muted-foreground">YoY Change:</span>
                   <span className={`font-medium flex items-center gap-1 ${
-                    data.yoyGrowth > 0 ? 'text-red-500' : data.yoyGrowth < 0 ? 'text-green-500' : 'text-muted-foreground'
+                    data.yoyGrowth > 0 ? 'text-foreground' : data.yoyGrowth < 0 ? 'text-foreground' : 'text-muted-foreground'
                   }`}>
                     {data.yoyGrowth > 0 ? <TrendingUp className="h-3 w-3" /> : 
                      data.yoyGrowth < 0 ? <TrendingDown className="h-3 w-3" /> : 
@@ -555,8 +555,8 @@ function MonthlySpendingTrendComponent({
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center h-80 text-center p-4">
-            <div className="h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center mb-4">
-              <TrendingDown className="h-6 w-6 text-red-500" />
+            <div className="h-12 w-12 rounded-full bg-muted dark:bg-muted flex items-center justify-center mb-4">
+              <TrendingDown className="h-6 w-6 text-foreground" />
             </div>
             <p className="text-muted-foreground mb-2">{error}</p>
             <Button variant="outline" size="sm" onClick={fetchRealMonthlyData}>
@@ -653,17 +653,17 @@ function MonthlySpendingTrendComponent({
                 <div className="text-xs text-muted-foreground">Total Spending</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-bold text-green-600">{formatCurrency(insights.totalIncome)}</div>
+                <div className="text-lg font-bold text-foreground">{formatCurrency(insights.totalIncome)}</div>
                 <div className="text-xs text-muted-foreground">Total Income</div>
               </div>
               <div className="text-center">
-                <div className={`text-lg font-bold ${insights.totalSavings >= 0 ? 'text-green-600' : 'text-red-500'}`}>
+                <div className={`text-lg font-bold ${insights.totalSavings >= 0 ? 'text-foreground' : 'text-foreground'}`}>
                   {formatCurrency(insights.totalSavings)}
                 </div>
                 <div className="text-xs text-muted-foreground">Net Savings</div>
               </div>
               <div className="text-center">
-                <div className={`text-lg font-bold ${insights.savingsRate >= 20 ? 'text-green-600' : insights.savingsRate >= 10 ? 'text-yellow-600' : 'text-red-500'}`}>
+                <div className={`text-lg font-bold ${insights.savingsRate >= 20 ? 'text-foreground' : insights.savingsRate >= 10 ? 'text-foreground' : 'text-foreground'}`}>
                   {insights.savingsRate.toFixed(1)}%
                 </div>
                 <div className="text-xs text-muted-foreground">Savings Rate</div>
@@ -676,12 +676,12 @@ function MonthlySpendingTrendComponent({
                 <div className="flex items-center gap-2">
                   <span className="text-muted-foreground">Spending Trend:</span>
                   <div className="flex items-center gap-1">
-                    {insights.trendAnalysis.spending.trend === 'up' && <TrendingUp className="h-4 w-4 text-red-500" />}
-                    {insights.trendAnalysis.spending.trend === 'down' && <TrendingDown className="h-4 w-4 text-green-500" />}
+                    {insights.trendAnalysis.spending.trend === 'up' && <TrendingUp className="h-4 w-4 text-foreground" />}
+                    {insights.trendAnalysis.spending.trend === 'down' && <TrendingDown className="h-4 w-4 text-foreground" />}
                     {insights.trendAnalysis.spending.trend === 'stable' && <Minus className="h-4 w-4 text-gray-500" />}
                     <span className={`font-medium ${
-                      insights.trendAnalysis.spending.trend === 'up' ? 'text-red-500' : 
-                      insights.trendAnalysis.spending.trend === 'down' ? 'text-green-500' : 'text-gray-500'
+                      insights.trendAnalysis.spending.trend === 'up' ? 'text-foreground' : 
+                      insights.trendAnalysis.spending.trend === 'down' ? 'text-foreground' : 'text-gray-500'
                     }`}>
                       {insights.trendAnalysis.spending.percentChange > 0 ? '+' : ''}
                       {insights.trendAnalysis.spending.percentChange.toFixed(1)}%
@@ -691,12 +691,12 @@ function MonthlySpendingTrendComponent({
                 <div className="flex items-center gap-2">
                   <span className="text-muted-foreground">Income Trend:</span>
                   <div className="flex items-center gap-1">
-                    {insights.trendAnalysis.income.trend === 'up' && <TrendingUp className="h-4 w-4 text-green-500" />}
-                    {insights.trendAnalysis.income.trend === 'down' && <TrendingDown className="h-4 w-4 text-red-500" />}
+                    {insights.trendAnalysis.income.trend === 'up' && <TrendingUp className="h-4 w-4 text-foreground" />}
+                    {insights.trendAnalysis.income.trend === 'down' && <TrendingDown className="h-4 w-4 text-foreground" />}
                     {insights.trendAnalysis.income.trend === 'stable' && <Minus className="h-4 w-4 text-gray-500" />}
                     <span className={`font-medium ${
-                      insights.trendAnalysis.income.trend === 'up' ? 'text-green-500' : 
-                      insights.trendAnalysis.income.trend === 'down' ? 'text-red-500' : 'text-gray-500'
+                      insights.trendAnalysis.income.trend === 'up' ? 'text-foreground' : 
+                      insights.trendAnalysis.income.trend === 'down' ? 'text-foreground' : 'text-gray-500'
                     }`}>
                       {insights.trendAnalysis.income.percentChange > 0 ? '+' : ''}
                       {insights.trendAnalysis.income.percentChange.toFixed(1)}%

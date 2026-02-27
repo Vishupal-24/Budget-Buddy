@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User, Loader2, Volume2, VolumeX, BarChart3, Sparkles, MessageCircle } from "lucide-react";
+import { Send, Bot, User, Loader2, Volume2, VolumeX, BarChart3, Sparkles, MessageCircle, DollarSign, Lightbulb, Target } from "lucide-react";
 import { AIMessage, AIModelConfig, FinancialInsight, AIProvider } from "@/lib/ai";
 import { AIProviderModelSelector } from "./AIProviderModelSelector";
 import { VoiceInterface } from "./VoiceInterface";
@@ -193,18 +193,17 @@ export function ChatPanel({
   const displayMessages = messages.slice(1);
 
   return (
-    <Card className={`flex flex-col ${className} bg-gradient-to-br from-background via-background to-muted/20 border-2 shadow-lg chat-container`}>
-      <CardHeader className="pb-4 border-b bg-gradient-to-r from-primary/5 via-blue-50/50 to-purple-50/30 dark:from-primary/10 dark:via-blue-950/20 dark:to-purple-950/10">
+    <Card className={`flex flex-col ${className} border chat-container`}>
+      <CardHeader className="pb-4 border-b">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-3 text-lg">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-blue-600 rounded-full blur-sm opacity-20"></div>
-              <div className="relative w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-white" />
+              <div className="relative w-8 h-8 bg-foreground rounded-full flex items-center justify-center">
+                <Sparkles className="h-4 w-4 text-background" />
               </div>
             </div>
             <div>
-              <div className="font-semibold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              <div className="font-semibold text-foreground">
                 AI Financial Assistant
               </div>
               <div className="text-xs text-muted-foreground font-normal">
@@ -213,8 +212,8 @@ export function ChatPanel({
             </div>
           </CardTitle>
           <div className="flex items-center gap-2">
-            <Badge variant="outline" className="text-xs bg-primary/5 border-primary/20">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-1 animate-pulse"></div>
+            <Badge variant="outline" className="text-xs">
+              <div className="w-2 h-2 bg-foreground rounded-full mr-1 animate-pulse"></div>
               {currentModelConfig.provider}
             </Badge>
             {onRequestInsights && (
@@ -233,7 +232,7 @@ export function ChatPanel({
               variant={autoSpeak ? "default" : "outline"}
               size="sm"
               onClick={() => setAutoSpeak(!autoSpeak)}
-              className="text-xs transition-all hover:scale-105"
+              className="text-xs transition-colors hover:scale-105"
             >
               {autoSpeak ? <Volume2 className="h-3 w-3 mr-1" /> : <VolumeX className="h-3 w-3 mr-1" />}
               Auto-speak
@@ -275,7 +274,7 @@ export function ChatPanel({
         <div className="flex-1 overflow-hidden relative">
           <div 
             ref={messagesContainerRef}
-            className="overflow-y-auto overflow-x-hidden p-4 sm:p-6 space-y-4 sm:space-y-6 bg-gradient-to-b from-background/50 to-muted/10 chat-messages-area"
+            className="overflow-y-auto overflow-x-hidden p-4 sm:p-6 space-y-4 sm:space-y-6 chat-messages-area"
             style={{ height: '400px', maxHeight: '400px', scrollBehavior: 'smooth' }}
             onScroll={handleScroll}
           >
@@ -283,12 +282,11 @@ export function ChatPanel({
             {displayMessages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center py-8">
               <div className="relative mb-6">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-blue-600/20 rounded-full blur-xl"></div>
-                <div className="relative w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                  <Bot className="h-8 w-8 text-white" />
+                <div className="relative w-16 h-16 bg-foreground rounded-full flex items-center justify-center">
+                  <Bot className="h-8 w-8 text-background" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              <h3 className="text-xl font-semibold mb-3 text-foreground">
                 Ready to chat about your finances!
               </h3>
               <p className="text-sm text-muted-foreground max-w-md mb-8 leading-relaxed">
@@ -303,10 +301,10 @@ export function ChatPanel({
                   size="sm"
                   onClick={() => onSendMessageAction("Show me my financial insights")}
                   disabled={loading}
-                  className="text-xs h-12 bg-gradient-to-br from-primary/5 to-blue-50/50 hover:from-primary/10 hover:to-blue-100/80 border-primary/20 hover:border-primary/40 transition-all hover:scale-[1.02] group"
+                  className="text-xs h-12 bg-muted/30 hover:bg-muted border-border hover:border-border transition-colors group"
                 >
                   <div className="flex flex-col items-center gap-1">
-                    <BarChart3 className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
+                    <BarChart3 className="h-4 w-4 text-foreground" />
                     <span className="font-medium">Financial Insights</span>
                   </div>
                 </Button>
@@ -315,11 +313,11 @@ export function ChatPanel({
                   size="sm"
                   onClick={() => onSendMessageAction("How much did I spend this month?")}
                   disabled={loading}
-                  className="text-xs h-12 bg-gradient-to-br from-green-50/50 to-emerald-50/50 hover:from-green-100/80 hover:to-emerald-100/80 border-green-200/50 hover:border-green-300/70 transition-all hover:scale-[1.02] group"
+                  className="text-xs h-12 bg-muted/30 hover:bg-muted border-border hover:border-border transition-colors group"
                 >
                   <div className="flex flex-col items-center gap-1">
-                    <div className="text-lg group-hover:scale-110 transition-transform">💰</div>
-                    <span className="font-medium text-green-700">Monthly Spending</span>
+                    <DollarSign className="h-5 w-5" />
+                    <span className="font-medium">Monthly Spending</span>
                   </div>
                 </Button>
                 <Button
@@ -327,11 +325,11 @@ export function ChatPanel({
                   size="sm"
                   onClick={() => onSendMessageAction("Give me budget recommendations")}
                   disabled={loading}
-                  className="text-xs h-12 bg-gradient-to-br from-purple-50/50 to-pink-50/50 hover:from-purple-100/80 hover:to-pink-100/80 border-purple-200/50 hover:border-purple-300/70 transition-all hover:scale-[1.02] group"
+                  className="text-xs h-12 bg-muted/30 hover:bg-muted border-border hover:border-border transition-colors group"
                 >
                   <div className="flex flex-col items-center gap-1">
-                    <div className="text-lg group-hover:scale-110 transition-transform">💡</div>
-                    <span className="font-medium text-purple-700">Budget Tips</span>
+                    <Lightbulb className="h-5 w-5" />
+                    <span className="font-medium">Budget Tips</span>
                   </div>
                 </Button>
                 <Button
@@ -339,11 +337,11 @@ export function ChatPanel({
                   size="sm"
                   onClick={() => onSendMessageAction("What are some ways I can save money?")}
                   disabled={loading}
-                  className="text-xs h-12 bg-gradient-to-br from-orange-50/50 to-yellow-50/50 hover:from-orange-100/80 hover:to-yellow-100/80 border-orange-200/50 hover:border-orange-300/70 transition-all hover:scale-[1.02] group"
+                  className="text-xs h-12 bg-muted/30 hover:bg-muted border-border hover:border-border transition-colors group"
                 >
                   <div className="flex flex-col items-center gap-1">
-                    <div className="text-lg group-hover:scale-110 transition-transform">🎯</div>
-                    <span className="font-medium text-orange-700">Save Money</span>
+                    <Target className="h-5 w-5" />
+                    <span className="font-medium">Save Money</span>
                   </div>
                 </Button>
               </div>
@@ -373,12 +371,12 @@ export function ChatPanel({
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {message.role === 'assistant' && (
-                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shadow-lg ring-2 ring-primary/20">
+                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-primary to-muted flex items-center justify-center  ring-2 ring-primary/20">
                       <Bot className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                     </div>
                   )}
                   
-                  <div className={`flex-1 min-w-0 max-w-[80%] sm:max-w-[85%] rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md group overflow-hidden message-bubble ${
+                  <div className={`flex-1 min-w-0 max-w-[80%] sm:max-w-[85%] rounded-2xl shadow-sm transition-all duration-300  group overflow-hidden message-bubble ${
                     message.role === 'user' 
                       ? 'bg-gradient-to-br from-primary to-primary/90 text-primary-foreground ml-auto shadow-primary/20' 
                       : 'bg-card/80 backdrop-blur border border-border/50 shadow-black/5'
@@ -410,7 +408,7 @@ export function ChatPanel({
                   </div>
                   
                   {message.role === 'user' && (
-                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 flex items-center justify-center shadow-lg ring-2 ring-muted-foreground/10">
+                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 flex items-center justify-center  ring-2 ring-muted-foreground/10">
                       <User className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                     </div>
                   )}
@@ -419,7 +417,7 @@ export function ChatPanel({
               })}
               {loading && (
                 <div className="flex gap-2 sm:gap-4 justify-start">
-                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shadow-lg ring-2 ring-primary/20">
+                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-primary to-muted flex items-center justify-center  ring-2 ring-primary/20">
                     <Bot className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                   </div>
                   <div className="bg-card/80 backdrop-blur border border-border/50 rounded-2xl p-3 sm:p-4 shadow-sm overflow-hidden">
@@ -440,7 +438,7 @@ export function ChatPanel({
                   variant="outline"
                   size="sm"
                   onClick={scrollToBottom}
-                  className="h-10 w-10 p-0 rounded-full bg-background/90 backdrop-blur-sm border-2 shadow-lg hover:shadow-xl transition-all hover:scale-110 pointer-events-auto"
+                  className="h-10 w-10 p-0 rounded-full bg-background/90 border transition-colors pointer-events-auto"
                   title="Scroll to bottom"
                 >
                   <svg 
@@ -457,7 +455,7 @@ export function ChatPanel({
                 variant="outline"
                 size="sm"
                 onClick={scrollToTop}
-                className="h-10 w-10 p-0 rounded-full bg-background/90 backdrop-blur-sm border-2 shadow-lg hover:shadow-xl transition-all hover:scale-110 pointer-events-auto"
+                className="h-10 w-10 p-0 rounded-full bg-background/90 border transition-colors pointer-events-auto"
                 title="Scroll to top"
               >
                 <svg 
@@ -474,21 +472,20 @@ export function ChatPanel({
         </div>
         
         {/* Enhanced Input Area */}
-        <div className="flex-shrink-0 border-t bg-gradient-to-r from-background via-muted/10 to-background p-6">
+        <div className="flex-shrink-0 border-t p-6">
           {/* Voice Listening Feedback */}
           {isListening && (
-            <div className="mb-4 flex items-center gap-3 text-sm bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-200/50 dark:border-blue-700/50 rounded-xl p-4 shadow-sm">
+            <div className="mb-4 flex items-center gap-3 text-sm bg-muted border border-border rounded-lg p-4">
               <div className="relative">
-                <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 w-3 h-3 bg-blue-400 rounded-full animate-ping opacity-75"></div>
+                <div className="w-3 h-3 bg-foreground rounded-full animate-pulse"></div>
               </div>
               <div className="flex-1">
-                <span className="text-blue-700 dark:text-blue-300 font-medium flex items-center gap-2">
+                <span className="text-foreground font-medium flex items-center gap-2">
                   <MessageCircle className="h-4 w-4" />
                   Listening for your voice...
                 </span>
                 {currentTranscript && (
-                  <div className="text-blue-600 dark:text-blue-400 italic mt-1 text-xs">
+                  <div className="text-muted-foreground italic mt-1 text-xs">
                     "{currentTranscript}"
                   </div>
                 )}
@@ -505,19 +502,19 @@ export function ChatPanel({
                 onKeyDown={handleKeyPress}
                 placeholder={isListening ? "Speak clearly..." : "Ask me anything about your finances..."}
                 disabled={loading}
-                className={`h-12 px-4 text-sm bg-background/80 backdrop-blur border-2 transition-all duration-300 focus:ring-2 focus:ring-primary/20 ${
+                className={`h-12 px-4 text-sm bg-background border transition-colors focus:ring-2 focus:ring-foreground/10 ${
                   isListening 
-                    ? "border-blue-300 dark:border-blue-600 bg-blue-50/30 dark:bg-blue-950/20 focus:border-blue-500 shadow-blue-200/50 shadow-lg" 
-                    : "border-border/50 hover:border-border focus:border-primary/50 shadow-sm hover:shadow-md"
-                } ${inputMessage.trim() ? "border-primary/30" : ""}`}
+                    ? "border-foreground/30 bg-muted/30" 
+                    : "border-border hover:border-border/80"
+                } ${inputMessage.trim() ? "border-foreground/20" : ""}`}
               />
               {/* Enhanced Voice indicator in input */}
               {isListening && (
                 <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
                   <div className="flex gap-1">
-                    <div className="w-1 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                    <div className="w-1 h-4 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.1s'}}></div>
-                    <div className="w-1 h-2 bg-blue-600 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                    <div className="w-1 h-3 bg-foreground rounded-full animate-pulse"></div>
+                    <div className="w-1 h-4 bg-foreground/80 rounded-full animate-pulse" style={{animationDelay: '0.1s'}}></div>
+                    <div className="w-1 h-2 bg-foreground/60 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
                   </div>
                 </div>
               )}
@@ -526,7 +523,7 @@ export function ChatPanel({
               onClick={handleSend} 
               disabled={loading || !inputMessage.trim()}
               size="lg"
-              className="h-12 px-6 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 disabled:hover:scale-100"
+              className="h-12 px-6 transition-colors disabled:hover:scale-100"
             >
               {loading ? (
                 <div className="flex items-center gap-2">

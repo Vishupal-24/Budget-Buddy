@@ -17,18 +17,18 @@ interface ExpenseCategoryChartProps {
   categoryData: CategoryData[];
 }
 
-// Enhanced colors for better visualization
+// Neutral color palette for chart segments
 const COLORS = [
-  '#3B82F6', // Blue
-  '#10B981', // Green
-  '#F59E0B', // Amber
-  '#EF4444', // Red
-  '#8B5CF6', // Purple
-  '#EC4899', // Pink
-  '#F97316', // Orange
-  '#6366F1', // Indigo
-  '#14B8A6', // Teal
-  '#A855F7'  // Violet
+  '#374151', // Gray-700
+  '#6B7280', // Gray-500
+  '#9CA3AF', // Gray-400
+  '#4B5563', // Gray-600
+  '#D1D5DB', // Gray-300
+  '#1F2937', // Gray-800
+  '#A3A3A3', // Neutral-400
+  '#525252', // Neutral-600
+  '#737373', // Neutral-500
+  '#E5E7EB'  // Gray-200
 ];
 
 function ExpenseCategoryChartComponent({ categoryData }: ExpenseCategoryChartProps) {

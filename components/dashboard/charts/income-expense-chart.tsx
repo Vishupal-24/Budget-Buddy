@@ -34,32 +34,30 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label, v
   if (active && payload?.length) {
     const data = payload[0].payload;
     
-    const getSavingsRateColor = (rate: number) => {
-      if (rate >= 20) return 'text-green-600';
-      if (rate >= 10) return 'text-yellow-600';
-      return 'text-red-600';
+    const getSavingsRateColor = (_rate: number) => {
+      return 'text-foreground';
     };
 
     return (
-      <div className="bg-card border border-border rounded-lg shadow-lg p-4 min-w-[200px]">
+      <div className="bg-card border border-border rounded-lg  p-4 min-w-[200px]">
         <p className="font-semibold text-foreground mb-2">{label}</p>
         <div className="space-y-2">
           {(viewMode === 'all' || viewMode === 'income') && (
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+                <div className="w-3 h-3 rounded-full bg-muted-foreground"></div>
                 <span className="text-sm text-muted-foreground">Income</span>
               </div>
-              <span className="font-medium text-emerald-600">{formatCurrency(data.income)}</span>
+              <span className="font-medium text-foreground">{formatCurrency(data.income)}</span>
             </div>
           )}
           {(viewMode === 'all' || viewMode === 'expenses') && (
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-foreground/60"></div>
                 <span className="text-sm text-muted-foreground">Expenses</span>
               </div>
-              <span className="font-medium text-red-600">{formatCurrency(data.expense)}</span>
+              <span className="font-medium text-foreground">{formatCurrency(data.expense)}</span>
             </div>
           )}
           {showNet && viewMode === 'all' && (
@@ -67,10 +65,10 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label, v
               <div className="h-px bg-border my-2"></div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className={`w-3 h-3 rounded-full ${data.net >= 0 ? 'bg-purple-500' : 'bg-orange-500'}`}></div>
+                  <div className="w-3 h-3 rounded-full bg-foreground/40"></div>
                   <span className="text-sm text-muted-foreground">Net Balance</span>
                 </div>
-                <span className={`font-medium ${data.net >= 0 ? 'text-purple-600' : 'text-orange-600'}`}>
+                <span className="font-medium text-foreground">
                   {formatCurrency(data.net)}
                 </span>
               </div>
@@ -198,53 +196,36 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
     };
   }, [windowWidth, chartData.length]);
 
-  // Enhanced color scheme
+  // Neutral color scheme
   const colors = {
     income: {
-      primary: '#059669',
-      light: '#10B981',
+      primary: '#4B5563',
+      light: '#6B7280',
       gradient: 'url(#incomeGradient)',
-      bg: 'rgba(5, 150, 105, 0.1)'
+      bg: 'rgba(75, 85, 99, 0.1)'
     },
     expense: {
-      primary: '#DC2626',
-      light: '#EF4444',
+      primary: '#1F2937',
+      light: '#374151',
       gradient: 'url(#expenseGradient)',
-      bg: 'rgba(220, 38, 38, 0.1)'
+      bg: 'rgba(31, 41, 55, 0.1)'
     },
     net: {
-      positive: '#7C3AED',
-      negative: '#F59E0B',
+      positive: '#6B7280',
+      negative: '#9CA3AF',
       neutral: '#6B7280'
     }
   };
 
   // Helper functions for styling
   const getSavingsRateStyles = (rate: number) => {
-    if (rate >= 20) {
-      return {
-        cardClass: 'from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20 border-green-200/50',
-        textClass: 'text-green-700 dark:text-green-300',
-        valueClass: 'text-green-800 dark:text-green-200',
-        badge: 'default' as const,
-        label: 'Excellent'
-      };
-    }
-    if (rate >= 10) {
-      return {
-        cardClass: 'from-yellow-50 to-yellow-100 dark:from-yellow-950/20 dark:to-yellow-900/20 border-yellow-200/50',
-        textClass: 'text-yellow-700 dark:text-yellow-300',
-        valueClass: 'text-yellow-800 dark:text-yellow-200',
-        badge: 'secondary' as const,
-        label: 'Good'
-      };
-    }
+    const label = rate >= 20 ? 'Excellent' : rate >= 10 ? 'Good' : 'Needs Work';
     return {
-      cardClass: 'from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/20 border-red-200/50',
-      textClass: 'text-red-700 dark:text-red-300',
-      valueClass: 'text-red-800 dark:text-red-200',
-      badge: 'destructive' as const,
-      label: 'Needs Work'
+      cardClass: 'border-border',
+      textClass: 'text-muted-foreground',
+      valueClass: 'text-foreground',
+      badge: 'secondary' as const,
+      label
     };
   };
 
@@ -280,8 +261,8 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <CardTitle className="flex items-center gap-3 text-xl font-bold">
-              <div className="p-2 rounded-lg bg-gradient-to-br from-emerald-500/10 to-red-500/10">
-                <DollarSign className="h-6 w-6 text-primary" />
+              <div className="p-2 rounded-lg bg-muted">
+                <DollarSign className="h-6 w-6 text-foreground" />
               </div>
               Income vs. Expenses
             </CardTitle>
@@ -331,68 +312,56 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
 
         {/* Key Metrics Row */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
-          <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/20 dark:to-emerald-900/20 rounded-lg p-3 border border-emerald-200/50">
+          <div className="bg-muted rounded-lg p-3 border border-border">
             <div className="flex items-center gap-2 mb-1">
-              <TrendingUp className="h-4 w-4 text-emerald-600" />
-              <span className="text-xs text-emerald-700 dark:text-emerald-300 font-medium">Total Income</span>
+              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <span className="text-xs text-muted-foreground font-medium">Total Income</span>
             </div>
-            <div className="text-lg font-bold text-emerald-800 dark:text-emerald-200">
+            <div className="text-lg font-bold text-foreground">
               {formatCurrency(metrics.totalIncome)}
             </div>
-            <div className="text-xs text-emerald-600 dark:text-emerald-400">
+            <div className="text-xs text-muted-foreground">
               Avg: {formatCurrency(metrics.avgIncome)}
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/20 rounded-lg p-3 border border-red-200/50">
+          <div className="bg-muted rounded-lg p-3 border border-border">
             <div className="flex items-center gap-2 mb-1">
-              <TrendingDown className="h-4 w-4 text-red-600" />
-              <span className="text-xs text-red-700 dark:text-red-300 font-medium">Total Expenses</span>
+              <TrendingDown className="h-4 w-4 text-muted-foreground" />
+              <span className="text-xs text-muted-foreground font-medium">Total Expenses</span>
             </div>
-            <div className="text-lg font-bold text-red-800 dark:text-red-200">
+            <div className="text-lg font-bold text-foreground">
               {formatCurrency(metrics.totalExpenses)}
             </div>
-            <div className="text-xs text-red-600 dark:text-red-400">
+            <div className="text-xs text-muted-foreground">
               Avg: {formatCurrency(metrics.avgExpenses)}
             </div>
           </div>
 
-          <div className={`bg-gradient-to-br rounded-lg p-3 border ${
-            metrics.netBalance >= 0 
-              ? 'from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20 border-purple-200/50'
-              : 'from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 border-orange-200/50'
-          }`}>
+          <div className="bg-muted rounded-lg p-3 border border-border">
             <div className="flex items-center gap-2 mb-1">
-              <div className={`p-1 rounded ${metrics.netBalance >= 0 ? 'text-purple-600' : 'text-orange-600'}`}>
-                {metrics.netBalance >= 0 ? '💰' : '⚠️'}
+              <div className="p-1 rounded text-muted-foreground">
+                {metrics.netBalance >= 0 ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
               </div>
-              <span className={`text-xs font-medium ${
-                metrics.netBalance >= 0 
-                  ? 'text-purple-700 dark:text-purple-300' 
-                  : 'text-orange-700 dark:text-orange-300'
-              }`}>
+              <span className="text-xs font-medium text-muted-foreground">
                 Net Balance
               </span>
             </div>
-            <div className={`text-lg font-bold ${
-              metrics.netBalance >= 0 
-                ? 'text-purple-800 dark:text-purple-200' 
-                : 'text-orange-800 dark:text-orange-200'
-            }`}>
+            <div className="text-lg font-bold text-foreground">
               {formatCurrency(metrics.netBalance)}
             </div>
           </div>
 
-          <div className={`bg-gradient-to-br rounded-lg p-3 border ${savingsRateStyles.cardClass}`}>
+          <div className="bg-muted rounded-lg p-3 border border-border">
             <div className="flex items-center gap-2 mb-1">
-              <div className={`text-xs font-medium ${savingsRateStyles.textClass}`}>
-                💡 Savings Rate
+              <div className="text-xs font-medium text-muted-foreground">
+                Savings Rate
               </div>
             </div>
-            <div className={`text-lg font-bold ${savingsRateStyles.valueClass}`}>
+            <div className="text-lg font-bold text-foreground">
               {metrics.savingsRate.toFixed(1)}%
             </div>
-            <Badge variant={savingsRateStyles.badge} className="text-xs">
+            <Badge variant="secondary" className="text-xs">
               {savingsRateStyles.label}
             </Badge>
           </div>
@@ -421,14 +390,14 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
               {/* Enhanced Gradients */}
               <defs>
                 <linearGradient id="incomeGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#059669" stopOpacity={0.8}/>
-                  <stop offset="50%" stopColor="#10B981" stopOpacity={0.4}/>
-                  <stop offset="100%" stopColor="#10B981" stopOpacity={0.1}/>
+                  <stop offset="0%" stopColor="#4B5563" stopOpacity={0.8}/>
+                  <stop offset="50%" stopColor="#6B7280" stopOpacity={0.4}/>
+                  <stop offset="100%" stopColor="#6B7280" stopOpacity={0.1}/>
                 </linearGradient>
                 <linearGradient id="expenseGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#DC2626" stopOpacity={0.8}/>
-                  <stop offset="50%" stopColor="#EF4444" stopOpacity={0.4}/>
-                  <stop offset="100%" stopColor="#EF4444" stopOpacity={0.1}/>
+                  <stop offset="0%" stopColor="#1F2937" stopOpacity={0.8}/>
+                  <stop offset="50%" stopColor="#374151" stopOpacity={0.4}/>
+                  <stop offset="100%" stopColor="#374151" stopOpacity={0.1}/>
                 </linearGradient>
                 <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
                   <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000000" floodOpacity="0.1"/>

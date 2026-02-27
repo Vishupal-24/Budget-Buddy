@@ -198,7 +198,7 @@ export class NotificationService {
   static async createGoalAchievement(goalName: string, targetAmount: number): Promise<void> {
     await this.createNotification({
       type: 'goal_achievement',
-      title: `🎉 Goal Achieved: ${goalName}`,
+      title: `Goal Achieved: ${goalName}`,
       message: `Congratulations! You've reached your savings goal of $${targetAmount.toFixed(2)}.`,
       data: {
         goal_name: goalName,

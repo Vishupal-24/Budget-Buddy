@@ -91,7 +91,7 @@ const ValidatedInput = forwardRef<HTMLInputElement, InputProps>(
         "w-full rounded-md border border-input bg-transparent px-3 shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 tap-highlight-transparent",
         isTouchDevice ? "h-11 py-2.5 text-base" : "h-9 py-1 text-sm",
         prefix && "pl-8",
-        hasError && "border-red-500 focus-visible:ring-red-500",
+        hasError && "border-border focus-visible:ring-border",
         className
       ),
       onChange: handleChange,
@@ -120,7 +120,7 @@ const ValidatedInput = forwardRef<HTMLInputElement, InputProps>(
             className="block text-sm font-medium leading-none text-foreground mb-1.5"
           >
             {label}
-            {required && <span className="ml-1 text-red-500">*</span>}
+            {required && <span className="ml-1 text-foreground">*</span>}
           </label>
         )}
         <div className="relative">
@@ -136,7 +136,7 @@ const ValidatedInput = forwardRef<HTMLInputElement, InputProps>(
         </div>
         {hasError ? (
           <p 
-            className="text-xs text-red-500 mt-1.5" 
+            className="text-xs text-foreground mt-1.5" 
             id={`${props.id}-error`}
             role="alert"
           >
@@ -231,7 +231,7 @@ const ValidatedTextarea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       ...props,
       className: cn(
         "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
-        hasError && "border-red-500 focus-visible:ring-red-500",
+        hasError && "border-border focus-visible:ring-border",
         className
       ),
       onChange: handleChange,
@@ -253,7 +253,7 @@ const ValidatedTextarea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           className="block text-sm font-medium leading-6 text-muted-foreground"
         >
           {label}
-          {required && <span className="ml-1 text-red-500">*</span>}
+          {required && <span className="ml-1 text-foreground">*</span>}
         </label>
         <textarea
           ref={ref}
@@ -261,7 +261,7 @@ const ValidatedTextarea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         />
         {hasError ? (
           <p 
-            className="text-xs text-red-500 mt-1" 
+            className="text-xs text-foreground mt-1" 
             id={`${props.id}-error`}
             role="alert"
           >

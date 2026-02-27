@@ -7,7 +7,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { Budget, BudgetFilter, CategorySpending } from '../types';
 import { formatCurrency } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Pencil, Trash2, AlertTriangle, CheckCircle, GripVertical, Filter, TrendingUp, TrendingDown, Target, Clock, BarChart3 } from 'lucide-react';
+import { Pencil, Trash2, AlertTriangle, CheckCircle, GripVertical, Filter, TrendingUp, TrendingDown, Target, Clock, BarChart3, Rocket, Zap, Snail } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface SortableBudgetItemProps {
@@ -36,10 +36,10 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
   };
 
   const getProgressBarColor = (percentage: number) => {
-    if (percentage > 100) return "bg-gradient-to-r from-red-500 to-red-600";
-    if (percentage > 85) return "bg-gradient-to-r from-amber-500 to-orange-500";
-    if (percentage > 70) return "bg-gradient-to-r from-yellow-500 to-amber-500";
-    return "bg-gradient-to-r from-emerald-500 to-green-500";
+    if (percentage > 100) return "bg-gradient-to-r from-muted to-muted";
+    if (percentage > 85) return "bg-gradient-to-r from-muted to-muted";
+    if (percentage > 70) return "bg-gradient-to-r from-muted to-muted";
+    return "bg-gradient-to-r from-muted to-muted";
   };
 
   const getProgressBarGlow = (percentage: number) => {
@@ -56,16 +56,16 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
 
   const getSpendingVelocity = (percentage: number, daysInPeriod: number = 30) => {
     const dailyRate = percentage / daysInPeriod;
-    if (dailyRate > 2) return { level: 'high', color: 'text-red-500', icon: '🚀' };
-    if (dailyRate > 1) return { level: 'medium', color: 'text-amber-500', icon: '⚡' };
-    return { level: 'low', color: 'text-emerald-500', icon: '🐌' };
+    if (dailyRate > 2) return { level: 'high', color: 'text-foreground', Icon: Rocket };
+    if (dailyRate > 1) return { level: 'medium', color: 'text-foreground', Icon: Zap };
+    return { level: 'low', color: 'text-foreground', Icon: Snail };
   };
 
   const getBudgetHealth = (percentage: number) => {
-    if (percentage > 100) return { status: 'over', color: 'text-red-500', bgColor: 'bg-red-50 dark:bg-red-900/20' };
-    if (percentage > 90) return { status: 'warning', color: 'text-amber-500', bgColor: 'bg-amber-50 dark:bg-amber-900/20' };
-    if (percentage > 75) return { status: 'caution', color: 'text-yellow-500', bgColor: 'bg-yellow-50 dark:bg-yellow-900/20' };
-    return { status: 'good', color: 'text-emerald-500', bgColor: 'bg-emerald-50 dark:bg-emerald-900/20' };
+    if (percentage > 100) return { status: 'over', color: 'text-foreground', bgColor: 'bg-muted dark:bg-muted' };
+    if (percentage > 90) return { status: 'warning', color: 'text-foreground', bgColor: 'bg-muted dark:bg-muted' };
+    if (percentage > 75) return { status: 'caution', color: 'text-foreground', bgColor: 'bg-muted dark:bg-muted' };
+    return { status: 'good', color: 'text-foreground', bgColor: 'bg-muted dark:bg-muted' };
   };
 
   const velocity = getSpendingVelocity(percentage);
@@ -73,11 +73,11 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
 
   const getCategoryStatusIcon = (percentage: number) => {
     if (percentage > 100) {
-      return <AlertTriangle className="h-4 w-4 text-red-500" />;
+      return <AlertTriangle className="h-4 w-4 text-foreground" />;
     } else if (percentage > 85) {
-      return <AlertTriangle className="h-4 w-4 text-amber-500" />;
+      return <AlertTriangle className="h-4 w-4 text-foreground" />;
     } else {
-      return <CheckCircle className="h-4 w-4 text-emerald-500" />;
+      return <CheckCircle className="h-4 w-4 text-foreground" />;
     }
   };
 
@@ -85,8 +85,8 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
     <motion.div
       ref={setNodeRef}
       style={style}
-      className={`bg-card border rounded-2xl mb-4 sm:mb-5 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 ${
-        isDragging ? 'shadow-xl border-primary ring-2 ring-primary/20' : 'hover:border-primary/50'
+      className={`bg-card border rounded-2xl mb-4 sm:mb-5 overflow-hidden shadow-md hover: transition-all duration-300 ${
+        isDragging ? ' border-primary ring-2 ring-primary/20' : 'hover:border-primary/50'
       } group cursor-pointer backdrop-blur-sm`}
       whileHover={{ scale: 1.01, y: -2 }}
       whileTap={{ scale: 0.99 }}
@@ -109,7 +109,7 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
             <h3 className="font-semibold text-lg line-clamp-1">{budget.category_name}</h3>
             {categorySpending && (
               <div className="flex items-center gap-2 ml-1">
-                <span className={`text-base ${velocity.color}`}>{velocity.icon}</span>
+                <span className={`text-base ${velocity.color}`}><velocity.Icon className="h-4 w-4" /></span>
                 <div className={`px-2.5 py-1 rounded-full text-xs font-medium ${health.bgColor} ${health.color}`}>
                   {health.status}
                 </div>
@@ -124,7 +124,7 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
             {categorySpending && (
               <div className={`text-base font-semibold px-3.5 py-1.5 rounded-full whitespace-nowrap ${
                 percentage > 100
-                  ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                  ? "bg-muted text-foreground dark:bg-muted dark:text-foreground"
                   : "bg-muted text-muted-foreground"
               }`}>
                 {formatCurrency(categorySpending.spent)}
@@ -135,9 +135,9 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
               <span
                 className={`text-lg font-bold whitespace-nowrap ${
                   (() => {
-                    if (percentage > 100) return "text-red-600 dark:text-red-400";
-                    if (percentage > 85) return "text-amber-600 dark:text-amber-400";
-                    return "text-emerald-600 dark:text-emerald-400";
+                    if (percentage > 100) return "text-foreground dark:text-foreground";
+                    if (percentage > 85) return "text-foreground dark:text-foreground";
+                    return "text-foreground dark:text-foreground";
                   })()
                 }`}
               >
@@ -154,7 +154,7 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
             
             {/* Animated progress bar with enhanced styling */}
             <motion.div
-              className={`h-full ${getProgressBarColor(percentage)} relative shadow-lg ${getProgressBarGlow(percentage)}`}
+              className={`h-full ${getProgressBarColor(percentage)} relative  ${getProgressBarGlow(percentage)}`}
               initial={{ width: 0 }}
               animate={{ width: getProgressBarWidth(percentage) }}
               transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
@@ -175,7 +175,7 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
             {/* Enhanced current position indicator with pulse animation */}
             {percentage > 0 && (
               <motion.div
-                className="absolute top-1/2 h-3 w-3 bg-white rounded-full shadow-lg border-2 border-background transform -translate-y-1/2 -translate-x-1/2"
+                className="absolute top-1/2 h-3 w-3 bg-white rounded-full  border-2 border-background transform -translate-y-1/2 -translate-x-1/2"
                 initial={{ left: 0 }}
                 animate={{ left: getProgressBarWidth(percentage) }}
                 transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
@@ -202,15 +202,15 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
                 
                 return isOverBudget ? (
                   <div className="flex items-center gap-1.5">
-                    <AlertTriangle className="h-4 w-4 text-red-500" />
-                    <span className="text-red-600 dark:text-red-400 font-medium">
+                    <AlertTriangle className="h-4 w-4 text-foreground" />
+                    <span className="text-foreground dark:text-foreground font-medium">
                       {formatCurrency((categorySpending?.spent || 0) - budget.amount)} over budget
                     </span>
                   </div>
                 ) : (
                   <div className="flex items-center gap-1.5">
-                    <CheckCircle className="h-4 w-4 text-emerald-500" />
-                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                    <CheckCircle className="h-4 w-4 text-foreground" />
+                    <span className="text-foreground dark:text-foreground font-medium">
                       {formatCurrency(remaining)} remaining
                     </span>
                   </div>
@@ -237,7 +237,7 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
               variant="outline"
               size="sm"
               onClick={() => onDelete(budget.id)}
-              className="h-9 w-9 p-0 border-border hover:bg-accent text-red-500 hover:text-red-600 transition-colors duration-200"
+              className="h-9 w-9 p-0 border-border hover:bg-accent text-foreground hover:text-foreground transition-colors duration-200"
               aria-label={`Delete budget for ${budget.category_name}`}
               title={`Delete budget for ${budget.category_name}`}
             >
@@ -311,7 +311,7 @@ export function SortableBudgetList({ budgets, categorySpending, onReorder, onEdi
       {/* Enhanced Filter Controls */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4 sm:mb-6 px-4 sm:px-5">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 shadow-md flex items-center justify-center">
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-muted to-muted shadow-md flex items-center justify-center">
             <BarChart3 className="h-5 w-5 text-white" />
           </div>
           <div>

@@ -139,9 +139,9 @@ const ScrollProgressBar = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-1 bg-background/30 backdrop-blur-sm z-50">
+    <div className="fixed top-0 left-0 right-0 h-1 bg-background/30  z-50">
       <div
-        className="h-full bg-gradient-to-r from-primary/80 via-violet-500/80 to-primary/80"
+        className="h-full bg-gradient-to-r from-primary/80 via-primary/80 to-primary/80"
         style={{ width: `${scrollProgress * 100}%` }}
       />
     </div>
@@ -204,9 +204,9 @@ export default function AboutPage() {
   return (
     <div className="animate-fade-in">
       <ScrollProgressBar />
-      <div className="w-full bg-gradient-to-r from-primary/20 via-primary/10 to-violet-500/20 mb-8 backdrop-blur-sm relative overflow-hidden">
+      <div className="w-full bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 mb-8  relative overflow-hidden">
         <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-[100px] opacity-60"></div>
-        <div className="absolute -bottom-10 right-0 w-40 h-40 bg-violet-500/10 rounded-full blur-[80px]"></div>
+        <div className="absolute -bottom-10 right-0 w-40 h-40 bg-primary/10 rounded-full blur-[80px]"></div>
         <div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full"
           style={gridPatternStyle}
@@ -215,8 +215,8 @@ export default function AboutPage() {
         <div className="container max-w-5xl px-4 py-6 md:px-6 md:py-6 lg:px-8 lg:py-8 relative z-10">
           <div className="relative">
             <div className="absolute -top-1 -left-1 w-20 h-20 bg-primary/10 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-4 -right-8 w-32 h-32 bg-violet-500/10 rounded-full blur-3xl"></div>
-            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-3 text-primary relative z-10 bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
+            <div className="absolute -bottom-4 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-3 text-primary relative z-10 bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
               About Budget Buddy
             </h1>
             <p className="text-muted-foreground max-w-2xl text-lg relative z-10 sm:text-xl">
@@ -227,7 +227,7 @@ export default function AboutPage() {
       </div>
 
       {/* Quick Navigation Menu */}
-      <div className="sticky top-[60px] z-30 bg-background/80 backdrop-blur-md border-b border-primary/10 mb-6 shadow-sm">
+      <div className="sticky top-[60px] z-30 bg-background/80 backdrop-blur-md border-b border-primary/10 mb-6 ">
         <div className="container max-w-5xl px-4">
           <div className="overflow-x-auto flex items-center -mx-4 px-4 py-2">
             <div className="flex items-center gap-1 sm:gap-2 px-4">
@@ -270,8 +270,8 @@ export default function AboutPage() {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-16 scroll-mt-20"
         >
           <AnimateInView className="md:col-span-2">
-            <Card className="h-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-primary/10">
-              <CardHeader className="bg-gradient-to-r from-primary/5 to-violet-500/5 border-b border-primary/10 p-6">
+            <Card className="h-full overflow-hidden  transition-all duration-300  border-primary/10">
+              <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/5 border-b border-primary/10 p-6">
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <Target className="w-5 h-5 text-primary" />
                   Our Mission
@@ -311,21 +311,21 @@ export default function AboutPage() {
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="bg-violet-500/10 text-violet-600 border-violet-500/20 px-3 py-1 font-medium"
+                    className="bg-primary/10 text-primary border-primary/20 px-3 py-1 font-medium"
                   >
                     <Headphones className="w-3 h-3 mr-1" />
                     Voice Enabled
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20 px-3 py-1 font-medium"
+                    className="bg-muted text-foreground border-border px-3 py-1 font-medium"
                   >
                     <TrendingUp className="w-3 h-3 mr-1" />
                     Real-time Sync
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="bg-blue-500/10 text-blue-600 border-blue-500/20 px-3 py-1 font-medium"
+                    className="bg-muted text-foreground border-border px-3 py-1 font-medium"
                   >
                     <Database className="w-3 h-3 mr-1" />
                     Export Ready
@@ -336,8 +336,8 @@ export default function AboutPage() {
           </AnimateInView>
 
           <AnimateInView delay={200}>
-            <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-primary/10">
-              <CardHeader className="bg-gradient-to-r from-primary/5 to-violet-500/5 border-b border-primary/10 p-6">
+            <Card className="h-full  transition-all duration-300  border-primary/10">
+              <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/5 border-b border-primary/10 p-6">
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <Star className="w-5 h-5 text-primary" />
                   Key Features
@@ -382,7 +382,7 @@ export default function AboutPage() {
                       key={index}
                       className="flex items-center gap-3 rounded-lg p-2 hover:bg-muted/50 transition-all duration-200 group"
                     >
-                      <div className="text-primary group-hover:scale-110 transition-transform">
+                      <div className="text-primary transition-transform">
                         {feature.icon}
                       </div>
                       <span className="text-sm group-hover:translate-x-1 transition-transform text-foreground/90">
@@ -398,8 +398,8 @@ export default function AboutPage() {
 
         {/* What Makes Us Different Section */}
         <AnimateInView>
-          <Card className="mb-10 sm:mb-12 shadow-lg hover:shadow-xl transition-all duration-300 border-primary/10 overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-violet-400/10 border-b border-primary/10 p-6">
+          <Card className="mb-10 sm:mb-12  transition-all duration-300 border-primary/10 overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/10 border-b border-primary/10 p-6">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Heart className="w-5 h-5 text-primary" />
                 What Makes Us Different
@@ -416,50 +416,50 @@ export default function AboutPage() {
                     title: 'AI-First Approach',
                     description:
                       "Unlike traditional budgeting apps, we've built AI into every feature from day one, providing intelligent insights and automated categorization.",
-                    color: 'from-yellow-500/20 to-orange-500/20',
+                    color: 'from-muted to-muted',
                   },
                   {
                     icon: <Headphones className="w-6 h-6" />,
                     title: 'Voice-Powered Interface',
                     description:
                       'Add transactions and get insights using natural voice commands - a feature rarely found in financial apps.',
-                    color: 'from-purple-500/20 to-pink-500/20',
+                    color: 'from-muted to-muted',
                   },
                   {
                     icon: <Globe2 className="w-6 h-6" />,
                     title: 'Multi-Provider AI',
                     description:
                       'Access to 20+ AI providers ensures you always get the best insights, with automatic fallbacks and model selection.',
-                    color: 'from-blue-500/20 to-cyan-500/20',
+                    color: 'from-muted to-muted',
                   },
                   {
                     icon: <Lock className="w-6 h-6" />,
                     title: 'Privacy-First Design',
                     description:
                       'Your financial data stays secure with bank-level encryption and zero-knowledge architecture.',
-                    color: 'from-green-500/20 to-emerald-500/20',
+                    color: 'from-muted to-muted',
                   },
                   {
                     icon: <Smartphone className="w-6 h-6" />,
                     title: 'Mobile Excellence',
                     description:
                       'Built mobile-first with progressive web app capabilities for native-like experience on any device.',
-                    color: 'from-indigo-500/20 to-violet-500/20',
+                    color: 'from-muted to-muted',
                   },
                   {
                     icon: <TrendingUp className="w-6 h-6" />,
                     title: 'Predictive Analytics',
                     description:
                       'Advanced forecasting helps you plan ahead with spending predictions and budget optimization suggestions.',
-                    color: 'from-red-500/20 to-pink-500/20',
+                    color: 'from-muted to-muted',
                   },
                 ].map((item, index) => (
                   <div key={index} className="group">
                     <div
-                      className={`p-4 rounded-xl bg-gradient-to-br ${item.color} border border-primary/10 hover:border-primary/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg`}
+                      className={`p-4 rounded-xl bg-gradient-to-br ${item.color} border border-primary/10 hover:border-primary/20 transition-all duration-300  `}
                     >
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="text-primary group-hover:scale-110 transition-transform">
+                        <div className="text-primary transition-transform">
                           {item.icon}
                         </div>
                         <h3 className="font-semibold text-foreground">{item.title}</h3>
@@ -477,8 +477,8 @@ export default function AboutPage() {
 
         {/* Blockchain Integration with Nitrolite Section */}
         <AnimateInView>
-          <Card className="mb-10 sm:mb-12 shadow-lg hover:shadow-xl transition-all duration-300 border-primary/10 overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-violet-400/10 border-b border-primary/10 p-6">
+          <Card className="mb-10 sm:mb-12  transition-all duration-300 border-primary/10 overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/10 border-b border-primary/10 p-6">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -582,7 +582,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-primary/5 to-violet-500/5 rounded-lg p-4 border border-primary/10">
+              <div className="bg-gradient-to-r from-primary/5 to-primary/5 rounded-lg p-4 border border-primary/10">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="font-semibold text-primary mb-1">
@@ -604,7 +604,7 @@ export default function AboutPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Github className="w-3.5 h-3.5 mr-1.5 group-hover:scale-110 transition-transform" />
+                      <Github className="w-3.5 h-3.5 mr-1.5 transition-transform" />
                       <span className="group-hover:translate-x-0.5 transition-transform">
                         View Nitrolite
                       </span>
@@ -619,9 +619,9 @@ export default function AboutPage() {
         <AnimateInView>
           <Card
             id="app-details"
-            className="mb-10 sm:mb-12 shadow-md hover:shadow-xl transition-all duration-300 backdrop-blur-sm bg-white/90 dark:bg-gray-950/90 overflow-hidden scroll-mt-20"
+            className="mb-10 sm:mb-12  transition-all duration-300  bg-card overflow-hidden scroll-mt-20"
           >
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-violet-400/10 border-b border-primary/10 p-6">
+            <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/10 border-b border-primary/10 p-6">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -656,7 +656,7 @@ export default function AboutPage() {
                     <p className="text-sm text-muted-foreground">Version {appVersion}</p>
                     <Badge
                       variant="outline"
-                      className="bg-primary/10 text-primary border-primary/20 shadow-sm"
+                      className="bg-primary/10 text-primary border-primary/20 "
                     >
                       Latest
                     </Badge>
@@ -673,7 +673,7 @@ export default function AboutPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Github className="w-3.5 h-3.5 mr-1.5 group-hover:scale-110 transition-transform" />
+                    <Github className="w-3.5 h-3.5 mr-1.5 transition-transform" />
                     <span className="group-hover:translate-x-0.5 transition-transform">
                       View on GitHub
                     </span>
@@ -681,7 +681,7 @@ export default function AboutPage() {
                 </Button>
               </div>
 
-              <div className="p-5 bg-gradient-to-r from-primary/5 to-violet-500/5 rounded-lg border border-primary/10 mb-6">
+              <div className="p-5 bg-gradient-to-r from-primary/5 to-primary/5 rounded-lg border border-primary/10 mb-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <h3 className="text-sm font-medium flex items-center gap-2 text-primary">
@@ -693,7 +693,7 @@ export default function AboutPage() {
                     </p>
                     <ul className="space-y-2.5 text-sm">
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -702,7 +702,7 @@ export default function AboutPage() {
                         </span>
                       </li>
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -710,7 +710,7 @@ export default function AboutPage() {
                         </span>
                       </li>
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -718,7 +718,7 @@ export default function AboutPage() {
                         </span>
                       </li>
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -726,7 +726,7 @@ export default function AboutPage() {
                         </span>
                       </li>
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -743,7 +743,7 @@ export default function AboutPage() {
                     </h3>
                     <ul className="space-y-2.5 text-sm">
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -751,7 +751,7 @@ export default function AboutPage() {
                         </span>
                       </li>
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -759,7 +759,7 @@ export default function AboutPage() {
                         </span>
                       </li>
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -767,7 +767,7 @@ export default function AboutPage() {
                         </span>
                       </li>
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -775,7 +775,7 @@ export default function AboutPage() {
                         </span>
                       </li>
                       <li className="flex items-start gap-2 group">
-                        <span className="text-primary group-hover:scale-110 transition-transform">
+                        <span className="text-primary transition-transform">
                           •
                         </span>
                         <span className="group-hover:translate-x-0.5 transition-transform">
@@ -799,15 +799,15 @@ export default function AboutPage() {
 
                   {/* Version 15.50.00 */}
                   <div className="relative pl-10 pb-8">
-                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary to-violet-500/80 flex items-center justify-center shadow-lg shadow-primary/20 z-10">
+                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary to-primary/80 flex items-center justify-center  z-10">
                       <span className="text-xs font-semibold text-white">15.5</span>
                     </div>
                     <div className="absolute left-[15px] top-[30px] bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/30 to-transparent"></div>
-                    <div className="bg-card rounded-lg border border-primary/10 shadow-md overflow-hidden">
-                      <div className="bg-gradient-to-r from-primary/5 to-violet-500/5 px-4 py-2.5 border-b border-primary/10 flex justify-between items-center">
+                    <div className="bg-card rounded-lg border border-primary/10  overflow-hidden">
+                      <div className="bg-gradient-to-r from-primary/5 to-primary/5 px-4 py-2.5 border-b border-primary/10 flex justify-between items-center">
                         <Badge
                           variant="outline"
-                          className="bg-primary/10 text-primary border-primary/20 shadow-sm"
+                          className="bg-primary/10 text-primary border-primary/20 "
                         >
                           v15.50.00
                         </Badge>
@@ -850,11 +850,11 @@ export default function AboutPage() {
 
                   {/* Version 13.50.00 */}
                   <div className="relative pl-10 pb-8">
-                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/70 to-violet-500/60 flex items-center justify-center shadow-lg shadow-primary/15 z-10">
+                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/70 to-primary/60 flex items-center justify-center  z-10">
                       <span className="text-xs font-semibold text-white">13.5</span>
                     </div>
                     <div className="absolute left-[15px] top-[30px] bottom-0 w-0.5 bg-gradient-to-b from-primary/40 via-primary/20 to-transparent"></div>
-                    <div className="bg-card rounded-lg border border-muted shadow-sm overflow-hidden">
+                    <div className="bg-card rounded-lg border border-muted  overflow-hidden">
                       <div className="bg-gradient-to-r from-muted/30 to-muted/10 px-4 py-2.5 border-b border-muted flex justify-between items-center">
                         <Badge
                           variant="outline"
@@ -893,11 +893,11 @@ export default function AboutPage() {
 
                   {/* Version 13.25.00 */}
                   <div className="relative pl-10 pb-8">
-                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/70 to-violet-500/60 flex items-center justify-center shadow-lg shadow-primary/15 z-10">
+                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/70 to-primary/60 flex items-center justify-center  z-10">
                       <span className="text-xs font-semibold text-white">13.2</span>
                     </div>
                     <div className="absolute left-[15px] top-[30px] bottom-0 w-0.5 bg-gradient-to-b from-primary/40 via-primary/20 to-transparent"></div>
-                    <div className="bg-card rounded-lg border border-muted shadow-sm overflow-hidden">
+                    <div className="bg-card rounded-lg border border-muted  overflow-hidden">
                       <div className="bg-gradient-to-r from-muted/30 to-muted/10 px-4 py-2.5 border-b border-muted flex justify-between items-center">
                         <Badge
                           variant="outline"
@@ -936,11 +936,11 @@ export default function AboutPage() {
 
                   {/* Version 12.50.00 */}
                   <div className="relative pl-10 pb-8">
-                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/60 to-violet-500/50 flex items-center justify-center shadow-lg shadow-primary/10 z-10">
+                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/60 to-primary/50 flex items-center justify-center  z-10">
                       <span className="text-xs font-semibold text-white">12.5</span>
                     </div>
                     <div className="absolute left-[15px] top-[30px] bottom-0 w-0.5 bg-gradient-to-b from-primary/30 via-primary/15 to-transparent"></div>
-                    <div className="bg-card rounded-lg border border-muted shadow-sm overflow-hidden">
+                    <div className="bg-card rounded-lg border border-muted  overflow-hidden">
                       <div className="bg-gradient-to-r from-muted/30 to-muted/10 px-4 py-2.5 border-b border-muted flex justify-between items-center">
                         <Badge
                           variant="outline"
@@ -979,12 +979,12 @@ export default function AboutPage() {
 
                   {/* Version 8.8.0 */}
                   <div className="relative pl-10 pb-8">
-                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/90 to-violet-500/70 flex items-center justify-center shadow-md shadow-primary/10 z-10">
+                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/90 to-primary/70 flex items-center justify-center  z-10">
                       <span className="text-xs font-semibold text-white">8.8</span>
                     </div>
                     <div className="absolute left-[15px] top-[30px] bottom-0 w-0.5 bg-gradient-to-b from-primary/40 via-primary/20 to-transparent"></div>
-                    <div className="bg-card rounded-lg border border-primary/10 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                      <div className="bg-gradient-to-r from-primary/5 to-violet-500/5 px-4 py-2.5 border-b border-primary/10 flex justify-between items-center">
+                    <div className="bg-card rounded-lg border border-primary/10  overflow-hidden  transition-shadow">
+                      <div className="bg-gradient-to-r from-primary/5 to-primary/5 px-4 py-2.5 border-b border-primary/10 flex justify-between items-center">
                         <Badge
                           variant="outline"
                           className="bg-muted text-muted-foreground border-muted"
@@ -1030,12 +1030,12 @@ export default function AboutPage() {
 
                   {/* Version 8.7.0 */}
                   <div className="relative pl-10 pb-8">
-                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/80 to-violet-500/60 flex items-center justify-center shadow-md shadow-primary/10 z-10">
+                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/80 to-primary/60 flex items-center justify-center  z-10">
                       <span className="text-xs font-semibold text-white">8.7</span>
                     </div>
                     <div className="absolute left-[15px] top-[30px] bottom-0 w-0.5 bg-gradient-to-b from-primary/30 via-primary/15 to-transparent"></div>
-                    <div className="bg-card rounded-lg border border-primary/10 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                      <div className="bg-gradient-to-r from-primary/5 to-violet-500/5 px-4 py-2.5 border-b border-primary/10 flex justify-between items-center">
+                    <div className="bg-card rounded-lg border border-primary/10  overflow-hidden  transition-shadow">
+                      <div className="bg-gradient-to-r from-primary/5 to-primary/5 px-4 py-2.5 border-b border-primary/10 flex justify-between items-center">
                         <Badge
                           variant="outline"
                           className="bg-muted text-muted-foreground border-muted"
@@ -1081,7 +1081,7 @@ export default function AboutPage() {
 
                   {/* Earlier Versions Button */}
                   <div className="relative pl-10">
-                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/50 to-violet-500/30 flex items-center justify-center shadow shadow-primary/5 z-10">
+                    <div className="absolute left-0 top-1 w-[30px] h-[30px] rounded-full bg-gradient-to-tr from-primary/50 to-primary/30 flex items-center justify-center  z-10">
                       <History className="w-4 h-4 text-white/80" />
                     </div>
                     <Button
@@ -1101,9 +1101,9 @@ export default function AboutPage() {
         <AnimateInView>
           <Card
             id="faq"
-            className="mb-10 sm:mb-12 shadow-lg hover:shadow-xl transition-all duration-300 border-primary/10 overflow-hidden scroll-mt-20"
+            className="mb-10 sm:mb-12  transition-all duration-300 border-primary/10 overflow-hidden scroll-mt-20"
           >
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-violet-400/10 border-b border-primary/10 p-6">
+            <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/10 border-b border-primary/10 p-6">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <FileQuestion className="w-5 h-5 text-primary" />
                 Frequently Asked Questions
@@ -1170,7 +1170,7 @@ export default function AboutPage() {
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-gradient-to-r from-primary/5 to-violet-500/5 rounded-lg border border-primary/10">
+              <div className="mt-8 p-6 bg-gradient-to-r from-primary/5 to-primary/5 rounded-lg border border-primary/10">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <MessageCircle className="w-5 h-5 text-primary" />
@@ -1208,8 +1208,8 @@ export default function AboutPage() {
 
         {/* Statistics Section */}
         <AnimateInView>
-          <Card className="mb-10 sm:mb-12 shadow-lg hover:shadow-xl transition-all duration-300 border-primary/10 overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-violet-400/10 border-b border-primary/10 p-6">
+          <Card className="mb-10 sm:mb-12  transition-all duration-300 border-primary/10 overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/10 border-b border-primary/10 p-6">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Zap className="w-5 h-5 text-primary" />
                 Core Capabilities
@@ -1226,40 +1226,40 @@ export default function AboutPage() {
                     number: '20+',
                     label: 'AI Providers',
                     description: 'OpenAI, Google Gemini, Claude, Mistral, Groq, and more',
-                    color: 'from-purple-500/20 to-purple-600/20',
-                    textColor: 'text-purple-600',
+                    color: 'from-muted to-muted',
+                    textColor: 'text-foreground',
                   },
                   {
                     icon: <Headphones className="w-8 h-8" />,
                     number: 'Voice',
                     label: 'Interface',
                     description: 'Natural language commands for transactions and insights',
-                    color: 'from-blue-500/20 to-blue-600/20',
-                    textColor: 'text-blue-600',
+                    color: 'from-muted to-muted',
+                    textColor: 'text-foreground',
                   },
                   {
                     icon: <MousePointerClick className="w-8 h-8" />,
                     number: 'Drag &',
                     label: 'Drop UI',
                     description: 'Intuitive budget and transaction management',
-                    color: 'from-green-500/20 to-green-600/20',
-                    textColor: 'text-green-600',
+                    color: 'from-muted to-muted',
+                    textColor: 'text-foreground',
                   },
                   {
                     icon: <Database className="w-8 h-8" />,
                     number: 'Real-time',
                     label: 'Sync',
                     description: 'Instant updates across all devices with Supabase',
-                    color: 'from-amber-500/20 to-amber-600/20',
-                    textColor: 'text-amber-600',
+                    color: 'from-muted to-muted',
+                    textColor: 'text-foreground',
                   },
                 ].map((stat, index) => (
                   <div key={index} className="group">
                     <div
-                      className={`p-6 rounded-xl bg-gradient-to-br ${stat.color} border border-border/50 hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg text-center`}
+                      className={`p-6 rounded-xl bg-gradient-to-br ${stat.color} border border-border/50 hover:border-primary/30 transition-all duration-300   text-center`}
                     >
                       <div
-                        className={`${stat.textColor} mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                        className={`${stat.textColor} mx-auto mb-4 transition-transform duration-300`}
                       >
                         {stat.icon}
                       </div>
@@ -1276,7 +1276,7 @@ export default function AboutPage() {
               </div>
 
               <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-4 bg-gradient-to-r from-primary/5 to-violet-500/5 rounded-lg border border-primary/10">
+                <div className="p-4 bg-gradient-to-r from-primary/5 to-primary/5 rounded-lg border border-primary/10">
                   <div className="flex items-center gap-3 mb-2">
                     <Code className="w-5 h-5 text-primary" />
                     <h3 className="font-semibold text-foreground">Modern Tech Stack</h3>
@@ -1286,9 +1286,9 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="p-4 bg-gradient-to-r from-emerald-500/5 to-green-500/5 rounded-lg border border-emerald-500/10">
+                <div className="p-4 bg-gradient-to-r from-primary/5 to-primary/5 rounded-lg border border-primary/10">
                   <div className="flex items-center gap-3 mb-2">
-                    <BarChart4 className="w-5 h-5 text-emerald-600" />
+                    <BarChart4 className="w-5 h-5 text-primary" />
                     <h3 className="font-semibold text-foreground">Smart Analytics</h3>
                   </div>
                   <p className="text-sm text-muted-foreground">
@@ -1296,9 +1296,9 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="p-4 bg-gradient-to-r from-violet-500/5 to-purple-500/5 rounded-lg border border-violet-500/10">
+                <div className="p-4 bg-gradient-to-r from-primary/5 to-primary/5 rounded-lg border border-primary/10">
                   <div className="flex items-center gap-3 mb-2">
-                    <Shield className="w-5 h-5 text-violet-600" />
+                    <Shield className="w-5 h-5 text-primary" />
                     <h3 className="font-semibold text-foreground">Enterprise Security</h3>
                   </div>
                   <p className="text-sm text-muted-foreground">
@@ -1311,8 +1311,8 @@ export default function AboutPage() {
         </AnimateInView>
 
         {/* <AnimateInView>
-          <Card id="developer" className="mb-10 sm:mb-12 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden scroll-mt-20">
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-violet-400/10 border-b border-primary/10 p-6">
+          <Card id="developer" className="mb-10 sm:mb-12  transition-all duration-300  overflow-hidden scroll-mt-20">
+            <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/10 border-b border-primary/10 p-6">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <UserCircle className="w-5 h-5" />
                 Meet the Developer
@@ -1323,21 +1323,21 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className="p-0 overflow-hidden">
               <div className="relative">
-                <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-br from-primary/10 to-violet-500/10 z-0"></div>
+                <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-br from-primary/10 to-primary/10 z-0"></div>
                 <div className="absolute top-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
                 
                 <div className="p-6 pt-10 relative z-10">
                   <div className="flex flex-col md:flex-row gap-8">
                     <div className="flex flex-col items-center md:items-start">
-                      <div className="w-36 h-36 md:w-48 md:h-48 rounded-xl overflow-hidden border-4 border-background shadow-2xl relative group">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-violet-500/30 opacity-70 group-hover:opacity-40 transition-opacity duration-300"></div>
+                      <div className="w-36 h-36 md:w-48 md:h-48 rounded-xl overflow-hidden border-4 border-background border relative group">
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/30 opacity-70 group-hover:opacity-40 transition-opacity duration-300"></div>
                         <div className="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
                         <Image
                           src="/1.png"
                           alt="Aditya Kumar Tiwari"
                           width={224}
                           height={224}
-                          className="object-cover w-full h-full relative z-10 group-hover:scale-105 transition-transform duration-500"
+                          className="object-cover w-full h-full relative z-10 transition-transform duration-500"
                           unoptimized
                         />
                         <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent z-20"></div>
@@ -1346,22 +1346,22 @@ export default function AboutPage() {
                       <div className="flex flex-wrap gap-2 justify-center mt-4 md:hidden">
                         <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-primary/5 group transition-all" asChild>
                           <Link href="https://github.com/Xenonesis" target="_blank" rel="noopener noreferrer">
-                            <Github className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                            <Github className="h-4 w-4 transition-transform" />
                           </Link>
                         </Button>
                         <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-primary/5 group transition-all" asChild>
                           <Link href="https://www.linkedin.com/in/itisaddy/" target="_blank" rel="noopener noreferrer">
-                            <Linkedin className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                            <Linkedin className="h-4 w-4 transition-transform" />
                           </Link>
                         </Button>
                         <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-primary/5 group transition-all" asChild>
                           <Link href="https://www.instagram.com/i__aditya7/" target="_blank" rel="noopener noreferrer">
-                            <Instagram className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                            <Instagram className="h-4 w-4 transition-transform" />
                           </Link>
                         </Button>
                         <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-primary/5 group transition-all" asChild>
                           <Link href="https://iaddy.netlify.app/" target="_blank" rel="noopener noreferrer">
-                            <Globe className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                            <Globe className="h-4 w-4 transition-transform" />
                           </Link>
                         </Button>
                       </div>
@@ -1369,31 +1369,31 @@ export default function AboutPage() {
                     
                     <div className="flex-1 space-y-5 text-center md:text-left">
                       <div>
-                        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-1 bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent inline-block">Aditya Kumar Tiwari</h3>
+                        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-1 bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent inline-block">Aditya Kumar Tiwari</h3>
                         <p className="text-muted-foreground text-sm sm:text-base">Cybersecurity Specialist • Full-Stack Developer • Sushant University</p>
                         
                         <div className="mt-3 hidden md:flex flex-wrap gap-2">
                           <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-primary/5 group transition-all" asChild>
                             <Link href="https://github.com/Xenonesis" target="_blank" rel="noopener noreferrer">
-                              <Github className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                              <Github className="h-4 w-4 transition-transform" />
                               <span className="text-xs group-hover:translate-x-0.5 transition-transform">GitHub</span>
                             </Link>
                           </Button>
                           <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-primary/5 group transition-all" asChild>
                             <Link href="https://www.linkedin.com/in/itisaddy/" target="_blank" rel="noopener noreferrer">
-                              <Linkedin className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                              <Linkedin className="h-4 w-4 transition-transform" />
                               <span className="text-xs group-hover:translate-x-0.5 transition-transform">LinkedIn</span>
                             </Link>
                           </Button>
                           <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-primary/5 group transition-all" asChild>
                             <Link href="https://www.instagram.com/i__aditya7/" target="_blank" rel="noopener noreferrer">
-                              <Instagram className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                              <Instagram className="h-4 w-4 transition-transform" />
                               <span className="text-xs group-hover:translate-x-0.5 transition-transform">Instagram</span>
                             </Link>
                           </Button>
                           <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-primary/5 group transition-all" asChild>
                             <Link href="https://iaddy.netlify.app/" target="_blank" rel="noopener noreferrer">
-                              <Globe className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                              <Globe className="h-4 w-4 transition-transform" />
                               <span className="text-xs group-hover:translate-x-0.5 transition-transform">Portfolio</span>
                             </Link>
                           </Button>
@@ -1425,7 +1425,7 @@ export default function AboutPage() {
                 </div>
                 
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-8 p-6 pt-0">
-                  <div className="p-5 rounded-lg bg-gradient-to-r from-primary/5 to-violet-500/5 border border-primary/10">
+                  <div className="p-5 rounded-lg bg-gradient-to-r from-primary/5 to-primary/5 border border-primary/10">
                     <h4 className="text-sm font-medium mb-4 flex items-center gap-2">
                       <BarChart4 className="h-4 w-4 text-primary" />
                       Professional Experience
@@ -1433,7 +1433,7 @@ export default function AboutPage() {
                     <ul className="space-y-4">
                       <li className="relative pl-7 group">
                         <div className="absolute top-0 left-0 h-full w-0.5 bg-gradient-to-b from-primary/50 to-primary/0 rounded-full"></div>
-                        <div className="absolute top-0 left-0 w-5 h-5 rounded-full bg-gradient-to-tr from-primary to-violet-500 flex items-center justify-center shadow-md shadow-primary/10 group-hover:scale-110 transition-transform">
+                        <div className="absolute top-0 left-0 w-5 h-5 rounded-full bg-gradient-to-tr from-primary to-primary flex items-center justify-center  transition-transform">
                           <div className="w-2 h-2 bg-white rounded-full"></div>
                         </div>
                         <div className="flex justify-between mb-1.5">
@@ -1444,7 +1444,7 @@ export default function AboutPage() {
                       </li>
                       <li className="relative pl-7 group">
                         <div className="absolute top-0 left-0 h-full w-0.5 bg-gradient-to-b from-primary/30 to-primary/0 rounded-full"></div>
-                        <div className="absolute top-0 left-0 w-5 h-5 rounded-full bg-gradient-to-tr from-primary/70 to-violet-500/70 flex items-center justify-center shadow-md shadow-primary/10 group-hover:scale-110 transition-transform">
+                        <div className="absolute top-0 left-0 w-5 h-5 rounded-full bg-gradient-to-tr from-primary/70 to-primary/70 flex items-center justify-center  transition-transform">
                           <div className="w-2 h-2 bg-white rounded-full"></div>
                         </div>
                         <div className="flex justify-between mb-1.5">
@@ -1455,7 +1455,7 @@ export default function AboutPage() {
                       </li>
                       <li className="relative pl-7 group">
                         <div className="absolute top-0 left-0 h-full w-0.5 bg-gradient-to-b from-primary/20 to-transparent rounded-full"></div>
-                        <div className="absolute top-0 left-0 w-5 h-5 rounded-full bg-gradient-to-tr from-primary/50 to-violet-500/50 flex items-center justify-center shadow-md shadow-primary/10 group-hover:scale-110 transition-transform">
+                        <div className="absolute top-0 left-0 w-5 h-5 rounded-full bg-gradient-to-tr from-primary/50 to-primary/50 flex items-center justify-center  transition-transform">
                           <div className="w-2 h-2 bg-white rounded-full"></div>
                         </div>
                         <div className="flex justify-between mb-1.5">
@@ -1467,7 +1467,7 @@ export default function AboutPage() {
                     </ul>
                   </div>
                   
-                  <div className="p-5 rounded-lg bg-gradient-to-r from-primary/5 to-violet-500/5 border border-primary/10">
+                  <div className="p-5 rounded-lg bg-gradient-to-r from-primary/5 to-primary/5 border border-primary/10">
                     <h4 className="text-sm font-medium mb-4 flex items-center gap-2">
                       <Trophy className="h-4 w-4 text-primary" />
                       Featured Projects
@@ -1476,11 +1476,11 @@ export default function AboutPage() {
                       <li className="group hover:bg-white/50 dark:hover:bg-gray-900/50 p-3 rounded-lg transition-colors">
                         <h5 className="text-sm font-medium flex items-center gap-2 mb-1">
                           <span className="group-hover:text-primary transition-colors">SEO Optimized Website</span>
-                          <Badge className="text-[10px] h-4 bg-amber-500/90 group-hover:bg-amber-500 transition-colors">Website</Badge>
+                          <Badge className="text-[10px] h-4 bg-muted text-foreground transition-colors">Website</Badge>
                         </h5>
                         <p className="text-xs text-muted-foreground group-hover:text-muted-foreground/80 transition-colors">An SEO-optimized website to improve search engine visibility using best practices.</p>
                         <div className="mt-2">
-                          <Button variant="ghost" size="sm" className="h-7 text-[10px] rounded-full px-2.5 hover:bg-amber-500/10 hover:text-amber-500">
+                          <Button variant="ghost" size="sm" className="h-7 text-[10px] rounded-full px-2.5 hover:bg-muted hover:text-foreground">
                             <ExternalLink className="h-3 w-3 mr-1" />
                             View Project
                           </Button>
@@ -1489,11 +1489,11 @@ export default function AboutPage() {
                       <li className="group hover:bg-white/50 dark:hover:bg-gray-900/50 p-3 rounded-lg transition-colors">
                         <h5 className="text-sm font-medium flex items-center gap-2 mb-1">
                           <span className="group-hover:text-primary transition-colors">PropDekho</span>
-                          <Badge className="text-[10px] h-4 bg-emerald-500/90 group-hover:bg-emerald-500 transition-colors">Real Estate</Badge>
+                          <Badge className="text-[10px] h-4 bg-muted text-foreground transition-colors">Real Estate</Badge>
                         </h5>
                         <p className="text-xs text-muted-foreground group-hover:text-muted-foreground/80 transition-colors">A real estate website that helps users find and explore properties easily.</p>
                         <div className="mt-2">
-                          <Button variant="ghost" size="sm" className="h-7 text-[10px] rounded-full px-2.5 hover:bg-emerald-500/10 hover:text-emerald-500">
+                          <Button variant="ghost" size="sm" className="h-7 text-[10px] rounded-full px-2.5 hover:bg-muted hover:text-foreground">
                             <ExternalLink className="h-3 w-3 mr-1" />
                             View Project
                           </Button>
@@ -1502,11 +1502,11 @@ export default function AboutPage() {
                       <li className="group hover:bg-white/50 dark:hover:bg-gray-900/50 p-3 rounded-lg transition-colors">
                         <h5 className="text-sm font-medium flex items-center gap-2 mb-1">
                           <span className="group-hover:text-primary transition-colors">Real Estate ChatBot</span>
-                          <Badge className="text-[10px] h-4 bg-violet-500/90 group-hover:bg-violet-500 transition-colors">AI Assistant</Badge>
+                          <Badge className="text-[10px] h-4 bg-muted text-foreground transition-colors">AI Assistant</Badge>
                         </h5>
                         <p className="text-xs text-muted-foreground group-hover:text-muted-foreground/80 transition-colors">A chatbot developed for real estate inquiries, offering users assistance in finding properties.</p>
                         <div className="mt-2">
-                          <Button variant="ghost" size="sm" className="h-7 text-[10px] rounded-full px-2.5 hover:bg-violet-500/10 hover:text-violet-500">
+                          <Button variant="ghost" size="sm" className="h-7 text-[10px] rounded-full px-2.5 hover:bg-primary/10 hover:text-foreground">
                             <ExternalLink className="h-3 w-3 mr-1" />
                             View Project
                           </Button>
@@ -1530,9 +1530,9 @@ export default function AboutPage() {
         <AnimateInView>
           <Card
             id="faq"
-            className="mb-10 sm:mb-12 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden scroll-mt-20"
+            className="mb-10 sm:mb-12  transition-all duration-300  overflow-hidden scroll-mt-20"
           >
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-violet-400/10 border-b border-primary/10 p-6">
+            <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/10 border-b border-primary/10 p-6">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <MessageCircle className="w-5 h-5" />
                 Frequently Asked Questions
@@ -1544,7 +1544,7 @@ export default function AboutPage() {
             <CardContent className="p-6">
               <div className="relative">
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-                <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-violet-500/5 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div className="relative z-10 space-y-4">
                   {[
@@ -1584,7 +1584,7 @@ export default function AboutPage() {
                     return (
                       <div
                         key={index}
-                        className="rounded-lg border border-muted hover:border-primary/20 transition-all duration-300 hover:shadow-md"
+                        className="rounded-lg border border-muted hover:border-primary/20 transition-all duration-300 "
                       >
                         <button
                           onClick={() =>
@@ -1622,7 +1622,7 @@ export default function AboutPage() {
                   })}
                 </div>
 
-                <div className="mt-8 text-center p-4 bg-gradient-to-r from-primary/5 to-violet-500/5 rounded-lg border border-primary/10">
+                <div className="mt-8 text-center p-4 bg-gradient-to-r from-primary/5 to-primary/5 rounded-lg border border-primary/10">
                   <h3 className="text-sm font-medium mb-2">Still have questions?</h3>
                   <p className="text-sm text-muted-foreground mb-4">
                     If you can&apos;t find the answer to your question, feel free to reach out to
@@ -1640,8 +1640,8 @@ export default function AboutPage() {
 
         <div id="stack" className="scroll-mt-20">
           <AnimateInView>
-            <Card className="mb-10 sm:mb-12 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-primary/10 to-violet-400/10 border-b border-primary/10 p-6">
+            <Card className="mb-10 sm:mb-12  transition-all duration-300  overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/10 border-b border-primary/10 p-6">
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <Cpu className="w-5 h-5" />
                   Tech Stack
@@ -1693,7 +1693,7 @@ export default function AboutPage() {
                       ].map((tech, i) => (
                         <div
                           key={i}
-                          className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-white/50 dark:bg-gray-900/50 hover:shadow-md group"
+                          className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-card  group"
                         >
                           <div className="w-12 h-12 mb-3 relative flex items-center justify-center">
                             <div className="absolute inset-0 bg-primary/5 rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
@@ -1702,7 +1702,7 @@ export default function AboutPage() {
                                 name={tech.name}
                                 logo={tech.logo}
                                 size={40}
-                                className="w-full h-full group-hover:scale-110 transition-transform"
+                                className="w-full h-full transition-transform"
                               />
                             </div>
                           </div>
@@ -1748,7 +1748,7 @@ export default function AboutPage() {
                       ].map((tech, i) => (
                         <div
                           key={i}
-                          className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-white/50 dark:bg-gray-900/50 hover:shadow-md group"
+                          className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-card  group"
                         >
                           <div className="w-12 h-12 mb-3 relative flex items-center justify-center">
                             <div className="absolute inset-0 bg-primary/5 rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
@@ -1757,7 +1757,7 @@ export default function AboutPage() {
                                 name={tech.name}
                                 logo={tech.logo}
                                 size={40}
-                                className="w-full h-full group-hover:scale-110 transition-transform"
+                                className="w-full h-full transition-transform"
                               />
                             </div>
                           </div>
@@ -1797,7 +1797,7 @@ export default function AboutPage() {
                       ].map((tech, i) => (
                         <div
                           key={i}
-                          className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-white/50 dark:bg-gray-900/50 hover:shadow-md group"
+                          className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-card  group"
                         >
                           <div className="w-12 h-12 mb-3 relative flex items-center justify-center">
                             <div className="absolute inset-0 bg-primary/5 rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
@@ -1806,7 +1806,7 @@ export default function AboutPage() {
                                 name={tech.name}
                                 logo={tech.logo}
                                 size={40}
-                                className="w-full h-full group-hover:scale-110 transition-transform"
+                                className="w-full h-full transition-transform"
                               />
                             </div>
                           </div>
@@ -1847,15 +1847,15 @@ export default function AboutPage() {
 
         <div id="compare" className="scroll-mt-20">
           <AnimateInView>
-            <Card className="mb-10 sm:mb-12 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border-0 bg-gradient-to-br from-white via-white to-primary/5 dark:from-gray-950 dark:via-gray-950 dark:to-primary/5">
-              <CardHeader className="bg-gradient-to-r from-primary/15 via-violet-400/10 to-primary/15 border-b border-primary/20 p-8 relative overflow-hidden">
+            <Card className="mb-10 sm:mb-12  transition-all duration-500  overflow-hidden border-0 bg-card">
+              <CardHeader className="bg-gradient-to-r from-primary/15 via-primary/10 to-primary/15 border-b border-primary/20 p-8 relative overflow-hidden">
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-5 -left-5 w-20 h-20 bg-violet-500/10 rounded-full blur-2xl"></div>
+                <div className="absolute -bottom-5 -left-5 w-20 h-20 bg-primary/10 rounded-full blur-2xl"></div>
                 <CardTitle className="flex items-center gap-3 text-2xl font-bold relative z-10">
                   <div className="p-2 rounded-xl bg-primary/10 border border-primary/20">
                     <Table className="w-6 h-6 text-primary" />
                   </div>
-                  <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                     Feature Comparison
                   </span>
                 </CardTitle>
@@ -1867,8 +1867,8 @@ export default function AboutPage() {
               <CardContent className="p-8">
                 <div className="space-y-8">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-violet-500/5 to-primary/10 rounded-2xl blur-sm"></div>
-                    <div className="relative bg-gradient-to-r from-primary/8 to-violet-500/8 p-6 rounded-2xl border border-primary/20 backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl blur-sm"></div>
+                    <div className="relative bg-gradient-to-r from-primary/8 to-primary/8 p-6 rounded-2xl border border-primary/20 ">
                       <div className="flex items-start gap-4">
                         <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
                           <Sparkles className="w-6 h-6 text-primary" />
@@ -1899,10 +1899,10 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  <div className="overflow-x-auto rounded-2xl border border-primary/20 bg-gradient-to-br from-white to-primary/5 dark:from-gray-900 dark:to-primary/10">
+                  <div className="overflow-x-auto rounded-2xl border border-primary/20 bg-gradient-to-br from-white to-primary/5 dark:from-muted dark:to-primary/10">
                     <UITable>
                       <TableHeader>
-                        <TableRow className="hover:bg-transparent border-b border-primary/20 bg-gradient-to-r from-primary/5 to-violet-500/5 dark:from-primary/10 dark:to-violet-500/10">
+                        <TableRow className="hover:bg-transparent border-b border-primary/20 bg-gradient-to-r from-primary/5 to-primary/5 dark:from-primary/10 dark:to-primary/10">
                           <TableHead className="w-[300px] p-6 font-bold text-foreground">
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 rounded-full bg-primary"></div>
@@ -2000,11 +2000,11 @@ export default function AboutPage() {
                         ].map((row, i) => (
                           <TableRow
                             key={i}
-                            className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-violet-500/5 dark:hover:from-primary/10 dark:hover:to-violet-500/10 transition-all duration-300 border-b border-primary/10 group"
+                            className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/5 dark:hover:from-primary/10 dark:hover:to-primary/10 transition-all duration-300 border-b border-primary/10 group"
                           >
                             <TableCell className="font-medium p-6">
                               <div className="flex items-start gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 transition-transform">
                                   <span className="text-xs font-bold text-primary">{i + 1}</span>
                                 </div>
                                 <div className="flex flex-col">
@@ -2021,15 +2021,15 @@ export default function AboutPage() {
                               {row.budgetBuddy === true ? (
                                 <div className="flex justify-center">
                                   <div className="relative">
-                                    <div className="absolute inset-0 bg-green-500/20 rounded-full blur-sm"></div>
-                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                                    <div className="absolute inset-0 bg-muted rounded-full blur-sm"></div>
+                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-muted to-muted flex items-center justify-center text-foreground transition-transform">
                                       <Check className="w-5 h-5" />
                                     </span>
                                   </div>
                                 </div>
                               ) : (
                                 <div className="flex justify-center">
-                                  <span className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 border border-red-500/30">
+                                  <span className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground border border-border">
                                     <X className="w-5 h-5" />
                                   </span>
                                 </div>
@@ -2039,8 +2039,8 @@ export default function AboutPage() {
                               {row.traditional === true ? (
                                 <div className="flex justify-center">
                                   <div className="relative">
-                                    <div className="absolute inset-0 bg-green-500/20 rounded-full blur-sm"></div>
-                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                                    <div className="absolute inset-0 bg-muted rounded-full blur-sm"></div>
+                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-muted to-muted flex items-center justify-center text-foreground transition-transform">
                                       <Check className="w-5 h-5" />
                                     </span>
                                   </div>
@@ -2048,15 +2048,15 @@ export default function AboutPage() {
                               ) : row.traditional && row.traditional.partial ? (
                                 <div className="flex justify-center">
                                   <div className="relative">
-                                    <div className="absolute inset-0 bg-amber-500/20 rounded-full blur-sm"></div>
-                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                                    <div className="absolute inset-0 bg-muted rounded-full blur-sm"></div>
+                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-muted to-muted flex items-center justify-center text-foreground transition-transform">
                                       <Check className="w-5 h-5 opacity-80" />
                                     </span>
                                   </div>
                                 </div>
                               ) : (
                                 <div className="flex justify-center">
-                                  <span className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 border border-red-500/30 group-hover:scale-110 transition-transform">
+                                  <span className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground border border-border transition-transform">
                                     <X className="w-5 h-5" />
                                   </span>
                                 </div>
@@ -2069,8 +2069,8 @@ export default function AboutPage() {
                   </div>
 
                   <div className="relative mt-8">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-violet-500/5 to-primary/10 rounded-3xl blur-sm"></div>
-                    <div className="relative bg-gradient-to-br from-primary/8 via-violet-500/5 to-primary/8 p-8 rounded-3xl border border-primary/20 backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-3xl blur-sm"></div>
+                    <div className="relative bg-gradient-to-br from-muted/50 via-muted/30 to-muted/50 p-8 rounded-3xl border border-primary/20 ">
                       <div className="text-center mb-8">
                         <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 mb-4">
                           <Trophy className="w-5 h-5 text-primary" />
@@ -2086,10 +2086,10 @@ export default function AboutPage() {
 
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="group relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-violet-500/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
-                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20 backdrop-blur-sm group-hover:border-primary/30 transition-all">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
+                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20  group-hover:border-primary/30 transition-all">
                             <div className="flex items-start gap-4">
-                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-violet-500/20 border border-primary/30 shrink-0 group-hover:scale-110 transition-transform">
+                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
                                 <Network className="w-6 h-6 text-primary" />
                               </div>
                               <div>
@@ -2106,10 +2106,10 @@ export default function AboutPage() {
                         </div>
 
                         <div className="group relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-violet-500/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
-                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20 backdrop-blur-sm group-hover:border-primary/30 transition-all">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
+                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20  group-hover:border-primary/30 transition-all">
                             <div className="flex items-start gap-4">
-                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-violet-500/20 border border-primary/30 shrink-0 group-hover:scale-110 transition-transform">
+                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
                                 <Cpu className="w-6 h-6 text-primary" />
                               </div>
                               <div>
@@ -2126,10 +2126,10 @@ export default function AboutPage() {
                         </div>
 
                         <div className="group relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-violet-500/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
-                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20 backdrop-blur-sm group-hover:border-primary/30 transition-all">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
+                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20  group-hover:border-primary/30 transition-all">
                             <div className="flex items-start gap-4">
-                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-violet-500/20 border border-primary/30 shrink-0 group-hover:scale-110 transition-transform">
+                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
                                 <LayoutGrid className="w-6 h-6 text-primary" />
                               </div>
                               <div>

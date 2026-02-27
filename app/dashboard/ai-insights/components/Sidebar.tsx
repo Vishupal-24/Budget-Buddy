@@ -76,7 +76,7 @@ export function Sidebar({
         {/* Header */}
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-gradient-to-br from-primary to-blue-600 rounded flex items-center justify-center">
+            <div className="w-6 h-6 bg-gradient-to-br from-primary to-muted rounded flex items-center justify-center">
               <DollarSign className="h-3 w-3 text-white" />
             </div>
             <h2

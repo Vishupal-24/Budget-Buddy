@@ -187,7 +187,7 @@ export const Logo = React.memo(function Logo({
             className={`relative flex items-center justify-center ${sizeMap[size].container} transition-all duration-300`}
           >
             <div
-              className={`${sizeMap[size].logo} bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold transition-all duration-300 shadow-lg`}
+              className={`${sizeMap[size].logo} bg-gradient-to-br from-muted to-muted rounded-full flex items-center justify-center text-white font-bold transition-all duration-300 `}
             >
               <span className="text-xs sm:text-sm md:text-base lg:text-lg">BB</span>
             </div>
@@ -196,7 +196,7 @@ export const Logo = React.memo(function Logo({
         {withText && (
           <div className="relative">
             <span
-              className={`font-bold tracking-tight bg-gradient-to-r from-primary via-violet-400 to-indigo-400 bg-clip-text text-transparent ${sizeMap[size].text} ${textClassName}`}
+              className={`font-bold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent ${sizeMap[size].text} ${textClassName}`}
             >
               Budget Buddy
             </span>
@@ -220,17 +220,25 @@ export const Logo = React.memo(function Logo({
           priority={size === 'lg' || size === 'xl' || size === '2xl'}
           fallback={
             <div
-              className={`${sizeMap[size].logo} bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold transition-all duration-300 shadow-lg`}
+              className={`${sizeMap[size].logo} bg-gradient-to-br from-neutral-800 to-neutral-900 dark:from-neutral-100 dark:to-neutral-200 rounded-lg flex items-center justify-center font-bold transition-all duration-300 overflow-hidden`}
             >
-              <span className="text-xs sm:text-sm md:text-base lg:text-lg">BB</span>
+              <svg viewBox="0 0 32 32" className="w-[70%] h-[70%] text-neutral-100 dark:text-neutral-900">
+                <line x1="10" y1="8" x2="10" y2="24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M 10.5,8 L 18,8 C 21,8 23,9.5 23,12 C 23,14.5 21,15.5 18,15.5 L 10.5,15.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
+                <path d="M 10.5,16.5 L 19,16.5 C 22,16.5 24,18 24,20.5 C 24,23 22,24 19,24 L 10.5,24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
             </div>
           }
         />
       ) : (
         <div
-          className={`${sizeMap[size].logo} bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold transition-all duration-300 shadow-lg`}
+          className={`${sizeMap[size].logo} bg-gradient-to-br from-neutral-800 to-neutral-900 dark:from-neutral-100 dark:to-neutral-200 rounded-lg flex items-center justify-center font-bold transition-all duration-300 overflow-hidden`}
         >
-          <span className="text-xs sm:text-sm md:text-base lg:text-lg">BB</span>
+          <svg viewBox="0 0 32 32" className="w-[70%] h-[70%] text-neutral-100 dark:text-neutral-900">
+            <line x1="10" y1="8" x2="10" y2="24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M 10.5,8 L 18,8 C 21,8 23,9.5 23,12 C 23,14.5 21,15.5 18,15.5 L 10.5,15.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
+            <path d="M 10.5,16.5 L 19,16.5 C 22,16.5 24,18 24,20.5 C 24,23 22,24 19,24 L 10.5,24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
         </div>
       )}
     </div>
@@ -242,16 +250,16 @@ export const Logo = React.memo(function Logo({
       <div className={`flex items-center gap-2 ${className}`}>
         <div className="relative">
           {logoContent}
-          <div className="absolute inset-0 rounded-full bg-primary/10 blur-sm -z-10"></div>
+          <div className="absolute inset-0 rounded-lg bg-muted/30 blur-sm -z-10"></div>
         </div>
         {withText && (
           <div className="relative">
             <span
-              className={`font-bold tracking-tight bg-gradient-to-r from-primary via-violet-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] ${sizeMap[size].text} ${textClassName}`}
+              className={`font-bold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.15)] ${sizeMap[size].text} ${textClassName}`}
             >
               Budget Buddy
             </span>
-            <div className="absolute -inset-1 bg-primary/5 blur-sm rounded-lg -z-10"></div>
+            <div className="absolute -inset-1 bg-muted/10 blur-sm rounded-lg -z-10"></div>
           </div>
         )}
       </div>
@@ -270,7 +278,7 @@ export const Logo = React.memo(function Logo({
       >
         {logoContent}
         <motion.div
-          className="absolute inset-0 rounded-full bg-primary/10 blur-sm -z-10"
+          className="absolute inset-0 rounded-lg bg-muted/30 blur-sm -z-10"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -284,9 +292,9 @@ export const Logo = React.memo(function Logo({
           transition={{ delay: 0.2, duration: 0.3 }}
         >
           <motion.span
-            className={`font-bold tracking-tight bg-gradient-to-r from-primary via-violet-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] ${sizeMap[size].text} ${textClassName}`}
+            className={`font-bold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.15)] ${sizeMap[size].text} ${textClassName}`}
             whileHover={{
-              textShadow: '0 0 8px rgba(124, 58, 237, 0.5)',
+              textShadow: '0 0 8px rgba(100, 100, 100, 0.3)',
               scale: 1.02,
               transition: { duration: 0.2 },
             }}
@@ -294,7 +302,7 @@ export const Logo = React.memo(function Logo({
             Budget Buddy
           </motion.span>
           <motion.div
-            className="absolute -inset-1 bg-primary/5 blur-sm rounded-lg -z-10"
+            className="absolute -inset-1 bg-muted/10 blur-sm rounded-lg -z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.3 }}

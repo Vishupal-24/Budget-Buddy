@@ -2061,17 +2061,17 @@ export async function testMistralConnection(apiKey: string): Promise<{ success: 
     });
     
     if (response.ok) {
-      return { success: true, message: "✅ Mistral API connection successful!" };
+      return { success: true, message: "Mistral API connection successful!" };
     } else if (response.status === 401) {
-      return { success: false, message: "❌ Invalid API key. Please check your Mistral API key." };
+      return { success: false, message: "Invalid API key. Please check your Mistral API key." };
     } else if (response.status === 429) {
-      return { success: false, message: "⚠️ Rate limit exceeded. API key is valid but you've hit the rate limit." };
+      return { success: false, message: "Rate limit exceeded. API key is valid but you've hit the rate limit." };
     } else {
       const errorText = await response.text().catch(() => 'Unknown error');
-      return { success: false, message: `❌ API error (${response.status}): ${errorText}` };
+      return { success: false, message: `API error (${response.status}): ${errorText}` };
     }
   } catch (error) {
     console.error('Mistral connection test error:', error);
-    return { success: false, message: `❌ Connection failed: ${error instanceof Error ? error.message : 'Unknown error'}` };
+    return { success: false, message: `Connection failed: ${error instanceof Error ? error.message : 'Unknown error'}` };
   }
 }

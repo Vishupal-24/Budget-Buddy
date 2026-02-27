@@ -69,8 +69,8 @@ export function ResponsivePageHeader({
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-blue-600/20 rounded-xl blur-sm"></div>
-                <div className="relative p-3 bg-gradient-to-br from-primary to-blue-600 rounded-xl shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-muted rounded-xl blur-sm"></div>
+                <div className="relative p-3 bg-gradient-to-br from-primary to-muted rounded-xl ">
                   <Brain className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -102,7 +102,7 @@ export function ResponsivePageHeader({
             <div className="flex items-center gap-3">
               {/* Status Badges */}
               <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="flex items-center gap-1 bg-gradient-to-r from-primary/10 to-blue-600/10 border-primary/20">
+                <Badge variant="secondary" className="flex items-center gap-1 bg-gradient-to-r from-primary/10 to-muted border-primary/20">
                   <Sparkles className="h-3 w-3 text-primary" />
                   AI Powered
                 </Badge>
@@ -169,7 +169,7 @@ export function ResponsivePageHeader({
         {/* Mobile Status Badges */}
         {isMobile && (
           <div className="flex items-center gap-2 flex-wrap">
-            <Badge variant="secondary" className="flex items-center gap-1 bg-gradient-to-r from-primary/10 to-blue-600/10 border-primary/20">
+            <Badge variant="secondary" className="flex items-center gap-1 bg-gradient-to-r from-primary/10 to-muted border-primary/20">
               <Sparkles className="h-3 w-3 text-primary" />
               AI Powered
             </Badge>
@@ -186,7 +186,7 @@ export function ResponsivePageHeader({
 
         {/* Mobile Menu */}
         {isMobile && showMobileMenu && (
-          <div className="lg:hidden bg-card/80 backdrop-blur border rounded-lg p-4 space-y-4 shadow-lg">
+          <div className="lg:hidden bg-card/80 backdrop-blur border rounded-lg p-4 space-y-4 ">
             {/* Layout Options for Mobile */}
             <div className="space-y-2">
               <h3 className="text-sm font-medium text-muted-foreground">Layout Options</h3>

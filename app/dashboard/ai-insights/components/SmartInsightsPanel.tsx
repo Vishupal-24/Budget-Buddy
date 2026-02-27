@@ -90,10 +90,10 @@ export function SmartInsightsPanel({ onSendMessage, className = "" }: SmartInsig
 
   const getSeverityIcon = (severity: SmartAlert['severity']) => {
     switch (severity) {
-      case 'critical': return <AlertTriangle className="h-4 w-4 text-red-500" />;
-      case 'high': return <AlertTriangle className="h-4 w-4 text-orange-500" />;
-      case 'medium': return <Info className="h-4 w-4 text-yellow-500" />;
-      default: return <Info className="h-4 w-4 text-blue-500" />;
+      case 'critical': return <AlertTriangle className="h-4 w-4 text-foreground" />;
+      case 'high': return <AlertTriangle className="h-4 w-4 text-foreground" />;
+      case 'medium': return <Info className="h-4 w-4 text-foreground" />;
+      default: return <Info className="h-4 w-4 text-foreground" />;
     }
   };
 
@@ -287,7 +287,7 @@ export function SmartInsightsPanel({ onSendMessage, className = "" }: SmartInsig
             </h4>
             <div className="space-y-2">
               {predictiveInsights.slice(0, 3).map((insight, index) => (
-                <div key={`insight-${insight.id || index}`} className="p-3 bg-gradient-to-r from-primary/5 to-blue-50/50 rounded-lg border border-primary/20">
+                <div key={`insight-${insight.id || index}`} className="p-3 bg-gradient-to-r from-primary/5 to-muted rounded-lg border border-primary/20">
                   <div className="flex items-start gap-2">
                     <BarChart3 className="h-4 w-4 text-primary mt-0.5" />
                     <div className="flex-1">
@@ -314,8 +314,8 @@ export function SmartInsightsPanel({ onSendMessage, className = "" }: SmartInsig
         {/* Empty State */}
         {alerts.length === 0 && predictiveInsights.length === 0 && (
           <div className="text-center py-8">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-            <h4 className="font-semibold text-sm mb-2">All Good! 🎉</h4>
+            <CheckCircle className="h-12 w-12 text-foreground mx-auto mb-4" />
+            <h4 className="font-semibold text-sm mb-2">All Good! </h4>
             <p className="text-xs text-muted-foreground mb-4">
               Your finances are looking healthy. No urgent alerts or recommendations at this time.
             </p>

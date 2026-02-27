@@ -10,16 +10,16 @@ export const generateUserAvatar = (name: string, id: number, size: number = 48) 
     .slice(0, 2);
 
   const colors = [
-    '#3b82f6', // Blue
-    '#8b5cf6', // Purple
-    '#10b981', // Green
-    '#f59e0b', // Amber
-    '#ef4444', // Red
-    '#06b6d4', // Cyan
-    '#84cc16', // Lime
-    '#f97316', // Orange
-    '#ec4899', // Pink
-    '#6366f1', // Indigo
+    '#374151', // Dark Gray
+    '#4B5563', // Medium Gray
+    '#525252', // Gray
+    '#6B7280', // Gray
+    '#737373', // Gray
+    '#9CA3AF', // Light Gray
+    '#A3A3A3', // Light Gray
+    '#D4D4D4', // Lighter Gray
+    '#404040', // Dark Gray
+    '#78716C', // Warm Gray
   ];
 
   const bgColor = colors[id % colors.length];

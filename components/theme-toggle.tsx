@@ -51,18 +51,18 @@ export function ThemeToggle() {
       color: 'bg-primary',
       description: 'Classic purple theme',
     },
-    { value: 'blue', label: 'Blue', color: 'bg-blue-500', description: 'Professional blue' },
-    { value: 'green', label: 'Green', color: 'bg-green-500', description: 'Calming green' },
-    { value: 'purple', label: 'Purple', color: 'bg-purple-500', description: 'Creative purple' },
-    { value: 'orange', label: 'Orange', color: 'bg-orange-500', description: 'Energetic orange' },
-    { value: 'rose', label: 'Rose', color: 'bg-rose-500', description: 'Warm rose' },
+    { value: 'blue', label: 'Blue', color: 'bg-muted', description: 'Professional blue' },
+    { value: 'green', label: 'Green', color: 'bg-muted', description: 'Calming green' },
+    { value: 'purple', label: 'Purple', color: 'bg-muted', description: 'Creative purple' },
+    { value: 'orange', label: 'Orange', color: 'bg-muted', description: 'Energetic orange' },
+    { value: 'rose', label: 'Rose', color: 'bg-muted', description: 'Warm rose' },
   ] as const;
 
   const themePresets = [
-    { id: 'work', label: 'Work', icon: '💼', description: 'Blue theme, normal contrast' },
-    { id: 'relax', label: 'Relax', icon: '🌿', description: 'Green theme, normal contrast' },
-    { id: 'focus', label: 'Focus', icon: '🎯', description: 'Purple theme, high contrast' },
-    { id: 'creative', label: 'Creative', icon: '🎨', description: 'Orange theme, normal contrast' },
+    { id: 'work', label: 'Work', icon: '', description: 'Blue theme, normal contrast' },
+    { id: 'relax', label: 'Relax', icon: '', description: 'Green theme, normal contrast' },
+    { id: 'focus', label: 'Focus', icon: '', description: 'Purple theme, high contrast' },
+    { id: 'creative', label: 'Creative', icon: '', description: 'Orange theme, normal contrast' },
   ] as const;
 
   // Avoid hydration mismatch by only rendering theme-dependent UI after mount
@@ -123,7 +123,7 @@ export function ThemeToggle() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-96 bg-card border border-border rounded-lg shadow-xl p-0 z-50 max-h-[80vh] overflow-hidden">
+        <div className="absolute right-0 top-full mt-2 w-96 bg-card border border-border rounded-lg  p-0 z-50 max-h-[80vh] overflow-hidden">
           {/* Header */}
           <div className="p-4 border-b border-border">
             <div className="flex items-center justify-between">
@@ -133,8 +133,7 @@ export function ThemeToggle() {
                 className="p-1 rounded-full hover:bg-muted transition-colors"
                 aria-label="Close"
               >
-                ✕
-              </button>
+                              </button>
             </div>
 
             {/* Quick Stats */}

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatCurrency, formatDate } from "@/lib/utils";
-import { ArrowUpIcon, ArrowDownIcon, Calendar, Filter, Eye, TrendingUp, TrendingDown, MoreHorizontal, Search } from "lucide-react";
+import { ArrowUpIcon, ArrowDownIcon, Calendar, Filter, Eye, TrendingUp, TrendingDown, MoreHorizontal, Search, UtensilsCrossed, Car, Film, ShoppingBag, Zap, Heart, DollarSign, Briefcase, BarChart3, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FastTransactionSkeleton } from "@/components/ui/fast-skeleton";
 
@@ -26,106 +26,95 @@ interface EnhancedRecentTransactionsProps {
   loading?: boolean;
 }
 
-const CATEGORY_COLORS: Record<string, { bg: string; text: string; icon: string }> = {
+const CATEGORY_COLORS: Record<string, { bg: string; text: string }> = {
   "dining out": { 
-    bg: "bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30", 
-    text: "text-orange-700 dark:text-orange-300",
-    icon: "🍽️"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   food: { 
-    bg: "bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30", 
-    text: "text-orange-700 dark:text-orange-300",
-    icon: "🍕"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   transport: { 
-    bg: "bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30", 
-    text: "text-blue-700 dark:text-blue-300",
-    icon: "🚗"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   entertainment: { 
-    bg: "bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30", 
-    text: "text-purple-700 dark:text-purple-300",
-    icon: "🎬"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   shopping: { 
-    bg: "bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950/30 dark:to-rose-950/30", 
-    text: "text-pink-700 dark:text-pink-300",
-    icon: "🛍️"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   utilities: { 
-    bg: "bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-950/30 dark:to-orange-950/30", 
-    text: "text-yellow-700 dark:text-yellow-300",
-    icon: "⚡"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   healthcare: { 
-    bg: "bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30", 
-    text: "text-red-700 dark:text-red-300",
-    icon: "🏥"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   salary: { 
-    bg: "bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30", 
-    text: "text-green-700 dark:text-green-300",
-    icon: "💰"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   freelance: { 
-    bg: "bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30", 
-    text: "text-emerald-700 dark:text-emerald-300",
-    icon: "💼"
+    bg: "bg-muted", 
+    text: "text-foreground"
   },
   default: { 
-    bg: "bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-950/30 dark:to-slate-950/30", 
-    text: "text-gray-700 dark:text-gray-300",
-    icon: "📊"
+    bg: "bg-muted", 
+    text: "text-muted-foreground"
   }
+};
+
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
+  "dining out": UtensilsCrossed,
+  food: UtensilsCrossed,
+  transport: Car,
+  entertainment: Film,
+  shopping: ShoppingBag,
+  utilities: Zap,
+  healthcare: Heart,
+  salary: DollarSign,
+  freelance: Briefcase,
+  default: BarChart3,
 };
 
 function TransactionItem({ transaction, index }: { transaction: Transaction; index: number }) {
   const isIncome = transaction.type === "income";
   const categoryKey = transaction.category.toLowerCase();
   const categoryStyle = CATEGORY_COLORS[categoryKey] || CATEGORY_COLORS.default;
+  const IconComponent = CATEGORY_ICONS[categoryKey] || CATEGORY_ICONS.default;
   
   return (
-    <div className="group relative overflow-hidden">
-      <div className="flex items-center justify-between p-4 rounded-xl border border-border/50 hover:border-border hover:shadow-md transition-all duration-300 bg-card/50 backdrop-blur-sm hover:bg-card">
-        <div className="flex items-center gap-4">
-          {/* Enhanced category icon with emoji */}
+    <div className="group relative">
+      <div className="flex items-center justify-between p-4 rounded-lg border border-border/50 hover:border-border transition-colors bg-card">
+        <div className="flex items-center gap-3">
+          {/* Category icon */}
           <div className={cn(
-            "relative flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:rotate-3",
+            "flex items-center justify-center w-10 h-10 rounded-lg",
             categoryStyle.bg
           )}>
-            <span className="text-lg">{categoryStyle.icon}</span>
-            <div className={cn(
-              "absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center transition-all duration-200",
-              isIncome 
-                ? "bg-emerald-500 text-white" 
-                : "bg-rose-500 text-white"
-            )}>
-              {isIncome ? (
-                <TrendingUp className="h-2.5 w-2.5" />
-              ) : (
-                <TrendingDown className="h-2.5 w-2.5" />
-              )}
-            </div>
+            <span className="text-base"><IconComponent className="h-4 w-4" /></span>
           </div>
           
-          {/* Enhanced transaction details */}
-          <div className="flex flex-col gap-1">
+          {/* Transaction details */}
+          <div className="flex flex-col gap-0.5">
             <div className="flex items-center gap-2">
-              <h4 className="font-medium text-foreground capitalize">
+              <h4 className="font-medium text-foreground capitalize text-sm">
                 {transaction.category}
               </h4>
               <Badge 
                 variant="secondary" 
-                className={cn(
-                  "text-xs px-2 py-0.5 font-medium border-0",
-                  isIncome ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300" : "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300"
-                )}
+                className="text-xs px-1.5 py-0 font-medium"
               >
                 {isIncome ? "Income" : "Expense"}
               </Badge>
             </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Calendar className="h-3.5 w-3.5" />
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <Calendar className="h-3 w-3" />
               <span>{formatDate(new Date(transaction.date))}</span>
             </div>
             {transaction.description && (
@@ -136,24 +125,17 @@ function TransactionItem({ transaction, index }: { transaction: Transaction; ind
           </div>
         </div>
         
-        {/* Enhanced amount display */}
-        <div className="text-right flex flex-col items-end gap-1">
+        {/* Amount */}
+        <div className="text-right">
           <div className={cn(
-            "font-bold text-xl transition-all duration-200 group-hover:scale-105",
-            isIncome ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"
+            "font-semibold text-sm",
+            "text-foreground"
           )}>
             {isIncome ? "+" : "-"}{formatCurrency(transaction.amount)}
           </div>
           <div className="text-xs text-muted-foreground">
             {isIncome ? "Received" : "Spent"}
           </div>
-        </div>
-
-        {/* Hover action button */}
-        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
-            <MoreHorizontal className="h-3 w-3" />
-          </Button>
         </div>
       </div>
     </div>
@@ -198,8 +180,8 @@ export function EnhancedRecentTransactions({
   ];
 
   return (
-    <Card className="overflow-hidden border-0 shadow-lg bg-gradient-to-br from-card/80 to-card backdrop-blur-sm">
-      <CardHeader className="pb-6 bg-gradient-to-r from-primary/5 to-secondary/5">
+    <Card>
+      <CardHeader className="pb-6">
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -218,7 +200,7 @@ export function EnhancedRecentTransactions({
                 <div className="text-sm text-muted-foreground">Net Total</div>
                 <div className={cn(
                   "font-bold text-lg",
-                  totalAmount >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"
+                  totalAmount >= 0 ? "text-foreground" : "text-foreground"
                 )}>
                   {totalAmount >= 0 ? "+" : ""}{formatCurrency(Math.abs(totalAmount))}
                 </div>
@@ -286,7 +268,7 @@ export function EnhancedRecentTransactions({
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-16 text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-muted to-muted/50 rounded-2xl flex items-center justify-center mb-6">
+              <div className="w-20 h-20 bg-muted rounded-2xl flex items-center justify-center mb-6">
                 {searchTerm ? (
                   <Search className="h-10 w-10 text-muted-foreground" />
                 ) : (

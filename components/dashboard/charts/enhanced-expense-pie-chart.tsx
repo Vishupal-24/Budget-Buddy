@@ -27,10 +27,10 @@ interface EnhancedExpensePieChartProps {
   onCategoryClick?: (category: CategoryData) => void;
 }
 
-// Enhanced colors for better visualization
+// Neutral color palette for pie chart
 const COLORS = [
-  '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6',
-  '#EC4899', '#F97316', '#6366F1', '#14B8A6', '#A855F7'
+  '#374151', '#6B7280', '#9CA3AF', '#4B5563', '#D1D5DB',
+  '#1F2937', '#A3A3A3', '#525252', '#737373', '#E5E7EB'
 ];
 
 // Assign colors to categories consistently
@@ -127,7 +127,7 @@ function EnhancedExpensePieChartComponent({ categoryData, onCategoryClick }: Enh
       const percentage = ((data.value / total) * 100).toFixed(1);
 
       return (
-        <div className="bg-card border border-border rounded-lg shadow-lg p-3 max-w-xs">
+        <div className="bg-card border border-border rounded-lg  p-3 max-w-xs">
           <div className="flex items-center gap-2 mb-2">
             <div
               className="w-3 h-3 rounded-full"

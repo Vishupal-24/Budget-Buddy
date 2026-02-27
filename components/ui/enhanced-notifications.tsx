@@ -38,23 +38,23 @@ export function useNotifications() {
 const notificationStyles = {
   success: {
     icon: CheckCircle,
-    colors: "bg-card border border-emerald-500/30 text-foreground shadow-lg",
-    iconColor: "text-emerald-500"
+    colors: "bg-card border border-border text-foreground ",
+    iconColor: "text-foreground"
   },
   error: {
     icon: AlertCircle,
-    colors: "bg-card border border-destructive/30 text-foreground shadow-lg",
+    colors: "bg-card border border-destructive/30 text-foreground ",
     iconColor: "text-destructive"
   },
   warning: {
     icon: AlertTriangle,
-    colors: "bg-card border border-amber-500/30 text-foreground shadow-lg",
-    iconColor: "text-amber-500"
+    colors: "bg-card border border-border text-foreground ",
+    iconColor: "text-foreground"
   },
   info: {
     icon: Info,
-    colors: "bg-card border border-blue-500/30 text-foreground shadow-lg",
-    iconColor: "text-blue-500"
+    colors: "bg-card border border-border text-foreground ",
+    iconColor: "text-foreground"
   }
 };
 

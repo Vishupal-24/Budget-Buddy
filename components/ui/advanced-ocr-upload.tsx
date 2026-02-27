@@ -444,7 +444,7 @@ export function AdvancedOCRUpload({
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Sparkles className="h-6 w-6 text-blue-600" />
+            <Sparkles className="h-6 w-6 text-foreground" />
             <CardTitle>Advanced OCR Processing</CardTitle>
             <Badge variant="outline" className="text-xs">
               AI-Powered
@@ -488,9 +488,9 @@ export function AdvancedOCRUpload({
               {insights.slice(0, 3).map((insight, index) => (
                 <div key={index} className="flex items-start space-x-3 p-3 bg-muted rounded-lg">
                   <div className="flex-shrink-0">
-                    {insight.type === 'warning' && <AlertTriangle className="h-4 w-4 text-amber-500" />}
-                    {insight.type === 'suggestion' && <TrendingUp className="h-4 w-4 text-blue-500" />}
-                    {insight.type === 'achievement' && <CheckCircle className="h-4 w-4 text-green-500" />}
+                    {insight.type === 'warning' && <AlertTriangle className="h-4 w-4 text-foreground" />}
+                    {insight.type === 'suggestion' && <TrendingUp className="h-4 w-4 text-foreground" />}
+                    {insight.type === 'achievement' && <CheckCircle className="h-4 w-4 text-foreground" />}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-sm">{insight.title}</p>
@@ -624,17 +624,17 @@ export function AdvancedOCRUpload({
                   <div className="space-y-3">
                     <h4 className="font-medium">Batch Results</h4>
                     <div className="grid grid-cols-3 gap-4 text-center">
-                      <div className="p-4 bg-green-50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">{batchState.completed}</div>
-                        <div className="text-sm text-green-700">Processed</div>
+                      <div className="p-4 bg-muted rounded-lg">
+                        <div className="text-2xl font-bold text-foreground">{batchState.completed}</div>
+                        <div className="text-sm text-muted-foreground">Processed</div>
                       </div>
-                      <div className="p-4 bg-red-50 rounded-lg">
-                        <div className="text-2xl font-bold text-red-600">{batchState.failed}</div>
-                        <div className="text-sm text-red-700">Failed</div>
+                      <div className="p-4 bg-muted rounded-lg">
+                        <div className="text-2xl font-bold text-foreground">{batchState.failed}</div>
+                        <div className="text-sm text-muted-foreground">Failed</div>
                       </div>
-                      <div className="p-4 bg-amber-50 rounded-lg">
-                        <div className="text-2xl font-bold text-amber-600">{batchState.duplicates.length}</div>
-                        <div className="text-sm text-amber-700">Duplicates</div>
+                      <div className="p-4 bg-muted rounded-lg">
+                        <div className="text-2xl font-bold text-foreground">{batchState.duplicates.length}</div>
+                        <div className="text-sm text-muted-foreground">Duplicates</div>
                       </div>
                     </div>
                   </div>
@@ -673,8 +673,8 @@ export function AdvancedOCRUpload({
                 {voiceState.isListening && (
                   <div className="space-y-2">
                     <div className="flex items-center justify-center space-x-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                      <span className="text-sm text-red-600">Listening...</span>
+                      <div className="w-2 h-2 bg-muted0 rounded-full animate-pulse"></div>
+                      <span className="text-sm text-foreground">Listening...</span>
                     </div>
                   </div>
                 )}
@@ -732,22 +732,22 @@ export function AdvancedOCRUpload({
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="p-4 border rounded-lg">
-                    <div className="text-2xl mb-2">🇺🇸</div>
+                    <Globe className="h-6 w-6 mb-2" />
                     <div className="text-sm font-medium">United States</div>
                     <div className="text-xs text-muted-foreground">USD → INR</div>
                   </div>
                   <div className="p-4 border rounded-lg">
-                    <div className="text-2xl mb-2">🇪🇺</div>
+                    <Globe className="h-6 w-6 mb-2" />
                     <div className="text-sm font-medium">Europe</div>
                     <div className="text-xs text-muted-foreground">EUR → INR</div>
                   </div>
                   <div className="p-4 border rounded-lg">
-                    <div className="text-2xl mb-2">🇯🇵</div>
+                    <Globe className="h-6 w-6 mb-2" />
                     <div className="text-sm font-medium">Japan</div>
                     <div className="text-xs text-muted-foreground">JPY → INR</div>
                   </div>
                   <div className="p-4 border rounded-lg">
-                    <div className="text-2xl mb-2">🇨🇳</div>
+                    <Globe className="h-6 w-6 mb-2" />
                     <div className="text-sm font-medium">China</div>
                     <div className="text-xs text-muted-foreground">CNY → INR</div>
                   </div>
@@ -757,19 +757,19 @@ export function AdvancedOCRUpload({
                   <h4 className="font-medium">Supported Features:</h4>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <CheckCircle className="h-4 w-4 text-foreground" />
                       <span>25+ Languages</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <CheckCircle className="h-4 w-4 text-foreground" />
                       <span>20+ Currencies</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <CheckCircle className="h-4 w-4 text-foreground" />
                       <span>Real-time Conversion</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <CheckCircle className="h-4 w-4 text-foreground" />
                       <span>Regional Patterns</span>
                     </div>
                   </div>

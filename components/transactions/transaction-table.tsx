@@ -183,7 +183,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
 
             <th className="px-4 py-3 text-left font-semibold text-sm uppercase tracking-wide">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-green-500 to-red-500" />
+                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-muted to-muted" />
                 Type
               </div>
             </th>
@@ -299,7 +299,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                 <div className="flex items-center justify-end gap-2">
                   <div
                     className={`w-1 h-6 rounded-full ${
-                      transaction.type === 'income' ? 'bg-green-500' : 'bg-red-500'
+                      transaction.type === 'income' ? 'bg-muted' : 'bg-muted'
                     } opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
                   />
                   <span className="font-bold">
@@ -317,14 +317,14 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                           variant="ghost"
                           size="sm"
                           onClick={() => onEdit(transaction)}
-                          className="h-8 w-8 p-0 hover:bg-blue-100 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:text-blue-300 transition-all duration-200 rounded-lg"
+                          className="h-8 w-8 p-0 hover:bg-muted hover:text-foreground dark:hover:bg-muted dark:hover:text-foreground transition-all duration-200 rounded-lg"
                           aria-label={`Edit transaction: ${transaction.description}`}
                         >
                           <Edit2 className="h-4 w-4" />
                         </Button>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>✏️ Edit transaction</p>
+                        <p>Edit transaction</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
@@ -336,14 +336,14 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                           variant="ghost"
                           size="sm"
                           onClick={() => onDelete(transaction.id)}
-                          className="h-8 w-8 p-0 hover:bg-red-100 hover:text-red-700 dark:hover:bg-red-900/30 dark:hover:text-red-300 transition-all duration-200 rounded-lg"
+                          className="h-8 w-8 p-0 hover:bg-muted hover:text-foreground dark:hover:bg-muted dark:hover:text-foreground transition-all duration-200 rounded-lg"
                           aria-label={`Delete transaction: ${transaction.description}`}
                         >
                           <Trash className="h-4 w-4" />
                         </Button>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>🗑️ Delete transaction</p>
+                        <p>Delete transaction</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
@@ -355,7 +355,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                     variant="ghost"
                     size="sm"
                     onClick={() => onEdit(transaction)}
-                    className="h-8 w-8 p-0 text-blue-600 hover:bg-blue-100 dark:text-blue-400 dark:hover:bg-blue-900/30"
+                    className="h-8 w-8 p-0 text-foreground hover:bg-muted dark:text-foreground dark:hover:bg-muted"
                   >
                     <Edit2 className="h-4 w-4" />
                   </Button>
@@ -363,7 +363,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                     variant="ghost"
                     size="sm"
                     onClick={() => onDelete(transaction.id)}
-                    className="h-8 w-8 p-0 text-red-600 hover:bg-red-100 dark:text-red-400 dark:hover:bg-red-900/30"
+                    className="h-8 w-8 p-0 text-foreground hover:bg-muted dark:text-foreground dark:hover:bg-muted"
                   >
                     <Trash className="h-4 w-4" />
                   </Button>

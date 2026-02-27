@@ -99,7 +99,7 @@ export function OCRUpload({ onDataExtracted, onClose }: OCRUploadProps) {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <Sparkles className="h-12 w-12 text-blue-500 mx-auto mb-4" />
+        <Sparkles className="h-12 w-12 text-foreground mx-auto mb-4" />
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
           Smart Invoice Processing
         </h3>
@@ -155,7 +155,7 @@ export function OCRUpload({ onDataExtracted, onClose }: OCRUploadProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <DollarSign className="h-5 w-5 text-green-500" />
+                <DollarSign className="h-5 w-5 text-foreground" />
                 <div>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Amount</p>
                   <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
@@ -165,7 +165,7 @@ export function OCRUpload({ onDataExtracted, onClose }: OCRUploadProps) {
               </div>
 
               <div className="flex items-center space-x-3">
-                <Calendar className="h-5 w-5 text-blue-500" />
+                <Calendar className="h-5 w-5 text-foreground" />
                 <div>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Date</p>
                   <p className="text-gray-900 dark:text-gray-100">
@@ -175,7 +175,7 @@ export function OCRUpload({ onDataExtracted, onClose }: OCRUploadProps) {
               </div>
 
               <div className="flex items-center space-x-3">
-                <Tag className="h-5 w-5 text-purple-500" />
+                <Tag className="h-5 w-5 text-foreground" />
                 <div>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Category</p>
                   <p className="text-gray-900 dark:text-gray-100">
@@ -187,7 +187,7 @@ export function OCRUpload({ onDataExtracted, onClose }: OCRUploadProps) {
 
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <FileText className="h-5 w-5 text-orange-500 mt-1" />
+                <FileText className="h-5 w-5 text-foreground mt-1" />
                 <div>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Description</p>
                   <p className="text-gray-900 dark:text-gray-100">
@@ -198,7 +198,7 @@ export function OCRUpload({ onDataExtracted, onClose }: OCRUploadProps) {
 
               {extractedData.merchant && (
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-1" />
+                  <CheckCircle className="h-5 w-5 text-foreground mt-1" />
                   <div>
                     <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Merchant</p>
                     <p className="text-gray-900 dark:text-gray-100">
@@ -210,7 +210,7 @@ export function OCRUpload({ onDataExtracted, onClose }: OCRUploadProps) {
 
               <div className="flex items-center space-x-3">
                 <div className={`h-5 w-5 rounded-full ${
-                  extractedData.type === 'income' ? 'bg-green-500' : 'bg-red-500'
+                  extractedData.type === 'income' ? 'bg-muted' : 'bg-muted'
                 }`} />
                 <div>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Type</p>
@@ -223,13 +223,13 @@ export function OCRUpload({ onDataExtracted, onClose }: OCRUploadProps) {
           </div>
 
           {extractedData.confidence && extractedData.confidence < 60 && (
-            <div className="flex items-start space-x-2 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-              <AlertCircle className="h-5 w-5 text-yellow-600 dark:text-yellow-400 mt-0.5" />
+            <div className="flex items-start space-x-2 p-3 bg-muted dark:bg-muted rounded-lg">
+              <AlertCircle className="h-5 w-5 text-foreground dark:text-foreground mt-0.5" />
               <div>
-                <p className="text-sm font-medium text-yellow-800 dark:text-yellow-200">
+                <p className="text-sm font-medium text-foreground dark:text-foreground">
                   Low Confidence Detection
                 </p>
-                <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                <p className="text-sm text-foreground dark:text-foreground">
                   Please review and edit the extracted data before saving.
                 </p>
               </div>

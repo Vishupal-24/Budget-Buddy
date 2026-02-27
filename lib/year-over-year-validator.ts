@@ -509,7 +509,7 @@ export class YearOverYearValidator {
     report += `Success Rate: ${((passedTests / totalTests) * 100).toFixed(1)}%\n\n`;
 
     results.forEach(result => {
-      const status = result.passed ? '✅ PASS' : '❌ FAIL';
+      const status = result.passed ? 'PASS' : 'FAIL';
       report += `${status} - ${result.test}: ${result.message}\n`;
     });
 

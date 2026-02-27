@@ -600,7 +600,7 @@ export function VoiceInterface({
         disabled={disabled}
         className={cn(
           "relative transition-all duration-200",
-          isListening && "bg-red-500 hover:bg-red-600 text-white shadow-lg shadow-red-500/25 animate-pulse"
+          isListening && "bg-muted hover:bg-muted text-white  shadow-red-500/25 animate-pulse"
         )}
         aria-label={isListening ? "Stop voice recognition" : "Start voice recognition"}
         aria-pressed={isListening}
@@ -643,7 +643,7 @@ export function VoiceInterface({
         onClick={stopSpeaking}
         disabled={disabled || !isSpeaking}
         className={cn(
-          isSpeaking && "bg-blue-500 hover:bg-blue-600 text-white"
+          isSpeaking && "bg-muted hover:bg-muted text-white"
         )}
         aria-label={isSpeaking ? "Stop text-to-speech" : "Text-to-speech available"}
         aria-pressed={isSpeaking}
@@ -722,7 +722,7 @@ export function VoiceInterface({
             disabled={disabled}
             className={cn(
               "relative transition-all duration-200",
-              isListening && "bg-red-500 hover:bg-red-600 text-white shadow-lg shadow-red-500/25"
+              isListening && "bg-muted hover:bg-muted text-white  shadow-red-500/25"
             )}
             aria-label={isListening ? "Stop voice recognition" : "Start voice recognition"}
             aria-pressed={isListening}
@@ -769,7 +769,7 @@ export function VoiceInterface({
             onClick={stopSpeaking}
             disabled={disabled || !isSpeaking}
             className={cn(
-              isSpeaking && "bg-blue-500 hover:bg-blue-600 text-white"
+              isSpeaking && "bg-muted hover:bg-muted text-white"
             )}
             aria-label={isSpeaking ? "Stop text-to-speech" : "Text-to-speech available"}
             aria-pressed={isSpeaking}
@@ -792,7 +792,7 @@ export function VoiceInterface({
         <div className="text-center space-y-2" role="status" aria-live="polite">
           {isListening && !isPaused && (
             <div className="flex items-center justify-center gap-2">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-muted rounded-full animate-pulse" />
               <Badge variant="destructive" className="animate-pulse">
                 Listening... Speak now
               </Badge>
@@ -807,7 +807,7 @@ export function VoiceInterface({
           
           {isSpeaking && (
             <div className="flex items-center justify-center gap-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-muted rounded-full animate-pulse" />
               <Badge variant="default" className="animate-pulse">
                 Speaking...
               </Badge>
@@ -859,7 +859,7 @@ export function VoiceInterface({
           {microphoneTest.testing && (
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-muted rounded-full animate-pulse" />
                 Monitoring microphone...
               </div>
               
@@ -868,7 +868,7 @@ export function VoiceInterface({
                 <div className="text-xs text-muted-foreground">Audio Level:</div>
                 <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
                   <div 
-                    className="h-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 transition-all duration-100"
+                    className="h-full bg-gradient-to-r from-muted via-muted to-muted transition-all duration-100"
                     style={{ width: `${microphoneTest.level}%` }}
                   />
                 </div>
@@ -921,7 +921,7 @@ export function VoiceInterface({
   const renderCenterMode = () => (
     <div className={cn("text-center", className)} role="region" aria-labelledby="voice-interface-center-title">
       <h2 id="voice-interface-center-title" className="sr-only">Voice Input Center</h2>
-      <div className="inline-flex flex-col items-center gap-4 p-8 bg-gradient-to-br from-primary/5 via-blue-50/50 to-purple-50/30 dark:from-primary/10 dark:via-blue-950/20 dark:to-purple-950/10 rounded-2xl border-2 border-dashed border-primary/20">
+      <div className="inline-flex flex-col items-center gap-4 p-8 bg-gradient-to-br from-primary/5 via-muted to-muted dark:from-primary/10 dark:via-muted dark:to-muted rounded-2xl border-2 border-dashed border-primary/20">
         {/* Large Microphone Button */}
         <Button
           variant={isListening ? "default" : "outline"}
@@ -929,9 +929,9 @@ export function VoiceInterface({
           onClick={isListening ? stopListening : startListening}
           disabled={disabled}
           className={cn(
-            "w-20 h-20 rounded-full transition-all duration-300 shadow-lg",
+            "w-20 h-20 rounded-full transition-all duration-300 ",
             isListening 
-              ? "bg-red-500 hover:bg-red-600 text-white shadow-red-500/25 animate-pulse scale-110" 
+              ? "bg-muted hover:bg-muted text-white shadow-red-500/25 animate-pulse scale-110" 
               : "hover:scale-105"
           )}
           aria-label={isListening ? "Stop voice recognition - currently listening" : "Start voice recognition"}

@@ -277,13 +277,13 @@ export default function SessionsPage() {
       </div>
 
       {/* Security Notice */}
-      <Card className="mb-6 border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20">
+      <Card className="mb-6 border-border bg-muted/50">
         <CardContent className="py-4">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
+            <AlertTriangle className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-medium text-amber-800 dark:text-amber-200">Security Tip</p>
-              <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
+              <p className="text-sm font-medium text-foreground">Security Tip</p>
+              <p className="text-sm text-muted-foreground mt-1">
                 If you see any sessions you don&apos;t recognize, revoke them immediately and
                 consider changing your password.
               </p>
@@ -334,7 +334,7 @@ export default function SessionsPage() {
                     transition={{ delay: index * 0.05 }}
                     className={`relative p-4 rounded-lg border ${
                       session.is_current
-                        ? 'border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20'
+                        ? 'border-border bg-muted/50'
                         : 'border-muted hover:border-muted-foreground/30'
                     } transition-colors`}
                   >
@@ -344,7 +344,7 @@ export default function SessionsPage() {
                         <div
                           className={`p-3 rounded-lg ${
                             session.is_current
-                              ? 'bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400'
+                              ? 'bg-muted text-foreground'
                               : 'bg-muted text-muted-foreground'
                           }`}
                         >
@@ -356,7 +356,7 @@ export default function SessionsPage() {
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{session.browser}</span>
                             {session.is_current && (
-                              <Badge variant="default" className="bg-green-600 hover:bg-green-600">
+                              <Badge variant="default" className="">
                                 <CheckCircle2 className="h-3 w-3 mr-1" />
                                 Current Session
                               </Badge>

@@ -21,7 +21,7 @@ export function CategoryInsights({ topCategories, totalExpense }: CategoryInsigh
       <h2 className="mb-6 pb-4 md:mb-8 text-2xl md:text-3xl font-display font-semibold tracking-tight border-b border-border" id="category-insights-title">Category Insights</h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Top spending categories */}
-        <div className="rounded-2xl border bg-card p-5 md:p-6 shadow-sm hover:shadow-md transition-all" aria-labelledby="top-spending-title">
+        <div className="rounded-2xl border bg-card p-5 md:p-6 shadow-sm  transition-all" aria-labelledby="top-spending-title">
           <h3 className="mb-4 text-lg font-semibold tracking-tight text-foreground" id="top-spending-title">Top Spending</h3>
           <div className="space-y-4">
             {topCategories.length > 0 ? (
@@ -54,7 +54,7 @@ export function CategoryInsights({ topCategories, totalExpense }: CategoryInsigh
         </div>
 
         {/* Most used categories */}
-        <div className="rounded-2xl border bg-card p-5 md:p-6 shadow-sm hover:shadow-md transition-all" aria-labelledby="most-used-title">
+        <div className="rounded-2xl border bg-card p-5 md:p-6 shadow-sm  transition-all" aria-labelledby="most-used-title">
           <h3 className="mb-4 text-lg font-semibold tracking-tight text-foreground" id="most-used-title">Most Used</h3>
           <div className="space-y-4">
             {topCategories.length > 0 ? (

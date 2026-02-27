@@ -11,7 +11,11 @@ import {
   Key, 
   ExternalLink,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
+  Sparkles,
+  Code2,
+  MessageSquare,
+  Bot
 } from "lucide-react";
 
 interface EmptyStateProps {
@@ -21,27 +25,27 @@ interface EmptyStateProps {
 export function EmptyState({ onConfigureSettings }: EmptyStateProps) {
   const features = [
     {
-      icon: <Brain className="h-5 w-5 text-blue-500" />,
+      icon: <Brain className="h-5 w-5 text-foreground" />,
       title: "Smart Financial Analysis",
       description: "Get AI-powered insights about your spending patterns and financial health"
     },
     {
-      icon: <Zap className="h-5 w-5 text-yellow-500" />,
+      icon: <Zap className="h-5 w-5 text-foreground" />,
       title: "Interactive Chat Assistant",
       description: "Ask questions about your finances and get instant, personalized answers"
     },
     {
-      icon: <Shield className="h-5 w-5 text-green-500" />,
+      icon: <Shield className="h-5 w-5 text-foreground" />,
       title: "Secure & Private",
       description: "Your financial data stays secure with encrypted API communications"
     }
   ];
 
   const providers = [
-    { name: "Google Gemini", icon: "💎", description: "Fast and efficient" },
-    { name: "Mistral AI", icon: "🚀", description: "Open source excellence" },
-    { name: "Claude", icon: "🧠", description: "Advanced reasoning" },
-    { name: "OpenAI GPT", icon: "🤖", description: "Industry leading" }
+    { name: "Google Gemini", icon: Sparkles, description: "Fast and efficient" },
+    { name: "Mistral AI", icon: Code2, description: "Open source excellence" },
+    { name: "Claude", icon: MessageSquare, description: "Advanced reasoning" },
+    { name: "OpenAI GPT", icon: Bot, description: "Industry leading" }
   ];
 
   return (
@@ -100,10 +104,10 @@ export function EmptyState({ onConfigureSettings }: EmptyStateProps) {
                 <span className="text-sm">Add the API key to your settings</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center">
+                <div className="w-6 h-6 bg-muted text-white rounded-full flex items-center justify-center">
                   <CheckCircle className="h-4 w-4" />
                 </div>
-                <span className="text-sm font-medium text-green-700 dark:text-green-400">
+                <span className="text-sm font-medium text-foreground dark:text-foreground">
                   Start getting AI insights!
                 </span>
               </div>
@@ -116,7 +120,9 @@ export function EmptyState({ onConfigureSettings }: EmptyStateProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {providers.map((provider, index) => (
                 <div key={index} className="text-center p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                  <div className="text-2xl mb-2">{provider.icon}</div>
+                  <div className="flex items-center justify-center mb-2">
+                    <provider.icon className="h-6 w-6 text-muted-foreground" />
+                  </div>
                   <div className="font-medium text-sm">{provider.name}</div>
                   <div className="text-xs text-muted-foreground">{provider.description}</div>
                 </div>
@@ -125,23 +131,23 @@ export function EmptyState({ onConfigureSettings }: EmptyStateProps) {
           </div>
 
           {/* Benefits */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg p-6">
+          <div className="bg-gradient-to-r from-muted to-muted dark:from-muted dark:to-muted rounded-lg p-6">
             <h3 className="font-semibold mb-3 text-center">What You'll Get</h3>
             <div className="grid md:grid-cols-2 gap-4 text-sm">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-foreground flex-shrink-0" />
                 <span>Personalized spending insights</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-foreground flex-shrink-0" />
                 <span>Budget optimization suggestions</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-foreground flex-shrink-0" />
                 <span>Interactive financial Q&A</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-foreground flex-shrink-0" />
                 <span>Trend analysis and forecasting</span>
               </div>
             </div>

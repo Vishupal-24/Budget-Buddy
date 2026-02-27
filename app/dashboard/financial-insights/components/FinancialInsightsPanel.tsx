@@ -31,20 +31,20 @@ export function FinancialInsightsPanel({
     switch (type) {
       case 'warning':
       case 'budget_warning':
-        return <AlertCircle className="h-5 w-5 text-orange-500" />;
+        return <AlertCircle className="h-5 w-5 text-muted-foreground" />;
       case 'success':
-        return <CheckCircle className="h-5 w-5 text-green-500" />;
+        return <CheckCircle className="h-5 w-5 text-foreground" />;
       case 'trend':
       case 'spending_pattern':
-        return <TrendingUp className="h-5 w-5 text-blue-500" />;
+        return <TrendingUp className="h-5 w-5 text-foreground" />;
       case 'decline':
-        return <TrendingDown className="h-5 w-5 text-red-500" />;
+        return <TrendingDown className="h-5 w-5 text-muted-foreground" />;
       case 'budget_alert':
-        return <Target className="h-5 w-5 text-purple-500" />;
+        return <Target className="h-5 w-5 text-foreground" />;
       case 'category_analysis':
-        return <PieChart className="h-5 w-5 text-indigo-500" />;
+        return <PieChart className="h-5 w-5 text-foreground" />;
       default:
-        return <Info className="h-5 w-5 text-blue-500" />;
+        return <Info className="h-5 w-5 text-muted-foreground" />;
     }
   };
 
@@ -52,18 +52,18 @@ export function FinancialInsightsPanel({
       switch (type) {
         case 'warning':
         case 'budget_warning':
-          return 'border-orange-200 dark:border-orange-900/50 bg-orange-50 dark:bg-orange-900/10';
+          return 'border-border bg-muted/50';
         case 'success':
-          return 'border-green-200 dark:border-green-900/50 bg-green-50 dark:bg-green-900/10';
+          return 'border-border bg-muted/50';
         case 'trend':
         case 'spending_pattern':
-          return 'border-blue-200 dark:border-blue-900/50 bg-blue-50 dark:bg-blue-900/10';
+          return 'border-border bg-muted/50';
         case 'decline':
-          return 'border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-900/10';
+          return 'border-border bg-muted/50';
         case 'budget_alert':
-          return 'border-purple-200 dark:border-purple-900/50 bg-purple-50 dark:bg-purple-900/10';
+          return 'border-border bg-muted/50';
         case 'category_analysis':
-          return 'border-indigo-200 dark:border-indigo-900/50 bg-indigo-50 dark:bg-indigo-900/10';
+          return 'border-border bg-muted/50';
         default:
           return 'border-border bg-muted/50';
       }
@@ -79,9 +79,9 @@ export function FinancialInsightsPanel({
     }
     
     const colors = {
-      high: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 border-red-200 dark:border-red-900/50',
-      medium: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 border-yellow-200 dark:border-yellow-900/50',
-      low: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 border-green-200 dark:border-green-900/50'
+      high: 'bg-muted text-foreground border-border',
+      medium: 'bg-muted text-foreground border-border',
+      low: 'bg-muted text-foreground border-border'
     };
     
     return (
@@ -216,7 +216,7 @@ export function FinancialInsightsPanel({
           {insights.map((insight, index) => (
             <Card 
               key={index} 
-              className={`transition-all duration-200 hover:shadow-md cursor-pointer ${
+              className={`transition-colors cursor-pointer ${
                 selectedInsight === index ? 'ring-2 ring-primary' : ''
               } ${getInsightColor(insight.type)}`}
               onClick={() => setSelectedInsight(selectedInsight === index ? null : index)}
@@ -319,25 +319,25 @@ export function FinancialInsightsPanel({
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-red-600">
+              <div className="text-2xl font-bold text-foreground">
                 {insights.filter(i => i.type === 'budget_warning' || i.type === 'warning').length}
               </div>
               <div className="text-sm text-muted-foreground">High Priority</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-500">
+              <div className="text-2xl font-bold text-foreground">
                 {insights.filter(i => i.type === 'spending_pattern' || i.type === 'trend').length}
               </div>
               <div className="text-sm text-muted-foreground">Medium Priority</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-500">
+              <div className="text-2xl font-bold text-foreground">
                 {insights.filter(i => i.type === 'success' || i.type === 'saving_suggestion').length}
               </div>
               <div className="text-sm text-muted-foreground">Low Priority</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-500">
+              <div className="text-2xl font-bold text-foreground">
                 {insights.filter(i => i.type === 'saving_suggestion' || i.type === 'investment_tip').length}
               </div>
               <div className="text-sm text-muted-foreground">Actionable</div>

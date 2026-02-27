@@ -140,20 +140,20 @@ export function NotificationCenter({ className, onNotificationClick }: Notificat
 
   // Get notification color
   const getNotificationColor = (type: Notification['type'], priority: Notification['priority']) => {
-    if (priority === 'urgent') return 'text-red-500';
-    if (priority === 'high') return 'text-orange-500';
+    if (priority === 'urgent') return 'text-foreground';
+    if (priority === 'high') return 'text-foreground';
     
     switch (type) {
       case 'bill_reminder':
-        return 'text-blue-500';
+        return 'text-foreground';
       case 'budget_warning':
-        return 'text-yellow-500';
+        return 'text-foreground';
       case 'goal_achievement':
-        return 'text-green-500';
+        return 'text-foreground';
       case 'system_update':
         return 'text-gray-500';
       default:
-        return 'text-blue-500';
+        return 'text-foreground';
     }
   };
 
@@ -194,7 +194,7 @@ export function NotificationCenter({ className, onNotificationClick }: Notificat
             transition={{ duration: 0.2 }}
             className="absolute right-0 top-full mt-2 w-80 md:w-96 z-50"
           >
-            <Card className="shadow-lg border-2">
+            <Card className=" border-2">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-lg">Notifications</CardTitle>
@@ -264,7 +264,7 @@ export function NotificationCenter({ className, onNotificationClick }: Notificat
                           transition={{ delay: index * 0.05 }}
                           className={cn(
                             "p-4 hover:bg-muted/50 cursor-pointer transition-colors",
-                            !notification.is_read && "bg-blue-50/50 dark:bg-blue-950/20"
+                            !notification.is_read && "bg-muted dark:bg-muted"
                           )}
                           onClick={() => handleNotificationClick(notification)}
                         >
@@ -286,7 +286,7 @@ export function NotificationCenter({ className, onNotificationClick }: Notificat
                                 </h4>
                                 <div className="flex items-center gap-1 flex-shrink-0">
                                   {!notification.is_read && (
-                                    <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
+                                    <div className="h-2 w-2 bg-muted rounded-full"></div>
                                   )}
                                   <Button
                                     variant="ghost"
@@ -295,7 +295,7 @@ export function NotificationCenter({ className, onNotificationClick }: Notificat
                                       e.stopPropagation();
                                       handleDeleteNotification(notification.id);
                                     }}
-                                    className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 hover:bg-red-100 hover:text-red-600"
+                                    className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 hover:bg-muted hover:text-foreground"
                                   >
                                     <Trash2 className="h-3 w-3" />
                                   </Button>
@@ -317,7 +317,7 @@ export function NotificationCenter({ className, onNotificationClick }: Notificat
                                   </Badge>
                                 )}
                                 {notification.priority === 'high' && (
-                                  <Badge variant="secondary" className="text-xs bg-orange-100 text-orange-800">
+                                  <Badge variant="secondary" className="text-xs bg-muted text-foreground">
                                     High
                                   </Badge>
                                 )}

@@ -101,18 +101,18 @@ export function ConversationHistory({
   };
 
   return (
-    <Card className={`flex flex-col h-full bg-gradient-to-br from-background via-background to-muted/10 border-2 shadow-lg ${className}`}>
+    <Card className={`flex flex-col h-full bg-gradient-to-br from-background via-background to-muted/10 border-2  ${className}`}>
       <CardHeader className="pb-4 border-b bg-gradient-to-r from-muted/20 via-muted/10 to-background">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-lg">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-full blur-sm"></div>
-              <div className="relative w-8 h-8 bg-gradient-to-br from-orange-500 to-amber-500 rounded-full flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted rounded-full blur-sm"></div>
+              <div className="relative w-8 h-8 bg-gradient-to-br from-muted to-muted rounded-full flex items-center justify-center">
                 <MessageCircle className="h-4 w-4 text-white" />
               </div>
             </div>
             <div>
-              <div className="font-semibold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+              <div className="font-semibold bg-gradient-to-r from-muted to-muted bg-clip-text text-transparent">
                 Conversations
               </div>
               <div className="text-xs text-muted-foreground font-normal">
@@ -135,7 +135,7 @@ export function ConversationHistory({
             <Button
               onClick={onNewConversation}
               size="sm"
-              className="flex items-center gap-2 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 shadow-md hover:shadow-lg transition-all hover:scale-105"
+              className="flex items-center gap-2 bg-gradient-to-r from-primary to-muted hover:from-primary/90 hover:to-muted shadow-md hover: transition-all hover:scale-105"
             >
               <Plus className="h-4 w-4" />
               <span className="hidden lg:inline">New</span>
@@ -270,7 +270,7 @@ export function ConversationHistory({
                 return (
                   <div
                     key={conversation.id}
-                    className={`group relative rounded-lg border transition-all duration-200 hover:shadow-md cursor-pointer ${
+                    className={`group relative rounded-lg border transition-all duration-200  cursor-pointer ${
                       isActive 
                         ? 'border-primary/50 bg-primary/5 shadow-sm ring-1 ring-primary/20' 
                         : 'border-border/50 bg-card/50 hover:border-border hover:bg-card'
@@ -321,7 +321,7 @@ export function ConversationHistory({
                     
                     {/* Active indicator */}
                     {isActive && (
-                      <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-primary to-blue-600 rounded-r-full"></div>
+                      <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-primary to-muted rounded-r-full"></div>
                     )}
                   </div>
                 );

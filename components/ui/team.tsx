@@ -50,7 +50,7 @@ export default function TeamSection() {
                         <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                         Code_Blitz Team
                     </div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-muted bg-clip-text text-transparent">
                         Meet Our Hackathon Team
                     </h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -63,15 +63,15 @@ export default function TeamSection() {
                     {members.map((member, index) => (
                         <div key={index} className="group relative">
                             {/* Card */}
-                            <div className="relative overflow-hidden rounded-2xl bg-white/50 dark:bg-gray-900/50 border border-muted hover:border-primary/20 transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                            <div className="relative overflow-hidden rounded-2xl bg-white/50 dark:bg-gray-900/50 border border-muted hover:border-primary/20 transition-all duration-500 hover: hover:-translate-y-2">
                                 {/* Background Pattern */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-muted opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 
                                 {/* Avatar */}
                                 <div className="relative p-6 pb-4">
                                     <div className="relative mx-auto w-24 h-24 mb-4">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-violet-500/20 rounded-full blur-md group-hover:blur-lg transition-all duration-500"></div>
-                                        <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-background shadow-lg">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-muted rounded-full blur-md group-hover:blur-lg transition-all duration-500"></div>
+                                        <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-background ">
                                             <img 
                                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                                                 src={member.avatar} 
@@ -107,7 +107,7 @@ export default function TeamSection() {
                                                 <Button
                                                     variant="outline"
                                                     size="icon"
-                                                    className="h-8 w-8 rounded-full hover:bg-blue-500/10 hover:border-blue-500/20 hover:text-blue-600 transition-all"
+                                                    className="h-8 w-8 rounded-full hover:bg-muted hover:border-border hover:text-foreground transition-all"
                                                     asChild
                                                 >
                                                     <Link href={member.linkedin} target="_blank" rel="noopener noreferrer">
@@ -139,7 +139,7 @@ export default function TeamSection() {
                 </div>
 
                 {/* Team Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-gradient-to-r from-primary/5 to-violet-500/5 border border-primary/10">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-gradient-to-r from-primary/5 to-muted border border-primary/10">
                     <div className="text-center">
                         <div className="text-2xl font-bold text-primary mb-1">5</div>
                         <div className="text-sm text-muted-foreground">Team Members</div>

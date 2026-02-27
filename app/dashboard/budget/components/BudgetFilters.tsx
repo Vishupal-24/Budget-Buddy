@@ -57,9 +57,9 @@ export function BudgetFilters({
   const [isExpanded, setIsExpanded] = useState(false);
 
   const filterOptions = [
-    { value: 'all' as const, label: 'All Budgets', icon: DollarSign, color: 'bg-blue-500/10 text-blue-600' },
-    { value: 'over-budget' as const, label: 'Over Budget', icon: AlertTriangle, color: 'bg-red-500/10 text-red-600' },
-    { value: 'under-budget' as const, label: 'Under Budget', icon: CheckCircle, color: 'bg-green-500/10 text-green-600' },
+    { value: 'all' as const, label: 'All Budgets', icon: DollarSign, color: 'bg-muted text-foreground' },
+    { value: 'over-budget' as const, label: 'Over Budget', icon: AlertTriangle, color: 'bg-muted text-foreground' },
+    { value: 'under-budget' as const, label: 'Under Budget', icon: CheckCircle, color: 'bg-muted text-foreground' },
   ];
 
   const sortOptions = [

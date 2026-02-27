@@ -12,14 +12,14 @@ interface StatCardProps {
 
 export function StatCard({ title, value, icon, className = "" }: StatCardProps) {
   return (
-    <div className={`rounded-xl border bg-card p-5 md:p-6 shadow-md hover:shadow-lg transition-shadow duration-300 ${className}`}>
+    <div className={`rounded-xl border bg-card p-5 md:p-6 ${className}`}>
       <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-primary to-violet-400 text-white">
+        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted text-foreground">
           {icon}
         </div>
         {title}
       </div>
-      <div className="mt-3 md:mt-4 text-2xl md:text-3xl font-bold">
+      <div className="mt-3 md:mt-4 text-xl md:text-2xl font-semibold">
         {formatCurrency(value)}
       </div>
       <div className="mt-2 flex items-center text-xs sm:text-sm text-muted-foreground">
@@ -59,9 +59,9 @@ export function DashboardStats({ totalIncome, totalExpense, balance }: Dashboard
         }
       />
 
-      <div className={`rounded-xl border bg-card p-5 md:p-6 shadow-md hover:shadow-lg transition-shadow duration-300 sm:col-span-2 lg:col-span-1`}>
+      <div className={`rounded-xl border bg-card p-5 md:p-6 sm:col-span-2 lg:col-span-1`}>
         <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-primary to-violet-400 text-white">
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted text-foreground">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
               <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
@@ -69,7 +69,7 @@ export function DashboardStats({ totalIncome, totalExpense, balance }: Dashboard
           </div>
           Current Balance
         </div>
-        <div className={`mt-3 md:mt-4 text-2xl md:text-3xl font-bold ${balance >= 0 ? 'text-green-600' : 'text-red-600'}`} aria-live="polite">
+        <div className={`mt-3 md:mt-4 text-xl md:text-2xl font-semibold text-foreground`} aria-live="polite">
           {formatCurrency(balance)}
         </div>
         <div className="mt-2 flex items-center text-xs sm:text-sm text-muted-foreground">

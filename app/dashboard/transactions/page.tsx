@@ -162,25 +162,25 @@ const TransactionRow = memo(
         </td>
         <td className={styles.typeColumn}>
           {transaction.type === 'income' ? (
-            <ArrowUpCircle className="w-4 h-4 text-green-500 mr-1" />
+            <ArrowUpCircle className="w-4 h-4 text-foreground mr-1" />
           ) : (
-            <ArrowDownCircle className="w-4 h-4 text-red-500 mr-1" />
+            <ArrowDownCircle className="w-4 h-4 text-muted-foreground mr-1" />
           )}
           {transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)}
         </td>
         <td className={styles.categoryColumn}>{transaction.category_name || 'Uncategorized'}</td>
         <td className={styles.descriptionColumn}>{transaction.description}</td>
         <td
-          className={`${styles.amountColumn} ${transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}`}
+          className={`${styles.amountColumn} text-foreground`}
         >
           <Currency value={transaction.amount} currency={userPrefs.currency} />
         </td>
         <td className={styles.actionsColumn}>
           <div className="flex space-x-2">
-            <button className="text-blue-500 hover:text-blue-700" aria-label="Edit">
+            <button className="text-muted-foreground hover:text-foreground" aria-label="Edit">
               <Edit2 className="w-4 h-4" />
             </button>
-            <button className="text-red-500 hover:text-red-700" aria-label="Delete">
+            <button className="text-muted-foreground hover:text-foreground" aria-label="Delete">
               <Trash className="w-4 h-4" />
             </button>
           </div>
@@ -526,7 +526,7 @@ export default function TransactionsPage() {
 
       if (error) {
         // Silently handle CORS/network errors
-        if (error.message instanceof TypeError || String(error.message).includes('Failed to fetch')) {
+        if (error instanceof TypeError || String(error.message).includes('Failed to fetch')) {
           console.warn('Network error fetching transactions - Supabase may be unreachable');
           return;
         }
@@ -626,7 +626,7 @@ export default function TransactionsPage() {
 
       if (error) {
         // Silently handle CORS/network errors - Supabase may be unreachable
-        if (error.message instanceof TypeError || String(error.message).includes('Failed to fetch')) {
+        if (error instanceof TypeError || String(error.message).includes('Failed to fetch')) {
           console.warn('Network error fetching categories - Supabase may be unreachable');
           return;
         }
@@ -1985,15 +1985,11 @@ export default function TransactionsPage() {
 
       return (
         <div style={style} className="px-4">
-          <div className="rounded-lg border bg-card p-4 shadow-sm mb-3">
+          <div className="rounded-lg border bg-card p-4 mb-3">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm text-muted-foreground">{formatDate(transaction.date)}</span>
               <span
-                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                  transaction.type === 'income'
-                    ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
-                    : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
-                }`}
+                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-muted text-foreground`}
               >
                 {transaction.type}
               </span>
@@ -2008,11 +2004,7 @@ export default function TransactionsPage() {
 
             <div className="flex items-center justify-between mt-2">
               <div
-                className={`text-lg font-bold ${
-                  transaction.type === 'income'
-                    ? 'text-green-600 dark:text-green-400'
-                    : 'text-red-600 dark:text-red-400'
-                }`}
+                className="text-lg font-bold text-foreground"
               >
                 <Currency value={transaction.amount} />
               </div>
@@ -2214,8 +2206,8 @@ export default function TransactionsPage() {
         <div className="mb-8 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                📊 Financial Analytics
+              <h2 className="text-2xl font-bold text-foreground">
+                Financial Analytics
               </h2>
               <p className="text-muted-foreground text-sm">
                 Interactive charts and insights from your financial data
@@ -2223,7 +2215,7 @@ export default function TransactionsPage() {
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2 bg-muted/30 rounded-full px-4 py-2">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <div className="w-2 h-2 rounded-full bg-foreground/50" />
                 <span className="text-sm font-medium text-muted-foreground">
                   {monthlyData.length} months analyzed
                 </span>
@@ -2231,7 +2223,7 @@ export default function TransactionsPage() {
               <Button
                 variant={showCharts ? 'default' : 'outline'}
                 onClick={() => setShowCharts(!showCharts)}
-                className="text-sm font-medium transition-all duration-200 hover:scale-105"
+                className="text-sm font-medium transition-all duration-200"
                 size="sm"
               >
                 {showCharts ? (
@@ -2253,16 +2245,16 @@ export default function TransactionsPage() {
             <div className="space-y-8 animate-in slide-in-from-top-4 duration-500">
               {/* Quick Stats Overview */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/20 rounded-2xl p-4 border border-blue-200/50 dark:border-blue-800/30">
+                <div className="bg-muted/50 rounded-2xl p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-blue-500/10 rounded-xl">
-                      <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    <div className="p-2 bg-muted rounded-xl">
+                      <TrendingUp className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1">
+                      <p className="text-xs font-medium text-muted-foreground mb-1">
                         Monthly Avg Income
                       </p>
-                      <p className="text-lg font-bold text-blue-800 dark:text-blue-200">
+                      <p className="text-lg font-bold text-foreground">
                         {formatCurrency(
                           monthlyData.reduce((sum, month) => sum + month.income, 0) /
                             Math.max(monthlyData.length, 1)
@@ -2272,16 +2264,16 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950/30 dark:to-red-900/20 rounded-2xl p-4 border border-red-200/50 dark:border-red-800/30">
+                <div className="bg-muted/50 rounded-2xl p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-red-500/10 rounded-xl">
-                      <TrendingDown className="w-5 h-5 text-red-600 dark:text-red-400" />
+                    <div className="p-2 bg-muted rounded-xl">
+                      <TrendingDown className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-xs font-medium text-red-700 dark:text-red-300 mb-1">
+                      <p className="text-xs font-medium text-muted-foreground mb-1">
                         Monthly Avg Expenses
                       </p>
-                      <p className="text-lg font-bold text-red-800 dark:text-red-200">
+                      <p className="text-lg font-bold text-foreground">
                         {formatCurrency(
                           monthlyData.reduce((sum, month) => sum + month.expense, 0) /
                             Math.max(monthlyData.length, 1)
@@ -2291,16 +2283,16 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/30 dark:to-green-900/20 rounded-2xl p-4 border border-green-200/50 dark:border-green-800/30">
+                <div className="bg-muted/50 rounded-2xl p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-green-500/10 rounded-xl">
-                      <PiggyBank className="w-5 h-5 text-green-600 dark:text-green-400" />
+                    <div className="p-2 bg-muted rounded-xl">
+                      <PiggyBank className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-xs font-medium text-green-700 dark:text-green-300 mb-1">
+                      <p className="text-xs font-medium text-muted-foreground mb-1">
                         Savings Rate
                       </p>
-                      <p className="text-lg font-bold text-green-800 dark:text-green-200">
+                      <p className="text-lg font-bold text-foreground">
                         {monthlyData.length > 0
                           ? (
                               (monthlyData.reduce(
@@ -2317,16 +2309,16 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/30 dark:to-purple-900/20 rounded-2xl p-4 border border-purple-200/50 dark:border-purple-800/30">
+                <div className="bg-muted/50 rounded-2xl p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-purple-500/10 rounded-xl">
-                      <Calendar className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                    <div className="p-2 bg-muted rounded-xl">
+                      <Calendar className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-xs font-medium text-purple-700 dark:text-purple-300 mb-1">
+                      <p className="text-xs font-medium text-muted-foreground mb-1">
                         Total Transactions
                       </p>
-                      <p className="text-lg font-bold text-purple-800 dark:text-purple-200">
+                      <p className="text-lg font-bold text-foreground">
                         {transactions.length.toLocaleString()}
                       </p>
                     </div>
@@ -2337,11 +2329,11 @@ export default function TransactionsPage() {
               {/* Enhanced Chart Grid */}
               <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
                 {/* Income vs Expenses Chart */}
-                <div className="bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-2xl border border-border/50 shadow-xl backdrop-blur-sm overflow-hidden">
-                  <div className="bg-gradient-to-r from-muted/30 to-muted/10 p-6 border-b border-border/50">
+                <div className="bg-card rounded-2xl border border-border overflow-hidden">
+                  <div className="bg-muted/30 p-6 border-b border-border/50">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-gradient-to-br from-emerald-500/10 to-red-500/10 rounded-xl">
+                        <div className="p-2 bg-muted rounded-xl">
                           <BarChart3 className="w-6 h-6 text-primary" />
                         </div>
                         <div>
@@ -2353,10 +2345,10 @@ export default function TransactionsPage() {
                       </div>
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-emerald-500" />
-                          <span className="text-xs text-emerald-600 font-medium">Income</span>
-                          <div className="w-3 h-3 rounded-full bg-red-500 ml-2" />
-                          <span className="text-xs text-red-600 font-medium">Expenses</span>
+                          <div className="w-3 h-3 rounded-full bg-muted" />
+                          <span className="text-xs text-foreground font-medium">Income</span>
+                          <div className="w-3 h-3 rounded-full bg-muted ml-2" />
+                          <span className="text-xs text-foreground font-medium">Expenses</span>
                         </div>
                         <Button
                           variant="ghost"
@@ -2389,7 +2381,7 @@ export default function TransactionsPage() {
                                 end: endDate.toISOString().split('T')[0],
                               });
 
-                              toast.success(`📅 Filtered to ${monthName} ${year}`, {
+                              toast.success(`Filtered to ${monthName} ${year}`, {
                                 description: `Income: ${formatCurrency(monthData.income)} • Expenses: ${formatCurrency(monthData.expense)}`,
                                 duration: 4000,
                               });
@@ -2402,7 +2394,7 @@ export default function TransactionsPage() {
                 </div>
 
                 {/* Year-over-Year Comparison */}
-                <div className="bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-2xl border border-border/50 shadow-xl backdrop-blur-sm overflow-hidden">
+                <div className="bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-2xl border border-border/50  backdrop-blur-sm overflow-hidden">
                   <div className="bg-gradient-to-r from-muted/30 to-muted/10 p-6 border-b border-border/50">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
@@ -2444,7 +2436,7 @@ export default function TransactionsPage() {
                               .reduce((sum, t) => sum + t.amount, 0);
 
                             toast.success(
-                              `📊 ${year} Analysis: ${formatCurrency(totalIncome)} income, ${formatCurrency(totalSpent)} expenses`,
+                              `${year} Analysis: ${formatCurrency(totalIncome)} income, ${formatCurrency(totalSpent)} expenses`,
                               {
                                 duration: 5000,
                                 description: `Net: ${formatCurrency(totalIncome - totalSpent)} • ${yearTransactions.length} transactions`,
@@ -2473,16 +2465,16 @@ export default function TransactionsPage() {
                   Smart Insights
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20 rounded-xl p-4 border border-blue-200/50">
+                  <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
                     <div className="flex items-start gap-3">
-                      <div className="p-1 bg-blue-500/10 rounded-lg">
-                        <Info className="w-4 h-4 text-blue-600" />
+                      <div className="p-1 bg-muted rounded-lg">
+                        <Info className="w-4 h-4 text-foreground" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-1">
+                        <p className="text-sm font-medium text-foreground dark:text-foreground mb-1">
                           Spending Pattern
                         </p>
-                        <p className="text-xs text-blue-700 dark:text-blue-300">
+                        <p className="text-xs text-foreground dark:text-foreground">
                           {monthlyData.length > 0 &&
                           monthlyData[monthlyData.length - 1]?.expense >
                             monthlyData[Math.max(0, monthlyData.length - 2)]?.expense
@@ -2493,16 +2485,16 @@ export default function TransactionsPage() {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20 rounded-xl p-4 border border-green-200/50">
+                  <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
                     <div className="flex items-start gap-3">
-                      <div className="p-1 bg-green-500/10 rounded-lg">
-                        <TrendingUp className="w-4 h-4 text-green-600" />
+                      <div className="p-1 bg-muted rounded-lg">
+                        <TrendingUp className="w-4 h-4 text-foreground" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-green-800 dark:text-green-200 mb-1">
+                        <p className="text-sm font-medium text-foreground dark:text-foreground mb-1">
                           Income Trend
                         </p>
-                        <p className="text-xs text-green-700 dark:text-green-300">
+                        <p className="text-xs text-foreground dark:text-foreground">
                           {monthlyData.length > 1 &&
                           monthlyData[monthlyData.length - 1]?.income >
                             monthlyData[monthlyData.length - 2]?.income
@@ -2513,16 +2505,16 @@ export default function TransactionsPage() {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20 rounded-xl p-4 border border-purple-200/50">
+                  <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
                     <div className="flex items-start gap-3">
-                      <div className="p-1 bg-purple-500/10 rounded-lg">
-                        <Target className="w-4 h-4 text-purple-600" />
+                      <div className="p-1 bg-muted rounded-lg">
+                        <Target className="w-4 h-4 text-foreground" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-purple-800 dark:text-purple-200 mb-1">
+                        <p className="text-sm font-medium text-foreground dark:text-foreground mb-1">
                           Financial Goal
                         </p>
-                        <p className="text-xs text-purple-700 dark:text-purple-300">
+                        <p className="text-xs text-foreground dark:text-foreground">
                           {monthlyData.length > 0 &&
                           (monthlyData.reduce(
                             (sum, month) => sum + month.income - month.expense,
@@ -2650,7 +2642,7 @@ export default function TransactionsPage() {
           {/* Modal Header */}
           <div className="flex items-center justify-between p-6 border-b border-border/50 bg-gradient-to-r from-muted/30 to-muted/10">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-gradient-to-br from-emerald-500/10 to-red-500/10 rounded-xl">
+              <div className="p-3 bg-gradient-to-br from-muted to-muted rounded-xl">
                 <BarChart3 className="w-8 h-8 text-primary" />
               </div>
               <div>
@@ -2674,45 +2666,45 @@ export default function TransactionsPage() {
 
           {/* Modal Content */}
           <div className="flex-1 p-6 overflow-hidden">
-            <div className="h-full bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-2xl border border-border/50 shadow-2xl backdrop-blur-sm p-6">
+            <div className="h-full bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-2xl border border-border/50  backdrop-blur-sm p-6">
               {/* Enhanced Stats Row for Fullscreen */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/20 rounded-xl p-4 border border-emerald-200/50">
+                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <TrendingUp className="w-6 h-6 text-emerald-600" />
+                    <TrendingUp className="w-6 h-6 text-foreground" />
                     <div>
-                      <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+                      <p className="text-sm font-medium text-foreground dark:text-foreground">
                         Total Income
                       </p>
-                      <p className="text-xl font-bold text-emerald-800 dark:text-emerald-200">
+                      <p className="text-xl font-bold text-foreground dark:text-foreground">
                         {formatCurrency(monthlyData.reduce((sum, month) => sum + month.income, 0))}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950/30 dark:to-red-900/20 rounded-xl p-4 border border-red-200/50">
+                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <TrendingDown className="w-6 h-6 text-red-600" />
+                    <TrendingDown className="w-6 h-6 text-foreground" />
                     <div>
-                      <p className="text-sm font-medium text-red-700 dark:text-red-300">
+                      <p className="text-sm font-medium text-foreground dark:text-foreground">
                         Total Expenses
                       </p>
-                      <p className="text-xl font-bold text-red-800 dark:text-red-200">
+                      <p className="text-xl font-bold text-foreground dark:text-foreground">
                         {formatCurrency(monthlyData.reduce((sum, month) => sum + month.expense, 0))}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/30 dark:to-purple-900/20 rounded-xl p-4 border border-purple-200/50">
+                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <PiggyBank className="w-6 h-6 text-purple-600" />
+                    <PiggyBank className="w-6 h-6 text-foreground" />
                     <div>
-                      <p className="text-sm font-medium text-purple-700 dark:text-purple-300">
+                      <p className="text-sm font-medium text-foreground dark:text-foreground">
                         Net Balance
                       </p>
-                      <p className="text-xl font-bold text-purple-800 dark:text-purple-200">
+                      <p className="text-xl font-bold text-foreground dark:text-foreground">
                         {formatCurrency(
                           monthlyData.reduce((sum, month) => sum + month.income - month.expense, 0)
                         )}
@@ -2721,14 +2713,14 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/20 rounded-xl p-4 border border-blue-200/50">
+                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <BarChart3 className="w-6 h-6 text-blue-600" />
+                    <BarChart3 className="w-6 h-6 text-foreground" />
                     <div>
-                      <p className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                      <p className="text-sm font-medium text-foreground dark:text-foreground">
                         Avg Monthly
                       </p>
-                      <p className="text-xl font-bold text-blue-800 dark:text-blue-200">
+                      <p className="text-xl font-bold text-foreground dark:text-foreground">
                         {formatCurrency(
                           monthlyData.reduce((sum, month) => sum + month.income, 0) /
                             Math.max(monthlyData.length, 1)
@@ -2761,7 +2753,7 @@ export default function TransactionsPage() {
                         // Close fullscreen and show filtered data
                         setShowFullscreenChart(false);
 
-                        toast.success(`📅 Filtered to ${monthName} ${year}`, {
+                        toast.success(`Filtered to ${monthName} ${year}`, {
                           description: `Income: ${formatCurrency(monthData.income)} • Expenses: ${formatCurrency(monthData.expense)}`,
                           duration: 4000,
                         });
@@ -2777,7 +2769,7 @@ export default function TransactionsPage() {
           <div className="p-6 border-t border-border/50 bg-gradient-to-r from-muted/20 to-muted/10">
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                <div className="w-2 h-2 rounded-full bg-muted" />
                 <span>Click on chart points to filter transactions by month</span>
               </div>
               <div className="flex items-center gap-2">

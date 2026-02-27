@@ -44,7 +44,7 @@ function CategoryProgressBar({
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-3">
           <div 
-            className="w-4 h-4 rounded-full flex-shrink-0 group-hover:scale-110 transition-transform"
+            className="w-4 h-4 rounded-full flex-shrink-0"
             style={{ backgroundColor: category.color }}
           />
           <div>
@@ -80,7 +80,7 @@ function CategoryProgressBar({
           <div className="flex items-center justify-between text-xs">
             <span className={cn(
               "flex items-center gap-1",
-              isOverBudget ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+              isOverBudget ? "text-foreground dark:text-foreground" : "text-foreground dark:text-foreground"
             )}>
               <Target className="h-3 w-3" />
               Budget: {formatCurrency(category.budget)}
@@ -98,7 +98,7 @@ function CategoryProgressBar({
         {category.trend && (
           <div className={cn(
             "flex items-center gap-1 text-xs",
-            category.trend.isPositive ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+            category.trend.isPositive ? "text-foreground dark:text-foreground" : "text-foreground dark:text-foreground"
           )}>
             {category.trend.isPositive ? (
               <TrendingUp className="h-3 w-3" />
@@ -199,7 +199,7 @@ export function EnhancedCategoryInsights({
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-lg flex items-center gap-2">
-                <Award className="h-4 w-4 text-amber-500" />
+                <Award className="h-4 w-4 text-muted-foreground" />
                 Top Category
               </CardTitle>
             </CardHeader>
@@ -227,7 +227,7 @@ export function EnhancedCategoryInsights({
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-lg flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-blue-500" />
+                <TrendingUp className="h-4 w-4 text-foreground" />
                 Most Active
               </CardTitle>
             </CardHeader>

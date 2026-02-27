@@ -117,7 +117,7 @@ export function MessageActions({
             className="h-7 px-2 text-xs hover:bg-muted/80 transition-all hover:scale-105"
           >
             {speaking ? (
-              <VolumeX className="h-3 w-3 mr-1 text-blue-600" />
+              <VolumeX className="h-3 w-3 mr-1 text-foreground" />
             ) : (
               <Volume2 className="h-3 w-3 mr-1" />
             )}
@@ -132,7 +132,7 @@ export function MessageActions({
           className="h-7 px-2 text-xs hover:bg-muted/80 transition-all hover:scale-105"
         >
           {copied ? (
-            <Check className="h-3 w-3 mr-1 text-green-600" />
+            <Check className="h-3 w-3 mr-1 text-foreground" />
           ) : (
             <Copy className="h-3 w-3 mr-1" />
           )}
@@ -146,7 +146,7 @@ export function MessageActions({
             size="sm"
             onClick={() => handleLike(true)}
             className={`h-7 w-7 p-0 transition-all hover:scale-110 ${
-              liked === true ? 'text-green-600 bg-green-50 dark:bg-green-950/20' : 'hover:bg-muted/80'
+              liked === true ? 'text-foreground bg-muted dark:bg-muted' : 'hover:bg-muted/80'
             }`}
           >
             <ThumbsUp className="h-3 w-3" />
@@ -156,7 +156,7 @@ export function MessageActions({
             size="sm"
             onClick={() => handleLike(false)}
             className={`h-7 w-7 p-0 transition-all hover:scale-110 ${
-              liked === false ? 'text-red-600 bg-red-50 dark:bg-red-950/20' : 'hover:bg-muted/80'
+              liked === false ? 'text-foreground bg-muted dark:bg-muted' : 'hover:bg-muted/80'
             }`}
           >
             <ThumbsDown className="h-3 w-3" />
@@ -177,7 +177,7 @@ export function MessageActions({
           <DropdownMenuContent align="end" className="w-40">
             <DropdownMenuItem onClick={handleBookmark} className="text-xs">
               {bookmarked ? (
-                <BookmarkCheck className="h-3 w-3 mr-2 text-blue-600" />
+                <BookmarkCheck className="h-3 w-3 mr-2 text-foreground" />
               ) : (
                 <Bookmark className="h-3 w-3 mr-2" />
               )}

@@ -47,7 +47,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
       currentAmount: 6500,
       deadline: '2024-12-31',
       type: 'savings',
-      color: 'bg-blue-500'
+      color: 'bg-muted'
     },
     {
       id: '2',
@@ -57,7 +57,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
       deadline: '2024-01-31',
       category: 'Dining',
       type: 'spending-limit',
-      color: 'bg-orange-500'
+      color: 'bg-muted'
     }
   ]);
 
@@ -120,14 +120,14 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
   const getGoalStatusColor = (goal: BudgetGoal) => {
     const { isCompleted, isOverdue, progress } = getGoalProgress(goal);
     
-    if (isCompleted) return 'text-green-600 bg-green-50 border-green-200';
-    if (isOverdue) return 'text-red-600 bg-red-50 border-red-200';
-    if (progress >= 75) return 'text-blue-600 bg-blue-50 border-blue-200';
+    if (isCompleted) return 'text-foreground bg-muted border-border';
+    if (isOverdue) return 'text-foreground bg-muted border-border';
+    if (progress >= 75) return 'text-foreground bg-muted border-border';
     return 'text-gray-600 bg-gray-50 border-gray-200';
   };
 
   return (
-    <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex items-center justify-between">
           <div>
@@ -156,15 +156,15 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
         {/* Goal Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-green-600">{goalStats.completed}</div>
+            <div className="text-2xl font-bold text-foreground">{goalStats.completed}</div>
             <div className="text-xs text-muted-foreground">Completed</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600">{goalStats.inProgress}</div>
+            <div className="text-2xl font-bold text-foreground">{goalStats.inProgress}</div>
             <div className="text-xs text-muted-foreground">In Progress</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-red-600">{goalStats.overdue}</div>
+            <div className="text-2xl font-bold text-foreground">{goalStats.overdue}</div>
             <div className="text-xs text-muted-foreground">Overdue</div>
           </div>
           <div className="text-center">
@@ -282,7 +282,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className={`rounded-xl border p-5 transition-all duration-300 hover:shadow-md ${getGoalStatusColor(goal)}`}
+                  className={`rounded-xl border p-5 transition-all duration-300  ${getGoalStatusColor(goal)}`}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-start gap-3">
@@ -309,7 +309,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-red-500 hover:text-red-600"
+                        className="h-7 w-7 p-0 text-foreground hover:text-foreground"
                         onClick={() => handleDeleteGoal(goal.id)}
                       >
                         <Trash2 className="h-3 w-3" />
@@ -323,7 +323,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
                       <span className="font-medium">
                         {formatCurrency(goal.currentAmount)} / {formatCurrency(goal.targetAmount)}
                       </span>
-                      <span className={`font-medium ${isCompleted ? 'text-green-600' : isOverdue ? 'text-red-600' : 'text-blue-600'}`}>
+                      <span className={`font-medium ${isCompleted ? 'text-foreground' : isOverdue ? 'text-foreground' : 'text-foreground'}`}>
                         {progress.toFixed(1)}%
                       </span>
                     </div>
@@ -333,9 +333,9 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 1, delay: index * 0.2 }}
                         className={`h-full rounded-full ${
-                          isCompleted ? 'bg-green-500' : 
-                          isOverdue ? 'bg-red-500' : 
-                          progress >= 75 ? 'bg-blue-500' : 'bg-gray-400'
+                          isCompleted ? 'bg-muted' : 
+                          isOverdue ? 'bg-muted' : 
+                          progress >= 75 ? 'bg-muted' : 'bg-gray-400'
                         }`}
                       />
                     </div>
@@ -346,13 +346,13 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
                     <div className="flex items-center gap-1">
                       {isCompleted ? (
                         <>
-                          <CheckCircle className="h-3 w-3 text-green-600" />
-                          <span className="text-green-600 font-medium">Completed!</span>
+                          <CheckCircle className="h-3 w-3 text-foreground" />
+                          <span className="text-foreground font-medium">Completed!</span>
                         </>
                       ) : isOverdue ? (
                         <>
-                          <AlertTriangle className="h-3 w-3 text-red-600" />
-                          <span className="text-red-600 font-medium">Overdue</span>
+                          <AlertTriangle className="h-3 w-3 text-foreground" />
+                          <span className="text-foreground font-medium">Overdue</span>
                         </>
                       ) : (
                         <>

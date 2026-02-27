@@ -234,7 +234,7 @@ export class ContextualAIAssistant {
       return {
         id: `budget_impact_${Date.now()}`,
         type: 'warning',
-        title: `⚠️ Budget Alert: ${transaction.category}`,
+        title: `Budget Alert: ${transaction.category}`,
         description: `This transaction puts you at ${budgetUsage.toFixed(1)}% of your ${transaction.category} budget (₹${categoryBudget.toLocaleString()})`,
         impact: budgetUsage > 100 ? 'high' : 'medium',
         actionable: true,
@@ -289,7 +289,7 @@ export class ContextualAIAssistant {
         insights.push({
           id: `time_pattern_${Date.now()}`,
           type: 'suggestion',
-          title: '🕐 Unusual Spending Time',
+          title: 'Unusual Spending Time',
           description: `You typically spend around ${Math.round(averageHour)}:00. Late-night purchases are often impulse buys.`,
           impact: 'low',
           actionable: true,
@@ -317,7 +317,7 @@ export class ContextualAIAssistant {
         insights.push({
           id: `frequency_${Date.now()}`,
           type: 'suggestion',
-          title: `🔄 Frequent ${transaction.category} Spending`,
+          title: `Frequent ${transaction.category} Spending`,
           description: `You spend on ${transaction.category} ${categoryFreq} times per month. Consider bulk buying or subscriptions to save.`,
           impact: 'medium',
           actionable: true,
@@ -347,7 +347,7 @@ export class ContextualAIAssistant {
       insights.push({
         id: `loyalty_${Date.now()}`,
         type: 'suggestion',
-        title: `🏪 Loyalty Opportunity at ${transaction.merchant}`,
+        title: `Loyalty Opportunity at ${transaction.merchant}`,
         description: `You visit ${transaction.merchant} ${merchantPref.frequency} times per month. Check for loyalty programs or bulk discounts.`,
         impact: 'low',
         actionable: true,
@@ -386,7 +386,7 @@ export class ContextualAIAssistant {
         insights.push({
           id: `savings_${Date.now()}`,
           type: 'suggestion',
-          title: `💰 Potential Savings in ${transaction.category}`,
+          title: `Potential Savings in ${transaction.category}`,
           description: `This ₹${transaction.amount} expense is ${((transaction.amount / categoryAvg - 1) * 100).toFixed(1)}% higher than your usual ${transaction.category} spending.`,
           impact: 'medium',
           actionable: true,
@@ -424,7 +424,7 @@ export class ContextualAIAssistant {
       insights.push({
         id: `achievement_budget_${Date.now()}`,
         type: 'achievement',
-        title: '🎉 Great Budget Management!',
+        title: 'Great Budget Management!',
         description: `You're staying within budget ${(profile.budgetAdherence * 100).toFixed(1)}% of the time. Keep it up!`,
         impact: 'low',
         actionable: false,

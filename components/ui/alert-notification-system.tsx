@@ -256,16 +256,16 @@ export function AlertNotificationSystem() {
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case 'error': return 'border border-destructive/30 bg-destructive/5';
-      case 'warning': return 'border border-amber-500/30 bg-amber-500/5';
-      default: return 'border border-blue-500/30 bg-blue-500/5';
+      case 'warning': return 'border border-border bg-muted/50';
+      default: return 'border border-border bg-muted/50';
     }
   };
 
   const getSeverityIcon = (severity: string) => {
     switch (severity) {
       case 'error': return <AlertTriangle className="h-4 w-4 text-destructive" />;
-      case 'warning': return <AlertTriangle className="h-4 w-4 text-amber-500" />;
-      default: return <Bell className="h-4 w-4 text-blue-500" />;
+      case 'warning': return <AlertTriangle className="h-4 w-4 text-foreground" />;
+      default: return <Bell className="h-4 w-4 text-foreground" />;
     }
   };
 
@@ -278,7 +278,7 @@ export function AlertNotificationSystem() {
         variant="outline"
         size="sm"
         onClick={() => setShowPanel(!showPanel)}
-        className="relative mb-2 h-12 w-12 rounded-full shadow-lg"
+        className="relative mb-2 h-12 w-12 rounded-full "
       >
         <Bell className="h-5 w-5" />
         {unreadCount > 0 && (
@@ -293,7 +293,7 @@ export function AlertNotificationSystem() {
 
       {/* Notification Panel */}
       {showPanel && (
-        <Card className="w-80 max-h-96 overflow-y-auto rounded-xl shadow-xl mb-4">
+        <Card className="w-80 max-h-96 overflow-y-auto rounded-xl  mb-4">
           <CardHeader className="pb-3 border-b border-border p-4">
             <CardTitle className="text-base font-semibold flex items-center justify-between text-foreground">
               <span className="flex items-center gap-2">

@@ -123,8 +123,8 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
 
   const getTrendIcon = (trend: 'up' | 'down' | 'stable', size = 'h-4 w-4') => {
     switch (trend) {
-      case 'up': return <ArrowUpRight className={`${size} text-red-500`} />;
-      case 'down': return <ArrowDownRight className={`${size} text-green-500`} />;
+      case 'up': return <ArrowUpRight className={`${size} text-foreground`} />;
+      case 'down': return <ArrowDownRight className={`${size} text-foreground`} />;
       case 'stable': return <Minus className={`${size} text-gray-500`} />;
     }
   };
@@ -133,9 +133,9 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
     if (trend === 'stable') return 'text-gray-600';
     
     if (isSpending) {
-      return trend === 'up' ? 'text-red-600' : 'text-green-600';
+      return trend === 'up' ? 'text-foreground' : 'text-foreground';
     } else {
-      return trend === 'up' ? 'text-green-600' : 'text-red-600';
+      return trend === 'up' ? 'text-foreground' : 'text-foreground';
     }
   };
 
@@ -156,7 +156,7 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
   };
 
   return (
-    <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -334,7 +334,7 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="p-3 rounded-lg bg-background/50 border border-border/30">
             <div className="flex items-center gap-2 mb-1">
-              <TrendingUp className="h-4 w-4 text-red-500" />
+              <TrendingUp className="h-4 w-4 text-foreground" />
               <span className="font-medium text-sm">Biggest Increase</span>
             </div>
             <div className="text-xs text-muted-foreground">
@@ -347,7 +347,7 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
           
           <div className="p-3 rounded-lg bg-background/50 border border-border/30">
             <div className="flex items-center gap-2 mb-1">
-              <TrendingDown className="h-4 w-4 text-green-500" />
+              <TrendingDown className="h-4 w-4 text-foreground" />
               <span className="font-medium text-sm">Biggest Decrease</span>
             </div>
             <div className="text-xs text-muted-foreground">

@@ -82,7 +82,7 @@
   
   /* Firefox scrollbar styling */
   scrollbar-width: auto;
-  scrollbar-color: rgba(99, 102, 241, 0.3) rgba(0, 0, 0, 0.1);
+  scrollbar-color: hsl(var(--border)) rgba(0, 0, 0, 0.05);
 }
 
 /* Webkit scrollbar for chat areas */
@@ -101,27 +101,27 @@
 
 .chat-container .chat-messages-area::-webkit-scrollbar-thumb,
 .chat-messages-area::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(99, 102, 241, 0.4), rgba(99, 102, 241, 0.6));
+  background: hsl(var(--border));
   border-radius: 5px;
-  border: 1px solid rgba(99, 102, 241, 0.1);
+  border: 1px solid transparent;
   transition: all 0.3s ease;
 }
 
 .chat-container .chat-messages-area::-webkit-scrollbar-thumb:hover,
 .chat-messages-area::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(99, 102, 241, 0.6), rgba(99, 102, 241, 0.8));
-  border-color: rgba(99, 102, 241, 0.3);
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-color: transparent;
 }
 
 .chat-container .chat-messages-area::-webkit-scrollbar-thumb:active,
 .chat-messages-area::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(180deg, rgba(99, 102, 241, 0.8), rgba(99, 102, 241, 1));
+  background: hsl(var(--muted-foreground) / 0.5);
 }
 
 /* Dark mode scrollbar adjustments */
 .dark .chat-container .chat-messages-area,
 .dark .chat-messages-area {
-  scrollbar-color: rgba(139, 92, 246, 0.5) rgba(255, 255, 255, 0.1);
+  scrollbar-color: hsl(var(--border)) rgba(255, 255, 255, 0.05);
 }
 
 .dark .chat-container .chat-messages-area::-webkit-scrollbar-track,
@@ -131,13 +131,13 @@
 
 .dark .chat-container .chat-messages-area::-webkit-scrollbar-thumb,
 .dark .chat-messages-area::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(139, 92, 246, 0.4), rgba(139, 92, 246, 0.6));
-  border-color: rgba(139, 92, 246, 0.2);
+  background: hsl(var(--border));
+  border-color: transparent;
 }
 
 .dark .chat-container .chat-messages-area::-webkit-scrollbar-thumb:hover,
 .dark .chat-messages-area::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(139, 92, 246, 0.6), rgba(139, 92, 246, 0.8));
+  background: hsl(var(--muted-foreground) / 0.3);
 }
 
 /* Safety net for any missed elements */

@@ -268,7 +268,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
       const data = payload[0].payload;
       
       return (
-        <div className="bg-gradient-to-br from-background to-muted/20 border border-border/50 rounded-xl shadow-2xl p-4 max-w-sm backdrop-blur-sm">
+        <div className="bg-card border border-border rounded-lg p-4 max-w-sm">
           <div className="font-semibold text-foreground mb-3 text-center border-b border-border/30 pb-2">
             {label}
           </div>
@@ -293,7 +293,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
           {viewMode === 'monthly' && data.year && (
             <div className="pt-3 mt-3 border-t border-border/30 text-center">
               <span className="text-xs text-muted-foreground bg-muted/20 px-2 py-1 rounded-full">
-                💡 Click to view {data.year} details
+                Click to view {data.year} details
               </span>
             </div>
           )}
@@ -390,7 +390,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
   return (
     <div className={`flex flex-col h-full space-y-6 ${className}`}>
       {/* Header Section - Completely redesigned */}
-      <Card className="bg-gradient-to-br from-background to-muted/30 border-2 border-border/50 shadow-lg">
+      <Card className="bg-gradient-to-br from-background to-muted/30 border-2 border-border/50 ">
         <CardHeader className="pb-6">
           {/* Title and Controls Row */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
@@ -429,9 +429,9 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                   <SelectValue placeholder="Metric" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="spending">💰 Spending</SelectItem>
-                  <SelectItem value="income">💵 Income</SelectItem>
-                  <SelectItem value="transactions">📊 Transactions</SelectItem>
+                  <SelectItem value="spending">Spending</SelectItem>
+                  <SelectItem value="income">Income</SelectItem>
+                  <SelectItem value="transactions">Transactions</SelectItem>
                 </SelectContent>
               </Select>
               
@@ -440,9 +440,9 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                   <SelectValue placeholder="View" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="monthly">📅 Monthly</SelectItem>
-                  <SelectItem value="quarterly">📈 Quarterly</SelectItem>
-                  <SelectItem value="annual">🗓️ Annual</SelectItem>
+                  <SelectItem value="monthly">Monthly</SelectItem>
+                  <SelectItem value="quarterly">Quarterly</SelectItem>
+                  <SelectItem value="annual">Annual</SelectItem>
                 </SelectContent>
               </Select>
               
@@ -451,9 +451,9 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                   <SelectValue placeholder="Chart" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="bar">📊 Bar</SelectItem>
-                  <SelectItem value="line">📈 Line</SelectItem>
-                  <SelectItem value="area">📉 Area</SelectItem>
+                  <SelectItem value="bar">Bar</SelectItem>
+                  <SelectItem value="line">Line</SelectItem>
+                  <SelectItem value="area">Area</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -464,45 +464,45 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
         {yearlyData.length > 0 && (
           <CardContent className="pt-0 pb-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/30 p-4 rounded-xl border border-blue-200 dark:border-blue-800/50">
+              <div className="bg-muted p-4 rounded-lg border border-border">
                 <div className="text-center">
-                  <div className="text-blue-600 dark:text-blue-400 text-2xl font-bold">
+                  <div className="text-foreground text-2xl font-bold">
                     {yearlyData.length}
                   </div>
-                  <div className="text-blue-700 dark:text-blue-300 text-sm font-medium mt-1">
+                  <div className="text-muted-foreground text-sm font-medium mt-1">
                     Total Years
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/50 dark:to-green-900/30 p-4 rounded-xl border border-green-200 dark:border-green-800/50">
+              <div className="bg-muted p-4 rounded-lg border border-border">
                 <div className="text-center">
-                  <div className="text-green-600 dark:text-green-400 text-lg font-bold truncate">
+                  <div className="text-foreground text-lg font-bold truncate">
                     {formatCurrency(yearlyData[0]?.totalSpending || 0)}
                   </div>
-                  <div className="text-green-700 dark:text-green-300 text-sm font-medium mt-1">
+                  <div className="text-muted-foreground text-sm font-medium mt-1">
                     Latest Year
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/50 dark:to-purple-900/30 p-4 rounded-xl border border-purple-200 dark:border-purple-800/50">
+              <div className="bg-muted p-4 rounded-lg border border-border">
                 <div className="text-center">
-                  <div className="text-purple-600 dark:text-purple-400 text-2xl font-bold">
+                  <div className="text-foreground text-2xl font-bold">
                     {Math.max(0, availableCategories.length - 2)}
                   </div>
-                  <div className="text-purple-700 dark:text-purple-300 text-sm font-medium mt-1">
+                  <div className="text-muted-foreground text-sm font-medium mt-1">
                     Categories
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/50 dark:to-orange-900/30 p-4 rounded-xl border border-orange-200 dark:border-orange-800/50">
+              <div className="bg-muted p-4 rounded-lg border border-border">
                 <div className="text-center">
-                  <div className="text-orange-600 dark:text-orange-400 text-lg font-bold">
+                  <div className="text-foreground text-lg font-bold">
                     {yearlyData.reduce((sum, year) => sum + year.transactionCount, 0).toLocaleString()}
                   </div>
-                  <div className="text-orange-700 dark:text-orange-300 text-sm font-medium mt-1">
+                  <div className="text-muted-foreground text-sm font-medium mt-1">
                     Total Transactions
                   </div>
                 </div>
@@ -514,30 +514,22 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
 
       {/* YoY Growth & Insights Section - Separated for better organization */}
       {yoyMetrics && availableYears.length > 1 && (
-        <Card className="bg-gradient-to-br from-background to-accent/5 border border-border/50 shadow-md">
+        <Card>
           <CardContent className="p-6">
             {/* Main metric growth - Enhanced design */}
-            <div className="bg-gradient-to-r from-muted/30 to-muted/10 p-4 rounded-xl border border-border/50 mb-6">
+            <div className="bg-muted/30 p-4 rounded-lg border border-border mb-6">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-full ${
-                    getMetricGrowth(selectedMetric) > 0 ? 
-                      (selectedMetric === 'spending' ? 'bg-red-100 dark:bg-red-950/30' : 'bg-green-100 dark:bg-green-950/30') :
-                      (selectedMetric === 'spending' ? 'bg-green-100 dark:bg-green-950/30' : 'bg-red-100 dark:bg-red-950/30')
-                  }`}>
+                  <div className="p-2 rounded-full bg-muted">
                     {getMetricGrowth(selectedMetric) > 0 ? (
-                      <TrendingUp className={`h-5 w-5 ${selectedMetric === 'spending' ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'}`} />
+                      <TrendingUp className="h-5 w-5 text-foreground" />
                     ) : (
-                      <TrendingDown className={`h-5 w-5 ${selectedMetric === 'spending' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`} />
+                      <TrendingDown className="h-5 w-5 text-foreground" />
                     )}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className={`text-2xl font-bold ${
-                        (selectedMetric === 'spending' && getMetricGrowth(selectedMetric) > 0) || 
-                        (selectedMetric !== 'spending' && getMetricGrowth(selectedMetric) < 0) 
-                          ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'
-                      }`}>
+                      <span className="text-2xl font-bold text-foreground">
                         {getMetricGrowth(selectedMetric) > 0 ? '+' : ''}{getMetricGrowth(selectedMetric).toFixed(1)}%
                       </span>
                       <span className="text-muted-foreground text-sm capitalize bg-muted/50 px-2 py-1 rounded-full">
@@ -568,19 +560,19 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                 {(insights.trends.length > 0 || insights.alerts.length > 0) && (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                     {insights.trends.slice(0, 2).map((trend, index) => (
-                      <div key={index} className="flex items-start gap-3 p-3 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800/50">
-                        <div className="p-1 bg-blue-200 dark:bg-blue-800/50 rounded-full">
-                          <Info className="h-3 w-3 text-blue-600 dark:text-blue-400" />
+                      <div key={index} className="flex items-start gap-3 p-3 bg-muted rounded-lg border border-border">
+                        <div className="p-1 bg-muted-foreground/10 rounded-full">
+                          <Info className="h-3 w-3 text-muted-foreground" />
                         </div>
-                        <span className="text-blue-800 dark:text-blue-200 text-sm font-medium">{trend}</span>
+                        <span className="text-foreground text-sm font-medium">{trend}</span>
                       </div>
                     ))}
                     {insights.alerts.slice(0, 2).map((alert, index) => (
-                      <div key={index} className="flex items-start gap-3 p-3 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800/50">
-                        <div className="p-1 bg-amber-200 dark:bg-amber-800/50 rounded-full">
-                          <AlertTriangle className="h-3 w-3 text-amber-600 dark:text-amber-400" />
+                      <div key={index} className="flex items-start gap-3 p-3 bg-muted rounded-lg border border-border">
+                        <div className="p-1 bg-muted-foreground/10 rounded-full">
+                          <AlertTriangle className="h-3 w-3 text-muted-foreground" />
                         </div>
-                        <span className="text-amber-800 dark:text-amber-200 text-sm font-medium">{alert}</span>
+                        <span className="text-foreground text-sm font-medium">{alert}</span>
                       </div>
                     ))}
                   </div>
@@ -591,8 +583,8 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                   <div className="border-t border-border/50 pt-4">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2">
-                        <div className="p-1 bg-purple-100 dark:bg-purple-950/30 rounded-full">
-                          <Target className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                        <div className="p-1 bg-muted rounded-full">
+                          <Target className="h-4 w-4 text-muted-foreground" />
                         </div>
                         <span className="text-sm font-semibold text-foreground">
                           Predictive Analytics
@@ -615,23 +607,13 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                           .filter(insight => insight.confidence >= 80)
                           .slice(0, 3)
                           .map((insight, index) => (
-                            <div key={index} className={`flex items-start gap-3 p-3 rounded-lg border ${
-                              insight.type === 'alert' ? 'bg-gradient-to-r from-red-50 to-red-100 dark:from-red-950/30 dark:to-red-900/20 border-red-200 dark:border-red-800/50' :
-                              insight.type === 'recommendation' ? 'bg-gradient-to-r from-green-50 to-green-100 dark:from-green-950/30 dark:to-green-900/20 border-green-200 dark:border-green-800/50' :
-                              insight.type === 'forecast' ? 'bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-950/30 dark:to-purple-900/20 border-purple-200 dark:border-purple-800/50' :
-                              'bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/20 border-blue-200 dark:border-blue-800/50'
-                            }`}>
+                            <div key={index} className="flex items-start gap-3 p-3 rounded-lg border border-border bg-muted">
                               <div className="flex items-center gap-2">
-                                <div className={`p-1 rounded-full ${
-                                  insight.type === 'alert' ? 'bg-red-200 dark:bg-red-800/50' :
-                                  insight.type === 'recommendation' ? 'bg-green-200 dark:bg-green-800/50' :
-                                  insight.type === 'forecast' ? 'bg-purple-200 dark:bg-purple-800/50' :
-                                  'bg-blue-200 dark:bg-blue-800/50'
-                                }`}>
-                                  {insight.type === 'alert' && <AlertTriangle className="h-3 w-3 text-red-600 dark:text-red-400" />}
-                                  {insight.type === 'recommendation' && <Target className="h-3 w-3 text-green-600 dark:text-green-400" />}
-                                  {insight.type === 'forecast' && <TrendingUp className="h-3 w-3 text-purple-600 dark:text-purple-400" />}
-                                  {insight.type === 'trend' && <Info className="h-3 w-3 text-blue-600 dark:text-blue-400" />}
+                                <div className="p-1 rounded-full bg-muted-foreground/10">
+                                  {insight.type === 'alert' && <AlertTriangle className="h-3 w-3 text-muted-foreground" />}
+                                  {insight.type === 'recommendation' && <Target className="h-3 w-3 text-muted-foreground" />}
+                                  {insight.type === 'forecast' && <TrendingUp className="h-3 w-3 text-muted-foreground" />}
+                                  {insight.type === 'trend' && <Info className="h-3 w-3 text-muted-foreground" />}
                                 </div>
                                 <Badge variant="secondary" className="text-xs px-2 py-0.5 bg-background/80">
                                   {insight.confidence}%
@@ -639,12 +621,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                               </div>
                               <div className="flex-1">
                                 <div className="font-semibold text-foreground text-sm">{insight.title}</div>
-                                <div className={`text-sm ${
-                                  insight.type === 'alert' ? 'text-red-700 dark:text-red-300' :
-                                  insight.type === 'recommendation' ? 'text-green-700 dark:text-green-300' :
-                                  insight.type === 'forecast' ? 'text-purple-700 dark:text-purple-300' :
-                                  'text-blue-700 dark:text-blue-300'
-                                }`}>
+                                <div className="text-sm text-muted-foreground">
                                   {insight.description}
                                 </div>
                                 {insight.value && (
@@ -654,7 +631,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                                       insight.value.toLocaleString()
                                     }
                                     {insight.change && (
-                                      <span className={`ml-1 ${insight.change > 0 ? 'text-red-500' : 'text-green-500'}`}>
+                                      <span className="ml-1 text-muted-foreground">
                                         ({insight.change > 0 ? '+' : ''}{insight.change.toFixed(1)}%)
                                       </span>
                                     )}
@@ -666,16 +643,16 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
 
                         {/* Spending Forecast - Enhanced */}
                         {spendingForecast.length > 0 && (
-                          <div className="p-4 bg-gradient-to-r from-purple-50 via-blue-50 to-indigo-50 dark:from-purple-950/20 dark:via-blue-950/20 dark:to-indigo-950/20 rounded-xl border border-purple-200 dark:border-purple-800/50">
-                            <div className="text-sm font-semibold text-purple-700 dark:text-purple-300 mb-3 flex items-center gap-2">
+                          <div className="p-4 bg-muted rounded-lg border border-border">
+                            <div className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                               <TrendingUp className="h-4 w-4" />
                               6-Month Spending Forecast
                             </div>
                             <div className="grid grid-cols-3 gap-3">
                               {spendingForecast.slice(0, 3).map((forecast, index) => (
-                                <div key={index} className="text-center bg-background/60 backdrop-blur-sm rounded-lg p-3 border border-purple-200/50 dark:border-purple-800/30">
+                                <div key={index} className="text-center bg-card rounded-lg p-3 border border-border">
                                   <div className="font-semibold text-sm text-foreground">{forecast.month}</div>
-                                  <div className="text-purple-600 dark:text-purple-400 font-bold text-lg">
+                                  <div className="text-foreground font-bold text-lg">
                                     {formatCurrency(forecast.predictedSpending)}
                                   </div>
                                   <div className="text-xs text-muted-foreground">
@@ -697,7 +674,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
       )}
       
       {/* Main Chart Section - Completely redesigned */}
-      <Card className="bg-gradient-to-br from-background via-muted/10 to-background border border-border/50 shadow-lg">
+      <Card className="bg-gradient-to-br from-background via-muted/10 to-background border border-border/50 ">
         <CardContent className="p-6">
           <div className="bg-gradient-to-br from-muted/20 to-muted/5 rounded-xl p-4 border border-border/30">
             <ResponsiveContainer width="100%" height={450}>
@@ -792,12 +769,12 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                                selectedCategory;
 
                   const colors = [
-                    'hsl(221, 83%, 53%)', // Blue
-                    'hsl(142, 76%, 36%)', // Green
-                    'hsl(262, 83%, 58%)', // Purple
-                    'hsl(25, 95%, 53%)',  // Orange
-                    'hsl(346, 87%, 43%)', // Red
-                    'hsl(178, 90%, 48%)', // Teal
+                    '#374151',
+                    '#6B7280',
+                    '#9CA3AF',
+                    '#4B5563',
+                    '#1F2937',
+                    '#D1D5DB',
                   ];
                   const color = colors[index % colors.length];
 
@@ -837,8 +814,8 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                 <defs>
                   {availableYears.map((year, index) => {
                     const colors = [
-                      'hsl(221, 83%, 53%)', 'hsl(142, 76%, 36%)', 'hsl(262, 83%, 58%)', 
-                      'hsl(25, 95%, 53%)', 'hsl(346, 87%, 43%)', 'hsl(178, 90%, 48%)'
+                      '#374151', '#6B7280', '#9CA3AF',
+                      '#4B5563', '#1F2937', '#D1D5DB'
                     ];
                     const color = colors[index % colors.length];
                     return (
@@ -899,11 +876,11 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                     onClick={() => setSelectedCategory(metric)}
                     className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
                       selectedCategory === metric 
-                        ? 'bg-primary text-primary-foreground shadow-lg scale-105' 
-                        : 'bg-background hover:bg-muted/80 hover:scale-105'
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-background hover:bg-muted/80'
                     }`}
                   >
-                    {metric === 'totalSpending' ? '💰 Total Spending' : '💵 Total Income'}
+                    {metric === 'totalSpending' ? 'Total Spending' : 'Total Income'}
                   </Button>
                 ))}
               </div>
@@ -920,8 +897,8 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                       onClick={() => setSelectedCategory(category)}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                         selectedCategory === category 
-                          ? 'bg-primary text-primary-foreground shadow-md scale-105' 
-                          : 'bg-background/80 hover:bg-muted/60 hover:scale-105 backdrop-blur-sm'
+                          ? 'bg-primary text-primary-foreground' 
+                          : 'bg-background/80 hover:bg-muted/60'
                       }`}
                     >
                       {category}
@@ -935,12 +912,12 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
       </Card>
 
       {/* Validation Section - Enhanced */}
-      <Card className="bg-gradient-to-br from-muted/10 to-muted/5 border border-border/30">
+      <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-100 dark:bg-blue-950/30 rounded-lg">
-                <Info className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+              <div className="p-2 bg-muted rounded-lg">
+                <Info className="h-4 w-4 text-foreground dark:text-foreground" />
               </div>
               <h4 className="text-lg font-semibold text-foreground">Data Validation</h4>
             </div>

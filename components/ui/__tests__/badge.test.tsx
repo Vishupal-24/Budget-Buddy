@@ -93,8 +93,8 @@ describe('Badge Component', () => {
     });
 
     it('should render with emoji', () => {
-      render(<Badge>✅ Verified</Badge>);
-      expect(screen.getByText('✅ Verified')).toBeInTheDocument();
+      render(<Badge>Verified</Badge>);
+      expect(screen.getByText('Verified')).toBeInTheDocument();
     });
 
     it('should render children elements', () => {

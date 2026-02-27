@@ -205,8 +205,8 @@ export default function CustomizeDashboardPage() {
                   onChange={setTimeRange}
                 />
               </div>
-              <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
-                <p className="text-sm text-blue-800 dark:text-blue-200">
+              <div className="mt-4 p-4 bg-muted dark:bg-muted rounded-lg">
+                <p className="text-sm text-foreground dark:text-foreground">
                   <strong>Note:</strong> This sets the default time range for your dashboard.
                   Individual charts and widgets may have their own time range controls.
                 </p>

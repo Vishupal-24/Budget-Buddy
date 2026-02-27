@@ -83,18 +83,18 @@ export function NewsPanel({ className = "", onNewsUpdate }: NewsPanelProps) {
   };
 
   return (
-    <Card className={`${className} bg-gradient-to-br from-background via-background to-muted/20 border-2 shadow-lg`}>
-      <CardHeader className="pb-4 border-b bg-gradient-to-r from-green-50/50 via-emerald-50/30 to-teal-50/20 dark:from-green-950/20 dark:via-emerald-950/10 dark:to-teal-950/10">
+    <Card className={`${className} bg-gradient-to-br from-background via-background to-muted/20 border-2 `}>
+      <CardHeader className="pb-4 border-b bg-gradient-to-r from-muted via-muted to-muted dark:from-muted dark:via-muted dark:to-muted">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-3 text-lg">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full blur-sm opacity-20"></div>
-              <div className="relative w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted rounded-full blur-sm opacity-20"></div>
+              <div className="relative w-8 h-8 bg-gradient-to-br from-muted to-muted rounded-full flex items-center justify-center">
                 <TrendingUp className="h-4 w-4 text-white" />
               </div>
             </div>
             <div>
-              <div className="font-semibold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              <div className="font-semibold bg-gradient-to-r from-muted to-muted bg-clip-text text-transparent">
                 Financial News
               </div>
               <div className="text-xs text-muted-foreground font-normal">
@@ -103,7 +103,7 @@ export function NewsPanel({ className = "", onNewsUpdate }: NewsPanelProps) {
             </div>
           </CardTitle>
           <div className="flex items-center gap-2">
-            <Badge variant="outline" className="text-xs bg-green-50/50 border-green-200/50 text-green-700">
+            <Badge variant="outline" className="text-xs bg-muted border-border text-foreground">
               <Globe className="w-2 h-2 mr-1" />
               Live
             </Badge>
@@ -112,7 +112,7 @@ export function NewsPanel({ className = "", onNewsUpdate }: NewsPanelProps) {
               size="sm"
               onClick={() => fetchNews(true)}
               disabled={loading}
-              className="text-xs hover:bg-green-50 hover:border-green-300 transition-all"
+              className="text-xs hover:bg-muted hover:border-border transition-all"
             >
               <RefreshCw className={`h-3 w-3 mr-1 ${loading ? 'animate-spin' : ''}`} />
               Refresh
@@ -151,7 +151,7 @@ export function NewsPanel({ className = "", onNewsUpdate }: NewsPanelProps) {
             {articles.map((article) => (
               <div
                 key={article.id}
-                className="group p-4 rounded-lg border border-border/50 hover:border-border/80 bg-card/50 hover:bg-card/80 transition-all hover:shadow-md"
+                className="group p-4 rounded-lg border border-border/50 hover:border-border/80 bg-card/50 hover:bg-card/80 transition-all "
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">

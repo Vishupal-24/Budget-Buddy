@@ -32,12 +32,12 @@ async function handler(request: NextRequest) {
     return successResponse({
       message: 'Serverless helpers are working!',
       features: [
-        '✅ Authentication middleware',
-        '✅ CORS handling',
-        '✅ Rate limiting',
-        '✅ Error handling',
-        '✅ Type-safe responses',
-        '✅ Supabase integration',
+        'Authentication middleware',
+        'CORS handling',
+        'Rate limiting',
+        'Error handling',
+        'Type-safe responses',
+        'Supabase integration',
       ],
       request: {
         method,

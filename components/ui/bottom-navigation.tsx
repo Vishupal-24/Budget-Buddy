@@ -22,13 +22,13 @@ const NavItemButton = memo(({ item }: { item: NavItem }) => (
     aria-label={item.label}
     aria-current={item.active ? "page" : undefined}
   >
-    <div className={`flex h-9 w-9 items-center justify-center rounded-full transition-all ${
-      item.active ? "bg-primary/15 scale-105" : "hover:bg-background/80"
+    <div className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
+      item.active ? "bg-primary/10" : "hover:bg-muted/50"
     }`}>
       {item.icon}
     </div>
     <span className={`${item.active ? "font-medium" : ""} truncate max-w-full`}>{item.label}</span>
-    {item.active && <div className="absolute bottom-0 h-1.5 w-10 rounded-t-full bg-gradient-to-r from-primary to-violet-400 shadow-[0_-2px_5px_rgba(var(--primary-rgb),0.25)]"></div>}
+    {item.active && <div className="absolute bottom-0 h-0.5 w-8 rounded-t-full bg-foreground"></div>}
   </Link>
 ));
 
@@ -42,7 +42,7 @@ function BottomNavigationComponent() {
   const navItems = useMemo(() => [
     {
       href: "/dashboard",
-      icon: <Home size={18} className="transform transition-transform group-hover:scale-110" />,
+      icon: <Home size={18} />,
       label: "Home",
       active: pathname === "/dashboard",
     },
@@ -74,7 +74,7 @@ function BottomNavigationComponent() {
   ], [pathname]);
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background backdrop-blur-xl shadow-lg md:hidden" aria-label="Mobile navigation">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background backdrop-blur-xl  md:hidden" aria-label="Mobile navigation">
       <div className="flex items-center justify-around py-1">
         {navItems.map((item) => (
           <NavItemButton key={item.href} item={item} />
@@ -94,7 +94,7 @@ function AddTransactionButtonComponent({
   return (
     <button
       onClick={onClick}
-      className="fixed bottom-24 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-primary to-violet-400 text-primary-foreground shadow-lg transition-transform hover:scale-105 active:scale-95 md:hidden"
+      className="fixed bottom-24 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-primary to-muted text-primary-foreground  transition-transform hover:scale-105 active:scale-95 md:hidden"
       aria-label="Add Transaction"
     >
       <PlusCircle size={24} />

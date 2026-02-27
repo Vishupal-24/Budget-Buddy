@@ -116,7 +116,7 @@ export function MobileFirstCard({
     <div className={cn(
       "bg-card border border-border rounded-lg shadow-sm",
       paddingClasses[padding],
-      hover && "transition-all duration-200 hover:shadow-md hover:-translate-y-0.5",
+      hover && "transition-all duration-200  hover:-translate-y-0.5",
       "touch-manipulation", // Better touch interactions
       className
     )}>

@@ -107,7 +107,7 @@ export function MonthlyBudgetOverview({ className }: MonthlyBudgetOverviewProps)
   if (error) {
     return (
       <Card className={cn("p-6", className)}>
-        <div className="text-center text-red-600">
+        <div className="text-center text-foreground">
           <AlertTriangle className="h-8 w-8 mx-auto mb-2" />
           <p className="text-sm">{error}</p>
         </div>
@@ -160,8 +160,8 @@ export function MonthlyBudgetOverview({ className }: MonthlyBudgetOverviewProps)
             <span>Total Progress</span>
             <span className={cn(
               "font-medium",
-              summary.overallPercentage > 100 ? "text-red-600" : 
-              summary.overallPercentage > 90 ? "text-amber-600" : "text-green-600"
+              summary.overallPercentage > 100 ? "text-foreground" : 
+              summary.overallPercentage > 90 ? "text-foreground" : "text-foreground"
             )}>
               {formatCurrency(summary.totalSpent)} / {formatCurrency(summary.totalBudget)}
             </span>
@@ -173,7 +173,7 @@ export function MonthlyBudgetOverview({ className }: MonthlyBudgetOverviewProps)
           <div className="flex justify-between text-xs text-muted-foreground">
             <span>
               {summary.categoriesOverBudget > 0 && (
-                <span className="text-red-600 flex items-center gap-1">
+                <span className="text-foreground flex items-center gap-1">
                   <AlertTriangle className="h-3 w-3" />
                   {summary.categoriesOverBudget} over budget
                 </span>
@@ -202,8 +202,8 @@ export function MonthlyBudgetOverview({ className }: MonthlyBudgetOverviewProps)
                     <div className="text-right">
                       <div className={cn(
                         "font-medium",
-                        item.percentage > 100 ? "text-red-600" : 
-                        item.percentage > 90 ? "text-amber-600" : "text-green-600"
+                        item.percentage > 100 ? "text-foreground" : 
+                        item.percentage > 90 ? "text-foreground" : "text-foreground"
                       )}>
                         {Math.round(item.percentage)}%
                       </div>
@@ -216,11 +216,11 @@ export function MonthlyBudgetOverview({ className }: MonthlyBudgetOverviewProps)
                     value={Math.min(item.percentage, 100)} 
                     className={cn(
                       "h-2",
-                      item.percentage > 100 && "bg-red-100"
+                      item.percentage > 100 && "bg-muted"
                     )}
                   />
                   {item.percentage > 100 && (
-                    <div className="text-xs text-red-600 flex items-center gap-1">
+                    <div className="text-xs text-foreground flex items-center gap-1">
                       <AlertTriangle className="h-3 w-3" />
                       Over by {formatCurrency(item.actual_amount - item.budget_amount)}
                     </div>
@@ -234,14 +234,14 @@ export function MonthlyBudgetOverview({ className }: MonthlyBudgetOverviewProps)
         <div className="grid grid-cols-3 gap-4 pt-4 border-t">
           <div className="text-center">
             <div className="flex items-center justify-center mb-1">
-              <DollarSign className="h-4 w-4 text-blue-600" />
+              <DollarSign className="h-4 w-4 text-foreground" />
             </div>
             <div className="text-lg font-semibold">{formatCurrency(summary.totalBudget)}</div>
             <div className="text-xs text-muted-foreground">Total Budget</div>
           </div>
           <div className="text-center">
             <div className="flex items-center justify-center mb-1">
-              <TrendingUp className="h-4 w-4 text-green-600" />
+              <TrendingUp className="h-4 w-4 text-foreground" />
             </div>
             <div className="text-lg font-semibold">{formatCurrency(summary.totalSpent)}</div>
             <div className="text-xs text-muted-foreground">Total Spent</div>
@@ -250,12 +250,12 @@ export function MonthlyBudgetOverview({ className }: MonthlyBudgetOverviewProps)
             <div className="flex items-center justify-center mb-1">
               <Target className={cn(
                 "h-4 w-4",
-                summary.totalRemaining >= 0 ? "text-green-600" : "text-red-600"
+                summary.totalRemaining >= 0 ? "text-foreground" : "text-foreground"
               )} />
             </div>
             <div className={cn(
               "text-lg font-semibold",
-              summary.totalRemaining >= 0 ? "text-green-600" : "text-red-600"
+              summary.totalRemaining >= 0 ? "text-foreground" : "text-foreground"
             )}>
               {formatCurrency(Math.abs(summary.totalRemaining))}
             </div>

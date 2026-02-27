@@ -101,15 +101,15 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
   };
 
   const getInsightColor = (confidence: number) => {
-    if (confidence >= 80) return 'text-green-600 bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800';
-    if (confidence >= 60) return 'text-blue-600 bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800';
-    if (confidence >= 40) return 'text-orange-600 bg-orange-50 border-orange-200 dark:bg-orange-900/20 dark:border-orange-800';
+    if (confidence >= 80) return 'text-foreground bg-muted border-border dark:bg-muted dark:border-border';
+    if (confidence >= 60) return 'text-foreground bg-muted border-border dark:bg-muted dark:border-border';
+    if (confidence >= 40) return 'text-foreground bg-muted border-border dark:bg-muted dark:border-border';
     return 'text-gray-600 bg-gray-50 border-gray-200 dark:bg-gray-900/20 dark:border-gray-800';
   };
 
   if (loading) {
     return (
-      <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+      <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
         <div className="p-12 text-center">
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading historical trends...</p>
@@ -120,7 +120,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
 
   if (historicalData.length === 0) {
     return (
-      <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+      <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
         <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
           <div className="flex items-center justify-between">
             <div>
@@ -155,7 +155,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
   }
 
   return (
-    <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex items-center justify-between">
           <div>
@@ -239,17 +239,17 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
                 <div className="p-4 rounded-lg bg-muted/30">
                   <div className="flex items-center gap-2 mb-2">
                     {trendAnalysis.direction === 'increasing' ? (
-                      <TrendingUp className="h-4 w-4 text-red-500" />
+                      <TrendingUp className="h-4 w-4 text-foreground" />
                     ) : trendAnalysis.direction === 'decreasing' ? (
-                      <TrendingDown className="h-4 w-4 text-green-500" />
+                      <TrendingDown className="h-4 w-4 text-foreground" />
                     ) : (
-                      <Activity className="h-4 w-4 text-blue-500" />
+                      <Activity className="h-4 w-4 text-foreground" />
                     )}
                     <span className="text-sm font-medium">Recent Trend</span>
                   </div>
                   <div className={`text-2xl font-bold ${
-                    trendAnalysis.direction === 'increasing' ? 'text-red-500' :
-                    trendAnalysis.direction === 'decreasing' ? 'text-green-500' : 'text-blue-500'
+                    trendAnalysis.direction === 'increasing' ? 'text-foreground' :
+                    trendAnalysis.direction === 'decreasing' ? 'text-foreground' : 'text-foreground'
                   }`}>
                     {trendAnalysis.direction === 'stable' ? 'Stable' : 
                      `${trendAnalysis.percentage.toFixed(1)}%`}
@@ -299,8 +299,8 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
                       <div className="w-32 bg-muted rounded-full h-2">
                         <div 
                           className={`h-2 rounded-full transition-all duration-500 ${
-                            month.utilization > 100 ? 'bg-red-500' : 
-                            month.utilization > 80 ? 'bg-orange-500' : 'bg-green-500'
+                            month.utilization > 100 ? 'bg-muted' : 
+                            month.utilization > 80 ? 'bg-muted' : 'bg-muted'
                           }`}
                           style={{ width: `${Math.min(100, month.utilization)}%` }}
                         ></div>
@@ -310,8 +310,8 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
                       <span>Budget: {formatCurrency(month.totalBudget)}</span>
                       <span>Spent: {formatCurrency(month.totalSpent)}</span>
                       <span className={`font-medium ${
-                        month.utilization > 100 ? 'text-red-600' :
-                        month.utilization > 80 ? 'text-orange-600' : 'text-green-600'
+                        month.utilization > 100 ? 'text-foreground' :
+                        month.utilization > 80 ? 'text-foreground' : 'text-foreground'
                       }`}>
                         {month.utilization.toFixed(1)}%
                       </span>
@@ -365,7 +365,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
                           </div>
                           <p className="text-sm mb-3 opacity-90">{insight.description}</p>
                           <div className="text-xs font-medium p-2 bg-white/50 dark:bg-black/20 rounded">
-                            💡 {insight.recommendation}
+                            {insight.recommendation}
                           </div>
                         </div>
                       </div>

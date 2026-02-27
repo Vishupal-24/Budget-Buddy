@@ -152,7 +152,6 @@
 
 .btn-gradient:hover {
   background: linear-gradient(135deg, hsla(var(--primary), 0.9), hsla(var(--primary), 0.7));
-  transform: translateY(-1px);
 }
 
 /* Input field enhancements */
@@ -161,19 +160,16 @@
 }
 
 .enhanced-input:focus {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px hsla(var(--primary), 0.15);
+  box-shadow: 0 0 0 1px hsla(var(--foreground), 0.1);
 }
 
 /* Card enhancements */
 .enhanced-card {
   transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
 }
 
 .enhanced-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px hsla(var(--foreground), 0.1);
+  box-shadow: 0 4px 12px hsla(var(--foreground), 0.05);
 }
 
 /* Action button hover effects */
@@ -182,11 +178,11 @@
 }
 
 .action-btn:hover {
-  transform: scale(1.05);
+  opacity: 0.8;
 }
 
 .action-btn:active {
-  transform: scale(0.95);
+  opacity: 0.7;
 }
 
 .pulse-border {
@@ -195,22 +191,19 @@
 
 @keyframes pulse-border {
   0% {
-    border-color: rgb(59 130 246 / 0.5);
-    box-shadow: 0 0 0 0 rgb(59 130 246 / 0.7);
+    border-color: hsla(var(--foreground), 0.3);
+    box-shadow: 0 0 0 0 hsla(var(--foreground), 0.2);
   }
   70% {
-    box-shadow: 0 0 0 10px rgb(59 130 246 / 0);
+    box-shadow: 0 0 0 10px hsla(var(--foreground), 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgb(59 130 246 / 0);
+    box-shadow: 0 0 0 0 hsla(var(--foreground), 0);
   }
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: hsl(var(--foreground));
 }
 
 .insight-card {

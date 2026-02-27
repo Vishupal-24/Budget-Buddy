@@ -40,7 +40,7 @@ export function RecentTransactions({ transactions, loading = false }: RecentTran
   }
 
   return (
-    <div className="rounded-2xl border bg-card p-5 md:p-6 mb-8 shadow-sm hover:shadow-md transition-all" role="region" aria-labelledby="recent-transactions-title">
+    <div className="rounded-2xl border bg-card p-5 md:p-6 mb-8 shadow-sm  transition-all" role="region" aria-labelledby="recent-transactions-title">
       <div className="flex items-center justify-between mb-6 pb-4 border-b">
         <h2 className="text-xl md:text-2xl font-display font-semibold tracking-tight" id="recent-transactions-title" tabIndex={0}>Recent Transactions</h2>
         <Button asChild variant="outline" size="sm" className="rounded-full font-medium transition-all">
@@ -70,8 +70,8 @@ export function RecentTransactions({ transactions, loading = false }: RecentTran
                       <span
                         className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
                           transaction.type === "income"
-                            ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-                            : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                            ? "bg-muted text-foreground dark:bg-muted dark:text-foreground"
+                            : "bg-muted text-foreground dark:bg-muted dark:text-foreground"
                         }`}
                       >
                         {transaction.type}
@@ -92,8 +92,8 @@ export function RecentTransactions({ transactions, loading = false }: RecentTran
                   <span
                     className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
                       transaction.type === "income"
-                        ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-                        : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                        ? "bg-muted text-foreground dark:bg-muted dark:text-foreground"
+                        : "bg-muted text-foreground dark:bg-muted dark:text-foreground"
                     }`}
                   >
                     {transaction.type}

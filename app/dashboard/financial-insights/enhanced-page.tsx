@@ -50,8 +50,8 @@ function QuickStatCard({
   className = "" 
 }: QuickStatCardProps) {
   const changeColor = {
-    positive: 'text-green-600 dark:text-green-400',
-    negative: 'text-red-600 dark:text-red-400',
+    positive: 'text-foreground',
+    negative: 'text-muted-foreground',
     neutral: 'text-muted-foreground'
   }[changeType];
 
@@ -62,7 +62,7 @@ function QuickStatCard({
   ) : null;
 
   return (
-    <Card className={`border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card to-card/80 ${className}`}>
+    <Card className={`border bg-card ${className}`}>
       <CardContent className="p-6">
         <div className="flex items-start justify-between">
           <div className="space-y-2">
@@ -272,7 +272,7 @@ export default function EnhancedFinancialInsightsPage() {
                 disabled={insightLoading}
                 variant="default"
                 size="sm"
-                className="shadow-sm bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+                className=""
               >
                 <RefreshCw className={`h-4 w-4 mr-2 ${insightLoading ? 'animate-spin' : ''}`} />
                 Refresh Insights
@@ -288,7 +288,7 @@ export default function EnhancedFinancialInsightsPage() {
             value={`$${financialMetrics.totalIncome.toLocaleString()}`}
             change="+12.5% from last month"
             changeType="positive"
-            icon={<DollarSign className="h-5 w-5 text-green-600 dark:text-green-400" />}
+            icon={<DollarSign className="h-5 w-5 text-foreground" />}
             description="All income sources"
           />
           
@@ -297,7 +297,7 @@ export default function EnhancedFinancialInsightsPage() {
             value={`$${financialMetrics.totalExpenses.toLocaleString()}`}
             change="-5.2% from last month"
             changeType="positive"
-            icon={<TrendingDown className="h-5 w-5 text-red-600 dark:text-red-400" />}
+            icon={<TrendingDown className="h-5 w-5 text-muted-foreground" />}
             description="All spending categories"
           />
           
@@ -306,7 +306,7 @@ export default function EnhancedFinancialInsightsPage() {
             value={`$${netIncome.toLocaleString()}`}
             change={`${savingsRate}% savings rate`}
             changeType={netIncome > 0 ? 'positive' : 'negative'}
-            icon={<BarChart3 className="h-5 w-5 text-blue-600 dark:text-blue-400" />}
+            icon={<BarChart3 className="h-5 w-5 text-foreground" />}
             description="Income minus expenses"
           />
           
@@ -314,7 +314,7 @@ export default function EnhancedFinancialInsightsPage() {
             title="Active Budgets"
             value={financialMetrics.activeBudgets.toString()}
             description="Budget categories set"
-            icon={<Target className="h-5 w-5 text-purple-600 dark:text-purple-400" />}
+            icon={<Target className="h-5 w-5 text-muted-foreground" />}
           />
           
           <QuickStatCard
@@ -322,7 +322,7 @@ export default function EnhancedFinancialInsightsPage() {
             value={financialMetrics.insightsGenerated.toString()}
             change={financialMetrics.highPriorityInsights > 0 ? `${financialMetrics.highPriorityInsights} high priority` : 'All clear'}
             changeType={financialMetrics.highPriorityInsights > 0 ? 'negative' : 'positive'}
-            icon={<Sparkles className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />}
+            icon={<Sparkles className="h-5 w-5 text-foreground" />}
             description="Generated insights"
             className="lg:col-span-1 xl:col-span-1"
           />
@@ -330,17 +330,17 @@ export default function EnhancedFinancialInsightsPage() {
 
         {/* Financial Health Alert */}
         {financialMetrics.highPriorityInsights > 0 && (
-          <Card className="mb-8 border-orange-200 dark:border-orange-800 bg-orange-50/50 dark:bg-orange-950/20">
+          <Card className="mb-8 border bg-muted/50">
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
-                <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                  <AlertTriangle className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                <div className="p-2 rounded-lg bg-muted">
+                  <AlertTriangle className="h-5 w-5 text-muted-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-1">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Action Required
                   </h3>
-                  <p className="text-orange-700 dark:text-orange-200 text-sm">
+                  <p className="text-muted-foreground text-sm">
                     You have {financialMetrics.highPriorityInsights} high-priority financial insights that need your attention. 
                     Review them below to improve your financial health.
                   </p>
@@ -352,17 +352,17 @@ export default function EnhancedFinancialInsightsPage() {
 
         {/* Positive Financial Health Message */}
         {financialMetrics.highPriorityInsights === 0 && insights.length > 0 && (
-          <Card className="mb-8 border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-950/20">
+          <Card className="mb-8 border bg-muted/50">
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
-                <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
-                  <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
+                <div className="p-2 rounded-lg bg-muted">
+                  <CheckCircle2 className="h-5 w-5 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-green-900 dark:text-green-100 mb-1">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Great Financial Health!
                   </h3>
-                  <p className="text-green-700 dark:text-green-200 text-sm">
+                  <p className="text-muted-foreground text-sm">
                     Your finances are looking healthy. Keep up the good work! Check out the insights below for optimization opportunities.
                   </p>
                 </div>

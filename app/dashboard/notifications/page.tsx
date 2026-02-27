@@ -131,22 +131,8 @@ export default function NotificationsPage() {
   };
 
   // Get notification color
-  const getNotificationColor = (type: Notification['type'], priority: Notification['priority']) => {
-    if (priority === 'urgent') return 'text-red-500 bg-red-50 dark:bg-red-950/20';
-    if (priority === 'high') return 'text-orange-500 bg-orange-50 dark:bg-orange-950/20';
-
-    switch (type) {
-      case 'bill_reminder':
-        return 'text-blue-500 bg-blue-50 dark:bg-blue-950/20';
-      case 'budget_warning':
-        return 'text-yellow-500 bg-yellow-50 dark:bg-yellow-950/20';
-      case 'goal_achievement':
-        return 'text-green-500 bg-green-50 dark:bg-green-950/20';
-      case 'system_update':
-        return 'text-gray-500 bg-gray-50 dark:bg-gray-950/20';
-      default:
-        return 'text-blue-500 bg-blue-50 dark:bg-blue-950/20';
-    }
+  const getNotificationColor = (_type: Notification['type'], _priority: Notification['priority']) => {
+    return 'text-foreground bg-muted';
   };
 
   // Filter and sort notifications
@@ -181,7 +167,7 @@ export default function NotificationsPage() {
     <div className="container mx-auto px-4 py-6 md:px-6 md:py-6 lg:px-8 lg:py-8 max-w-screen-xl">
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl sm:text-3xl font-bold md:text-4xl bg-gradient-to-r from-primary to-violet-400 bg-clip-text text-transparent">
+        <h1 className="text-2xl sm:text-3xl font-bold md:text-4xl text-foreground">
           Notifications
         </h1>
         <p className="text-sm md:text-base text-muted-foreground mt-2">
@@ -264,8 +250,8 @@ export default function NotificationsPage() {
                   >
                     <Card
                       className={cn(
-                        'hover:shadow-md transition-shadow cursor-pointer group',
-                        !notification.is_read && 'ring-2 ring-blue-200 dark:ring-blue-800'
+                        'transition-colors cursor-pointer group',
+                        !notification.is_read && 'ring-1 ring-border'
                       )}
                     >
                       <CardContent className="p-4">
@@ -297,19 +283,19 @@ export default function NotificationsPage() {
                                 {notification.priority === 'high' && (
                                   <Badge
                                     variant="secondary"
-                                    className="bg-orange-100 text-orange-800"
+                                    className="bg-muted text-foreground"
                                   >
                                     High
                                   </Badge>
                                 )}
                                 {!notification.is_read && (
-                                  <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                                  <div className="w-2 h-2 bg-foreground rounded-full" />
                                 )}
                                 <Button
                                   variant="ghost"
                                   size="sm"
                                   onClick={() => handleDeleteNotification(notification.id)}
-                                  className="opacity-0 group-hover:opacity-100 h-8 w-8 p-0 hover:bg-red-100 hover:text-red-600"
+                                  className="opacity-0 group-hover:opacity-100 h-8 w-8 p-0 hover:bg-muted hover:text-foreground"
                                 >
                                   <Trash2 className="h-4 w-4" />
                                 </Button>

@@ -601,10 +601,10 @@ function addVisualElements(response: string): string {
   let visual = response;
   
   // Add emoji and visual indicators
-  visual = visual.replace(/save/gi, '💰 save');
-  visual = visual.replace(/budget/gi, '📊 budget');
-  visual = visual.replace(/goal/gi, '🎯 goal');
-  visual = visual.replace(/invest/gi, '📈 invest');
+  visual = visual.replace(/save/gi, 'save');
+  visual = visual.replace(/budget/gi, 'budget');
+  visual = visual.replace(/goal/gi, 'goal');
+  visual = visual.replace(/invest/gi, 'invest');
   
   return visual;
 }
@@ -633,11 +633,11 @@ function addStepByStep(response: string): string {
 function adjustTone(response: string, adviceType: UserPersonalityProfile['preferredAdviceType']): string {
   switch (adviceType) {
     case 'motivational':
-      return "🌟 " + response + " You've got this! Every small step counts toward your financial goals.";
+      return "" + response + " You've got this! Every small step counts toward your financial goals.";
     case 'analytical':
       return response + "\n\n*Analysis based on your spending patterns and financial metrics.*";
     case 'educational':
-      return "💡 " + response + "\n\nThis approach is based on proven financial principles.";
+      return "" + response + "\n\nThis approach is based on proven financial principles.";
     default:
       return response;
   }

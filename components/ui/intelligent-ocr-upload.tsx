@@ -55,34 +55,34 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
     
     try {
       // Stage 1: LLM Document Analysis
-      setProcessingStage("🧠 LLM analyzing document structure and context...");
+      setProcessingStage("LLM analyzing document structure and context...");
       
       // Stage 2: Advanced Image Enhancement
-      setProcessingStage("🖼️ AI enhancing image with adaptive algorithms...");
+      setProcessingStage("AI enhancing image with adaptive algorithms...");
       
       // Stage 3: Multi-Engine OCR
-      setProcessingStage("🔍 Running enhanced OCR with language models...");
+      setProcessingStage("Running enhanced OCR with language models...");
       
       // Stage 4: LLM Data Extraction
-      setProcessingStage("🤖 LLM extracting data with reasoning and context...");
+      setProcessingStage("LLM extracting data with reasoning and context...");
       
       // Stage 5: LLM Validation
-      setProcessingStage("✅ LLM validating data with intelligent reasoning...");
+      setProcessingStage("LLM validating data with intelligent reasoning...");
       
       // Process the document with LLM-Enhanced OCR
       const result = await ocrProcessor.processDocument(selectedFile);
       
       // Stage 6: Final LLM Analysis
-      setProcessingStage("🎯 LLM finalizing analysis with confidence scoring...");
+      setProcessingStage("LLM finalizing analysis with confidence scoring...");
 
       setExtractedResult(result);
       
       if (result.confidence > 0.8) {
-        toast.success(`🎉 Excellent extraction! ${Math.round(result.confidence * 100)}% confidence`);
+        toast.success(`Excellent extraction! ${Math.round(result.confidence * 100)}% confidence`);
       } else if (result.confidence > 0.6) {
-        toast.success(`✅ Good extraction with ${Math.round(result.confidence * 100)}% confidence`);
+        toast.success(`Good extraction with ${Math.round(result.confidence * 100)}% confidence`);
       } else {
-        toast.warning("⚠️ Extraction completed but please review carefully");
+        toast.warning("Extraction completed but please review carefully");
       }
     } catch (error) {
       console.error('LLM-Enhanced OCR processing failed:', error);
@@ -91,15 +91,15 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
       const errorMessage = error instanceof Error ? error.message : 'Failed to process document with LLM';
       
       if (errorMessage.includes('PDF')) {
-        toast.error('📄 PDF files are not supported. Please convert to JPG/PNG and try again.');
+        toast.error('PDF files are not supported. Please convert to JPG/PNG and try again.');
       } else if (errorMessage.includes('file type') || errorMessage.includes('Unsupported')) {
-        toast.error('🚫 Unsupported file type. Please upload an image file (JPG, PNG, etc.)');
+        toast.error('Unsupported file type. Please upload an image file (JPG, PNG, etc.)');
       } else if (errorMessage.includes('size')) {
-        toast.error('📦 File too large. Please upload a file smaller than 10MB.');
+        toast.error('File too large. Please upload a file smaller than 10MB.');
       } else if (errorMessage.includes('Image loading failed') || errorMessage.includes('Error attempting to read image')) {
-        toast.error('🖼️ Failed to load image. Please check the file format and try again.');
+        toast.error('Failed to load image. Please check the file format and try again.');
       } else {
-        toast.error('❌ Processing failed. Please try again with a clearer image.');
+        toast.error('Processing failed. Please try again with a clearer image.');
       }
     } finally {
       setIsProcessing(false);
@@ -142,12 +142,12 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
 
   const getValidationClass = (confidence: number) => {
     if (confidence > 0.8) {
-      return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300';
+      return 'bg-muted text-foreground dark:bg-muted dark:text-foreground';
     }
     if (confidence > 0.6) {
-      return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300';
+      return 'bg-muted text-foreground dark:bg-muted dark:text-foreground';
     }
-    return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+    return 'bg-muted text-foreground dark:bg-muted dark:text-foreground';
   };
 
   const formatDate = (date?: string) => {
@@ -168,12 +168,12 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
     <div className="space-y-6">
       <div className="text-center">
         <div className="flex items-center justify-center mb-4">
-          <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
+          <div className="p-3 bg-gradient-to-r from-muted to-muted rounded-full">
             <Brain className="h-8 w-8 text-white" />
           </div>
         </div>
         <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-          🧠 LLM-Powered Invoice Processing
+          LLM-Powered Invoice Processing
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
           Advanced Language Model-powered OCR with 99%+ accuracy. Upload any receipt, invoice, or payment screenshot (JPG, PNG, etc.) 
@@ -200,7 +200,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
           <Button 
             onClick={processFile} 
             disabled={isProcessing}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+            className="w-full bg-gradient-to-r from-muted to-muted hover:from-muted hover:to-muted"
             size="lg"
           >
             {isProcessing ? (
@@ -211,7 +211,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
             ) : (
               <>
                 <Zap className="h-5 w-5 mr-2" />
-                🧠 Process with LLM Intelligence
+                Process with LLM Intelligence
               </>
             )}
           </Button>
@@ -221,10 +221,10 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
 
 
       {extractedResult && (
-        <Card className="p-6 space-y-6 border-2 border-blue-200 dark:border-blue-800">
+        <Card className="p-6 space-y-6 border-2 border-border dark:border-border">
           <div className="flex items-center justify-between">
             <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 flex items-center">
-              <Sparkles className="h-5 w-5 mr-2 text-blue-500" />
+              <Sparkles className="h-5 w-5 mr-2 text-foreground" />
               AI Extraction Results
             </h4>
             <div className="flex items-center space-x-2">
@@ -241,7 +241,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <DollarSign className="h-6 w-6 text-green-500 mt-1" />
+                <DollarSign className="h-6 w-6 text-foreground mt-1" />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Amount</p>
                   <p className="text-xl font-bold text-gray-900 dark:text-gray-100">
@@ -254,7 +254,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
               </div>
 
               <div className="flex items-start space-x-3">
-                <Calendar className="h-6 w-6 text-blue-500 mt-1" />
+                <Calendar className="h-6 w-6 text-foreground mt-1" />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Date</p>
                   <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
@@ -264,7 +264,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
               </div>
 
               <div className="flex items-start space-x-3">
-                <Tag className="h-6 w-6 text-purple-500 mt-1" />
+                <Tag className="h-6 w-6 text-foreground mt-1" />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Category</p>
                   <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
@@ -272,10 +272,10 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
                   </p>
                   <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium mt-1 ${
                     extractedResult.extractedData.type === 'income' 
-                      ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                      : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                      ? 'bg-muted text-foreground dark:bg-muted dark:text-foreground'
+                      : 'bg-muted text-foreground dark:bg-muted dark:text-foreground'
                   }`}>
-                    {extractedResult.extractedData.type === 'income' ? '📈 Income' : '📉 Expense'}
+                    {extractedResult.extractedData.type === 'income' ? 'Income' : 'Expense'}
                   </div>
                 </div>
               </div>
@@ -283,7 +283,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
 
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <FileText className="h-6 w-6 text-orange-500 mt-1" />
+                <FileText className="h-6 w-6 text-foreground mt-1" />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Description</p>
                   <p className="text-gray-900 dark:text-gray-100">
@@ -294,7 +294,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
 
               {extractedResult.extractedData.paymentMethod && (
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-500 mt-1" />
+                  <CheckCircle className="h-6 w-6 text-foreground mt-1" />
                   <div className="flex-1">
                     <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Payment Method</p>
                     <p className="text-gray-900 dark:text-gray-100">
@@ -306,7 +306,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
 
               {extractedResult.extractedData.transactionId && (
                 <div className="flex items-start space-x-3">
-                  <Shield className="h-6 w-6 text-blue-500 mt-1" />
+                  <Shield className="h-6 w-6 text-foreground mt-1" />
                   <div className="flex-1">
                     <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Transaction ID</p>
                     <p className="text-sm font-mono text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
@@ -316,12 +316,12 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
                 </div>
               )}
 
-              <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
-                <p className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1">
+              <div className="bg-muted dark:bg-muted p-3 rounded-lg">
+                <p className="text-xs font-medium text-foreground dark:text-foreground mb-1">
                   Processing Method: {extractedResult.processingMethod}
                 </p>
-                <p className="text-xs text-blue-600 dark:text-blue-400">
-                  ✨ Enhanced with AI validation and cross-referencing
+                <p className="text-xs text-foreground dark:text-foreground">
+                  Enhanced with AI validation and cross-referencing
                 </p>
               </div>
             </div>
@@ -330,7 +330,7 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
           {extractedResult.validationResults.length > 0 && (
             <div className="border-t pt-4">
               <h5 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                🔍 AI Validation Results
+                AI Validation Results
               </h5>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 {extractedResult.validationResults.map((validation, index) => (
@@ -346,13 +346,13 @@ export function IntelligentOCRUpload({ onDataExtracted, onClose }: Readonly<Inte
           )}
 
           <div className="flex space-x-3 pt-4">
-            <Button onClick={handleUseData} className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
+            <Button onClick={handleUseData} className="flex-1 bg-gradient-to-r from-muted to-muted hover:from-muted hover:to-muted">
               <CheckCircle className="h-4 w-4 mr-2" />
-              ✅ Use AI Results
+              Use AI Results
             </Button>
             <Button variant="outline" onClick={onClose} className="flex-1">
               <Edit3 className="h-4 w-4 mr-2" />
-              📝 Edit Manually
+              Edit Manually
             </Button>
           </div>
         </Card>

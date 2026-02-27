@@ -472,13 +472,13 @@ export default function FinancialInsightsPage() {
 
         {/* Enhanced Quick Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card to-card/80">
+          <Card className="border-0  hover: transition-all duration-300 bg-gradient-to-br from-card to-card/80">
             <CardContent className="p-4 sm:p-5 md:p-6">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
-                      <DollarSign className="h-5 w-5 text-green-600 dark:text-green-400" />
+                    <div className="p-2 rounded-lg bg-muted dark:bg-muted">
+                      <DollarSign className="h-5 w-5 text-foreground dark:text-foreground" />
                     </div>
                     <p className="text-xs sm:text-sm font-medium text-muted-foreground">
                       Total Income
@@ -495,13 +495,13 @@ export default function FinancialInsightsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card to-card/80">
+          <Card className="border-0  hover: transition-all duration-300 bg-gradient-to-br from-card to-card/80">
             <CardContent className="p-4 sm:p-5 md:p-6">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-lg bg-red-100 dark:bg-red-900/30">
-                      <TrendingDown className="h-5 w-5 text-red-600 dark:text-red-400" />
+                    <div className="p-2 rounded-lg bg-muted dark:bg-muted">
+                      <TrendingDown className="h-5 w-5 text-foreground dark:text-foreground" />
                     </div>
                     <p className="text-xs sm:text-sm font-medium text-muted-foreground">
                       Total Expenses
@@ -518,13 +518,13 @@ export default function FinancialInsightsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card to-card/80">
+          <Card className="border-0  hover: transition-all duration-300 bg-gradient-to-br from-card to-card/80">
             <CardContent className="p-4 sm:p-5 md:p-6">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
-                      <BarChart3 className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <div className="p-2 rounded-lg bg-muted dark:bg-muted">
+                      <BarChart3 className="h-5 w-5 text-foreground dark:text-foreground" />
                     </div>
                     <p className="text-xs sm:text-sm font-medium text-muted-foreground">
                       Net Income
@@ -535,7 +535,7 @@ export default function FinancialInsightsPage() {
                       ${netIncome.toLocaleString()}
                     </p>
                     <div
-                      className={`flex items-center gap-1 text-xs sm:text-sm ${netIncome > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}
+                      className={`flex items-center gap-1 text-xs sm:text-sm ${netIncome > 0 ? 'text-foreground dark:text-foreground' : 'text-foreground dark:text-foreground'}`}
                     >
                       {netIncome > 0 ? (
                         <ArrowUpRight className="h-3 w-3" />
@@ -550,13 +550,13 @@ export default function FinancialInsightsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card to-card/80">
+          <Card className="border-0  hover: transition-all duration-300 bg-gradient-to-br from-card to-card/80">
             <CardContent className="p-4 sm:p-5 md:p-6">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
-                      <Target className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    <div className="p-2 rounded-lg bg-muted dark:bg-muted">
+                      <Target className="h-5 w-5 text-foreground dark:text-foreground" />
                     </div>
                     <p className="text-xs sm:text-sm font-medium text-muted-foreground">
                       Active Budgets
@@ -573,13 +573,13 @@ export default function FinancialInsightsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card to-card/80 lg:col-span-1 xl:col-span-1">
+          <Card className="border-0  hover: transition-all duration-300 bg-gradient-to-br from-card to-card/80 lg:col-span-1 xl:col-span-1">
             <CardContent className="p-4 sm:p-5 md:p-6">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
-                      <Sparkles className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                    <div className="p-2 rounded-lg bg-muted dark:bg-muted">
+                      <Sparkles className="h-5 w-5 text-foreground dark:text-foreground" />
                     </div>
                     <p className="text-xs sm:text-sm font-medium text-muted-foreground">
                       AI Insights
@@ -590,7 +590,7 @@ export default function FinancialInsightsPage() {
                       {financialMetrics.insightsGenerated}
                     </p>
                     <div
-                      className={`flex items-center gap-1 text-xs sm:text-sm ${financialMetrics.highPriorityInsights > 0 ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'}`}
+                      className={`flex items-center gap-1 text-xs sm:text-sm ${financialMetrics.highPriorityInsights > 0 ? 'text-foreground dark:text-foreground' : 'text-foreground dark:text-foreground'}`}
                     >
                       <span>
                         {financialMetrics.highPriorityInsights > 0
@@ -607,17 +607,17 @@ export default function FinancialInsightsPage() {
 
         {/* Financial Health Alert */}
         {financialMetrics.highPriorityInsights > 0 && (
-          <Card className="mb-4 sm:mb-6 md:mb-8 border-orange-200 dark:border-orange-800 bg-orange-50/50 dark:bg-orange-950/20">
+          <Card className="mb-4 sm:mb-6 md:mb-8 border-border dark:border-border bg-muted dark:bg-muted">
             <CardContent className="p-4 sm:p-5 md:p-6">
               <div className="flex items-start gap-4">
-                <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                  <AlertTriangle className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                <div className="p-2 rounded-lg bg-muted dark:bg-muted">
+                  <AlertTriangle className="h-5 w-5 text-foreground dark:text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-1">
+                  <h3 className="font-semibold text-foreground dark:text-foreground mb-1">
                     Action Required
                   </h3>
-                  <p className="text-orange-700 dark:text-orange-200 text-sm">
+                  <p className="text-foreground dark:text-foreground text-sm">
                     You have {financialMetrics.highPriorityInsights} high-priority financial
                     insights that need your attention. Review them below to improve your financial
                     health.
@@ -630,17 +630,17 @@ export default function FinancialInsightsPage() {
 
         {/* Positive Financial Health Message */}
         {financialMetrics.highPriorityInsights === 0 && insights.length > 0 && (
-          <Card className="mb-8 border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-950/20">
+          <Card className="mb-8 border-border dark:border-border bg-muted dark:bg-muted">
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
-                <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
-                  <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
+                <div className="p-2 rounded-lg bg-muted dark:bg-muted">
+                  <CheckCircle2 className="h-5 w-5 text-foreground dark:text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-green-900 dark:text-green-100 mb-1">
+                  <h3 className="font-semibold text-foreground dark:text-foreground mb-1">
                     Great Financial Health!
                   </h3>
-                  <p className="text-green-700 dark:text-green-200 text-sm">
+                  <p className="text-foreground dark:text-foreground text-sm">
                     Your finances are looking healthy. Keep up the good work! Check out the insights
                     below for optimization opportunities.
                   </p>
@@ -705,7 +705,7 @@ export default function FinancialInsightsPage() {
 
           <TabsContent value="overview" className="space-y-4 sm:space-y-6">
             {/* Financial Health Score */}
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-card to-card/80">
+            <Card className="border-0  bg-gradient-to-br from-card to-card/80">
               <CardHeader className="p-4 sm:p-5 md:p-6">
                 <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                   <Activity className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -754,10 +754,10 @@ export default function FinancialInsightsPage() {
                         <div
                           className={`w-2 h-2 rounded-full ${
                             factor.impact === 'positive'
-                              ? 'bg-green-500'
+                              ? 'bg-muted'
                               : factor.impact === 'neutral'
-                                ? 'bg-yellow-500'
-                                : 'bg-red-500'
+                                ? 'bg-muted'
+                                : 'bg-muted'
                           }`}
                         />
                         <span className="text-xs sm:text-sm font-medium">{factor.name}</span>
@@ -772,7 +772,7 @@ export default function FinancialInsightsPage() {
             </Card>
 
             {/* Recommendations */}
-            <Card className="border-0 shadow-lg bg-card">
+            <Card className="border-0  bg-card">
               <CardHeader className="p-4 sm:p-5 md:p-6">
                 <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                   <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -815,7 +815,7 @@ export default function FinancialInsightsPage() {
             </Card>
 
             {/* Top Spending Categories */}
-            <Card className="border-0 shadow-lg bg-card">
+            <Card className="border-0  bg-card">
               <CardHeader className="p-4 sm:p-5 md:p-6">
                 <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                   <PieChart className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -874,7 +874,7 @@ export default function FinancialInsightsPage() {
             </Card>
 
             {/* Quick Insights Summary */}
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20">
+            <Card className="border-0  bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20">
               <CardHeader className="p-4 sm:p-5 md:p-6">
                 <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                   <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -885,10 +885,10 @@ export default function FinancialInsightsPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                   <div className="p-3 sm:p-4 rounded-lg bg-background/60 dark:bg-background/40 border">
                     <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp className="h-4 w-4 text-green-500" />
+                      <TrendingUp className="h-4 w-4 text-foreground" />
                       <span className="text-xs sm:text-sm font-medium">Savings Rate</span>
                     </div>
-                    <p className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">
+                    <p className="text-xl sm:text-2xl font-bold text-foreground dark:text-foreground">
                       {savingsRate}%
                     </p>
                     <p className="text-xs text-muted-foreground">
@@ -902,10 +902,10 @@ export default function FinancialInsightsPage() {
 
                   <div className="p-3 sm:p-4 rounded-lg bg-background/60 dark:bg-background/40 border">
                     <div className="flex items-center gap-2 mb-2">
-                      <Target className="h-4 w-4 text-blue-500" />
+                      <Target className="h-4 w-4 text-foreground" />
                       <span className="text-xs sm:text-sm font-medium">Active Goals</span>
                     </div>
-                    <p className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
+                    <p className="text-xl sm:text-2xl font-bold text-foreground dark:text-foreground">
                       {financialGoals.length}
                     </p>
                     <p className="text-xs text-muted-foreground">
@@ -917,10 +917,10 @@ export default function FinancialInsightsPage() {
 
                   <div className="p-3 sm:p-4 rounded-lg bg-background/60 dark:bg-background/40 border sm:col-span-2 lg:col-span-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <AlertTriangle className="h-4 w-4 text-orange-500" />
+                      <AlertTriangle className="h-4 w-4 text-foreground" />
                       <span className="text-xs sm:text-sm font-medium">Alerts</span>
                     </div>
-                    <p className="text-xl sm:text-2xl font-bold text-orange-600 dark:text-orange-400">
+                    <p className="text-xl sm:text-2xl font-bold text-foreground dark:text-foreground">
                       {financialMetrics.highPriorityInsights}
                     </p>
                     <p className="text-xs text-muted-foreground">
@@ -946,7 +946,7 @@ export default function FinancialInsightsPage() {
 
           <TabsContent value="trends" className="space-y-4 sm:space-y-6">
             {/* Spending Trends Analysis */}
-            <Card className="border-0 shadow-lg bg-card">
+            <Card className="border-0  bg-card">
               <CardHeader className="p-4 sm:p-5 md:p-6">
                 <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                   <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
@@ -991,7 +991,7 @@ export default function FinancialInsightsPage() {
             </Card>
 
             {/* Monthly Comparison */}
-            <Card className="border-0 shadow-lg bg-card">
+            <Card className="border-0  bg-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Calendar className="h-5 w-5 text-primary" />
@@ -1018,7 +1018,7 @@ export default function FinancialInsightsPage() {
                         </div>
                         <div className="text-sm text-muted-foreground">Spending Growth</div>
                         <div
-                          className={`text-xs ${yoyMetrics.spendingGrowth > 0 ? 'text-red-600' : 'text-green-600'}`}
+                          className={`text-xs ${yoyMetrics.spendingGrowth > 0 ? 'text-foreground' : 'text-foreground'}`}
                         >
                           vs. Previous Year
                         </div>
@@ -1030,7 +1030,7 @@ export default function FinancialInsightsPage() {
                         </div>
                         <div className="text-sm text-muted-foreground">Income Growth</div>
                         <div
-                          className={`text-xs ${yoyMetrics.incomeGrowth > 0 ? 'text-green-600' : 'text-red-600'}`}
+                          className={`text-xs ${yoyMetrics.incomeGrowth > 0 ? 'text-foreground' : 'text-foreground'}`}
                         >
                           vs. Previous Year
                         </div>
@@ -1042,7 +1042,7 @@ export default function FinancialInsightsPage() {
                         </div>
                         <div className="text-sm text-muted-foreground">Savings Rate Change</div>
                         <div
-                          className={`text-xs ${yoyMetrics.savingsRateChange > 0 ? 'text-green-600' : 'text-red-600'}`}
+                          className={`text-xs ${yoyMetrics.savingsRateChange > 0 ? 'text-foreground' : 'text-foreground'}`}
                         >
                           Percentage Points
                         </div>
@@ -1082,9 +1082,9 @@ export default function FinancialInsightsPage() {
                               <div
                                 className={`flex items-center gap-1 text-sm font-medium ${
                                   monthData.growth.spendingGrowth > 0
-                                    ? 'text-red-600'
+                                    ? 'text-foreground'
                                     : monthData.growth.spendingGrowth < 0
-                                      ? 'text-green-600'
+                                      ? 'text-foreground'
                                       : 'text-muted-foreground'
                                 }`}
                               >

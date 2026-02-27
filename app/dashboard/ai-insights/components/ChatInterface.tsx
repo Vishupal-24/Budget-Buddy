@@ -147,8 +147,8 @@ export function ChatInterface({
           </Button>
           
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center">
-              <Sparkles className="h-4 w-4 text-white" />
+            <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center">
+              <Sparkles className="h-4 w-4 text-background" />
             </div>
             <div>
               <h1 className="font-semibold text-sm">Financial Assistant</h1>
@@ -166,18 +166,18 @@ export function ChatInterface({
               variant="outline" 
               className={`text-xs ${
                 quotaStatus.status.canMakeRequest 
-                  ? 'bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300'
-                  : 'bg-red-50 dark:bg-red-950 border-red-200 dark:border-red-800 text-red-700 dark:text-red-300'
+                  ? ''
+                  : ''
               }`}
             >
               <div className={`w-2 h-2 rounded-full mr-1 ${
-                quotaStatus.status.canMakeRequest ? 'bg-green-500 animate-pulse' : 'bg-red-500'
+                quotaStatus.status.canMakeRequest ? 'bg-foreground animate-pulse' : 'bg-muted-foreground'
               }`}></div>
               {quotaStatus.status.usage}
             </Badge>
           )}
-          <Badge variant="outline" className="text-xs bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mr-1 animate-pulse"></div>
+          <Badge variant="outline" className="text-xs">
+            <div className="w-2 h-2 bg-foreground rounded-full mr-1 animate-pulse"></div>
             Active
           </Badge>
           
@@ -202,12 +202,12 @@ export function ChatInterface({
         >
           {displayMessages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
-                <Bot className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-foreground rounded-full flex items-center justify-center mb-6">
+                <Bot className="h-8 w-8 text-background" />
               </div>
               {availableProviders.length === 0 ? (
                 <>
-                  <h3 className="text-xl font-semibold mb-3 text-orange-600 dark:text-orange-400">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">
                     AI Assistant Setup Required
                   </h3>
                   <p className="text-muted-foreground max-w-md mb-8">
@@ -286,8 +286,8 @@ export function ChatInterface({
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {message.role === 'assistant' && (
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
-                        <Bot className="h-4 w-4 text-white" />
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-foreground flex items-center justify-center">
+                        <Bot className="h-4 w-4 text-background" />
                       </div>
                     )}
                     
@@ -326,8 +326,8 @@ export function ChatInterface({
               
               {loading && (
                 <div className="flex gap-4 justify-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
-                    <Bot className="h-4 w-4 text-white" />
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-foreground flex items-center justify-center">
+                    <Bot className="h-4 w-4 text-background" />
                   </div>
                   <div className="bg-muted/50 rounded-2xl p-4">
                     <TypingIndicator />
@@ -449,7 +449,7 @@ export function ChatInterface({
                   onClick={handleSend} 
                   disabled={loading || !inputMessage.trim()}
                   size="sm"
-                  className="h-10 w-10 p-0 rounded-xl transition-all hover:scale-105 disabled:hover:scale-100"
+                  className="h-10 w-10 p-0 rounded-xl transition-colors disabled:hover:scale-100"
                 >
                   {loading ? (
                     <Loader2 className="h-4 w-4 animate-spin" />

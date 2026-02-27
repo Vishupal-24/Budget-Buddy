@@ -92,15 +92,15 @@ export function getNotificationTypeLabel(type: string): string {
 export function getNotificationPriorityColor(priority: string): string {
   switch (priority) {
     case 'urgent':
-      return 'text-red-600 bg-red-50 dark:bg-red-950/20';
+      return 'text-foreground bg-muted dark:bg-muted';
     case 'high':
-      return 'text-orange-600 bg-orange-50 dark:bg-orange-950/20';
+      return 'text-foreground bg-muted dark:bg-muted';
     case 'medium':
-      return 'text-blue-600 bg-blue-50 dark:bg-blue-950/20';
+      return 'text-foreground bg-muted dark:bg-muted';
     case 'low':
       return 'text-gray-600 bg-gray-50 dark:bg-gray-950/20';
     default:
-      return 'text-blue-600 bg-blue-50 dark:bg-blue-950/20';
+      return 'text-foreground bg-muted dark:bg-muted';
   }
 }
 

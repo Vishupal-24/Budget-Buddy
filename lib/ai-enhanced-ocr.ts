@@ -92,27 +92,27 @@ export class AIEnhancedOCR {
     try {
       await this.initialize();
 
-      console.log('🤖 Starting AI-Enhanced OCR processing...');
+      console.log('Starting AI-Enhanced OCR processing...');
 
       // Step 1: Analyze document type and quality
       const documentAnalysis = await this.analyzeDocument(file);
-      console.log('📊 Document Analysis:', documentAnalysis);
+      console.log('Document Analysis:', documentAnalysis);
 
       // Step 2: Enhance image quality using AI
       const enhancedImage = await this.aiImageEnhancement(file);
-      console.log('🖼️ Image enhanced for better OCR');
+      console.log('Image enhanced for better OCR');
 
       // Step 3: Multi-engine OCR with AI post-processing
       const ocrResults = await this.multiEngineOCR(enhancedImage);
-      console.log('🔍 OCR Results:', ocrResults);
+      console.log('OCR Results:', ocrResults);
 
       // Step 4: AI-powered data extraction
       const extractedData = await this.aiDataExtraction(ocrResults.text, documentAnalysis);
-      console.log('🧠 AI Extracted Data:', extractedData);
+      console.log('AI Extracted Data:', extractedData);
 
       // Step 5: AI validation and correction
       const validationResults = await this.aiValidation(extractedData, ocrResults.text);
-      console.log('✅ AI Validation:', validationResults);
+      console.log('AI Validation:', validationResults);
 
       // Step 6: Calculate final confidence
       const finalConfidence = this.calculateAIConfidence(extractedData, validationResults, documentAnalysis);
@@ -291,7 +291,7 @@ export class AIEnhancedOCR {
   }
 
   private async aiDataExtraction(text: string, analysis: AIAnalysis): Promise<ExtractedTransactionData> {
-    console.log('🧠 AI analyzing text:', text);
+    console.log('AI analyzing text:', text);
 
     const result: ExtractedTransactionData = {
       rawText: text
@@ -372,7 +372,7 @@ export class AIEnhancedOCR {
       }
     }
 
-    console.log('💰 AI Amount candidates:', candidates);
+    console.log('AI Amount candidates:', candidates);
 
     if (candidates.length === 0) return undefined;
 
@@ -384,7 +384,7 @@ export class AIEnhancedOCR {
       return b.confidence - a.confidence;
     });
 
-    console.log('💰 AI Selected amount:', candidates[0]);
+    console.log('AI Selected amount:', candidates[0]);
     return candidates[0].amount;
   }
 
@@ -402,7 +402,7 @@ export class AIEnhancedOCR {
         const dateStr = match[1];
         const parsedDate = this.parseDate(dateStr);
         if (parsedDate) {
-          console.log('📅 AI Selected date:', parsedDate);
+          console.log('AI Selected date:', parsedDate);
           return parsedDate;
         }
       }
@@ -435,7 +435,7 @@ export class AIEnhancedOCR {
       if (match) {
         const merchant = match[1].trim().replace(/[^a-zA-Z\s&.-]/g, '');
         if (merchant.length > 2 && merchant.length < 50) {
-          console.log('🏪 AI Selected merchant:', merchant);
+          console.log('AI Selected merchant:', merchant);
           return merchant;
         }
       }
@@ -468,7 +468,7 @@ export class AIEnhancedOCR {
       }, 0);
 
       if (score > 0) {
-        console.log('🏷️ AI Selected category:', category);
+        console.log('AI Selected category:', category);
         return category;
       }
     }

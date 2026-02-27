@@ -44,32 +44,32 @@ interface MetricCardProps {
 
 const colorStyles = {
   blue: {
-    gradient: "bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30",
-    border: "border-blue-200/50 dark:border-blue-800/50",
-    icon: "text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30",
-    value: "text-blue-900 dark:text-blue-100",
-    trend: "text-blue-600 dark:text-blue-400"
+    gradient: "bg-card",
+    border: "border-border",
+    icon: "text-foreground bg-muted",
+    value: "text-foreground",
+    trend: "text-muted-foreground"
   },
   green: {
-    gradient: "bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30",
-    border: "border-emerald-200/50 dark:border-emerald-800/50",
-    icon: "text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30",
-    value: "text-emerald-900 dark:text-emerald-100",
-    trend: "text-emerald-600 dark:text-emerald-400"
+    gradient: "bg-card",
+    border: "border-border",
+    icon: "text-foreground bg-muted",
+    value: "text-foreground",
+    trend: "text-muted-foreground"
   },
   purple: {
-    gradient: "bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30",
-    border: "border-violet-200/50 dark:border-violet-800/50",
-    icon: "text-violet-600 dark:text-violet-400 bg-violet-100 dark:bg-violet-900/30",
-    value: "text-violet-900 dark:text-violet-100",
-    trend: "text-violet-600 dark:text-violet-400"
+    gradient: "bg-card",
+    border: "border-border",
+    icon: "text-foreground bg-muted",
+    value: "text-foreground",
+    trend: "text-muted-foreground"
   },
   orange: {
-    gradient: "bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30",
-    border: "border-orange-200/50 dark:border-orange-800/50",
-    icon: "text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30",
-    value: "text-orange-900 dark:text-orange-100",
-    trend: "text-orange-600 dark:text-orange-400"
+    gradient: "bg-card",
+    border: "border-border",
+    icon: "text-foreground bg-muted",
+    value: "text-foreground",
+    trend: "text-muted-foreground"
   }
 };
 
@@ -78,16 +78,15 @@ function MetricCard({ title, value, icon, trend, color, description }: MetricCar
   
   return (
     <Card className={cn(
-      "relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group",
+      "relative overflow-hidden border",
       styles.gradient,
-      styles.border,
-      "border-2"
+      styles.border
     )}>
       <CardContent className="p-6">
         {/* Header with icon and trend */}
         <div className="flex items-start justify-between mb-4">
           <div className={cn(
-            "p-3 rounded-xl transition-all duration-300 group-hover:scale-110",
+            "p-2.5 rounded-lg",
             styles.icon
           )}>
             {icon}
@@ -98,8 +97,8 @@ function MetricCard({ title, value, icon, trend, color, description }: MetricCar
               variant="secondary" 
               className={cn(
                 "flex items-center gap-1 text-xs font-medium px-2 py-1",
-                "bg-white/60 dark:bg-black/20 backdrop-blur-sm",
-                trend.isPositive ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400"
+                "bg-muted",
+                "text-muted-foreground"
               )}
             >
               {trend.isPositive ? (
@@ -114,7 +113,7 @@ function MetricCard({ title, value, icon, trend, color, description }: MetricCar
 
         {/* Value */}
         <div className={cn(
-          "text-3xl font-bold mb-2 transition-all duration-300 group-hover:scale-105",
+          "text-2xl font-semibold mb-2",
           styles.value
         )}>
           {typeof value === 'number' && title.includes('Amount') ? (
@@ -128,7 +127,7 @@ function MetricCard({ title, value, icon, trend, color, description }: MetricCar
 
         {/* Title and description */}
         <div>
-          <h3 className="text-sm font-semibold text-muted-foreground mb-1 group-hover:text-foreground transition-colors">
+          <h3 className="text-sm font-medium text-muted-foreground mb-1">
             {title}
           </h3>
           {description && (
@@ -138,19 +137,7 @@ function MetricCard({ title, value, icon, trend, color, description }: MetricCar
           )}
         </div>
 
-        {/* Animated background effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-        
         {/* Subtle glow effect */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className={cn(
-            "absolute inset-0 blur-xl",
-            color === "blue" && "bg-blue-400/10",
-            color === "green" && "bg-emerald-400/10",
-            color === "purple" && "bg-violet-400/10",
-            color === "orange" && "bg-orange-400/10"
-          )} />
-        </div>
       </CardContent>
     </Card>
   );
@@ -234,14 +221,14 @@ export function EnhancedMetricsCards({ metrics, className }: EnhancedMetricsCard
 export function CompactMetricsCards({ metrics, className }: EnhancedMetricsCardsProps) {
   return (
     <div className={cn("grid grid-cols-2 gap-3", className)}>
-      <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border-blue-200/50 dark:border-blue-800/50">
+      <Card className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted border-border dark:border-border">
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+            <div className="p-2 rounded-lg bg-muted dark:bg-muted text-foreground dark:text-foreground">
               <Activity className="h-4 w-4" />
             </div>
             <div>
-              <div className="text-lg font-bold text-blue-900 dark:text-blue-100">
+              <div className="text-lg font-bold text-foreground dark:text-foreground">
                 {metrics.totalTransactions || 0}
               </div>
               <div className="text-xs text-muted-foreground">Transactions</div>
@@ -250,14 +237,14 @@ export function CompactMetricsCards({ metrics, className }: EnhancedMetricsCards
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 border-emerald-200/50 dark:border-emerald-800/50">
+      <Card className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted border-border dark:border-border">
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+            <div className="p-2 rounded-lg bg-muted dark:bg-muted text-foreground dark:text-foreground">
               <Target className="h-4 w-4" />
             </div>
             <div>
-              <div className="text-lg font-bold text-emerald-900 dark:text-emerald-100">
+              <div className="text-lg font-bold text-foreground dark:text-foreground">
                 {formatCurrency(metrics.averageTransactionAmount || 0)}
               </div>
               <div className="text-xs text-muted-foreground">Average</div>
@@ -266,14 +253,14 @@ export function CompactMetricsCards({ metrics, className }: EnhancedMetricsCards
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 border-violet-200/50 dark:border-violet-800/50">
+      <Card className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted border-border dark:border-border">
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400">
+            <div className="p-2 rounded-lg bg-muted dark:bg-muted text-foreground dark:text-foreground">
               <Calendar className="h-4 w-4" />
             </div>
             <div>
-              <div className="text-lg font-bold text-violet-900 dark:text-violet-100">
+              <div className="text-lg font-bold text-foreground dark:text-foreground">
                 {formatDay(metrics.mostActiveDay)}
               </div>
               <div className="text-xs text-muted-foreground">Peak Day</div>
@@ -282,14 +269,14 @@ export function CompactMetricsCards({ metrics, className }: EnhancedMetricsCards
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 border-orange-200/50 dark:border-orange-800/50">
+      <Card className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted border-border dark:border-border">
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+            <div className="p-2 rounded-lg bg-muted dark:bg-muted text-foreground dark:text-foreground">
               <Tag className="h-4 w-4" />
             </div>
             <div>
-              <div className="text-lg font-bold text-orange-900 dark:text-orange-100">
+              <div className="text-lg font-bold text-foreground dark:text-foreground">
                 {formatCategory(metrics.mostActiveCategory)}
               </div>
               <div className="text-xs text-muted-foreground">Top Category</div>

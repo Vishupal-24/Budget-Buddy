@@ -1427,7 +1427,7 @@ export default function SettingsPage() {
                         onClick={() => handleThemeChange('light')}
                         className="h-auto py-4 flex flex-col items-center justify-center gap-2"
                       >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-amber-300 to-yellow-500 text-white">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted text-foreground">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"
@@ -1453,7 +1453,7 @@ export default function SettingsPage() {
                         onClick={() => handleThemeChange('dark')}
                         className="h-auto py-4 flex flex-col items-center justify-center gap-2"
                       >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-white">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted text-foreground">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"
@@ -1478,7 +1478,7 @@ export default function SettingsPage() {
                         onClick={() => handleThemeChange('system')}
                         className="h-auto py-4 flex flex-col items-center justify-center gap-2"
                       >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-sky-500 text-white">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted text-foreground">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"
@@ -1893,7 +1893,7 @@ export default function SettingsPage() {
                     <h4 className="font-medium mb-4">Available Widgets</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                        <div className="p-2 bg-muted text-foreground rounded-lg">
                           <LayoutGrid className="h-4 w-4" />
                         </div>
                         <div>
@@ -1905,7 +1905,7 @@ export default function SettingsPage() {
                       </div>
 
                       <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <div className="p-2 bg-green-100 text-green-600 rounded-lg">
+                        <div className="p-2 bg-muted text-foreground rounded-lg">
                           <LayoutGrid className="h-4 w-4" />
                         </div>
                         <div>
@@ -1917,7 +1917,7 @@ export default function SettingsPage() {
                       </div>
 
                       <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <div className="p-2 bg-purple-100 text-purple-600 rounded-lg">
+                        <div className="p-2 bg-muted text-foreground rounded-lg">
                           <LayoutGrid className="h-4 w-4" />
                         </div>
                         <div>
@@ -1927,7 +1927,7 @@ export default function SettingsPage() {
                       </div>
 
                       <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <div className="p-2 bg-orange-100 text-orange-600 rounded-lg">
+                        <div className="p-2 bg-muted text-foreground rounded-lg">
                           <LayoutGrid className="h-4 w-4" />
                         </div>
                         <div>
@@ -1946,8 +1946,8 @@ export default function SettingsPage() {
               <div
                 className={`rounded-md p-4 ${
                   message.type === 'success'
-                    ? 'bg-green-50 text-green-800 dark:bg-green-900 dark:text-green-50'
-                    : 'bg-red-50 text-red-800 dark:bg-red-900 dark:text-red-50'
+                    ? 'bg-muted text-foreground'
+                    : 'bg-muted text-foreground'
                 }`}
               >
                 {message.text}

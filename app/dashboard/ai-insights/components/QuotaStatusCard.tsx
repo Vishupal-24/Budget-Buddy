@@ -14,17 +14,17 @@ export function QuotaStatusCard({ quotaError, quotaStatus, onRefreshStatus }: Qu
   if (!quotaError) return null;
 
   return (
-    <Card className="mb-4 border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950">
+    <Card className="mb-4 border-border bg-muted dark:border-border dark:bg-muted">
       <CardHeader className="pb-3">
-        <CardTitle className="text-orange-800 dark:text-orange-200 flex items-center gap-2">
+        <CardTitle className="text-foreground dark:text-foreground flex items-center gap-2">
           <AlertTriangle className="h-5 w-5" />
           API Quota Limit Reached
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-orange-700 dark:text-orange-300 mb-3">{quotaError}</p>
+        <p className="text-foreground dark:text-foreground mb-3">{quotaError}</p>
         {quotaStatus && (
-          <div className="text-sm text-orange-600 dark:text-orange-400">
+          <div className="text-sm text-foreground dark:text-foreground">
             <p>Current usage: {quotaStatus.status?.usage}</p>
             <p>Quota resets in: {quotaStatus.status?.timeUntilReset}</p>
           </div>
@@ -35,7 +35,7 @@ export function QuotaStatusCard({ quotaError, quotaStatus, onRefreshStatus }: Qu
           variant="outline" 
           size="sm" 
           onClick={onRefreshStatus}
-          className="border-orange-300 text-orange-700 hover:bg-orange-100 dark:border-orange-700 dark:text-orange-300 dark:hover:bg-orange-900"
+          className="border-border text-foreground hover:bg-muted dark:border-border dark:text-foreground dark:hover:bg-muted"
         >
           Refresh Status
         </Button>

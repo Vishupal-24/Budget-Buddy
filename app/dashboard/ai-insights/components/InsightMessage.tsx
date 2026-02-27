@@ -135,7 +135,7 @@ export function InsightMessage({ insights, onActionClick }: InsightMessageProps)
           const icon = getInsightIcon(insight.type);
           
           return (
-            <Card key={index} className="w-full overflow-hidden hover:shadow-md transition-shadow">
+            <Card key={index} className="w-full overflow-hidden  transition-shadow">
               <CardContent className="p-0">
                 {/* Header */}
                 <div className={`p-4 bg-${color}-50 border-l-4 border-${color}-500 dark:bg-${color}-950/20`}>

@@ -156,7 +156,7 @@ export default function BudgetPage() {
       console.error('Error fetching categories:', error);
       toast.error('Failed to load categories', {
         description: 'Please check your connection and try again',
-        icon: <AlertTriangle className="h-5 w-5 text-red-500" />,
+        icon: <AlertTriangle className="h-5 w-5 text-muted-foreground" />,
       });
     }
   };
@@ -290,7 +290,7 @@ export default function BudgetPage() {
       console.error('Error fetching budgets:', error);
       toast.error('Failed to load budget data', {
         description: 'Please check your connection and try again',
-        icon: <AlertTriangle className="h-5 w-5 text-red-500" />,
+        icon: <AlertTriangle className="h-5 w-5 text-muted-foreground" />,
       });
     } finally {
       setLoading(false);
@@ -363,7 +363,7 @@ export default function BudgetPage() {
 
       if (!user) {
         toast.error('You must be logged in to manage budgets', {
-          icon: <AlertTriangle className="h-5 w-5 text-red-500" />,
+          icon: <AlertTriangle className="h-5 w-5 text-muted-foreground" />,
         });
         setFormLoading(false);
         return;
@@ -389,7 +389,7 @@ export default function BudgetPage() {
 
         toast.success('Budget updated successfully', {
           description: 'Your budget changes have been saved',
-          icon: <CheckCircle className="h-5 w-5 text-green-500" />,
+          icon: <CheckCircle className="h-5 w-5 text-foreground" />,
         });
       } else {
         // Check if budget for this category already exists
@@ -422,7 +422,7 @@ export default function BudgetPage() {
 
                 toast.success('Budget updated successfully', {
                   description: `Updated budget for ${categories.find((c) => c.id === existingBudgetToUpdate.category_id)?.name || 'category'}`,
-                  icon: <CheckCircle className="h-5 w-5 text-green-500" />,
+                  icon: <CheckCircle className="h-5 w-5 text-foreground" />,
                 });
 
                 // Refresh budgets and reset form
@@ -433,7 +433,7 @@ export default function BudgetPage() {
                 console.error('Error updating budget:', error);
                 toast.error('Failed to update budget', {
                   description: error?.message || 'An unexpected error occurred',
-                  icon: <AlertTriangle className="h-5 w-5 text-red-500" />,
+                  icon: <AlertTriangle className="h-5 w-5 text-muted-foreground" />,
                 });
               } finally {
                 setFormLoading(false);
@@ -463,7 +463,7 @@ export default function BudgetPage() {
 
           toast.success('Budget created successfully', {
             description: `New budget for ${categories.find((c) => c.id === formData.category_id)?.name || 'category'} has been created`,
-            icon: <CheckCircle className="h-5 w-5 text-green-500" />,
+            icon: <CheckCircle className="h-5 w-5 text-foreground" />,
           });
         }
       }
@@ -477,7 +477,7 @@ export default function BudgetPage() {
       setFormError(`${error?.message || 'Unknown error'}`);
       toast.error('Failed to save budget', {
         description: error?.message || 'An unexpected error occurred',
-        icon: <AlertTriangle className="h-5 w-5 text-red-500" />,
+        icon: <AlertTriangle className="h-5 w-5 text-muted-foreground" />,
       });
     } finally {
       setFormLoading(false);
@@ -516,13 +516,13 @@ export default function BudgetPage() {
           await fetchBudgets();
           toast.success('Budget deleted successfully', {
             description: 'The budget has been removed from your account',
-            icon: <CheckCircle className="h-5 w-5 text-green-500" />,
+            icon: <CheckCircle className="h-5 w-5 text-foreground" />,
           });
         } catch (error) {
           console.error('Error deleting budget:', error);
           toast.error('Failed to delete budget', {
             description: 'An error occurred while trying to delete the budget',
-            icon: <AlertTriangle className="h-5 w-5 text-red-500" />,
+            icon: <AlertTriangle className="h-5 w-5 text-muted-foreground" />,
           });
         } finally {
           setShowConfirmModal(false);
@@ -620,21 +620,21 @@ export default function BudgetPage() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="rounded-md bg-red-50 dark:bg-red-900/20 p-3 sm:p-4 mb-4 sm:mb-6 border border-red-200 dark:border-red-800"
+            className="rounded-md bg-muted p-3 sm:p-4 mb-4 sm:mb-6 border border-border"
           >
             <div className="flex">
               <div className="flex-shrink-0">
-                <AlertTriangle className="h-5 w-5 text-red-500" aria-hidden="true" />
+                <AlertTriangle className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
               </div>
               <div className="ml-3 flex-1">
-                <h3 className="text-sm font-medium text-red-800 dark:text-red-200">{formError}</h3>
+                <h3 className="text-sm font-medium text-foreground">{formError}</h3>
               </div>
               <div className="ml-auto pl-3">
                 <div className="-mx-1.5 -my-1.5">
                   <button
                     type="button"
                     onClick={() => setFormError(null)}
-                    className="inline-flex rounded-md p-1.5 text-red-500 hover:bg-red-100 dark:hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                    className="inline-flex rounded-md p-1.5 text-muted-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                   >
                     <span className="sr-only">Dismiss</span>
                     <X className="h-5 w-5" aria-hidden="true" />
@@ -649,7 +649,7 @@ export default function BudgetPage() {
       {/* Budget Overview Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {/* Total Budget Card */}
-        <div className="rounded-lg border bg-card p-4 shadow-sm">
+        <div className="rounded-lg border bg-card p-4 ">
           <div className="flex justify-between items-start">
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-1">Total Budget</h3>
@@ -660,18 +660,18 @@ export default function BudgetPage() {
                 {budgets.length} budget{budgets.length !== 1 ? 's' : ''} set
               </div>
             </div>
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 shadow-md flex items-center justify-center">
-              <DollarSign className="h-5 w-5 text-white" />
+            <div className="h-10 w-10 rounded-xl bg-muted flex items-center justify-center">
+              <DollarSign className="h-5 w-5 text-foreground" />
             </div>
           </div>
         </div>
 
         {/* Total Spent Card */}
-        <div className="rounded-lg border bg-card p-4 shadow-sm">
+        <div className="rounded-lg border bg-card p-4 ">
           <div className="flex justify-between items-start">
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-1">Total Spent</h3>
-              <p className="text-2xl font-bold text-red-500">
+              <p className="text-2xl font-bold text-foreground">
                 {formatCurrency(categorySpending.reduce((sum, cat) => sum + cat.spent, 0))}
               </p>
               <div className="mt-2 text-xs text-muted-foreground">
@@ -679,23 +679,19 @@ export default function BudgetPage() {
                 {categorySpending.length !== 1 ? 'ies' : 'y'}
               </div>
             </div>
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-red-500 to-rose-600 shadow-md flex items-center justify-center">
-              <BarChart3 className="h-5 w-5 text-white" />
+            <div className="h-10 w-10 rounded-xl bg-muted flex items-center justify-center">
+              <BarChart3 className="h-5 w-5 text-foreground" />
             </div>
           </div>
         </div>
 
         {/* Budget Status Card */}
-        <div className="rounded-lg border bg-card p-4 shadow-sm">
+        <div className="rounded-lg border bg-card p-4 ">
           <div className="flex justify-between items-start">
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-1">Status</h3>
               <p
-                className={`text-lg font-bold ${
-                  categorySpending.some((cat) => cat.percentage > 100)
-                    ? 'text-red-500'
-                    : 'text-emerald-500'
-                }`}
+                className={`text-lg font-bold text-foreground`}
               >
                 {getBudgetStatusMessage()}
               </p>
@@ -706,16 +702,12 @@ export default function BudgetPage() {
               </div>
             </div>
             <div
-              className={`h-10 w-10 rounded-xl shadow-md ${
-                categorySpending.some((cat) => cat.percentage > 100)
-                  ? 'bg-gradient-to-r from-red-500 to-rose-600'
-                  : 'bg-gradient-to-r from-emerald-400 to-emerald-600'
-              } flex items-center justify-center`}
+              className={`h-10 w-10 rounded-xl bg-muted flex items-center justify-center`}
             >
               {categorySpending.some((cat) => cat.percentage > 100) ? (
-                <AlertTriangle className="h-5 w-5 text-white" />
+                <AlertTriangle className="h-5 w-5 text-foreground" />
               ) : (
-                <CheckCircle className="h-5 w-5 text-white" />
+                <CheckCircle className="h-5 w-5 text-foreground" />
               )}
             </div>
           </div>
@@ -747,7 +739,7 @@ export default function BudgetPage() {
       {/* Budget form */}
       {showForm && (
         <div className="mb-6">
-          <form onSubmit={handleSubmit} className="rounded-lg border bg-card p-6 shadow-sm">
+          <form onSubmit={handleSubmit} className="rounded-lg border bg-card p-6 ">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-xl font-bold">
@@ -790,7 +782,7 @@ export default function BudgetPage() {
                   </div>
                 </div>
                 {!hasExpenseCategories && (
-                  <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+                  <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
                     <AlertTriangle className="h-3 w-3" />
                     No expense categories available. Please create a category first.
                   </p>
@@ -873,7 +865,7 @@ export default function BudgetPage() {
       )}
 
       {/* Budget Progress */}
-      <div className="rounded-lg border bg-card shadow-sm overflow-hidden mb-8">
+      <div className="rounded-lg border bg-card  overflow-hidden mb-8">
         <div className="border-b p-4">
           <div className="flex items-center justify-between">
             <div>
@@ -942,7 +934,7 @@ export default function BudgetPage() {
           onClick={() => setShowConfirmModal(false)}
         >
           <div
-            className="bg-card rounded-lg shadow-lg max-w-md w-full p-6"
+            className="bg-card rounded-lg  max-w-md w-full p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start mb-4">
@@ -973,7 +965,7 @@ export default function BudgetPage() {
               setShowForm(true);
             }}
             size="lg"
-            className="h-14 w-14 rounded-full shadow-lg"
+            className="h-14 w-14 rounded-full "
           >
             <Plus className="h-6 w-6" />
           </Button>

@@ -70,7 +70,7 @@ export class LLMEnhancedOCR {
   async initialize() {
     if (!this.isInitialized) {
       try {
-        console.log('🚀 Initializing LLM-Enhanced OCR...');
+        console.log('Initializing LLM-Enhanced OCR...');
         
         // Initialize Tesseract with optimal settings
         this.tesseractWorker = await createWorker(['eng', 'hin'], 1, {
@@ -92,16 +92,16 @@ export class LLMEnhancedOCR {
         });
 
         this.isInitialized = true;
-        console.log('✅ LLM-Enhanced OCR initialized successfully');
+        console.log('LLM-Enhanced OCR initialized successfully');
       } catch (error) {
-        console.error('❌ Failed to initialize LLM-Enhanced OCR:', error);
+        console.error('Failed to initialize LLM-Enhanced OCR:', error);
         throw new Error('LLM OCR initialization failed');
       }
     }
   }
 
   private async validateAndPrepareFile(file: File): Promise<File> {
-    console.log(`📋 Validating file: ${file.name} (${file.type})`);
+    console.log(`Validating file: ${file.name} (${file.type})`);
     
     // Check file size (max 10MB)
     const maxSize = 10 * 1024 * 1024; // 10MB
@@ -133,13 +133,13 @@ export class LLMEnhancedOCR {
     
     // Check if it's a supported image format
     if (supportedImageTypes.includes(fileType)) {
-      console.log('✅ Supported image format detected');
+      console.log('Supported image format detected');
       return file;
     }
     
     // Handle PDF files
     if (fileType === 'application/pdf' || fileName.endsWith('.pdf')) {
-      console.log('📄 PDF detected - processing with PDF.js');
+      console.log('PDF detected - processing with PDF.js');
       return file;
     }
     
@@ -151,7 +151,7 @@ export class LLMEnhancedOCR {
     const hasImageExtension = imageExtensions.some(ext => fileName.endsWith(ext));
     
     if (hasImageExtension) {
-      console.log('⚠️ Image file with unknown MIME type, attempting to process...');
+      console.log('Image file with unknown MIME type, attempting to process...');
       return file;
     }
     
@@ -163,18 +163,18 @@ export class LLMEnhancedOCR {
     try {
       await this.initialize();
       
-      console.log('🧠 Starting LLM-Enhanced OCR processing...');
+      console.log('Starting LLM-Enhanced OCR processing...');
       
       // Step 0: Validate file type and convert if necessary
       const processableFile = await this.validateAndPrepareFile(file);
       
       // Step 1: Enhanced OCR with preprocessing
       const ocrResult = await this.performEnhancedOCR(processableFile);
-      console.log('📝 OCR Text extracted:', ocrResult.text.substring(0, 200) + '...');
+      console.log('OCR Text extracted:', ocrResult.text.substring(0, 200) + '...');
       
       // Step 2: LLM-powered data extraction
       const llmResult = await this.llmDataExtraction(ocrResult.text, file.name);
-      console.log('🤖 LLM Analysis complete:', llmResult);
+      console.log('LLM Analysis complete:', llmResult);
       
       // Step 3: Validation and confidence scoring
       const validationResults = await this.validateWithLLM(llmResult.extractedData, ocrResult.text);
@@ -192,22 +192,22 @@ export class LLMEnhancedOCR {
       };
       
     } catch (error) {
-      console.error('❌ LLM-Enhanced OCR processing failed:', error);
+      console.error('LLM-Enhanced OCR processing failed:', error);
       throw new Error('Failed to process document with LLM');
     }
   }
 
   private async performEnhancedOCR(file: File): Promise<{ text: string; confidence: number }> {
-    console.log('🔍 Starting enhanced OCR with multi-stage processing...');
+    console.log('Starting enhanced OCR with multi-stage processing...');
     
     // Handle PDF files differently
     if (file.type === 'application/pdf') {
-      console.log('📄 Processing PDF file...');
+      console.log('Processing PDF file...');
       try {
         // Try direct text extraction first
         const pdfText = await this.extractTextFromPDF(file);
         if (pdfText && pdfText.trim().length > 50) {
-          console.log('✅ Successfully extracted text from PDF');
+          console.log('Successfully extracted text from PDF');
           return {
             text: pdfText,
             confidence: 0.95, // High confidence for direct PDF text extraction
@@ -240,7 +240,7 @@ export class LLMEnhancedOCR {
     // Stage 3: Select best result based on confidence and content analysis
     const bestResult = this.selectBestOCRResult(ocrResults);
     
-    console.log(`📊 Selected OCR result with ${(bestResult.confidence * 100).toFixed(1)}% confidence`);
+    console.log(`Selected OCR result with ${(bestResult.confidence * 100).toFixed(1)}% confidence`);
     
     return bestResult;
   }
@@ -250,7 +250,7 @@ export class LLMEnhancedOCR {
     
     try {
       // Method 1: Standard enhanced image
-      console.log('🔍 Method 1: Standard enhanced processing...');
+      console.log('Method 1: Standard enhanced processing...');
       const result1 = await this.tesseractWorker.recognize(enhancedImage);
       results.push({
         text: result1.data.text,
@@ -263,7 +263,7 @@ export class LLMEnhancedOCR {
 
     try {
       // Method 2: High contrast version
-      console.log('🔍 Method 2: High contrast processing...');
+      console.log('Method 2: High contrast processing...');
       const highContrastImage = await this.createHighContrastVersion(originalFile);
       const result2 = await this.tesseractWorker.recognize(highContrastImage);
       results.push({
@@ -277,7 +277,7 @@ export class LLMEnhancedOCR {
 
     try {
       // Method 3: Denoised version
-      console.log('🔍 Method 3: Denoised processing...');
+      console.log('Method 3: Denoised processing...');
       const denoisedImage = await this.createDenoisedVersion(originalFile);
       const result3 = await this.tesseractWorker.recognize(denoisedImage);
       results.push({
@@ -326,7 +326,7 @@ export class LLMEnhancedOCR {
     scoredResults.sort((a, b) => b.score - a.score);
     const best = scoredResults[0];
     
-    console.log(`🏆 Best method: ${best.method} (score: ${best.score.toFixed(3)})`);
+    console.log(`Best method: ${best.method} (score: ${best.score.toFixed(3)})`);
     
     return {
       text: best.text,
@@ -669,7 +669,7 @@ export class LLMEnhancedOCR {
     // Check cache first
     const cacheKey = this.generateCacheKey(ocrText);
     if (this.llmCache.has(cacheKey)) {
-      console.log('📋 Using cached LLM result');
+      console.log('Using cached LLM result');
       return this.llmCache.get(cacheKey);
     }
 
@@ -696,7 +696,7 @@ export class LLMEnhancedOCR {
     // For now, implementing intelligent pattern-based extraction with LLM-like reasoning
     
     const prompt = this.buildExtractionPrompt(ocrText, fileName);
-    console.log('🤖 LLM Prompt:', prompt);
+    console.log('LLM Prompt:', prompt);
     
     // Simulate LLM processing with advanced pattern matching
     const extractedData = await this.intelligentPatternExtraction(ocrText);
@@ -737,7 +737,7 @@ Focus on accuracy and provide reasoning for each extraction.
   }
 
   private async intelligentPatternExtraction(text: string): Promise<ExtractedTransactionData> {
-    console.log('🔍 Performing intelligent pattern extraction...');
+    console.log('Performing intelligent pattern extraction...');
     
     const result: ExtractedTransactionData = {
       rawText: text
@@ -757,7 +757,7 @@ Focus on accuracy and provide reasoning for each extraction.
   }
 
   private async extractAmountWithReasoning(text: string): Promise<number | undefined> {
-    console.log('💰 Extracting amount with enhanced LLM-like reasoning...');
+    console.log('Extracting amount with enhanced LLM-like reasoning...');
     
     // Enhanced patterns with better context awareness
     const patterns = [
@@ -829,7 +829,7 @@ Focus on accuracy and provide reasoning for each extraction.
     });
 
     const selected = candidates[0];
-    console.log(`💰 Selected amount: ${selected.amount} (${selected.reasoning})`);
+    console.log(`Selected amount: ${selected.amount} (${selected.reasoning})`);
     
     return selected.amount;
   }
@@ -872,7 +872,7 @@ Focus on accuracy and provide reasoning for each extraction.
 
   // Continue with other extraction methods...
   private async extractDateWithReasoning(text: string): Promise<string | undefined> {
-    console.log('📅 Extracting date with enhanced pattern matching...');
+    console.log('Extracting date with enhanced pattern matching...');
     
     const patterns = [
       // High confidence patterns with context
@@ -938,7 +938,7 @@ Focus on accuracy and provide reasoning for each extraction.
     });
 
     const selected = candidates[0];
-    console.log(`📅 Selected date: ${selected.parsed} from "${selected.date}" (${(selected.confidence * 100).toFixed(0)}% confidence)`);
+    console.log(`Selected date: ${selected.parsed} from "${selected.date}" (${(selected.confidence * 100).toFixed(0)}% confidence)`);
     
     return selected.parsed;
   }
@@ -1014,7 +1014,7 @@ Focus on accuracy and provide reasoning for each extraction.
   }
 
   private async extractMerchantWithReasoning(text: string): Promise<string | undefined> {
-    console.log('🏪 Extracting merchant with enhanced pattern matching...');
+    console.log('Extracting merchant with enhanced pattern matching...');
     
     const patterns = [
       // High confidence patterns with explicit context
@@ -1096,7 +1096,7 @@ Focus on accuracy and provide reasoning for each extraction.
     scoredCandidates.sort((a, b) => b.score - a.score);
     const selected = scoredCandidates[0];
     
-    console.log(`🏪 Selected merchant: "${selected.merchant}" (${(selected.score * 100).toFixed(0)}% confidence)`);
+    console.log(`Selected merchant: "${selected.merchant}" (${(selected.score * 100).toFixed(0)}% confidence)`);
     
     return selected.merchant;
   }
@@ -1169,7 +1169,7 @@ Focus on accuracy and provide reasoning for each extraction.
       }
     }
 
-    console.log(`🏷️ Classified as: ${bestCategory} (score: ${bestScore})`);
+    console.log(`Classified as: ${bestCategory} (score: ${bestScore})`);
     return bestCategory;
   }
 
@@ -1180,7 +1180,7 @@ Focus on accuracy and provide reasoning for each extraction.
     const isIncome = incomeKeywords.some(keyword => textLower.includes(keyword));
     const type = isIncome ? 'income' : 'expense';
     
-    console.log(`📊 Transaction type: ${type}`);
+    console.log(`Transaction type: ${type}`);
     return type;
   }
 
@@ -1200,7 +1200,7 @@ Focus on accuracy and provide reasoning for each extraction.
 
     for (const [method, keywords] of Object.entries(methods)) {
       if (keywords.some(keyword => textLower.includes(keyword))) {
-        console.log(`💳 Payment method: ${method}`);
+        console.log(`Payment method: ${method}`);
         return method;
       }
     }
@@ -1218,7 +1218,7 @@ Focus on accuracy and provide reasoning for each extraction.
     for (const pattern of patterns) {
       const match = text.match(pattern);
       if (match && match[1].length >= 6) {
-        console.log(`🔢 Transaction ID: ${match[1]}`);
+        console.log(`Transaction ID: ${match[1]}`);
         return match[1];
       }
     }
@@ -1262,7 +1262,7 @@ Focus on accuracy and provide reasoning for each extraction.
     extractedData: ExtractedTransactionData;
     analysis: LLMAnalysis;
   }> {
-    console.log('🔄 Using fallback pattern extraction...');
+    console.log('Using fallback pattern extraction...');
     
     const extractedData = await this.intelligentPatternExtraction(text);
     

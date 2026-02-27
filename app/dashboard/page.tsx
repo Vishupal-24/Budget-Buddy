@@ -306,7 +306,7 @@ const StatCard = memo(
     icon?: React.ReactNode;
     className?: string;
   }) => (
-    <div className={cn('p-5 rounded-2xl border bg-card shadow-sm hover:shadow-md transition-all', className)}>
+    <div className={cn('p-5 rounded-2xl border bg-card shadow-sm  transition-all', className)}>
       <div className="flex justify-between items-start">
         <div className="flex flex-col pt-1">
           <h3 className="text-sm font-medium text-muted-foreground mb-1">{title}</h3>
@@ -694,9 +694,9 @@ export default function DashboardPage() {
     return (
       <div className="container mx-auto px-4 py-6 md:px-6 md:py-6 lg:px-8 lg:py-8 max-w-screen-xl">
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-          <div className="rounded-full bg-red-100 p-4 mb-4">
+          <div className="rounded-full bg-muted p-4 mb-4">
             <svg
-              className="h-8 w-8 text-red-600"
+              className="h-8 w-8 text-foreground"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -792,15 +792,15 @@ export default function DashboardPage() {
               <div className="flex items-center">
                 {isOffline ? (
                   <div
-                    className="flex items-center text-amber-600 bg-amber-500/10 px-3 py-1.5 rounded-full text-xs font-semibold"
+                    className="flex items-center text-muted-foreground bg-muted px-3 py-1.5 rounded-full text-xs font-semibold"
                     role="status"
                     aria-live="polite"
                   >
                     <span>Offline</span>
                   </div>
                 ) : (
-                  <div className="flex items-center text-emerald-600 bg-emerald-500/10 px-3 py-1.5 rounded-full text-xs font-semibold">
-                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 mr-2 animate-pulse"></div>
+                  <div className="flex items-center text-foreground bg-muted px-3 py-1.5 rounded-full text-xs font-semibold">
+                    <div className="h-1.5 w-1.5 rounded-full bg-foreground mr-2 animate-pulse"></div>
                     <span>Online</span>
                     {lastSynced && (
                       <span className="ml-2 opacity-70 hidden lg:inline font-medium">
@@ -829,22 +829,22 @@ export default function DashboardPage() {
 
         {/* Offline Sync Button */}
         {isOffline && (
-          <div className="mt-4 p-3 rounded-xl border bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900">
+          <div className="mt-4 p-3 rounded-xl border bg-muted border-border">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center text-sm">
-                <svg className="h-5 w-5 mr-2 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-5 w-5 mr-2 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div className="flex flex-col">
-                  <span className="font-medium text-amber-800 dark:text-amber-200">Viewing Cached Data</span>
-                  <span className="text-xs text-amber-600 dark:text-amber-400 opacity-80">Connect to sync latest information</span>
+                  <span className="font-medium text-foreground">Viewing Cached Data</span>
+                  <span className="text-xs text-muted-foreground opacity-80">Connect to sync latest information</span>
                 </div>
               </div>
               <Button
                 onClick={syncData}
                 size="sm"
                 variant="outline"
-                className="shrink-0 rounded-full border-amber-200 text-amber-700 hover:bg-amber-100 hover:text-amber-800 dark:border-amber-800 dark:text-amber-300 dark:hover:bg-amber-900 focus:ring-amber-500"
+                className="shrink-0 rounded-full border-border text-foreground hover:bg-muted hover:text-foreground dark:border-border dark:text-foreground dark:hover:bg-muted focus:ring-ring"
                 aria-label="Sync data when online"
               >
                 <svg
@@ -877,12 +877,12 @@ export default function DashboardPage() {
         >
           {/* Total Income Card */}
           <div
-            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1"
             tabIndex={0}
             aria-label="Total Income Summary"
           >
             <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground mb-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-green-500 via-green-600 to-emerald-500 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-muted via-muted to-muted text-white  group-hover:scale-110 transition-transform duration-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -899,7 +899,7 @@ export default function DashboardPage() {
               </div>
               <span className="font-semibold">Total Income</span>
             </div>
-            <div className="text-2xl md:text-3xl font-bold text-green-700 dark:text-green-400 mb-3">
+            <div className="text-2xl md:text-3xl font-bold text-foreground dark:text-foreground mb-3">
               {stats.totalIncome > 0 ? formatCurrency(stats.totalIncome) : formatCurrency(0)}
             </div>
             <div className="flex items-center text-xs sm:text-sm space-x-2">
@@ -908,13 +908,13 @@ export default function DashboardPage() {
               enhancedMetrics.incomeGrowthRate !== 0 ? (
                 <>
                   {enhancedMetrics.incomeGrowthRate > 0 ? (
-                    <TrendingUpIcon className="h-4 w-4 text-green-600" />
+                    <TrendingUpIcon className="h-4 w-4 text-foreground" />
                   ) : (
-                    <ArrowDownIcon className="h-4 w-4 text-red-600" />
+                    <ArrowDownIcon className="h-4 w-4 text-foreground" />
                   )}
                   <span
                     className={`font-medium ${
-                      enhancedMetrics.incomeGrowthRate > 0 ? 'text-green-600' : 'text-red-600'
+                      enhancedMetrics.incomeGrowthRate > 0 ? 'text-foreground' : 'text-foreground'
                     }`}
                   >
                     {enhancedMetrics.incomeGrowthRate > 0 ? '+' : ''}
@@ -944,12 +944,12 @@ export default function DashboardPage() {
 
           {/* Total Expenses Card */}
           <div
-            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1"
             tabIndex={0}
             aria-label="Total Expenses Summary"
           >
             <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground mb-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-red-500 via-red-600 to-pink-500 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-muted via-muted to-muted text-white  group-hover:scale-110 transition-transform duration-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -968,7 +968,7 @@ export default function DashboardPage() {
               </div>
               <span className="font-semibold">Total Expenses</span>
             </div>
-            <div className="text-2xl md:text-3xl font-bold text-red-700 dark:text-red-400 mb-3">
+            <div className="text-2xl md:text-3xl font-bold text-foreground dark:text-foreground mb-3">
               {stats.totalExpense > 0 ? formatCurrency(stats.totalExpense) : formatCurrency(0)}
             </div>
             <div className="flex items-center text-xs sm:text-sm space-x-2">
@@ -977,13 +977,13 @@ export default function DashboardPage() {
               enhancedMetrics.expenseGrowthRate !== 0 ? (
                 <>
                   {enhancedMetrics.expenseGrowthRate > 0 ? (
-                    <TrendingUpIcon className="h-4 w-4 text-red-600" />
+                    <TrendingUpIcon className="h-4 w-4 text-foreground" />
                   ) : (
-                    <ArrowDownIcon className="h-4 w-4 text-green-600" />
+                    <ArrowDownIcon className="h-4 w-4 text-foreground" />
                   )}
                   <span
                     className={`font-medium ${
-                      enhancedMetrics.expenseGrowthRate > 0 ? 'text-red-600' : 'text-green-600'
+                      enhancedMetrics.expenseGrowthRate > 0 ? 'text-foreground' : 'text-foreground'
                     }`}
                   >
                     {enhancedMetrics.expenseGrowthRate > 0 ? '+' : ''}
@@ -1013,16 +1013,16 @@ export default function DashboardPage() {
 
           {/* Current Balance Card */}
           <div
-            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:col-span-2 lg:col-span-1"
+            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1 sm:col-span-2 lg:col-span-1"
             tabIndex={0}
             aria-label="Current Balance Summary"
           >
             <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground mb-3">
               <div
-                className={`flex items-center justify-center w-10 h-10 rounded-full shadow-lg group-hover:scale-110 transition-transform duration-300 ${
+                className={`flex items-center justify-center w-10 h-10 rounded-full  group-hover:scale-110 transition-transform duration-300 ${
                   stats.balance >= 0
-                    ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-500'
-                    : 'bg-gradient-to-br from-orange-500 via-orange-600 to-red-500'
+                    ? 'bg-gradient-to-br from-muted via-muted to-muted'
+                    : 'bg-gradient-to-br from-muted via-muted to-muted'
                 } text-white`}
               >
                 <svg
@@ -1046,8 +1046,8 @@ export default function DashboardPage() {
             <div
               className={`text-2xl md:text-3xl font-bold mb-3 ${
                 stats.balance >= 0
-                  ? 'text-green-700 dark:text-green-400'
-                  : 'text-red-700 dark:text-red-400'
+                  ? 'text-foreground dark:text-foreground'
+                  : 'text-foreground dark:text-foreground'
               }`}
               aria-live="polite"
             >
@@ -1076,10 +1076,10 @@ export default function DashboardPage() {
                 <div
                   className={`flex items-center px-2 py-1 rounded-full text-xs font-medium ${
                     enhancedMetrics.savingsRate >= 20
-                      ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                      ? 'bg-muted text-foreground dark:bg-muted dark:text-foreground'
                       : enhancedMetrics.savingsRate >= 10
-                        ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-                        : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                        ? 'bg-muted text-foreground dark:bg-muted dark:text-foreground'
+                        : 'bg-muted text-foreground dark:bg-muted dark:text-foreground'
                   }`}
                 >
                   <svg className="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -1158,7 +1158,7 @@ export default function DashboardPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center">
                   <svg
                     className="h-4 w-4 text-white"
                     fill="none"
@@ -1184,8 +1184,8 @@ export default function DashboardPage() {
 
             {stats.categoryData.length > 0 && (
               <div className="flex items-center gap-3 ml-11 sm:ml-0">
-                <div className="flex items-center gap-2 text-xs text-muted-foreground bg-green-50 dark:bg-green-900/20 px-3 py-1.5 rounded-full border border-green-200 dark:border-green-800">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted dark:bg-muted px-3 py-1.5 rounded-full border border-border dark:border-border">
+                  <div className="w-2 h-2 rounded-full bg-muted animate-pulse"></div>
                   <span className="font-medium">Live Data</span>
                 </div>
                 <Button variant="outline" size="sm" asChild>
@@ -1212,10 +1212,10 @@ export default function DashboardPage() {
 
           {/* Enhanced Drill-down Filter */}
           {drillDownData && (
-            <div className="rounded-xl border bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-purple-900/20 p-4 border-blue-200 dark:border-blue-800 shadow-sm">
+            <div className="rounded-xl border bg-gradient-to-r from-muted via-muted to-muted dark:from-muted dark:via-muted dark:to-muted p-4 border-border dark:border-border shadow-sm">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
                     <svg
                       className="h-4 w-4 text-white"
                       fill="none"
@@ -1232,7 +1232,7 @@ export default function DashboardPage() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-muted-foreground font-medium">Active Filter</span>
-                    <span className="font-semibold text-blue-700 dark:text-blue-300">
+                    <span className="font-semibold text-foreground dark:text-foreground">
                       {drillDownData.type === 'category' && `${drillDownData.data.name} Category`}
                       {drillDownData.type === 'month' &&
                         `${drillDownData.data.month} ${drillDownData.data.year}`}
@@ -1244,7 +1244,7 @@ export default function DashboardPage() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setDrillDownData(null)}
-                  className="hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all duration-200 text-blue-700 dark:text-blue-300"
+                  className="hover:bg-muted dark:hover:bg-muted transition-all duration-200 text-foreground dark:text-foreground"
                 >
                   <svg
                     className="h-4 w-4 mr-1"
@@ -1270,9 +1270,9 @@ export default function DashboardPage() {
             <div className="space-y-6">
               {/* Chart Metrics Summary */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border dark:border-border">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
                       <svg
                         className="h-5 w-5 text-white"
                         fill="none"
@@ -1289,16 +1289,16 @@ export default function DashboardPage() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground font-medium">Categories</p>
-                      <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                      <p className="text-lg font-bold text-foreground dark:text-foreground">
                         {stats.categoryData.length}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl p-4 border border-green-200 dark:border-green-700">
+                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border dark:border-border">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
                       <svg
                         className="h-5 w-5 text-white"
                         fill="none"
@@ -1315,16 +1315,16 @@ export default function DashboardPage() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground font-medium">Avg/Month</p>
-                      <p className="text-lg font-bold text-green-600 dark:text-green-400">
+                      <p className="text-lg font-bold text-foreground dark:text-foreground">
                         ${(stats.totalExpense / Math.max(1, new Date().getMonth() + 1)).toFixed(0)}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl p-4 border border-purple-200 dark:border-purple-700">
+                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border dark:border-border">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-purple-500 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
                       <svg
                         className="h-5 w-5 text-white"
                         fill="none"
@@ -1341,16 +1341,16 @@ export default function DashboardPage() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground font-medium">Top Category</p>
-                      <p className="text-lg font-bold text-purple-600 dark:text-purple-400 truncate">
+                      <p className="text-lg font-bold text-foreground dark:text-foreground truncate">
                         {stats.categoryData[0]?.name || 'N/A'}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-xl p-4 border border-orange-200 dark:border-orange-700">
+                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border dark:border-border">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
                       <svg
                         className="h-5 w-5 text-white"
                         fill="none"
@@ -1367,7 +1367,7 @@ export default function DashboardPage() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground font-medium">Transactions</p>
-                      <p className="text-lg font-bold text-orange-600 dark:text-orange-400">
+                      <p className="text-lg font-bold text-foreground dark:text-foreground">
                         {stats.recentTransactions.length}
                       </p>
                     </div>
@@ -1378,10 +1378,10 @@ export default function DashboardPage() {
               {/* Main Charts Container with Enhanced Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Enhanced Expense Pie Chart */}
-                <div className="bg-card border rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                <div className="bg-card border rounded-xl p-6 shadow-sm hover: transition-all duration-300 group">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center">
                         <svg
                           className="h-4 w-4 text-white"
                           fill="none"
@@ -1418,10 +1418,10 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Monthly Spending Trend */}
-                <div className="bg-card border rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                <div className="bg-card border rounded-xl p-6 shadow-sm hover: transition-all duration-300 group">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center">
                         <svg
                           className="h-4 w-4 text-white"
                           fill="none"
@@ -1473,9 +1473,9 @@ export default function DashboardPage() {
           ) : (
             <div className="bg-card border rounded-xl p-8 text-center">
               <div className="flex flex-col items-center justify-center space-y-6">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted flex items-center justify-center">
                   <svg
-                    className="h-10 w-10 text-blue-500 dark:text-blue-400"
+                    className="h-10 w-10 text-foreground dark:text-foreground"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -1498,7 +1498,7 @@ export default function DashboardPage() {
                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
                   <Button
                     asChild
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                    className="bg-gradient-to-r from-muted to-muted hover:from-muted hover:to-muted"
                   >
                     <Link href="/dashboard/transactions/new">
                       <svg
@@ -1556,7 +1556,7 @@ export default function DashboardPage() {
       <div className="mt-8 md:mt-10 pt-6 border-t-4 border-foreground w-full mb-4">
         <div className="flex flex-col sm:flex-row items-center justify-center text-xs font-mono font-bold uppercase tracking-widest text-foreground gap-4 bg-foreground/5 p-4 border-2 border-foreground shadow-[4px_4px_0px_hsl(var(--foreground))]">
           <div className="flex items-center">
-            <div className="w-3 h-3 bg-green-500 mr-2 animate-pulse border-2 border-foreground shadow-[2px_2px_0px_hsl(var(--green-500))]"></div>
+            <div className="w-3 h-3 bg-muted mr-2 animate-pulse border-2 border-foreground shadow-[2px_2px_0px_hsl(var(--green-500))]"></div>
             <span>Live Sync Active</span>
           </div>
           <span className="hidden sm:inline text-foreground/30">|</span>

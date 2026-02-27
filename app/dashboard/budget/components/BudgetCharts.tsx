@@ -18,16 +18,16 @@ import { cn } from '@/lib/utils';
 
 // Enhanced colors for charts with better contrast
 const COLORS = [
-  '#3B82F6', // Blue
-  '#10B981', // Green
-  '#F59E0B', // Amber
-  '#EF4444', // Red
-  '#8B5CF6', // Purple
-  '#EC4899', // Pink
-  '#F97316', // Orange
-  '#6366F1', // Indigo
-  '#14B8A6', // Teal
-  '#A855F7'  // Violet
+  '#374151',
+  '#4B5563',
+  '#6B7280',
+  '#9CA3AF',
+  '#525252',
+  '#737373',
+  '#404040',
+  '#57534E',
+  '#78716C',
+  '#A8A29E'
 ];
 
 interface BudgetChartsProps {
@@ -94,10 +94,10 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
       value: item.spent,
       budget: item.budget,
       color: item.overBudget 
-        ? '#EF4444' // Red for over budget
+        ? '#374151'
         : item.percentSpent > 90 
-          ? '#F59E0B' // Amber for close to budget
-          : '#10B981', // Green for under budget
+          ? '#6B7280'
+          : '#9CA3AF',
       percentSpent: item.percentSpent
     }));
   }, [spendingVsBudgetData]);
@@ -108,14 +108,11 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
       // Create color gradients based on spend percentage
       let fill;
       if (item.overBudget) {
-        // Red gradient for over budget
-        fill = item.percentSpent > 130 ? '#EF4444' : '#F87171';
+        fill = item.percentSpent > 130 ? '#374151' : '#4B5563';
       } else if (item.percentSpent > 90) {
-        // Amber gradient for close to budget
-        fill = item.percentSpent > 95 ? '#F59E0B' : '#FBBF24';
+        fill = item.percentSpent > 95 ? '#6B7280' : '#9CA3AF';
       } else {
-        // Green gradient for under budget
-        fill = item.percentSpent > 70 ? '#10B981' : '#34D399';
+        fill = item.percentSpent > 70 ? '#A3A3A3' : '#D4D4D4';
       }
       
       return {
@@ -154,7 +151,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-card border rounded-xl p-5 shadow-xl text-foreground backdrop-blur-sm">
+        <div className="bg-card border rounded-xl p-5 text-foreground">
           <div className="flex items-center gap-3 mb-3 pb-3 border-b border-border/50">
             <div 
               className="h-3 w-3 rounded-full" 
@@ -195,7 +192,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
       const categoryData = spendingVsBudgetData.find(item => item.name === label);
       
       return (
-        <div className="bg-card border rounded-xl p-5 shadow-xl text-foreground backdrop-blur-sm min-w-[280px]">
+        <div className="bg-card border rounded-xl p-5  text-foreground backdrop-blur-sm min-w-[280px]">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b border-border/50">
             <div 
               className="h-3 w-3 rounded-full" 
@@ -212,24 +209,22 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
             
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">Spent:</span>
-              <span className={`font-semibold text-lg ${
-                categoryData?.overBudget ? "text-red-500" : "text-emerald-500"
-              }`}>
+              <span className="font-semibold text-lg text-foreground">
                 {formatCurrency(categoryData?.spent || 0)}
               </span>
             </div>
             
             {categoryData?.overBudget ? (
-              <div className="flex items-center justify-between bg-red-500/10 p-3 rounded-lg">
-                <span className="text-red-700 dark:text-red-300">Over by:</span>
-                <span className="font-bold text-red-600 dark:text-red-400">
+              <div className="flex items-center justify-between bg-muted p-3 rounded-lg">
+                <span className="text-muted-foreground">Over by:</span>
+                <span className="font-bold text-foreground">
                   {formatCurrency(categoryData?.overBudgetAmount || 0)}
                 </span>
               </div>
             ) : (
-              <div className="flex items-center justify-between bg-emerald-500/10 p-3 rounded-lg">
-                <span className="text-emerald-700 dark:text-emerald-300">Remaining:</span>
-                <span className="font-bold text-emerald-600 dark:text-emerald-400">
+              <div className="flex items-center justify-between bg-muted p-3 rounded-lg">
+                <span className="text-muted-foreground">Remaining:</span>
+                <span className="font-bold text-foreground">
                   {formatCurrency(categoryData?.remaining || 0)}
                 </span>
               </div>
@@ -237,13 +232,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
             
             <div className="pt-3 border-t border-border/50 flex items-center justify-between">
               <span className="text-muted-foreground">Percent used:</span>
-              <span className={`font-bold text-lg ${
-                (categoryData?.percentSpent || 0) > 100 
-                  ? "text-red-500" 
-                  : (categoryData?.percentSpent || 0) > 90 
-                    ? "text-amber-500" 
-                    : "text-emerald-500"
-              }`}>
+              <span className={`font-bold text-lg text-foreground`}>
                 {Math.round(categoryData?.percentSpent || 0)}%
               </span>
             </div>
@@ -252,13 +241,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
             <div className="pt-2">
               <div className="relative h-2.5 bg-muted rounded-full overflow-hidden">
                 <div 
-                  className={`h-full rounded-full ${
-                    (categoryData?.percentSpent || 0) > 100 
-                      ? "bg-red-500" 
-                      : (categoryData?.percentSpent || 0) > 90 
-                        ? "bg-amber-500" 
-                        : "bg-emerald-500"
-                  }`}
+                  className={`h-full rounded-full bg-foreground/40`}
                   style={{ width: `${Math.min(categoryData?.percentSpent || 0, 100)}%` }}
                 />
                 {/* 100% marker */}
@@ -281,7 +264,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
       const data = payload[0].payload;
       
       return (
-        <div className="bg-card border rounded-xl p-5 shadow-xl text-foreground backdrop-blur-sm min-w-[280px]">
+        <div className="bg-card border rounded-xl p-5 text-foreground min-w-[280px]">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b border-border/50">
             <Calendar className="h-5 w-5 text-primary" />
             <h4 className="font-bold text-lg">{label}</h4>
@@ -295,24 +278,22 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
             
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">Spent:</span>
-              <span className={`font-semibold text-lg ${
-                data.spent > data.budget ? "text-red-500" : "text-emerald-500"
-              }`}>
+              <span className="font-semibold text-lg text-foreground">
                 {formatCurrency(data.spent)}
               </span>
             </div>
             
             {data.spent > data.budget ? (
-              <div className="flex items-center justify-between bg-red-500/10 p-3 rounded-lg">
-                <span className="text-red-700 dark:text-red-300">Over Budget:</span>
-                <span className="font-bold text-red-600 dark:text-red-400">
+              <div className="flex items-center justify-between bg-muted p-3 rounded-lg">
+                <span className="text-muted-foreground">Over Budget:</span>
+                <span className="font-bold text-foreground">
                   {formatCurrency(data.overBudget)}
                 </span>
               </div>
             ) : (
-              <div className="flex items-center justify-between bg-emerald-500/10 p-3 rounded-lg">
-                <span className="text-emerald-700 dark:text-emerald-300">Savings:</span>
-                <span className="font-bold text-emerald-600 dark:text-emerald-400">
+              <div className="flex items-center justify-between bg-muted p-3 rounded-lg">
+                <span className="text-muted-foreground">Savings:</span>
+                <span className="font-bold text-foreground">
                   {formatCurrency(data.savings)}
                 </span>
               </div>
@@ -320,10 +301,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
             
             <div className="pt-3 border-t border-border/50 flex items-center justify-between">
               <span className="text-muted-foreground">Budget Used:</span>
-              <span className={`font-bold text-lg ${
-                data.spent > data.budget ? "text-red-500" : 
-                data.spent > data.budget * 0.9 ? "text-amber-500" : "text-emerald-500"
-              }`}>
+              <span className="font-bold text-lg text-foreground">
                 {data.budget > 0 ? ((data.spent / data.budget) * 100).toFixed(1) : 0}%
               </span>
             </div>
@@ -332,10 +310,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
             <div className="pt-2">
               <div className="relative h-2.5 bg-muted rounded-full overflow-hidden">
                 <div 
-                  className={`h-full rounded-full ${
-                    data.spent > data.budget ? "bg-red-500" : 
-                    data.spent > data.budget * 0.9 ? "bg-amber-500" : "bg-emerald-500"
-                  }`}
+                  className={`h-full rounded-full bg-foreground/40`}
                   style={{ width: `${Math.min((data.spent / data.budget) * 100 || 0, 100)}%` }}
                 />
                 {/* 100% marker */}
@@ -436,7 +411,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
                         labelLine={false}
                         outerRadius="90%"
                         innerRadius="0%"
-                        fill="#8884d8"
+                        fill="#9CA3AF"
                         dataKey="value"
                         label={renderCustomizedLabel}
                       >
@@ -543,11 +518,11 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
                         />
                         <Tooltip content={<SpendingTooltip />} />
                         <Legend />
-                        <Bar dataKey="budget" name="Budget" fill="#6366F1" />
+                        <Bar dataKey="budget" name="Budget" fill="#737373" />
                         <Bar 
                           dataKey="spent" 
                           name="Spent" 
-                          fill="#EF4444"
+                          fill="#404040"
                           background={{ fill: '#eee' }}
                         />
                       </BarChart>
@@ -566,7 +541,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
                           cy="50%"
                           labelLine={false}
                           outerRadius={80}
-                          fill="#8884d8"
+                          fill="#9CA3AF"
                           dataKey="value"
                           label={renderCustomizedLabel}
                         >
@@ -589,9 +564,9 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
                                 {value}
                                 <span className={cn(
                                   "ml-2 text-xs font-medium",
-                                  percentage > 100 ? "text-red-500" : 
-                                  percentage > 90 ? "text-amber-500" : 
-                                  "text-emerald-500"
+                                  percentage > 100 ? "text-foreground" : 
+                                  percentage > 90 ? "text-foreground" : 
+                                  "text-muted-foreground"
                                 )}>
                                   {Math.round(percentage)}%
                                 </span>
@@ -657,9 +632,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
                                   <span className="truncate">{value}</span>
                                   <span className={cn(
                                     "ml-2 text-xs font-medium",
-                                    (item.percentSpent || 0) > 100 ? "text-red-500" : 
-                                    (item.percentSpent || 0) > 90 ? "text-amber-500" : 
-                                    "text-emerald-500"
+                                    "text-foreground"
                                   )}>
                                     {Math.round(item.percentSpent || 0)}%
                                   </span>
@@ -692,15 +665,15 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
                       {/* Gradient legend */}
                       <div className="absolute bottom-0 left-0 right-0 flex justify-center mt-4 pb-2 space-x-3 pt-2">
                         <div className="flex items-center">
-                          <span className="w-3 h-3 bg-emerald-500 rounded-full mr-1.5"></span>
+                          <span className="w-3 h-3 bg-foreground/30 rounded-full mr-1.5"></span>
                           <span className="text-xs">Under</span>
                         </div>
                         <div className="flex items-center">
-                          <span className="w-3 h-3 bg-amber-500 rounded-full mr-1.5"></span>
+                          <span className="w-3 h-3 bg-foreground/50 rounded-full mr-1.5"></span>
                           <span className="text-xs">Near</span>
                         </div>
                         <div className="flex items-center">
-                          <span className="w-3 h-3 bg-red-500 rounded-full mr-1.5"></span>
+                          <span className="w-3 h-3 bg-foreground/70 rounded-full mr-1.5"></span>
                           <span className="text-xs">Over</span>
                         </div>
                       </div>
@@ -754,9 +727,9 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
                       <span className="text-xs sm:text-sm">{value}</span>
                     )}
                   />
-                  <Area type="monotone" dataKey="budget" fill="#A5B4FC" stroke="#6366F1" fillOpacity={0.3} />
-                  <Bar dataKey="spent" barSize={20} fill="#F87171" />
-                  <Line type="monotone" dataKey="savings" stroke="#10B981" />
+                  <Area type="monotone" dataKey="budget" fill="#D4D4D4" stroke="#737373" fillOpacity={0.3} />
+                  <Bar dataKey="spent" barSize={20} fill="#525252" />
+                  <Line type="monotone" dataKey="savings" stroke="#9CA3AF" />
                 </ComposedChart>
               </ResponsiveContainer>
             </div>

@@ -78,9 +78,9 @@ export function FileUpload({
 
   const getFileIcon = (file: File) => {
     if (file.type === 'application/pdf') {
-      return <FileText className="h-8 w-8 text-red-500" />;
+      return <FileText className="h-8 w-8 text-foreground" />;
     }
-    return <FileImage className="h-8 w-8 text-blue-500" />;
+    return <FileImage className="h-8 w-8 text-foreground" />;
   };
 
   const formatFileSize = (bytes: number) => {
@@ -97,7 +97,7 @@ export function FileUpload({
         <div
           className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
             dragOver
-              ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/20'
+              ? 'border-border bg-muted dark:bg-muted'
               : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
           }`}
           onDrop={handleDrop}
@@ -147,7 +147,7 @@ export function FileUpload({
             </div>
             <div className="flex items-center space-x-2">
               {isProcessing && (
-                <div className="flex items-center space-x-2 text-blue-600 dark:text-blue-400">
+                <div className="flex items-center space-x-2 text-foreground dark:text-foreground">
                   <Loader2 className="h-4 w-4 animate-spin" />
                   <span className="text-sm">Processing...</span>
                 </div>

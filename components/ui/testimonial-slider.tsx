@@ -75,7 +75,7 @@ const TestimonialCard = memo(function TestimonialCard({
       whileHover={{ y: -5 }}
       style={{ cursor: 'grab', willChange: 'transform' }}
     >
-      <div className="relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full bg-background border border-border shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <div className="relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full bg-background border border-border  hover: transition-shadow duration-300">
         <div className="absolute -top-4 -left-4 opacity-20 dark:opacity-30">
           <Quote size={windowWidth < 640 ? 40 : 60} className="text-primary" />
         </div>
@@ -236,7 +236,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = memo(function Testim
           <div className="relative">
             <div className="flex justify-center">
               <div className="w-full md:w-1/2 p-2">
-                <div className="relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full bg-background border border-border shadow-lg">
+                <div className="relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full bg-background border border-border ">
                   <div className="h-32 fast-skeleton rounded"></div>
                 </div>
               </div>

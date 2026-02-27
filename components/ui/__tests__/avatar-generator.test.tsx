@@ -38,8 +38,8 @@ describe('Avatar Generator', () => {
       const avatar1 = generateUserAvatar('John Doe', 5);
       const avatar2 = generateUserAvatar('Jane Smith', 5);
       // Both should use the same color (id % colors.length)
-      // ID 5 maps to index 5 in the 10-color array - Cyan
-      const expectedColor = '%2306b6d4'; // URL-encoded #06b6d4
+      // ID 5 maps to index 5 in the 10-color array - Light Gray
+      const expectedColor = '%239CA3AF'; // URL-encoded #9CA3AF
       expect(avatar1).toContain(expectedColor);
       expect(avatar2).toContain(expectedColor);
     });

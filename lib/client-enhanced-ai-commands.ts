@@ -296,9 +296,9 @@ Provide a comprehensive, personalized response using their actual financial data
   
   private getBalanceResponse(financialData: any): string {
     const status = financialData.currentBalance >= 0 ? 'positive' : 'negative';
-    const emoji = financialData.currentBalance >= 0 ? '💰' : '🚨';
+    const emoji = financialData.currentBalance >= 0 ? '' : '';
     
-    return `${emoji} **Current Balance: ${financialData.currentBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}**\n\nYou have a ${status} balance calculated from ${financialData.totalTransactions} transactions:\n• Total Income: ${financialData.totalIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n• Total Expenses: ${financialData.totalExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n\n💡 This represents your net financial position based on all recorded transactions.`;
+    return `${emoji} **Current Balance: ${financialData.currentBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}**\n\nYou have a ${status} balance calculated from ${financialData.totalTransactions} transactions:\n• Total Income: ${financialData.totalIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n• Total Expenses: ${financialData.totalExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n\nThis represents your net financial position based on all recorded transactions.`;
   }
   
   private getSpendingResponse(financialData: any): string {
@@ -313,7 +313,7 @@ Provide a comprehensive, personalized response using their actual financial data
     
     const monthlyPercent = financialData.monthlyIncome > 0 ? (financialData.monthlyExpenses / financialData.monthlyIncome * 100) : 0;
     
-    return `📊 **Your Spending Breakdown**\n\n**This Month:** ${financialData.monthlyExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} (${monthlyPercent.toFixed(1)}% of income)\n**All Time:** ${financialData.totalExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n\n**Where your money goes:**\n${topCategories}\n\n💡 Your biggest expense category is where you might find savings opportunities!`;
+    return `**Your Spending Breakdown**\n\n**This Month:** ${financialData.monthlyExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} (${monthlyPercent.toFixed(1)}% of income)\n**All Time:** ${financialData.totalExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n\n**Where your money goes:**\n${topCategories}\n\nYour biggest expense category is where you might find savings opportunities!`;
   }
   
   private getIncomeResponse(financialData: any): string {
@@ -321,12 +321,12 @@ Provide a comprehensive, personalized response using their actual financial data
     const status = this.getSavingsRateStatus(monthlyRate);
     const encouragement = monthlyRate > 0 ? 'Great job saving money!' : 'Consider reviewing your expenses to improve your savings rate.';
     
-    return `💵 **Income Analysis**\n\n**This Month:** ${financialData.monthlyIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n**All Time:** ${financialData.totalIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n**Savings Rate:** ${financialData.savingsRate.toFixed(1)}% (${status})\n\n💡 ${encouragement}`;
+    return `**Income Analysis**\n\n**This Month:** ${financialData.monthlyIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n**All Time:** ${financialData.totalIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n**Savings Rate:** ${financialData.savingsRate.toFixed(1)}% (${status})\n\n${encouragement}`;
   }
   
   private getBudgetResponse(financialData: any, budgets: any[]): string {
     if (budgets.length === 0) {
-      return "📋 **No Budgets Found**\n\nYou don't have any budgets set up yet. Creating budgets helps you:\n• Control your spending\n• Reach your financial goals\n• Identify overspending areas\n\n💡 Start by setting budgets for your top expense categories!";
+      return "**No Budgets Found**\n\nYou don't have any budgets set up yet. Creating budgets helps you:\n• Control your spending\n• Reach your financial goals\n• Identify overspending areas\n\nStart by setting budgets for your top expense categories!";
     }
     
     const overBudget = financialData.budgetAnalysis.filter((b: any) => b.percentUsed > 100);
@@ -341,19 +341,19 @@ Provide a comprehensive, personalized response using their actual financial data
     
     const summary = this.getBudgetSummary(overBudget.length, nearLimit.length);
     
-    return `📋 **Budget Status**\n\n${summary}\n\n${budgetStatus}`;
+    return `**Budget Status**\n\n${summary}\n\n${budgetStatus}`;
   }
   
   private getComprehensiveOverview(financialData: any, budgets: any[]): string {
     const healthScore = this.getHealthScore(financialData.savingsRate);
     
-    return `📈 **Your Complete Financial Picture**\n\n**Current Balance:** ${financialData.currentBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n**Financial Health:** ${healthScore}\n\n**This Month:**\n• Income: ${financialData.monthlyIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n• Expenses: ${financialData.monthlyExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n• Net: ${financialData.monthlyNet.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n• Savings Rate: ${financialData.savingsRate.toFixed(1)}%\n\n**Quick Stats:**\n• Total Transactions: ${financialData.totalTransactions}\n• Active Budgets: ${budgets.length}\n\n💬 **I can answer any question about your finances! Try asking me things like:**\n• "What did I spend on groceries last month?"\n• "Am I saving enough money?"\n• "What's my biggest expense?"\n• "Can I afford to spend $500 on something?"`;
+    return `**Your Complete Financial Picture**\n\n**Current Balance:** ${financialData.currentBalance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n**Financial Health:** ${healthScore}\n\n**This Month:**\n• Income: ${financialData.monthlyIncome.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n• Expenses: ${financialData.monthlyExpenses.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n• Net: ${financialData.monthlyNet.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}\n• Savings Rate: ${financialData.savingsRate.toFixed(1)}%\n\n**Quick Stats:**\n• Total Transactions: ${financialData.totalTransactions}\n• Active Budgets: ${budgets.length}\n\n**I can answer any question about your finances! Try asking me things like:**\n• "What did I spend on groceries last month?"\n• "Am I saving enough money?"\n• "What's my biggest expense?"\n• "Can I afford to spend $500 on something?"`;
   }
   
   private getCategoryEmoji(index: number): string {
-    if (index === 0) return '🔥';
-    if (index < 3) return '📈';
-    return '💵';
+    if (index === 0) return '>';
+    if (index < 3) return '-';
+    return '-';
   }
   
   private getSavingsRateStatus(rate: number): string {
@@ -364,19 +364,19 @@ Provide a comprehensive, personalized response using their actual financial data
   }
   
   private getBudgetEmoji(percentUsed: number): string {
-    if (percentUsed > 100) return '🚨';
-    if (percentUsed > 80) return '⚠️';
-    return '✅';
+    if (percentUsed > 100) return '[!]';
+    if (percentUsed > 80) return '[~]';
+    return '[ok]';
   }
   
   private getBudgetSummary(overBudgetCount: number, nearLimitCount: number): string {
     if (overBudgetCount > 0) {
-      return `🚨 You're over budget in ${overBudgetCount} categories!`;
+      return `You're over budget in ${overBudgetCount} categories!`;
     }
     if (nearLimitCount > 0) {
-      return `⚠️ You're close to the limit in ${nearLimitCount} categories.`;
+      return `You're close to the limit in ${nearLimitCount} categories.`;
     }
-    return '✅ All budgets are on track - great job!';
+    return 'All budgets are on track - great job!';
   }
   
   private getHealthScore(savingsRate: number): string {
@@ -422,7 +422,7 @@ Provide a comprehensive, personalized response using their actual financial data
       }
 
       const newsResponse = relevantArticles.slice(0, 3).map(article => 
-        `📰 **${article.title}**\n${article.summary}\n*Source: ${article.source}*`
+        `**${article.title}**\n${article.summary}\n*Source: ${article.source}*`
       ).join('\n\n');
 
       return `Here are the latest financial news updates:\n\n${newsResponse}`;

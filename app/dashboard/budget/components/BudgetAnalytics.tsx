@@ -415,11 +415,11 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
 
   const getInsightColor = (type: AnalyticsInsight['type']) => {
     switch (type) {
-      case 'success': return 'text-green-600 bg-green-50 border-green-200';
-      case 'warning': return 'text-orange-600 bg-orange-50 border-orange-200';
-      case 'danger': return 'text-red-600 bg-red-50 border-red-200';
-      case 'info': return 'text-blue-600 bg-blue-50 border-blue-200';
-      default: return 'text-gray-600 bg-gray-50 border-gray-200';
+      case 'success': return 'text-foreground bg-muted border-border';
+      case 'warning': return 'text-foreground bg-muted border-border';
+      case 'danger': return 'text-foreground bg-muted border-border';
+      case 'info': return 'text-foreground bg-muted border-border';
+      default: return 'text-foreground bg-muted border-border';
     }
   };
 
@@ -434,7 +434,7 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
   // Show empty state if no data
   if (!budgets.length && !categorySpending.length) {
     return (
-      <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+      <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
         <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
           <div className="flex items-center justify-between">
             <div>
@@ -494,7 +494,7 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
   }
 
   return (
-    <div className="rounded-2xl border bg-card shadow-lg overflow-hidden mb-8">
+    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex items-center justify-between">
           <div>
@@ -549,15 +549,15 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
             <div className="text-sm text-muted-foreground">Total Budget</div>
           </div>
           <div className="text-center p-4 rounded-lg bg-muted/30">
-            <div className="text-2xl font-bold text-red-500">{formatCurrency(analytics.totalSpent)}</div>
+            <div className="text-2xl font-bold text-foreground">{formatCurrency(analytics.totalSpent)}</div>
             <div className="text-sm text-muted-foreground">Total Spent</div>
           </div>
           <div className="text-center p-4 rounded-lg bg-muted/30">
-            <div className="text-2xl font-bold text-green-500">{formatCurrency(analytics.totalRemaining)}</div>
+            <div className="text-2xl font-bold text-foreground">{formatCurrency(analytics.totalRemaining)}</div>
             <div className="text-sm text-muted-foreground">Remaining</div>
           </div>
           <div className="text-center p-4 rounded-lg bg-muted/30">
-            <div className={`text-2xl font-bold ${analytics.overallUtilization > 90 ? 'text-red-500' : analytics.overallUtilization > 75 ? 'text-orange-500' : 'text-green-500'}`}>
+            <div className="text-2xl font-bold text-foreground">
               {analytics.overallUtilization.toFixed(1)}%
             </div>
             <div className="text-sm text-muted-foreground">Utilization</div>
@@ -630,7 +630,7 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className={`rounded-lg border p-4 ${getInsightColor(insight.type)} hover:shadow-md transition-shadow duration-200`}
+                  className={`rounded-lg border p-4 ${getInsightColor(insight.type)}  transition-shadow duration-200`}
                 >
                   <div className="flex items-start gap-3">
                     <div className="flex-shrink-0">
@@ -710,19 +710,13 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
                               <span>Budget: {formatCurrency(item.amount)}</span>
                               <span>Spent: {formatCurrency(item.spent)}</span>
                               <span>Remaining: {formatCurrency(item.remaining)}</span>
-                              <span className={`font-medium ${
-                                item.utilization > 100 ? 'text-red-600' : 
-                                item.utilization > 80 ? 'text-orange-600' : 'text-green-600'
-                              }`}>
+                              <span className={`font-medium text-foreground`}>
                                 {item.utilization.toFixed(1)}% used
                               </span>
                             </div>
                             <div className="mt-2 w-full bg-muted rounded-full h-2">
                               <div 
-                                className={`h-2 rounded-full transition-all duration-500 ${
-                                  item.utilization > 100 ? 'bg-red-500' : 
-                                  item.utilization > 80 ? 'bg-orange-500' : 'bg-green-500'
-                                }`}
+                                className="h-2 rounded-full transition-all duration-500 bg-foreground/40"
                                 style={{ width: `${Math.min(100, item.utilization)}%` }}
                               ></div>
                             </div>
@@ -750,11 +744,11 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+                    className="p-4 rounded-lg bg-muted border border-border"
                   >
-                    <div className="text-red-600 font-semibold text-2xl">{analytics.overBudgetCategories.length}</div>
-                    <div className="text-red-600 text-sm font-medium">Over Budget</div>
-                    <div className="text-xs text-red-600/70 mt-1">
+                    <div className="text-foreground font-semibold text-2xl">{analytics.overBudgetCategories.length}</div>
+                    <div className="text-foreground text-sm font-medium">Over Budget</div>
+                    <div className="text-xs text-muted-foreground mt-1">
                       {analytics.overBudgetCategories.length > 0 && 
                         `Avg: ${(analytics.overBudgetCategories.reduce((sum, cat) => sum + cat.percentage, 0) / analytics.overBudgetCategories.length).toFixed(1)}%`
                       }
@@ -764,33 +758,33 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="p-4 rounded-lg bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800"
+                    className="p-4 rounded-lg bg-muted border border-border"
                   >
-                    <div className="text-orange-600 font-semibold text-2xl">{analytics.nearLimitCategories.length}</div>
-                    <div className="text-orange-600 text-sm font-medium">Near Limit</div>
-                    <div className="text-xs text-orange-600/70 mt-1">80-100% used</div>
+                    <div className="text-foreground font-semibold text-2xl">{analytics.nearLimitCategories.length}</div>
+                    <div className="text-foreground text-sm font-medium">Near Limit</div>
+                    <div className="text-xs text-muted-foreground mt-1">80-100% used</div>
                   </motion.div>
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
+                    className="p-4 rounded-lg bg-muted border border-border"
                   >
-                    <div className="text-green-600 font-semibold text-2xl">
+                    <div className="text-foreground font-semibold text-2xl">
                       {categorySpending.filter(cat => cat.percentage > 50 && cat.percentage <= 80).length}
                     </div>
-                    <div className="text-green-600 text-sm font-medium">Healthy</div>
-                    <div className="text-xs text-green-600/70 mt-1">50-80% used</div>
+                    <div className="text-foreground text-sm font-medium">Healthy</div>
+                    <div className="text-xs text-muted-foreground mt-1">50-80% used</div>
                   </motion.div>
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800"
+                    className="p-4 rounded-lg bg-muted border border-border"
                   >
-                    <div className="text-blue-600 font-semibold text-2xl">{analytics.underUtilizedCategories.length}</div>
-                    <div className="text-blue-600 text-sm font-medium">Under-Utilized</div>
-                    <div className="text-xs text-blue-600/70 mt-1">&lt;50% used</div>
+                    <div className="text-foreground font-semibold text-2xl">{analytics.underUtilizedCategories.length}</div>
+                    <div className="text-foreground text-sm font-medium">Under-Utilized</div>
+                    <div className="text-xs text-muted-foreground mt-1">&lt;50% used</div>
                   </motion.div>
                 </div>
 
@@ -809,21 +803,18 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
                         >
                           <div className="flex items-center gap-3">
                             <div className={`h-2 w-2 rounded-full ${
-                              category.status === 'over' ? 'bg-red-500' :
-                              category.status === 'near' ? 'bg-orange-500' :
-                              category.status === 'under' ? 'bg-blue-500' : 'bg-green-500'
+                              category.status === 'over' ? 'bg-foreground' :
+                              category.status === 'near' ? 'bg-foreground/70' :
+                              category.status === 'under' ? 'bg-foreground/40' : 'bg-foreground/50'
                             }`}></div>
                             <span className="font-medium">{category.category}</span>
                           </div>
                           <div className="flex items-center gap-4 text-xs">
                             <span>{formatCurrency(category.spentAmount)} / {formatCurrency(category.budgetAmount)}</span>
-                            <span className={`font-medium ${
-                              category.percentage > 100 ? 'text-red-600' :
-                              category.percentage > 80 ? 'text-orange-600' : 'text-green-600'
-                            }`}>
+                            <span className={`font-medium text-foreground`}>
                               {category.percentage.toFixed(1)}%
                             </span>
-                            <span className={`${category.variance > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                            <span className="text-muted-foreground">
                               {category.variance > 0 ? '+' : ''}{formatCurrency(category.variance)}
                             </span>
                           </div>

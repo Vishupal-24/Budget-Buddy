@@ -22,9 +22,9 @@ const sizeClasses = {
 
 const variantClasses = {
   default: "bg-primary",
-  success: "bg-green-500",
-  warning: "bg-yellow-500",
-  danger: "bg-red-500"
+  success: "bg-muted",
+  warning: "bg-muted",
+  danger: "bg-muted"
 };
 
 const EnhancedProgress = React.forwardRef<

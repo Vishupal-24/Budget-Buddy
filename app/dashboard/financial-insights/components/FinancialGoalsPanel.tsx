@@ -16,7 +16,11 @@ import {
   Calendar,
   TrendingUp,
   CheckCircle2,
-  Clock
+  Clock,
+  PiggyBank,
+  CreditCard,
+  ShoppingCart,
+  AlertCircle
 } from "lucide-react";
 
 interface FinancialGoal {
@@ -65,34 +69,23 @@ export function FinancialGoalsPanel({
   });
 
   const getCategoryIcon = (category: string) => {
+    const iconClass = "h-6 w-6";
     switch (category) {
-      case 'savings': return '💰';
-      case 'debt': return '💳';
-      case 'investment': return '📈';
-      case 'purchase': return '🛒';
-      case 'emergency': return '🚨';
-      default: return '🎯';
+      case 'savings': return <PiggyBank className={iconClass} />;
+      case 'debt': return <CreditCard className={iconClass} />;
+      case 'investment': return <TrendingUp className={iconClass} />;
+      case 'purchase': return <ShoppingCart className={iconClass} />;
+      case 'emergency': return <AlertCircle className={iconClass} />;
+      default: return <Target className={iconClass} />;
     }
   };
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'savings': return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200';
-      case 'debt': return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200';
-      case 'investment': return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200';
-      case 'purchase': return 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-200';
-      case 'emergency': return 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-200';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-200';
-    }
+  const getCategoryColor = (_category: string) => {
+    return 'bg-muted text-foreground';
   };
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high': return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200';
-      case 'low': return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-200';
-    }
+  const getPriorityColor = (_priority: string) => {
+    return 'bg-muted text-foreground';
   };
 
   const calculateProgress = (current: number, target: number) => {
@@ -177,7 +170,7 @@ export function FinancialGoalsPanel({
         </div>
         <Button 
           onClick={() => setShowAddForm(true)}
-          className="shadow-sm"
+          className=""
         >
           <Plus className="h-4 w-4 mr-2" />
           Add Goal
@@ -312,17 +305,17 @@ export function FinancialGoalsPanel({
             const isOverdue = daysRemaining < 0;
 
             return (
-              <Card key={goal.id} className={`transition-all hover:shadow-lg ${
-                isCompleted ? 'border-green-200 bg-green-50/50 dark:border-green-800 dark:bg-green-950/20' : ''
+              <Card key={goal.id} className={`transition-colors ${
+                isCompleted ? 'border-border bg-muted/50' : ''
               }`}>
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-start gap-3">
-                      <div className="text-2xl">{getCategoryIcon(goal.category)}</div>
+                      <div>{getCategoryIcon(goal.category)}</div>
                       <div>
                         <h3 className="font-semibold text-lg flex items-center gap-2">
                           {goal.title}
-                          {isCompleted && <CheckCircle2 className="h-5 w-5 text-green-500" />}
+                          {isCompleted && <CheckCircle2 className="h-5 w-5 text-foreground" />}
                         </h3>
                         {goal.description && (
                           <p className="text-muted-foreground text-sm">{goal.description}</p>
@@ -378,11 +371,11 @@ export function FinancialGoalsPanel({
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <Calendar className="h-4 w-4" />
                         {isOverdue ? (
-                          <span className="text-red-600 dark:text-red-400">
+                          <span className="text-muted-foreground">
                             {Math.abs(daysRemaining)} days overdue
                           </span>
                         ) : isCompleted ? (
-                          <span className="text-green-600 dark:text-green-400">
+                          <span className="text-foreground">
                             Completed!
                           </span>
                         ) : (

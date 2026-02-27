@@ -60,20 +60,20 @@ export function EnhancedFinancialInsightsPanel({
     switch (type) {
       case 'warning':
       case 'budget_warning':
-        return <AlertCircle className={`${iconClasses} text-orange-500 dark:text-orange-400`} />;
+        return <AlertCircle className={`${iconClasses} text-muted-foreground`} />;
       case 'success':
-        return <CheckCircle className={`${iconClasses} text-green-500 dark:text-green-400`} />;
+        return <CheckCircle className={`${iconClasses} text-foreground`} />;
       case 'trend':
       case 'spending_pattern':
-        return <TrendingUp className={`${iconClasses} text-blue-500 dark:text-blue-400`} />;
+        return <TrendingUp className={`${iconClasses} text-foreground`} />;
       case 'decline':
-        return <TrendingDown className={`${iconClasses} text-red-500 dark:text-red-400`} />;
+        return <TrendingDown className={`${iconClasses} text-muted-foreground`} />;
       case 'budget_alert':
-        return <Target className={`${iconClasses} text-purple-500 dark:text-purple-400`} />;
+        return <Target className={`${iconClasses} text-foreground`} />;
       case 'category_analysis':
-        return <PieChart className={`${iconClasses} text-indigo-500 dark:text-indigo-400`} />;
+        return <PieChart className={`${iconClasses} text-foreground`} />;
       default:
-        return <Info className={`${iconClasses} text-blue-500 dark:text-blue-400`} />;
+        return <Info className={`${iconClasses} text-muted-foreground`} />;
     }
   };
 
@@ -87,28 +87,13 @@ export function EnhancedFinancialInsightsPanel({
   };
 
   const getInsightCardClasses = (insight: RealFinancialInsight, index: number) => {
-    const baseClasses = "transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer border-2";
+    const baseClasses = "transition-colors cursor-pointer border";
     const priority = getInsightPriority(insight);
     const isSelected = selectedInsight === index;
     
-    let colorClasses = "";
-    switch (priority) {
-      case 'high':
-        colorClasses = isSelected 
-          ? "border-red-500 bg-red-50 dark:bg-red-950/20 shadow-red-100 dark:shadow-red-900/20" 
-          : "border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-950/10 hover:bg-red-50 dark:hover:bg-red-950/20";
-        break;
-      case 'medium':
-        colorClasses = isSelected 
-          ? "border-yellow-500 bg-yellow-50 dark:bg-yellow-950/20 shadow-yellow-100 dark:shadow-yellow-900/20" 
-          : "border-yellow-200 dark:border-yellow-800 bg-yellow-50/50 dark:bg-yellow-950/10 hover:bg-yellow-50 dark:hover:bg-yellow-950/20";
-        break;
-      case 'low':
-        colorClasses = isSelected 
-          ? "border-green-500 bg-green-50 dark:bg-green-950/20 shadow-green-100 dark:shadow-green-900/20" 
-          : "border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-950/10 hover:bg-green-50 dark:hover:bg-green-950/20";
-        break;
-    }
+    let colorClasses = isSelected 
+      ? "border-foreground/30 bg-muted" 
+      : "border-border bg-card hover:bg-muted/50";
     
     return `${baseClasses} ${colorClasses}`;
   };
@@ -118,15 +103,15 @@ export function EnhancedFinancialInsightsPanel({
     
     const badgeConfig = {
       high: {
-        color: "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border-red-300 dark:border-red-700",
+        color: "bg-muted text-foreground border-border",
         icon: <ArrowUpRight className="h-3 w-3" />
       },
       medium: {
-        color: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 border-yellow-300 dark:border-yellow-700",
+        color: "bg-muted text-foreground border-border",
         icon: <Equal className="h-3 w-3" />
       },
       low: {
-        color: "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border-green-300 dark:border-green-700",
+        color: "bg-muted text-foreground border-border",
         icon: <ArrowDownRight className="h-3 w-3" />
       }
     };
@@ -208,7 +193,7 @@ export function EnhancedFinancialInsightsPanel({
 
   if (loading) {
     return (
-      <Card className={`${className} border-0 shadow-lg bg-card`}>
+      <Card className={`${className} border-0  bg-card`}>
         <CardHeader className="space-y-1">
           <CardTitle className="flex items-center gap-2 text-xl">
             <Loader2 className="h-6 w-6 animate-spin text-primary" />
@@ -239,7 +224,7 @@ export function EnhancedFinancialInsightsPanel({
 
   if (insights.length === 0) {
     return (
-      <Card className={`${className} border-0 shadow-lg bg-card`}>
+      <Card className={`${className} border-0  bg-card`}>
         <CardHeader className="space-y-1">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
@@ -299,13 +284,13 @@ export function EnhancedFinancialInsightsPanel({
   return (
     <div className={`space-y-6 ${className}`}>
       {/* Enhanced Header with Controls */}
-      <Card className="border-0 shadow-lg bg-card">
+      <Card className="border bg-card">
         <CardHeader className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Sparkles className="h-6 w-6 text-primary" />
-                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                <span className="text-foreground">
                   Financial Insights
                 </span>
               </CardTitle>
@@ -328,39 +313,39 @@ export function EnhancedFinancialInsightsPanel({
           {/* Quick Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div 
-              className={`p-3 rounded-lg cursor-pointer transition-all ${
-                filterType === 'high' ? 'bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700' : 'bg-muted/50 hover:bg-red-50 dark:hover:bg-red-950/20'
+              className={`p-3 rounded-lg cursor-pointer transition-colors ${
+                filterType === 'high' ? 'bg-muted border border-foreground/20' : 'bg-muted/50 hover:bg-muted'
               }`}
               onClick={() => setFilterType(filterType === 'high' ? 'all' : 'high')}
             >
-              <div className="text-2xl font-bold text-red-600 dark:text-red-400">{insightStats.high}</div>
+              <div className="text-2xl font-bold text-foreground">{insightStats.high}</div>
               <div className="text-sm text-muted-foreground">High Priority</div>
             </div>
             <div 
-              className={`p-3 rounded-lg cursor-pointer transition-all ${
-                filterType === 'medium' ? 'bg-yellow-100 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-700' : 'bg-muted/50 hover:bg-yellow-50 dark:hover:bg-yellow-950/20'
+              className={`p-3 rounded-lg cursor-pointer transition-colors ${
+                filterType === 'medium' ? 'bg-muted border border-foreground/20' : 'bg-muted/50 hover:bg-muted'
               }`}
               onClick={() => setFilterType(filterType === 'medium' ? 'all' : 'medium')}
             >
-              <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{insightStats.medium}</div>
+              <div className="text-2xl font-bold text-foreground">{insightStats.medium}</div>
               <div className="text-sm text-muted-foreground">Medium Priority</div>
             </div>
             <div 
-              className={`p-3 rounded-lg cursor-pointer transition-all ${
-                filterType === 'low' ? 'bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700' : 'bg-muted/50 hover:bg-green-50 dark:hover:bg-green-950/20'
+              className={`p-3 rounded-lg cursor-pointer transition-colors ${
+                filterType === 'low' ? 'bg-muted border border-foreground/20' : 'bg-muted/50 hover:bg-muted'
               }`}
               onClick={() => setFilterType(filterType === 'low' ? 'all' : 'low')}
             >
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400">{insightStats.low}</div>
+              <div className="text-2xl font-bold text-foreground">{insightStats.low}</div>
               <div className="text-sm text-muted-foreground">Low Priority</div>
             </div>
             <div 
-              className={`p-3 rounded-lg cursor-pointer transition-all ${
-                filterType === 'actionable' ? 'bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700' : 'bg-muted/50 hover:bg-blue-50 dark:hover:bg-blue-950/20'
+              className={`p-3 rounded-lg cursor-pointer transition-colors ${
+                filterType === 'actionable' ? 'bg-muted border border-foreground/20' : 'bg-muted/50 hover:bg-muted'
               }`}
               onClick={() => setFilterType(filterType === 'actionable' ? 'all' : 'actionable')}
             >
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{insightStats.actionable}</div>
+              <div className="text-2xl font-bold text-foreground">{insightStats.actionable}</div>
               <div className="text-sm text-muted-foreground">Actionable</div>
             </div>
           </div>
@@ -500,7 +485,7 @@ export function EnhancedFinancialInsightsPanel({
       )}
 
       {viewMode === 'list' && (
-        <Card className="border-0 shadow-lg bg-card">
+        <Card className="border-0  bg-card">
           <CardContent className="p-0">
             <div className="divide-y divide-border">
               {filteredAndSortedInsights.map((insight, index) => {
@@ -562,7 +547,7 @@ export function EnhancedFinancialInsightsPanel({
       )}
 
       {viewMode === 'compact' && (
-        <Card className="border-0 shadow-lg bg-card">
+        <Card className="border-0  bg-card">
           <CardContent className="p-4">
             <div className="grid gap-3">
               {filteredAndSortedInsights.map((insight, index) => {
@@ -594,7 +579,7 @@ export function EnhancedFinancialInsightsPanel({
       )}
 
       {filteredAndSortedInsights.length === 0 && filterType !== 'all' && (
-        <Card className="border-0 shadow-lg bg-card">
+        <Card className="border-0  bg-card">
           <CardContent className="p-8 text-center">
             <Filter className="h-8 w-8 text-muted-foreground mx-auto mb-3" />
             <h3 className="font-medium text-foreground mb-2">No insights match your filter</h3>

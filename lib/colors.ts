@@ -6,23 +6,23 @@
 export function getRandomColor(text: string): string {
   // These color options match the Tailwind color palette
   const colors = [
-    "#ef4444", // red-500
-    "#f97316", // orange-500
-    "#f59e0b", // amber-500
-    "#eab308", // yellow-500
-    "#84cc16", // lime-500
-    "#22c55e", // green-500
-    "#10b981", // emerald-500
-    "#14b8a6", // teal-500
-    "#06b6d4", // cyan-500
-    "#0ea5e9", // sky-500
-    "#3b82f6", // blue-500
-    "#6366f1", // indigo-500
-    "#8b5cf6", // violet-500
-    "#a855f7", // purple-500
-    "#d946ef", // fuchsia-500
-    "#ec4899", // pink-500
-    "#f43f5e", // rose-500
+    "#1F2937", // gray-800
+    "#374151", // gray-700
+    "#4B5563", // gray-600
+    "#525252", // neutral-600
+    "#6B7280", // gray-500
+    "#737373", // neutral-500
+    "#78716C", // stone-500
+    "#9CA3AF", // gray-400
+    "#A3A3A3", // neutral-400
+    "#A8A29E", // stone-400
+    "#D1D5DB", // gray-300
+    "#D4D4D4", // neutral-300
+    "#D4D4D8", // zinc-300
+    "#E5E7EB", // gray-200
+    "#404040", // neutral-700
+    "#57534E", // stone-600
+    "#71717A", // zinc-500
   ];
   
   // Generate a deterministic index based on the text

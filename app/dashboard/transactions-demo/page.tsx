@@ -144,41 +144,41 @@ export default function TransactionsDemoPage() {
 
             {/* Feature Highlights */}
             <div className="mt-12 p-6 bg-muted/30 rounded-xl">
-                <h3 className="text-lg font-semibold mb-4">✨ Enhanced Features</h3>
+                <h3 className="text-lg font-semibold mb-4">Enhanced Features</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div className="space-y-2">
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-muted rounded-full"></span>
                             <span>Real-time search functionality</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-muted rounded-full"></span>
                             <span>Advanced filtering with count badges</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-muted rounded-full"></span>
                             <span>Smooth animations and hover effects</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-muted rounded-full"></span>
                             <span>Category-specific emoji icons</span>
                         </div>
                     </div>
                     <div className="space-y-2">
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-rose-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-muted rounded-full"></span>
                             <span>Enhanced empty states</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-teal-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-muted rounded-full"></span>
                             <span>Net total calculation</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-muted rounded-full"></span>
                             <span>Quick action buttons</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-muted rounded-full"></span>
                             <span>Mobile-responsive design</span>
                         </div>
                     </div>
