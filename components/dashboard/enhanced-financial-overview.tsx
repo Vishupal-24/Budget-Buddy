@@ -116,7 +116,7 @@ export function EnhancedFinancialOverview({
         className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
       >
         <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-transparent bg-clip-text text-transparent">
             Financial Overview
           </h1>
           <p className="text-muted-foreground mt-1 flex items-center gap-2">
@@ -251,7 +251,7 @@ export function EnhancedFinancialOverview({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="flex flex-wrap gap-3 p-6 rounded-xl bg-muted/30 backdrop-blur-sm"
+        className="flex flex-wrap gap-3 p-6 rounded-md bg-transparent backdrop-blur-sm"
       >
         <h3 className="w-full text-sm font-semibold text-muted-foreground mb-2">Quick Actions</h3>
         <Button size="sm" variant="outline">Add Transaction</Button>

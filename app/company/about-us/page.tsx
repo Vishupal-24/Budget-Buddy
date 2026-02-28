@@ -49,8 +49,8 @@ export default function AboutUsPage() {
           </div>
 
           <div className="relative mx-auto w-full max-w-md">
-            <div className="absolute inset-0 bg-primary/5 rounded-2xl transform rotate-3"></div>
-            <div className="relative bg-card border rounded-2xl p-6 shadow-lg">
+            <div className="absolute inset-0 bg-transparent rounded-lg transform rotate-3"></div>
+            <div className="relative bg-card border rounded-lg p-6 shadow-lg">
               <div className="aspect-video bg-muted/50 rounded-lg flex items-center justify-center mb-6">
                 <div className="text-6xl font-bold text-primary/20">BB</div>
               </div>
@@ -140,7 +140,7 @@ export default function AboutUsPage() {
             ].map((value, index) => (
               <div
                 key={index}
-                className="bg-card border rounded-xl p-6 hover:shadow-md transition-shadow"
+                className="bg-card border rounded-md p-6 hover:shadow-md transition-shadow"
               >
                 <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
                 <p className="text-muted-foreground">{value.description}</p>
@@ -155,7 +155,7 @@ export default function AboutUsPage() {
             <p className="text-muted-foreground">The passionate mind behind Budget Buddy.</p>
           </div>
 
-          <div className="max-w-4xl mx-auto bg-card border rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center md:items-start">
+          <div className="max-w-4xl mx-auto bg-card border rounded-md p-8 flex flex-col md:flex-row gap-8 items-center md:items-start">
             <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-primary/20 flex-shrink-0">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full" />
               <Image
@@ -196,7 +196,7 @@ export default function AboutUsPage() {
                   href="https://www.linkedin.com/in/itisaddy/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-colors duration-200"
+                  className="inline-flex items-center px-4 py-2 rounded-md bg-transparent border border-border hover:bg-primary/20 text-primary transition-colors duration-200"
                 >
                   LinkedIn
                 </Link>
@@ -204,7 +204,7 @@ export default function AboutUsPage() {
                   href="https://github.com/itisaddy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-colors duration-200"
+                  className="inline-flex items-center px-4 py-2 rounded-md bg-transparent border border-border hover:bg-primary/20 text-primary transition-colors duration-200"
                 >
                   GitHub
                 </Link>
@@ -213,7 +213,7 @@ export default function AboutUsPage() {
           </div>
         </div>
 
-        <div className="bg-muted/30 rounded-2xl p-10 text-center max-w-4xl mx-auto">
+        <div className="bg-muted/30 rounded-lg p-10 text-center max-w-4xl mx-auto">
           <h2 className="text-2xl font-semibold mb-4">Join Us on Our Mission</h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             We&apos;re just getting started on our journey to revolutionize personal finance

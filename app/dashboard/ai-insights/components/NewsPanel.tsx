@@ -88,8 +88,8 @@ export function NewsPanel({ className = "", onNewsUpdate }: NewsPanelProps) {
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-3 text-lg">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted rounded-full blur-sm opacity-20"></div>
-              <div className="relative w-8 h-8 bg-gradient-to-br from-muted to-muted rounded-full flex items-center justify-center">
+              <div className="absolute inset-0 bg-card rounded-full blur-sm opacity-20"></div>
+              <div className="relative w-8 h-8 bg-card rounded-full flex items-center justify-center">
                 <TrendingUp className="h-4 w-4 text-white" />
               </div>
             </div>

@@ -8,7 +8,7 @@ export default function AuthLoading() {
       <div className="w-full max-w-[400px] space-y-8">
         {/* Logo placeholder */}
         <div className="flex items-center gap-3">
-          <div className="h-11 w-11 rounded-xl fast-skeleton" />
+          <div className="h-11 w-11 rounded-md fast-skeleton" />
           <div className="h-6 w-32 rounded-lg fast-skeleton" />
         </div>
 
@@ -19,7 +19,7 @@ export default function AuthLoading() {
         </div>
 
         {/* Form placeholder */}
-        <div className="bg-card/50 rounded-2xl p-8 space-y-4 border border-border/30">
+        <div className="bg-card/50 rounded-lg p-8 space-y-4 border border-border/30">
           <div className="space-y-1.5">
             <div className="h-4 w-24 rounded fast-skeleton" />
             <div className="h-11 w-full rounded-lg fast-skeleton" />

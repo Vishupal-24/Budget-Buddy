@@ -154,7 +154,7 @@ export function BudgetAnalyticsEnhanced({ budgets, categorySpending, onBudgetsUp
 
   if (isAnalyzing) {
     return (
-      <div className="rounded-2xl border bg-card overflow-hidden mb-8">
+      <div className="rounded-lg border bg-card overflow-hidden mb-8">
         <div className="p-12 text-center">
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto mb-4"></div>
           <p className="text-muted-foreground">Analyzing your budget data...</p>
@@ -170,7 +170,7 @@ export function BudgetAnalyticsEnhanced({ budgets, categorySpending, onBudgetsUp
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl border bg-card overflow-hidden"
+          className="rounded-lg border bg-card overflow-hidden"
         >
           <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
             <div className="flex items-center justify-between">
@@ -182,7 +182,7 @@ export function BudgetAnalyticsEnhanced({ budgets, categorySpending, onBudgetsUp
                   Your budget tracking health and recommendations
                 </p>
               </div>
-              <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <div className="h-12 w-12 rounded-md bg-transparent border border-border flex items-center justify-center">
                 <Activity className="h-6 w-6 text-primary" />
               </div>
             </div>

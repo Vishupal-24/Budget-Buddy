@@ -214,7 +214,7 @@ export function WidgetSystem({
 
       {/* Edit Mode Panel */}
       {isEditMode && (
-        <Card className="border-dashed border-2 border-primary/20 bg-primary/5">
+        <Card className="border-dashed border-2 border-primary/20 bg-transparent">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Plus className="h-5 w-5" />
@@ -418,7 +418,7 @@ export function WidgetSystem({
       {visibleWidgets.length === 0 && (
         <Card className="border-dashed border-2 border-muted-foreground/20">
           <CardContent className="flex flex-col items-center justify-center py-12">
-            <div className="p-4 rounded-full bg-muted/50 mb-4">
+            <div className="p-4 rounded bg-muted/50/50 mb-4">
               <BarChart3 className="h-8 w-8 text-muted-foreground" />
             </div>
             <h3 className="text-lg font-medium mb-2">No widgets added yet</h3>

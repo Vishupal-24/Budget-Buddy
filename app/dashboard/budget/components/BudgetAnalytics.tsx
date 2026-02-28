@@ -434,7 +434,7 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
   // Show empty state if no data
   if (!budgets.length && !categorySpending.length) {
     return (
-      <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
+      <div className="rounded-lg border bg-card  overflow-hidden mb-8">
         <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
           <div className="flex items-center justify-between">
             <div>
@@ -445,7 +445,7 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
                 Insights and trends from your spending data
               </p>
             </div>
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-md bg-transparent border border-border flex items-center justify-center">
               <BarChart3 className="h-6 w-6 text-primary" />
             </div>
           </div>
@@ -456,7 +456,7 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.4 }}
-            className="rounded-full bg-muted h-20 w-20 flex items-center justify-center mx-auto mb-6"
+            className="rounded bg-muted/50 h-20 w-20 flex items-center justify-center mx-auto mb-6"
           >
             <Database className="h-10 w-10 text-muted-foreground" />
           </motion.div>
@@ -494,7 +494,7 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
   }
 
   return (
-    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
+    <div className="rounded-lg border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex items-center justify-between">
           <div>
@@ -506,7 +506,7 @@ export function BudgetAnalytics({ budgets, categorySpending }: BudgetAnalyticsPr
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-md bg-transparent border border-border flex items-center justify-center">
               <BarChart3 className="h-6 w-6 text-primary" />
             </div>
             <Button

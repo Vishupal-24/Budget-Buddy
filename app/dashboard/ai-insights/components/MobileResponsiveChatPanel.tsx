@@ -288,7 +288,7 @@ export function MobileResponsiveChatPanel({
             {/* Desktop Controls */}
             {!isMobile && (
               <>
-                <Badge variant="outline" className="text-xs bg-primary/5 border-primary/20">
+                <Badge variant="outline" className="text-xs bg-transparent border-primary/20">
                   <div className="w-2 h-2 bg-muted rounded-full mr-1 animate-pulse"></div>
                   {currentModelConfig.provider}
                 </Badge>
@@ -470,7 +470,7 @@ export function MobileResponsiveChatPanel({
                     </div>
                   )}
                   
-                  <div className={`flex-1 min-w-0 rounded-2xl shadow-sm transition-all duration-300  group overflow-hidden message-bubble ${
+                  <div className={`flex-1 min-w-0 rounded-lg shadow-sm transition-all duration-300  group overflow-hidden message-bubble ${
                     isMobile ? 'max-w-[90%]' : 'max-w-[85%]'
                   } ${
                     message.role === 'user' 
@@ -501,7 +501,7 @@ export function MobileResponsiveChatPanel({
                   </div>
                   
                   {message.role === 'user' && (
-                    <div className={`flex-shrink-0 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 flex items-center justify-center  ring-2 ring-muted-foreground/10 ${
+                    <div className={`flex-shrink-0 rounded-full bg-card-foreground/20 flex items-center justify-center  ring-2 ring-muted-foreground/10 ${
                       isMobile ? 'w-8 h-8' : 'w-10 h-10'
                     }`}>
                       <User className={`text-muted-foreground ${isMobile ? 'h-4 w-4' : 'h-5 w-5'}`} />
@@ -517,7 +517,7 @@ export function MobileResponsiveChatPanel({
                   }`}>
                     <Bot className={`text-white ${isMobile ? 'h-4 w-4' : 'h-5 w-5'}`} />
                   </div>
-                  <div className="bg-card/80 backdrop-blur border border-border/50 rounded-2xl p-4 shadow-sm">
+                  <div className="bg-card/80 backdrop-blur border border-border/50 rounded-lg p-4 shadow-sm">
                     <TypingIndicator />
                   </div>
                 </div>
@@ -576,7 +576,7 @@ export function MobileResponsiveChatPanel({
         <div className={`border-t bg-gradient-to-r from-background via-muted/10 to-background ${isMobile ? 'p-4' : 'p-6'}`}>
           {/* Voice Listening Feedback */}
           {isListening && (
-            <div className={`flex items-center gap-3 text-sm bg-gradient-to-r from-muted to-muted dark:from-muted dark:to-muted border border-border dark:border-border rounded-xl shadow-sm ${
+            <div className={`flex items-center gap-3 text-sm bg-gradient-to-r from-muted to-muted dark:from-muted dark:to-muted border border-border dark:border-border rounded-md shadow-sm ${
               isMobile ? 'mb-3 p-3' : 'mb-4 p-4'
             }`}>
               <div className="relative">

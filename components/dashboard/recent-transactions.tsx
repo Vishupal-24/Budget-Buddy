@@ -40,7 +40,7 @@ export function RecentTransactions({ transactions, loading = false }: RecentTran
   }
 
   return (
-    <div className="rounded-2xl border bg-card p-5 md:p-6 mb-8 shadow-sm  transition-all" role="region" aria-labelledby="recent-transactions-title">
+    <div className="rounded-lg border bg-card p-5 md:p-6 mb-8 shadow-sm  transition-all" role="region" aria-labelledby="recent-transactions-title">
       <div className="flex items-center justify-between mb-6 pb-4 border-b">
         <h2 className="text-xl md:text-2xl font-display font-semibold tracking-tight" id="recent-transactions-title" tabIndex={0}>Recent Transactions</h2>
         <Button asChild variant="outline" size="sm" className="rounded-full font-medium transition-all">
@@ -62,7 +62,7 @@ export function RecentTransactions({ transactions, loading = false }: RecentTran
               </thead>
               <tbody>
                 {transactions.map((transaction) => (
-                  <tr key={transaction.id} className="border-b border-border/50 text-sm hover:bg-muted/30 transition-colors">
+                  <tr key={transaction.id} className="border-b border-border/50 text-sm hover:bg-transparent transition-colors">
                     <td className="py-4 pr-4 pl-2 text-muted-foreground whitespace-nowrap">{formatDate(new Date(transaction.date))}</td>
                     <td className="py-4 pr-4 capitalize font-medium">{transaction.category}</td>
                     <td className="py-4 pr-4 font-semibold text-base">{formatCurrency(transaction.amount)}</td>
@@ -86,7 +86,7 @@ export function RecentTransactions({ transactions, loading = false }: RecentTran
           {/* Mobile card view - show on small screens only */}
           <div className="sm:hidden space-y-4 mt-2">
             {transactions.map((transaction) => (
-              <div key={transaction.id} className="rounded-xl border bg-card p-4 text-sm shadow-sm">
+              <div key={transaction.id} className="rounded-md border bg-card p-4 text-sm shadow-sm">
                 <div className="flex justify-between items-start mb-3 border-b border-border/50 pb-3">
                   <span className="text-muted-foreground font-medium text-xs">{formatDate(new Date(transaction.date))}</span>
                   <span

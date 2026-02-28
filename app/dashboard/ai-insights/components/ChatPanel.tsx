@@ -376,7 +376,7 @@ export function ChatPanel({
                     </div>
                   )}
                   
-                  <div className={`flex-1 min-w-0 max-w-[80%] sm:max-w-[85%] rounded-2xl shadow-sm transition-all duration-300  group overflow-hidden message-bubble ${
+                  <div className={`flex-1 min-w-0 max-w-[80%] sm:max-w-[85%] rounded-lg shadow-sm transition-all duration-300  group overflow-hidden message-bubble ${
                     message.role === 'user' 
                       ? 'bg-gradient-to-br from-primary to-primary/90 text-primary-foreground ml-auto shadow-primary/20' 
                       : 'bg-card/80 backdrop-blur border border-border/50 shadow-black/5'
@@ -408,7 +408,7 @@ export function ChatPanel({
                   </div>
                   
                   {message.role === 'user' && (
-                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 flex items-center justify-center  ring-2 ring-muted-foreground/10">
+                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-card-foreground/20 flex items-center justify-center  ring-2 ring-muted-foreground/10">
                       <User className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                     </div>
                   )}
@@ -420,7 +420,7 @@ export function ChatPanel({
                   <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-primary to-muted flex items-center justify-center  ring-2 ring-primary/20">
                     <Bot className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                   </div>
-                  <div className="bg-card/80 backdrop-blur border border-border/50 rounded-2xl p-3 sm:p-4 shadow-sm overflow-hidden">
+                  <div className="bg-card/80 backdrop-blur border border-border/50 rounded-lg p-3 sm:p-4 shadow-sm overflow-hidden">
                     <TypingIndicator />
                   </div>
                 </div>

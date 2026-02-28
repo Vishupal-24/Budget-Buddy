@@ -109,7 +109,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
 
   if (loading) {
     return (
-      <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
+      <div className="rounded-lg border bg-card  overflow-hidden mb-8">
         <div className="p-12 text-center">
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading historical trends...</p>
@@ -120,7 +120,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
 
   if (historicalData.length === 0) {
     return (
-      <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
+      <div className="rounded-lg border bg-card  overflow-hidden mb-8">
         <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
           <div className="flex items-center justify-between">
             <div>
@@ -131,7 +131,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
                 Track your spending patterns over time
               </p>
             </div>
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-md bg-transparent border border-border flex items-center justify-center">
               <LineChart className="h-6 w-6 text-primary" />
             </div>
           </div>
@@ -141,7 +141,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="rounded-full bg-muted h-20 w-20 flex items-center justify-center mx-auto mb-6"
+            className="rounded bg-muted/50 h-20 w-20 flex items-center justify-center mx-auto mb-6"
           >
             <Clock className="h-10 w-10 text-muted-foreground" />
           </motion.div>
@@ -155,7 +155,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
   }
 
   return (
-    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
+    <div className="rounded-lg border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex items-center justify-between">
           <div>
@@ -167,7 +167,7 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-md bg-transparent border border-border flex items-center justify-center">
               <LineChart className="h-6 w-6 text-primary" />
             </div>
             <Button

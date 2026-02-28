@@ -156,7 +156,7 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
   };
 
   return (
-    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
+    <div className="rounded-lg border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -169,7 +169,7 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
           </div>
           
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-md bg-transparent border border-border flex items-center justify-center">
               <BarChart3 className="h-6 w-6 text-primary" />
             </div>
           </div>
@@ -268,7 +268,7 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
 
         {comparisonData.length === 0 ? (
           <div className="text-center py-8">
-            <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+            <div className="h-16 w-16 rounded bg-muted/50 flex items-center justify-center mx-auto mb-4">
               <BarChart3 className="h-8 w-8 text-muted-foreground" />
             </div>
             <h4 className="font-semibold mb-2">No comparison data available</h4>

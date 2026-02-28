@@ -802,7 +802,7 @@ export default function AddTransactionForm({
         <div className="overflow-y-auto flex-grow py-4 px-4 pb-24">
           {/* OCR Upload Section */}
           {!isEditing && (
-            <div className="mb-6 p-4 bg-muted/40 rounded-xl border border-border/60 transition-all hover:bg-muted/60">
+            <div className="mb-6 p-4 bg-muted/40 rounded-md border border-border/60 transition-all hover:bg-muted/60">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className="p-2.5 bg-primary/10 rounded-lg text-primary">
@@ -908,7 +908,7 @@ export default function AddTransactionForm({
 
               {/* Show custom category form when "custom" is selected */}
               {formData.category_id === "custom" && (
-                <div className="mt-3 p-4 border-2 border-primary rounded-md bg-primary/5">
+                <div className="mt-3 p-4 border-2 border-primary rounded-md bg-transparent">
                   <h4 className="text-base font-medium mb-3 flex items-center text-primary">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-white text-xs mr-2">+</span>
                     Create New Category

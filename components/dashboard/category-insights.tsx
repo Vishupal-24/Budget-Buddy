@@ -21,12 +21,12 @@ export function CategoryInsights({ topCategories, totalExpense }: CategoryInsigh
       <h2 className="mb-6 pb-4 md:mb-8 text-2xl md:text-3xl font-display font-semibold tracking-tight border-b border-border" id="category-insights-title">Category Insights</h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Top spending categories */}
-        <div className="rounded-2xl border bg-card p-5 md:p-6 shadow-sm  transition-all" aria-labelledby="top-spending-title">
+        <div className="rounded-lg border bg-card p-5 md:p-6 shadow-sm  transition-all" aria-labelledby="top-spending-title">
           <h3 className="mb-4 text-lg font-semibold tracking-tight text-foreground" id="top-spending-title">Top Spending</h3>
           <div className="space-y-4">
             {topCategories.length > 0 ? (
               topCategories.map((category) => (
-                <div key={category.name} className="flex items-center justify-between border-b border-border/50 pb-3 hover:bg-muted/30 transition-colors p-2 rounded-lg">
+                <div key={category.name} className="flex items-center justify-between border-b border-border/50 pb-3 hover:bg-transparent transition-colors p-2 rounded-lg">
                   <div className="flex items-center space-x-3">
                     <div
                       className="h-3 w-3 rounded-full"
@@ -46,7 +46,7 @@ export function CategoryInsights({ topCategories, totalExpense }: CategoryInsigh
                 </div>
               ))
             ) : (
-              <div className="text-center text-muted-foreground p-6 rounded-xl border border-dashed bg-muted/10 font-medium" aria-live="polite">
+              <div className="text-center text-muted-foreground p-6 rounded-md border border-dashed bg-muted/10 font-medium" aria-live="polite">
                 No expense data available
               </div>
             )}
@@ -54,7 +54,7 @@ export function CategoryInsights({ topCategories, totalExpense }: CategoryInsigh
         </div>
 
         {/* Most used categories */}
-        <div className="rounded-2xl border bg-card p-5 md:p-6 shadow-sm  transition-all" aria-labelledby="most-used-title">
+        <div className="rounded-lg border bg-card p-5 md:p-6 shadow-sm  transition-all" aria-labelledby="most-used-title">
           <h3 className="mb-4 text-lg font-semibold tracking-tight text-foreground" id="most-used-title">Most Used</h3>
           <div className="space-y-4">
             {topCategories.length > 0 ? (
@@ -62,7 +62,7 @@ export function CategoryInsights({ topCategories, totalExpense }: CategoryInsigh
                 .sort((a, b) => b.count - a.count)
                 .slice(0, 5)
                 .map((category) => (
-                  <div key={category.name} className="flex items-center justify-between border-b border-border/50 pb-3 hover:bg-muted/30 transition-colors p-2 rounded-lg">
+                  <div key={category.name} className="flex items-center justify-between border-b border-border/50 pb-3 hover:bg-transparent transition-colors p-2 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <div
                         className="h-3 w-3 rounded-full"
@@ -82,7 +82,7 @@ export function CategoryInsights({ topCategories, totalExpense }: CategoryInsigh
                   </div>
                 ))
             ) : (
-              <div className="text-center text-muted-foreground p-6 rounded-xl border border-dashed bg-muted/10 font-medium" aria-live="polite">
+              <div className="text-center text-muted-foreground p-6 rounded-md border border-dashed bg-muted/10 font-medium" aria-live="polite">
                 No transaction data available
               </div>
             )}

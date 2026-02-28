@@ -338,7 +338,7 @@ export function BudgetManagementTools({ budgets, categorySpending, onBudgetsUpda
   };
 
   return (
-    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
+    <div className="rounded-lg border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex items-center justify-between">
           <div>
@@ -349,7 +349,7 @@ export function BudgetManagementTools({ budgets, categorySpending, onBudgetsUpda
               Advanced tools for managing your budgets efficiently
             </p>
           </div>
-          <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+          <div className="h-12 w-12 rounded-md bg-transparent border border-border flex items-center justify-center">
             <Settings className="h-6 w-6 text-primary" />
           </div>
         </div>

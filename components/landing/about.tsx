@@ -99,7 +99,7 @@ export function AboutSection() {
                       href="https://iaddy.netlify.app/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-colors duration-200"
+                      className="inline-flex items-center px-4 py-2 rounded-md bg-transparent border border-border hover:bg-primary/20 text-primary transition-colors duration-200"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +123,7 @@ export function AboutSection() {
                       href="https://www.linkedin.com/in/itisaddy/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-colors duration-200"
+                      className="inline-flex items-center px-4 py-2 rounded-md bg-transparent border border-border hover:bg-primary/20 text-primary transition-colors duration-200"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +147,7 @@ export function AboutSection() {
                       href="https://www.instagram.com/i__aditya7/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-colors duration-200"
+                      className="inline-flex items-center px-4 py-2 rounded-md bg-transparent border border-border hover:bg-primary/20 text-primary transition-colors duration-200"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -226,12 +226,12 @@ export function AboutSection() {
                   Certifications
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-primary/5 text-primary font-medium text-sm text-center">Foundations of Cybersecurity</div>
-                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-primary/5 text-primary font-medium text-sm text-center">Cyber Threat Management</div>
-                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-primary/5 text-primary font-medium text-sm text-center">OSForensics Triage</div>
-                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-primary/5 text-primary font-medium text-sm text-center">Endpoint Security</div>
-                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-primary/5 text-primary font-medium text-sm text-center">ISO 27001</div>
-                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-primary/5 text-primary font-medium text-sm text-center">Ethical Hacker</div>
+                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-transparent text-primary font-medium text-sm text-center">Foundations of Cybersecurity</div>
+                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-transparent text-primary font-medium text-sm text-center">Cyber Threat Management</div>
+                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-transparent text-primary font-medium text-sm text-center">OSForensics Triage</div>
+                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-transparent text-primary font-medium text-sm text-center">Endpoint Security</div>
+                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-transparent text-primary font-medium text-sm text-center">ISO 27001</div>
+                  <div className="py-2 px-3 rounded-lg border border-primary/30 bg-transparent text-primary font-medium text-sm text-center">Ethical Hacker</div>
                 </div>
               </div>
             </motion.div>

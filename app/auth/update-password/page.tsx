@@ -127,7 +127,7 @@ export default function UpdatePasswordPage() {
       </div>
 
       <div className="w-full max-w-[400px] relative z-10">
-        <div className="bg-card/80 backdrop-blur-xl rounded-2xl border border-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] p-8 sm:p-10">
+        <div className="bg-card/80 backdrop-blur-xl rounded-lg border border-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] p-8 sm:p-10">
           <AnimatePresence mode="wait">
             {!showSuccessState ? (
               <motion.div

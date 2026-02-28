@@ -70,7 +70,7 @@ export default function PricingPage() {
           {plans.map((plan, index) => (
             <div 
               key={plan.title}
-              className={`bg-card rounded-xl border ${plan.popular ? 'border-primary shadow-xl' : 'shadow-sm border-border'} overflow-hidden flex flex-col`}
+              className={`bg-card rounded-md border ${plan.popular ? 'border-primary shadow-xl' : 'shadow-sm border-border'} overflow-hidden flex flex-col`}
             >
               {plan.popular && (
                 <div className="bg-primary/10 text-primary text-center text-sm font-medium py-1">

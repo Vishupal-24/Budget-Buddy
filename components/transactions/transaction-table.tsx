@@ -88,7 +88,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
   if (loading) {
     return (
       <div className={styles.tableContainer}>
-        <div className="bg-gradient-to-r from-muted/30 to-muted/10 p-4 border-b border-border/50">
+        <div className="bg-transparent p-4 border-b border-border/50">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-primary/10 rounded-lg">
               <Sparkles className="w-5 h-5 text-primary animate-pulse" />
@@ -103,10 +103,10 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
 
   if (transactions.length === 0) {
     return (
-      <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
-        <div className="bg-muted/30 p-6 border-b border-border">
+      <div className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
+        <div className="bg-transparent p-6 border-b border-border">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/10 rounded-xl">
+            <div className="p-2 bg-primary/10 rounded-md">
               <FileText className="w-5 h-5 text-primary" />
             </div>
             <div>
@@ -183,7 +183,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
 
             <th className="px-4 py-3 text-left font-semibold text-sm uppercase tracking-wide">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-muted to-muted" />
+                <div className="w-4 h-4 rounded-full bg-transparent />
                 Type
               </div>
             </th>
@@ -243,7 +243,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
             >
               <td className={styles.dateColumn}>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-8 bg-gradient-to-b from-primary/60 to-primary/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                  <div className="w-2 h-8 bg-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <span className="font-medium">{formatDate(transaction.date)}</span>
                 </div>
               </td>
@@ -271,7 +271,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
 
               <td className={styles.categoryColumn}>
                 <div className="flex items-center gap-2 min-w-0">
-                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-primary/60 flex-shrink-0" />
+                  <div className="w-2 h-2 rounded-full bg-transparent flex-shrink-0" />
                   <span className="truncate flex-1 min-w-0">{transaction.category_name || 'Uncategorized'}</span>
                 </div>
               </td>

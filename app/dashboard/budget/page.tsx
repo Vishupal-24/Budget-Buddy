@@ -660,7 +660,7 @@ export default function BudgetPage() {
                 {budgets.length} budget{budgets.length !== 1 ? 's' : ''} set
               </div>
             </div>
-            <div className="h-10 w-10 rounded-xl bg-muted flex items-center justify-center">
+            <div className="h-10 w-10 rounded-md bg-muted flex items-center justify-center">
               <DollarSign className="h-5 w-5 text-foreground" />
             </div>
           </div>
@@ -679,7 +679,7 @@ export default function BudgetPage() {
                 {categorySpending.length !== 1 ? 'ies' : 'y'}
               </div>
             </div>
-            <div className="h-10 w-10 rounded-xl bg-muted flex items-center justify-center">
+            <div className="h-10 w-10 rounded-md bg-muted flex items-center justify-center">
               <BarChart3 className="h-5 w-5 text-foreground" />
             </div>
           </div>
@@ -702,7 +702,7 @@ export default function BudgetPage() {
               </div>
             </div>
             <div
-              className={`h-10 w-10 rounded-xl bg-muted flex items-center justify-center`}
+              className={`h-10 w-10 rounded-md bg-muted flex items-center justify-center`}
             >
               {categorySpending.some((cat) => cat.percentage > 100) ? (
                 <AlertTriangle className="h-5 w-5 text-foreground" />

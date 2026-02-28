@@ -45,7 +45,7 @@ import { Currency } from '@/components/ui/currency';
 // Custom styles for enhanced chart interactions
 const styles = {
   chartCard:
-    'rounded-xl border border-border bg-card p-4 sm:p-5 relative overflow-hidden',
+    'rounded-md border border-border bg-card p-4 sm:p-5 relative overflow-hidden',
   chartTitle: 'text-base sm:text-lg font-semibold text-foreground',
   tooltipStyles: {
     backgroundColor: 'rgba(0, 0, 0, 0.85)',
@@ -493,9 +493,9 @@ export default function AnalyticsPage() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="relative h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary overflow-hidden group">
+              <div className="relative h-10 w-10 sm:h-12 sm:w-12 rounded-md bg-transparent border border-border flex items-center justify-center text-primary overflow-hidden group">
                 <Activity className="h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-300 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 rounded-md transition-opacity duration-300"></div>
               </div>
               <div>
                 <h1 className="text-xl sm:text-2xl font-bold text-foreground">
@@ -512,7 +512,7 @@ export default function AnalyticsPage() {
                 <BarChart3 className="h-3.5 w-3.5 text-primary mr-2" />
                 <span>{transactions.length} transactions</span>
               </div>
-              <div className="h-8 px-3 rounded-lg border bg-primary/5 text-primary text-xs font-medium flex items-center">
+              <div className="h-8 px-3 rounded-lg border bg-transparent text-primary text-xs font-medium flex items-center">
                 <Calendar className="h-3.5 w-3.5 mr-2" />
                 <span>
                   {selectedTimeframe === '1m'
@@ -541,7 +541,7 @@ export default function AnalyticsPage() {
                 className={`rounded-lg border ${styles.glassCard} p-3 flex items-center justify-between`}
               >
                 <div className="flex items-center gap-2">
-                  <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center text-foreground">
+                  <div className="h-9 w-9 rounded bg-muted/50 flex items-center justify-center text-foreground">
                     <TrendingUp size={18} />
                   </div>
                   <div>
@@ -567,7 +567,7 @@ export default function AnalyticsPage() {
                 className={`rounded-lg border ${styles.glassCard} p-3 flex items-center justify-between`}
               >
                 <div className="flex items-center gap-2">
-                  <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center text-foreground">
+                  <div className="h-9 w-9 rounded bg-muted/50 flex items-center justify-center text-foreground">
                     <TrendingUp size={18} className="rotate-180" />
                   </div>
                   <div>
@@ -593,7 +593,7 @@ export default function AnalyticsPage() {
                 className={`rounded-lg border ${styles.glassCard} p-3 flex items-center justify-between`}
               >
                 <div className="flex items-center gap-2">
-                  <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center text-foreground">
+                  <div className="h-9 w-9 rounded bg-muted/50 flex items-center justify-center text-foreground">
                     <PieChartIcon size={18} />
                   </div>
                   <div>
@@ -653,7 +653,7 @@ export default function AnalyticsPage() {
               </div>
             </div>
             <div className="overflow-x-auto pb-1 -mx-1 px-1">
-              <div className="flex items-center space-x-2 rounded-xl bg-muted/50 p-1 min-w-max border">
+              <div className="flex items-center space-x-2 rounded-md bg-muted/50 p-1 min-w-max border">
                 <button
                   className={`rounded-lg px-3 py-1.5 text-xs sm:text-sm font-medium transition-all duration-200 ${
                     selectedTimeframe === '1m'
@@ -748,10 +748,10 @@ export default function AnalyticsPage() {
               <div className="mb-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {/* Total Transactions Card */}
                 <div
-                  className={`rounded-xl border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
+                  className={`rounded-md border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted text-foreground">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded bg-muted/50 text-foreground">
                       <Activity size={16} className="sm:h-5 sm:w-5" />
                     </div>
                     <div>
@@ -765,10 +765,10 @@ export default function AnalyticsPage() {
 
                 {/* Total Income Card */}
                 <div
-                  className={`rounded-xl border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
+                  className={`rounded-md border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted text-foreground">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded bg-muted/50 text-foreground">
                       <TrendingUp size={16} className="sm:h-5 sm:w-5" />
                     </div>
                     <div>
@@ -784,10 +784,10 @@ export default function AnalyticsPage() {
 
                 {/* Total Expenses Card */}
                 <div
-                  className={`rounded-xl border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
+                  className={`rounded-md border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted text-foreground">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded bg-muted/50 text-foreground">
                       <TrendingUp size={16} className="rotate-180 sm:h-5 sm:w-5" />
                     </div>
                     <div>
@@ -803,10 +803,10 @@ export default function AnalyticsPage() {
 
                 {/* Categories Card */}
                 <div
-                  className={`rounded-xl border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
+                  className={`rounded-md border bg-card p-3 sm:p-4 shadow-sm ${styles.hoverCard}`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted text-foreground">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded bg-muted/50 text-foreground">
                       <PieChartIcon size={16} className="sm:h-5 sm:w-5" />
                     </div>
                     <div>
@@ -821,7 +821,7 @@ export default function AnalyticsPage() {
 
               {/* Improved Mobile-Friendly Tabs */}
               <Tabs defaultValue="trends" className="mb-6">
-                <TabsList className="mb-4 sm:mb-6 bg-muted/50 p-1.5 rounded-xl overflow-x-auto whitespace-nowrap w-auto max-w-full border">
+                <TabsList className="mb-4 sm:mb-6 bg-muted/50 p-1.5 rounded-md overflow-x-auto whitespace-nowrap w-auto max-w-full border">
                   <TabsTrigger
                     value="trends"
                     className="rounded-lg text-xs sm:text-sm py-1.5 px-4 data-[state=active]:bg-card data-[state=active]:shadow-sm data-[state=active]:text-primary data-[state=active]:border data-[state=active]:border-primary/20"
@@ -868,15 +868,15 @@ export default function AnalyticsPage() {
                     <div className="p-4">
                       <div className={styles.chartLegend}>
                         <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-muted"></div>
+                          <div className="w-4 h-4 rounded bg-muted/50"></div>
                           <span className="text-sm font-semibold text-foreground">Income</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-muted"></div>
+                          <div className="w-4 h-4 rounded bg-muted/50"></div>
                           <span className="text-sm font-semibold text-foreground">Expenses</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-muted"></div>
+                          <div className="w-4 h-4 rounded bg-muted/50"></div>
                           <span className="text-sm font-semibold text-foreground">Net Balance</span>
                         </div>
                       </div>
@@ -1520,7 +1520,7 @@ export default function AnalyticsPage() {
                                         <Currency value={category.value} />
                                       </span>
                                     </div>
-                                    <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
+                                    <div className="w-full h-2 rounded bg-muted/50 overflow-hidden">
                                       <div
                                         className="h-full rounded-full"
                                         style={{
@@ -1677,7 +1677,7 @@ export default function AnalyticsPage() {
                                     : '0.0%'}
                                 </span>
                               </div>
-                              <div className="h-2 rounded-full bg-muted overflow-hidden">
+                              <div className="h-2 rounded bg-muted/50 overflow-hidden">
                                 <div
                                   className="h-full rounded-full bg-foreground/40"
                                   style={{

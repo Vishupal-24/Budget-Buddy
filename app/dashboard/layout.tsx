@@ -261,9 +261,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       const commonProps = {
         className: cn(
-          "flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden",
+          "flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 group relative",
           isActive
-            ? "bg-primary/10 text-primary"
+            ? "bg-muted text-foreground"
             : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
         ),
         onClick,
@@ -278,16 +278,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <li className="mb-1">
           {isExternal ? (
             <a href={item.href} target="_blank" rel="noopener noreferrer" {...commonProps}>
-              {/* Active indicator */}
-              {isActive && (
-                <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full" />
-              )}
-              
               {/* Icon */}
               <span
                 className={cn(
                   "relative z-10 flex items-center justify-center transition-colors duration-200",
-                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+                  isActive ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"
                 )}
                 aria-hidden="true"
               >
@@ -307,7 +302,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               {/* Keyboard shortcut */}
               {item.shortcutKey && !collapsed && (
                 <kbd
-                  className="relative z-10 hidden sm:flex items-center justify-center ml-auto px-2 py-0.5 text-[10px] font-medium rounded-md bg-muted text-muted-foreground border border-border"
+                  className="relative z-10 hidden sm:flex items-center justify-center ml-auto px-1.5 py-0.5 text-[10px] font-medium rounded bg-background text-muted-foreground border border-border"
                 >
                   {item.shortcutKey}
                 </kbd>
@@ -320,16 +315,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               aria-current={isActive ? 'page' : undefined}
               ref={itemRef}
             >
-              {/* Active indicator */}
-              {isActive && (
-                <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full" />
-              )}
-
               {/* Icon */}
               <span
                 className={cn(
                   "relative z-10 flex items-center justify-center transition-colors duration-200",
-                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+                  isActive ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"
                 )}
                 aria-hidden="true"
               >
@@ -349,7 +339,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               {/* Keyboard shortcut */}
               {item.shortcutKey && !collapsed && (
                 <kbd
-                  className="relative z-10 hidden sm:flex items-center justify-center ml-auto px-2 py-0.5 text-[10px] font-medium rounded-md bg-muted text-muted-foreground border border-border"
+                  className="relative z-10 hidden sm:flex items-center justify-center ml-auto px-1.5 py-0.5 text-[10px] font-medium rounded bg-background text-muted-foreground border border-border shadow-sm"
                 >
                   {item.shortcutKey}
                 </kbd>
@@ -651,10 +641,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
 
           {/* User section */}
-          <div className="flex items-center justify-between px-3 py-3 mb-6 rounded-xl bg-muted/30 border border-border/50">
+          <div className="flex items-center justify-between px-3 py-3 mb-6 rounded-md bg-transparent border border-border/50">
             <div className="flex items-center gap-3 w-full">
               <div className="relative flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-display font-semibold text-lg">
+                <div className="flex h-10 w-10 items-center justify-center rounded bg-muted/50 text-foreground font-display font-semibold text-lg">
                   {user?.user_metadata?.name?.[0] || user?.email?.[0] || 'U'}
                 </div>
               </div>
@@ -810,7 +800,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* User section */}
           <div
             className={cn(
-              'px-4 py-4 flex border-b border-border/50 mb-4 mx-2 rounded-xl bg-muted/20',
+              'px-4 py-4 flex mb-4 mx-2 rounded-md bg-transparent border border-border/50',
               collapsed ? 'justify-center p-2' : ''
             )}
           >
@@ -825,7 +815,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="relative flex-shrink-0">
                 <div
                   className={cn(
-                    'rounded-full bg-primary/10 text-primary flex items-center justify-center font-display font-semibold',
+                    'rounded bg-muted/50 text-foreground flex items-center justify-center font-display font-semibold',
                     collapsed ? 'w-8 h-8' : 'w-10 h-10'
                   )}
                 >

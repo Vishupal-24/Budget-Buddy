@@ -29,7 +29,7 @@ const EnhancedExpensePieChart = dynamic(
     import('@/components/dashboard/charts/enhanced-expense-pie-chart').then(
       (mod) => mod.EnhancedExpensePieChart
     ),
-  { ssr: false, loading: () => <div className="h-80 rounded-xl fast-skeleton" /> }
+  { ssr: false, loading: () => <div className="h-80 rounded-md fast-skeleton" /> }
 );
 
 const MonthlySpendingTrend = dynamic(
@@ -37,18 +37,18 @@ const MonthlySpendingTrend = dynamic(
     import('@/components/dashboard/charts/monthly-spending-trend').then(
       (mod) => mod.MonthlySpendingTrend
     ),
-  { ssr: false, loading: () => <div className="h-80 rounded-xl fast-skeleton" /> }
+  { ssr: false, loading: () => <div className="h-80 rounded-md fast-skeleton" /> }
 );
 
 // Lazy load below-the-fold components
 const RecentTransactions = dynamic(
   () => import('@/components/dashboard/recent-transactions').then((mod) => mod.RecentTransactions),
-  { ssr: true, loading: () => <div className="h-64 rounded-xl fast-skeleton" /> }
+  { ssr: true, loading: () => <div className="h-64 rounded-md fast-skeleton" /> }
 );
 
 const CategoryInsights = dynamic(
   () => import('@/components/dashboard/category-insights').then((mod) => mod.CategoryInsights),
-  { ssr: true, loading: () => <div className="h-48 rounded-xl fast-skeleton" /> }
+  { ssr: true, loading: () => <div className="h-48 rounded-md fast-skeleton" /> }
 );
 
 const PremiumMetricsSection = dynamic(
@@ -56,12 +56,12 @@ const PremiumMetricsSection = dynamic(
     import('@/components/dashboard/premium-metrics-section').then(
       (mod) => mod.PremiumMetricsSection
     ),
-  { ssr: true, loading: () => <div className="h-32 rounded-xl fast-skeleton" /> }
+  { ssr: true, loading: () => <div className="h-32 rounded-md fast-skeleton" /> }
 );
 
 const WidgetSystem = dynamic(
   () => import('@/components/ui/widget-system').then((mod) => mod.WidgetSystem),
-  { ssr: true, loading: () => <div className="h-48 rounded-xl fast-skeleton" /> }
+  { ssr: true, loading: () => <div className="h-48 rounded-md fast-skeleton" /> }
 );
 
 const AlertNotificationSystem = dynamic(
@@ -72,7 +72,7 @@ const AlertNotificationSystem = dynamic(
 
 const MonthlyBudgetOverview = dynamic(
   () => import('@/components/ui/monthly-budget-overview').then((mod) => mod.MonthlyBudgetOverview),
-  { ssr: true, loading: () => <div className="h-[500px] rounded-xl fast-skeleton" /> }
+  { ssr: true, loading: () => <div className="h-[500px] rounded-md fast-skeleton" /> }
 );
 
 // Validation function to clean up duplicate widgets
@@ -306,13 +306,13 @@ const StatCard = memo(
     icon?: React.ReactNode;
     className?: string;
   }) => (
-    <div className={cn('p-5 rounded-2xl border bg-card shadow-sm  transition-all', className)}>
+    <div className={cn('p-5 rounded-lg border bg-card shadow-sm  transition-all', className)}>
       <div className="flex justify-between items-start">
         <div className="flex flex-col pt-1">
           <h3 className="text-sm font-medium text-muted-foreground mb-1">{title}</h3>
           <p className="text-2xl font-bold tracking-tight">{value}</p>
         </div>
-        {icon && <div className="p-2.5 rounded-xl bg-primary/10 text-primary">{icon}</div>}
+        {icon && <div className="p-2.5 rounded-md bg-transparent border border-border text-primary">{icon}</div>}
       </div>
     </div>
   )
@@ -694,7 +694,7 @@ export default function DashboardPage() {
     return (
       <div className="container mx-auto px-4 py-6 md:px-6 md:py-6 lg:px-8 lg:py-8 max-w-screen-xl">
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-          <div className="rounded-full bg-muted p-4 mb-4">
+          <div className="rounded bg-muted/50 p-4 mb-4">
             <svg
               className="h-8 w-8 text-foreground"
               fill="none"
@@ -746,7 +746,7 @@ export default function DashboardPage() {
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-2">
             <div className="flex items-center gap-4">
-              <div className="flex items-center justify-center p-3 rounded-xl bg-primary/10 text-primary shrink-0">
+              <div className="flex items-center justify-center p-2 rounded-md bg-muted/50 text-primary shrink-0">
                 <svg
                   className="h-6 w-6"
                   fill="none"
@@ -829,7 +829,7 @@ export default function DashboardPage() {
 
         {/* Offline Sync Button */}
         {isOffline && (
-          <div className="mt-4 p-3 rounded-xl border bg-muted border-border">
+          <div className="mt-4 p-3 rounded-md border bg-muted border-border">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center text-sm">
                 <svg className="h-5 w-5 mr-2 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -877,7 +877,7 @@ export default function DashboardPage() {
         >
           {/* Total Income Card */}
           <div
-            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1"
+            className="group rounded-md border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1"
             tabIndex={0}
             aria-label="Total Income Summary"
           >
@@ -944,7 +944,7 @@ export default function DashboardPage() {
 
           {/* Total Expenses Card */}
           <div
-            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1"
+            className="group rounded-md border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1"
             tabIndex={0}
             aria-label="Total Expenses Summary"
           >
@@ -1013,7 +1013,7 @@ export default function DashboardPage() {
 
           {/* Current Balance Card */}
           <div
-            className="group rounded-xl border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1 sm:col-span-2 lg:col-span-1"
+            className="group rounded-md border bg-card p-5 md:p-6 shadow-sm hover: transition-all duration-300 transform hover:-translate-y-1 sm:col-span-2 lg:col-span-1"
             tabIndex={0}
             aria-label="Current Balance Summary"
           >
@@ -1158,7 +1158,7 @@ export default function DashboardPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-card flex items-center justify-center">
                   <svg
                     className="h-4 w-4 text-white"
                     fill="none"
@@ -1185,7 +1185,7 @@ export default function DashboardPage() {
             {stats.categoryData.length > 0 && (
               <div className="flex items-center gap-3 ml-11 sm:ml-0">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted dark:bg-muted px-3 py-1.5 rounded-full border border-border dark:border-border">
-                  <div className="w-2 h-2 rounded-full bg-muted animate-pulse"></div>
+                  <div className="w-2 h-2 rounded bg-muted/50 animate-pulse"></div>
                   <span className="font-medium">Live Data</span>
                 </div>
                 <Button variant="outline" size="sm" asChild>
@@ -1212,7 +1212,7 @@ export default function DashboardPage() {
 
           {/* Enhanced Drill-down Filter */}
           {drillDownData && (
-            <div className="rounded-xl border bg-gradient-to-r from-muted via-muted to-muted dark:from-muted dark:via-muted dark:to-muted p-4 border-border dark:border-border shadow-sm">
+            <div className="rounded-md border bg-gradient-to-r from-muted via-muted to-muted dark:from-muted dark:via-muted dark:to-muted p-4 border-border dark:border-border shadow-sm">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3 text-sm">
                   <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
@@ -1270,7 +1270,7 @@ export default function DashboardPage() {
             <div className="space-y-6">
               {/* Chart Metrics Summary */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border dark:border-border">
+                <div className="bg-card rounded-md p-4 border border-border dark:border-border">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
                       <svg
@@ -1296,7 +1296,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border dark:border-border">
+                <div className="bg-card rounded-md p-4 border border-border dark:border-border">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
                       <svg
@@ -1322,7 +1322,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border dark:border-border">
+                <div className="bg-card rounded-md p-4 border border-border dark:border-border">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
                       <svg
@@ -1348,7 +1348,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border dark:border-border">
+                <div className="bg-card rounded-md p-4 border border-border dark:border-border">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
                       <svg
@@ -1378,10 +1378,10 @@ export default function DashboardPage() {
               {/* Main Charts Container with Enhanced Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Enhanced Expense Pie Chart */}
-                <div className="bg-card border rounded-xl p-6 shadow-sm hover: transition-all duration-300 group">
+                <div className="bg-card border rounded-md p-5 shadow-sm transition-all duration-300">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-card flex items-center justify-center">
                         <svg
                           className="h-4 w-4 text-white"
                           fill="none"
@@ -1418,10 +1418,10 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Monthly Spending Trend */}
-                <div className="bg-card border rounded-xl p-6 shadow-sm hover: transition-all duration-300 group">
+                <div className="bg-card border rounded-md p-5 shadow-sm transition-all duration-300">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-card flex items-center justify-center">
                         <svg
                           className="h-4 w-4 text-white"
                           fill="none"
@@ -1471,9 +1471,9 @@ export default function DashboardPage() {
               </div>
             </div>
           ) : (
-            <div className="bg-card border rounded-xl p-8 text-center">
+            <div className="bg-card border rounded-md p-8 text-center">
               <div className="flex flex-col items-center justify-center space-y-6">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-card flex items-center justify-center">
                   <svg
                     className="h-10 w-10 text-foreground dark:text-foreground"
                     fill="none"

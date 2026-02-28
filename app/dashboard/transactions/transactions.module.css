@@ -6,27 +6,23 @@
   background: transparent;
 }
 
-.transactionRow:hover {
-  background: linear-gradient(135deg, hsla(var(--muted), 0.3), hsla(var(--muted), 0.1));
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px -2px hsla(var(--muted-foreground), 0.1);
-}
+.transactionRow:hover { background: hsl(var(--muted)/0.5); }
 
 .transactionsTable {
   width: 100%;
   border-collapse: collapse;
-  background: linear-gradient(135deg, hsl(var(--card)) / 0.95, hsl(var(--background)) / 0.98);
-  border-radius: 16px;
+  background: transparent;
+  border-radius: 6px;
   overflow: hidden;
-  backdrop-filter: blur(8px);
+  
   box-shadow: 
     0 10px 25px -5px hsl(var(--muted-foreground)) / 0.1,
     0 8px 10px -6px hsl(var(--muted-foreground)) / 0.1;
 }
 
 .transactionsTable thead {
-  background: linear-gradient(135deg, hsl(var(--muted)) / 0.8, hsl(var(--muted)) / 0.4);
-  backdrop-filter: blur(4px);
+  background: transparent;
+  
 }
 
 .transactionsTable thead th {
@@ -51,7 +47,7 @@
 .sortableHeader:hover {
   background: hsl(var(--accent)) / 0.5;
   color: hsl(var(--accent-foreground));
-  transform: translateY(-1px);
+  
 }
 
 .sortableHeader:active {
@@ -70,7 +66,7 @@
 }
 
 .virtualizedRow:hover {
-  background: linear-gradient(135deg, hsl(var(--accent)) / 0.1, hsl(var(--accent)) / 0.05);
+  background: transparent;
   border-left: 3px solid hsl(var(--primary));
 }
 
@@ -148,24 +144,24 @@
   font-weight: 600;
   letter-spacing: 0.025em;
   text-transform: uppercase;
-  backdrop-filter: blur(4px);
+  
   border: 1px solid transparent;
   transition: all 0.2s ease;
 }
 
 .typeTag:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px -2px currentColor / 0.3;
+  
+  box-shadow: none;
 }
 
 .incomeTag {
-  background: linear-gradient(135deg, hsl(142, 76%, 36%) / 0.15, hsl(142, 76%, 36%) / 0.05);
+  background: transparent;
   color: hsl(142, 76%, 30%);
   border-color: hsl(142, 76%, 36%) / 0.2;
 }
 
 .expenseTag {
-  background: linear-gradient(135deg, hsl(346, 87%, 43%) / 0.15, hsl(346, 87%, 43%) / 0.05);
+  background: transparent;
   color: hsl(346, 87%, 37%);
   border-color: hsl(346, 87%, 43%) / 0.2;
 }
@@ -173,26 +169,26 @@
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .incomeTag {
-    background: linear-gradient(135deg, hsl(142, 76%, 36%) / 0.25, hsl(142, 76%, 36%) / 0.1);
+    background: transparent;
     color: hsl(142, 76%, 60%);
     border-color: hsl(142, 76%, 36%) / 0.3;
   }
   
   .expenseTag {
-    background: linear-gradient(135deg, hsl(346, 87%, 43%) / 0.25, hsl(346, 87%, 43%) / 0.1);
+    background: transparent;
     color: hsl(346, 87%, 60%);
     border-color: hsl(346, 87%, 43%) / 0.3;
   }
 
   .transactionsTable {
-    background: linear-gradient(135deg, hsl(var(--card)) / 0.95, hsl(var(--background)) / 0.90);
+    background: transparent;
     box-shadow: 
       0 10px 25px -5px hsl(var(--background)) / 0.4,
       0 8px 10px -6px hsl(var(--background)) / 0.3;
   }
 
   .transactionRow:hover {
-    background: linear-gradient(135deg, hsl(var(--accent)) / 0.2, hsl(var(--accent)) / 0.05);
+    background: transparent;
     border-left: 3px solid hsl(var(--primary));
   }
 }
@@ -201,9 +197,9 @@
 .tableContainer {
   width: 100%;
   overflow-x: auto;
-  border-radius: 16px;
-  background: linear-gradient(135deg, hsl(var(--background)) / 0.5, hsl(var(--muted)) / 0.1);
-  backdrop-filter: blur(10px);
+  border-radius: 6px;
+  background: transparent;
+  
   border: 1px solid hsl(var(--border)) / 0.5;
   box-shadow: 
     0 20px 25px -5px hsl(var(--muted-foreground)) / 0.1,
@@ -216,17 +212,17 @@
   flex-direction: column;
   gap: 1rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, hsl(var(--card)) / 0.95, hsl(var(--background)) / 0.98);
-  border-radius: 16px;
+  background: transparent;
+  border-radius: 6px;
   border: 1px solid hsl(var(--border)) / 0.5;
-  backdrop-filter: blur(8px);
+  
 }
 
 /* Skeleton Loading Improvements */
 .skeletonTableContainer {
   width: 100%;
   overflow-x: auto;
-  border-radius: 16px;
+  border-radius: 6px;
 }
 
 .skeletonTableContainer table {
@@ -306,8 +302,8 @@
 }
 
 .actionsColumn button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px -2px currentColor / 0.3;
+  
+  box-shadow: none;
   border-color: currentColor / 0.2;
 }
 
@@ -331,3 +327,4 @@
 .transactionsTable tbody tr:nth-child(odd) {
   background: transparent;
 } 
+

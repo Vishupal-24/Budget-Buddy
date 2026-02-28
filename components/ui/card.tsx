@@ -9,7 +9,7 @@ const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElemen
       <div
         ref={ref}
         className={cn(
-          'rounded-xl border border-border bg-card text-card-foreground',
+          'rounded-md border border-border bg-card text-card-foreground shadow-sm',
           className
         )}
         {...rest}
@@ -22,7 +22,7 @@ Card.displayName = 'Card';
 const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   (props, ref) => {
     const { className, ...rest } = props;
-    return <div ref={ref} className={cn('flex flex-col space-y-1.5 p-6', className)} {...rest} />;
+    return <div ref={ref} className={cn('flex flex-col space-y-1 p-5', className)} {...rest} />;
   }
 );
 CardHeader.displayName = 'CardHeader';
@@ -33,7 +33,7 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTML
     return (
       <h3
         ref={ref}
-        className={cn('text-xl sm:text-2xl font-semibold leading-tight tracking-tight', className)}
+        className={cn('text-lg font-medium leading-tight tracking-tight', className)}
         {...rest}
       />
     );
@@ -53,7 +53,7 @@ CardDescription.displayName = 'CardDescription';
 const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   (props, ref) => {
     const { className, ...rest } = props;
-    return <div ref={ref} className={cn('p-6 pt-0', className)} {...rest} />;
+    return <div ref={ref} className={cn('p-5 pt-0', className)} {...rest} />;
   }
 );
 CardContent.displayName = 'CardContent';
@@ -61,7 +61,7 @@ CardContent.displayName = 'CardContent';
 const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   (props, ref) => {
     const { className, ...rest } = props;
-    return <div ref={ref} className={cn('flex items-center p-6 pt-0', className)} {...rest} />;
+    return <div ref={ref} className={cn('flex items-center p-5 pt-0', className)} {...rest} />;
   }
 );
 CardFooter.displayName = 'CardFooter';

@@ -292,7 +292,7 @@ export function ChatInterface({
                     )}
                     
                     <div className={`
-                      max-w-[80%] rounded-2xl p-4 ${
+                      max-w-[80%] rounded-lg p-4 ${
                         message.role === 'user' 
                           ? 'bg-primary text-primary-foreground ml-auto' 
                           : 'bg-muted/50'
@@ -316,7 +316,7 @@ export function ChatInterface({
                     </div>
                     
                     {message.role === 'user' && (
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center">
+                      <div className="flex-shrink-0 w-8 h-8 rounded bg-muted/50 flex items-center justify-center">
                         <User className="h-4 w-4 text-muted-foreground" />
                       </div>
                     )}
@@ -329,7 +329,7 @@ export function ChatInterface({
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-foreground flex items-center justify-center">
                     <Bot className="h-4 w-4 text-background" />
                   </div>
-                  <div className="bg-muted/50 rounded-2xl p-4">
+                  <div className="bg-muted/50 rounded-lg p-4">
                     <TypingIndicator />
                   </div>
                 </div>
@@ -411,7 +411,7 @@ export function ChatInterface({
           </div>
 
           <div className="relative">
-            <div className="flex gap-2 items-end bg-background border border-border rounded-2xl p-2 shadow-sm">
+            <div className="flex gap-2 items-end bg-background border border-border rounded-lg p-2 shadow-sm">
               <Button
                 variant="ghost"
                 size="sm"
@@ -441,7 +441,7 @@ export function ChatInterface({
                   className="h-8 px-2 text-xs text-muted-foreground hidden sm:flex items-center gap-1"
                   disabled
                 >
-                  <div className="w-2 h-2 rounded-full bg-muted-foreground/40" />
+                  <div className="w-2 h-2 rounded bg-muted/50-foreground/40" />
                   0.00% of model context used
                 </Button>
                 
@@ -449,7 +449,7 @@ export function ChatInterface({
                   onClick={handleSend} 
                   disabled={loading || !inputMessage.trim()}
                   size="sm"
-                  className="h-10 w-10 p-0 rounded-xl transition-colors disabled:hover:scale-100"
+                  className="h-10 w-10 p-0 rounded-md transition-colors disabled:hover:scale-100"
                 >
                   {loading ? (
                     <Loader2 className="h-4 w-4 animate-spin" />

@@ -12,7 +12,7 @@ interface StatCardProps {
 
 export function StatCard({ title, value, icon, className = "" }: StatCardProps) {
   return (
-    <div className={`rounded-xl border bg-card p-5 md:p-6 ${className}`}>
+    <div className={`rounded-md border bg-card p-5 md:p-6 ${className}`}>
       <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
         <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted text-foreground">
           {icon}
@@ -59,7 +59,7 @@ export function DashboardStats({ totalIncome, totalExpense, balance }: Dashboard
         }
       />
 
-      <div className={`rounded-xl border bg-card p-5 md:p-6 sm:col-span-2 lg:col-span-1`}>
+      <div className={`rounded-md border bg-card p-5 md:p-6 sm:col-span-2 lg:col-span-1`}>
         <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
           <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted text-foreground">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">

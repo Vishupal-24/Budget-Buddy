@@ -45,7 +45,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label, v
           {(viewMode === 'all' || viewMode === 'income') && (
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-muted-foreground"></div>
+                <div className="w-3 h-3 rounded bg-muted/50-foreground"></div>
                 <span className="text-sm text-muted-foreground">Income</span>
               </div>
               <span className="font-medium text-foreground">{formatCurrency(data.income)}</span>
@@ -244,7 +244,7 @@ function IncomeExpenseChartComponent({ monthlyData }: IncomeExpenseChartProps) {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center h-64 text-center p-4">
-            <div className="w-16 h-16 rounded-full bg-muted/20 flex items-center justify-center mb-4">
+            <div className="w-16 h-16 rounded bg-muted/50/20 flex items-center justify-center mb-4">
               <BarChart3 className="h-8 w-8 text-muted-foreground/40" />
             </div>
             <p className="text-muted-foreground text-lg mb-2">No data available</p>

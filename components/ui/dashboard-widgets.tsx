@@ -282,7 +282,7 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
           </div>
           
           <div className="text-center">
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground mx-auto mb-2">
+            <div className="flex items-center justify-center w-8 h-8 rounded bg-muted/50 text-foreground mx-auto mb-2">
               <PieChart className="h-4 w-4" />
             </div>
             <div className="text-lg md:text-xl font-bold text-foreground">
@@ -305,7 +305,7 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
           </div>
           
           <div className="text-center">
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground mx-auto mb-2">
+            <div className="flex items-center justify-center w-8 h-8 rounded bg-muted/50 text-foreground mx-auto mb-2">
               <Calendar className="h-4 w-4" />
             </div>
             <div className="text-sm md:text-base font-bold text-foreground">
@@ -319,7 +319,7 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
         {balance > 0 && avgDailySpend > 0 && (
           <div className="pt-4 border-t">
             <div className="text-center">
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground mx-auto mb-2">
+              <div className="flex items-center justify-center w-8 h-8 rounded bg-muted/50 text-foreground mx-auto mb-2">
                 <TrendingUp className="h-4 w-4" />
               </div>
               <div className="text-lg md:text-xl font-bold text-foreground">
@@ -339,7 +339,7 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
     <div className="rounded-xl border bg-card p-5 md:p-6">
       {/* Header */}
       <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground mb-3 md:mb-4">
-        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground">
+        <div className="flex items-center justify-center w-8 h-8 rounded bg-muted/50 text-foreground">
           <Brain className="h-4 w-4" />
         </div>
         Financial Insights
@@ -387,7 +387,7 @@ export function BudgetProgressWidget({ data }: Readonly<{ data: any }>) {
     <div className="rounded-xl border bg-card p-5 md:p-6">
       {/* Header */}
       <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground mb-3 md:mb-4">
-        <div className={`flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground`}>
+        <div className={`flex items-center justify-center w-8 h-8 rounded bg-muted/50 text-foreground`}>
           <Target className="h-4 w-4" />
         </div>
         Budget Progress
@@ -422,7 +422,7 @@ export function BudgetProgressWidget({ data }: Readonly<{ data: any }>) {
         {/* Budget Stats */}
         <div className="grid grid-cols-2 gap-4 pt-4 border-t">
           <div className="text-center">
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground mx-auto mb-2">
+            <div className="flex items-center justify-center w-8 h-8 rounded bg-muted/50 text-foreground mx-auto mb-2">
               <DollarSign className="h-4 w-4" />
             </div>
             <div className="text-lg md:text-xl font-bold text-foreground">

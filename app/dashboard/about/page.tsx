@@ -205,7 +205,7 @@ export default function AboutPage() {
     <div className="animate-fade-in">
       <ScrollProgressBar />
       <div className="w-full bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 mb-8  relative overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-[100px] opacity-60"></div>
+        <div className="absolute -top-20 -left-20 w-60 h-60 bg-transparent rounded-full blur-[100px] opacity-60"></div>
         <div className="absolute -bottom-10 right-0 w-40 h-40 bg-primary/10 rounded-full blur-[80px]"></div>
         <div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full"
@@ -456,7 +456,7 @@ export default function AboutPage() {
                 ].map((item, index) => (
                   <div key={index} className="group">
                     <div
-                      className={`p-4 rounded-xl bg-gradient-to-br ${item.color} border border-primary/10 hover:border-primary/20 transition-all duration-300  `}
+                      className={`p-4 rounded-md bg-gradient-to-br ${item.color} border border-primary/10 hover:border-primary/20 transition-all duration-300  `}
                     >
                       <div className="flex items-center gap-3 mb-3">
                         <div className="text-primary transition-transform">
@@ -596,7 +596,7 @@ export default function AboutPage() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="rounded-full h-9 border-primary/20 hover:bg-primary/5 text-xs w-auto group transition-all"
+                    className="rounded-full h-9 border-primary/20 hover:bg-transparent text-xs w-auto group transition-all"
                     asChild
                   >
                     <Link
@@ -1256,7 +1256,7 @@ export default function AboutPage() {
                 ].map((stat, index) => (
                   <div key={index} className="group">
                     <div
-                      className={`p-6 rounded-xl bg-gradient-to-br ${stat.color} border border-border/50 hover:border-primary/30 transition-all duration-300   text-center`}
+                      className={`p-6 rounded-md bg-gradient-to-br ${stat.color} border border-border/50 hover:border-primary/30 transition-all duration-300   text-center`}
                     >
                       <div
                         className={`${stat.textColor} mx-auto mb-4 transition-transform duration-300`}
@@ -1329,9 +1329,9 @@ export default function AboutPage() {
                 <div className="p-6 pt-10 relative z-10">
                   <div className="flex flex-col md:flex-row gap-8">
                     <div className="flex flex-col items-center md:items-start">
-                      <div className="w-36 h-36 md:w-48 md:h-48 rounded-xl overflow-hidden border-4 border-background border relative group">
+                      <div className="w-36 h-36 md:w-48 md:h-48 rounded-md overflow-hidden border-4 border-background border relative group">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/30 opacity-70 group-hover:opacity-40 transition-opacity duration-300"></div>
-                        <div className="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
+                        <div className="absolute inset-0 bg-transparent mix-blend-overlay"></div>
                         <Image
                           src="/1.png"
                           alt="Aditya Kumar Tiwari"
@@ -1344,22 +1344,22 @@ export default function AboutPage() {
                       </div>
                       
                       <div className="flex flex-wrap gap-2 justify-center mt-4 md:hidden">
-                        <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-primary/5 group transition-all" asChild>
+                        <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-transparent group transition-all" asChild>
                           <Link href="https://github.com/Xenonesis" target="_blank" rel="noopener noreferrer">
                             <Github className="h-4 w-4 transition-transform" />
                           </Link>
                         </Button>
-                        <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-primary/5 group transition-all" asChild>
+                        <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-transparent group transition-all" asChild>
                           <Link href="https://www.linkedin.com/in/itisaddy/" target="_blank" rel="noopener noreferrer">
                             <Linkedin className="h-4 w-4 transition-transform" />
                           </Link>
                         </Button>
-                        <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-primary/5 group transition-all" asChild>
+                        <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-transparent group transition-all" asChild>
                           <Link href="https://www.instagram.com/i__aditya7/" target="_blank" rel="noopener noreferrer">
                             <Instagram className="h-4 w-4 transition-transform" />
                           </Link>
                         </Button>
-                        <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-primary/5 group transition-all" asChild>
+                        <Button variant="outline" size="icon" className="rounded-full h-8 w-8 hover:bg-transparent group transition-all" asChild>
                           <Link href="https://iaddy.netlify.app/" target="_blank" rel="noopener noreferrer">
                             <Globe className="h-4 w-4 transition-transform" />
                           </Link>
@@ -1373,25 +1373,25 @@ export default function AboutPage() {
                         <p className="text-muted-foreground text-sm sm:text-base">Cybersecurity Specialist • Full-Stack Developer • Sushant University</p>
                         
                         <div className="mt-3 hidden md:flex flex-wrap gap-2">
-                          <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-primary/5 group transition-all" asChild>
+                          <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-transparent group transition-all" asChild>
                             <Link href="https://github.com/Xenonesis" target="_blank" rel="noopener noreferrer">
                               <Github className="h-4 w-4 transition-transform" />
                               <span className="text-xs group-hover:translate-x-0.5 transition-transform">GitHub</span>
                             </Link>
                           </Button>
-                          <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-primary/5 group transition-all" asChild>
+                          <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-transparent group transition-all" asChild>
                             <Link href="https://www.linkedin.com/in/itisaddy/" target="_blank" rel="noopener noreferrer">
                               <Linkedin className="h-4 w-4 transition-transform" />
                               <span className="text-xs group-hover:translate-x-0.5 transition-transform">LinkedIn</span>
                             </Link>
                           </Button>
-                          <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-primary/5 group transition-all" asChild>
+                          <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-transparent group transition-all" asChild>
                             <Link href="https://www.instagram.com/i__aditya7/" target="_blank" rel="noopener noreferrer">
                               <Instagram className="h-4 w-4 transition-transform" />
                               <span className="text-xs group-hover:translate-x-0.5 transition-transform">Instagram</span>
                             </Link>
                           </Button>
-                          <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-primary/5 group transition-all" asChild>
+                          <Button variant="outline" size="sm" className="rounded-full h-9 px-4 gap-1.5 hover:bg-transparent group transition-all" asChild>
                             <Link href="https://iaddy.netlify.app/" target="_blank" rel="noopener noreferrer">
                               <Globe className="h-4 w-4 transition-transform" />
                               <span className="text-xs group-hover:translate-x-0.5 transition-transform">Portfolio</span>
@@ -1407,7 +1407,7 @@ export default function AboutPage() {
                           <Badge 
                             key={i} 
                             variant="outline" 
-                            className="bg-primary/5 border-primary/20 text-xs px-3 py-1 hover:bg-primary/10 transition-colors cursor-default"
+                            className="bg-transparent border-primary/20 text-xs px-3 py-1 hover:bg-primary/10 transition-colors cursor-default"
                           >
                             {skill}
                           </Badge>
@@ -1438,7 +1438,7 @@ export default function AboutPage() {
                         </div>
                         <div className="flex justify-between mb-1.5">
                           <h5 className="text-sm font-medium">Mentor (Part-time)</h5>
-                          <Badge variant="outline" className="text-xs h-5 bg-primary/5">Aug 2025 - Present</Badge>
+                          <Badge variant="outline" className="text-xs h-5 bg-transparent">Aug 2025 - Present</Badge>
                         </div>
                         <p className="text-xs text-muted-foreground">JhaMobii Technologies Pvt. Ltd.</p>
                       </li>
@@ -1449,7 +1449,7 @@ export default function AboutPage() {
                         </div>
                         <div className="flex justify-between mb-1.5">
                           <h5 className="text-sm font-medium">Cybersecurity Intern</h5>
-                          <Badge variant="outline" className="text-xs h-5 bg-primary/5">Jun 2025 - Present</Badge>
+                          <Badge variant="outline" className="text-xs h-5 bg-transparent">Jun 2025 - Present</Badge>
                         </div>
                         <p className="text-xs text-muted-foreground">Null</p>
                       </li>
@@ -1460,7 +1460,7 @@ export default function AboutPage() {
                         </div>
                         <div className="flex justify-between mb-1.5">
                           <h5 className="text-sm font-medium">Cybersecurity and AI/ML Intern</h5>
-                          <Badge variant="outline" className="text-xs h-5 bg-primary/5">Oct 2025 - Present</Badge>
+                          <Badge variant="outline" className="text-xs h-5 bg-transparent">Oct 2025 - Present</Badge>
                         </div>
                         <p className="text-xs text-muted-foreground">Quantam Pvt. Ltd.</p>
                       </li>
@@ -1543,8 +1543,8 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className="p-6">
               <div className="relative">
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-                <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-transparent rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-transparent rounded-full blur-3xl pointer-events-none"></div>
 
                 <div className="relative z-10 space-y-4">
                   {[
@@ -1696,7 +1696,7 @@ export default function AboutPage() {
                           className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-card  group"
                         >
                           <div className="w-12 h-12 mb-3 relative flex items-center justify-center">
-                            <div className="absolute inset-0 bg-primary/5 rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
+                            <div className="absolute inset-0 bg-transparent rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
                             <div className="relative z-10 w-10 h-10">
                               <TechLogo
                                 name={tech.name}
@@ -1751,7 +1751,7 @@ export default function AboutPage() {
                           className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-card  group"
                         >
                           <div className="w-12 h-12 mb-3 relative flex items-center justify-center">
-                            <div className="absolute inset-0 bg-primary/5 rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
+                            <div className="absolute inset-0 bg-transparent rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
                             <div className="relative z-10 w-10 h-10">
                               <TechLogo
                                 name={tech.name}
@@ -1800,7 +1800,7 @@ export default function AboutPage() {
                           className="flex flex-col items-center p-3 rounded-lg border border-muted hover:border-primary/20 transition-all bg-card  group"
                         >
                           <div className="w-12 h-12 mb-3 relative flex items-center justify-center">
-                            <div className="absolute inset-0 bg-primary/5 rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
+                            <div className="absolute inset-0 bg-transparent rounded-full blur-md group-hover:bg-primary/10 transition-colors"></div>
                             <div className="relative z-10 w-10 h-10">
                               <TechLogo
                                 name={tech.name}
@@ -1825,7 +1825,7 @@ export default function AboutPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="rounded-full h-9 px-4 gap-1.5 border-primary/20 hover:bg-primary/5 text-xs w-full sm:w-auto"
+                      className="rounded-full h-9 px-4 gap-1.5 border-primary/20 hover:bg-transparent text-xs w-full sm:w-auto"
                       asChild
                     >
                       <Link
@@ -1852,7 +1852,7 @@ export default function AboutPage() {
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
                 <div className="absolute -bottom-5 -left-5 w-20 h-20 bg-primary/10 rounded-full blur-2xl"></div>
                 <CardTitle className="flex items-center gap-3 text-2xl font-bold relative z-10">
-                  <div className="p-2 rounded-xl bg-primary/10 border border-primary/20">
+                  <div className="p-2 rounded-md bg-muted/50 text-foreground border border-primary/20">
                     <Table className="w-6 h-6 text-primary" />
                   </div>
                   <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
@@ -1867,10 +1867,10 @@ export default function AboutPage() {
               <CardContent className="p-8">
                 <div className="space-y-8">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl blur-sm"></div>
-                    <div className="relative bg-gradient-to-r from-primary/8 to-primary/8 p-6 rounded-2xl border border-primary/20 ">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-lg blur-sm"></div>
+                    <div className="relative bg-gradient-to-r from-primary/8 to-primary/8 p-6 rounded-lg border border-primary/20 ">
                       <div className="flex items-start gap-4">
-                        <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
+                        <div className="p-3 rounded-md bg-transparent border border-border border border-primary/20 shrink-0">
                           <Sparkles className="w-6 h-6 text-primary" />
                         </div>
                         <div>
@@ -1899,7 +1899,7 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  <div className="overflow-x-auto rounded-2xl border border-primary/20 bg-gradient-to-br from-white to-primary/5 dark:from-muted dark:to-primary/10">
+                  <div className="overflow-x-auto rounded-lg border border-primary/20 bg-gradient-to-br from-white to-primary/5 dark:from-muted dark:to-primary/10">
                     <UITable>
                       <TableHeader>
                         <TableRow className="hover:bg-transparent border-b border-primary/20 bg-gradient-to-r from-primary/5 to-primary/5 dark:from-primary/10 dark:to-primary/10">
@@ -1915,15 +1915,15 @@ export default function AboutPage() {
                                 <div className="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
                                 <span className="font-bold text-primary text-lg">Budget Buddy</span>
                               </div>
-                              <span className="text-xs text-muted-foreground font-medium bg-primary/5 px-3 py-1 rounded-full">
+                              <span className="text-xs text-muted-foreground font-medium bg-transparent px-3 py-1 rounded-full">
                                 Next-Gen Finance Platform
                               </span>
                             </div>
                           </TableHead>
                           <TableHead className="text-center p-6">
                             <div className="flex flex-col items-center gap-2">
-                              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-muted">
-                                <div className="w-3 h-3 rounded-full bg-muted-foreground/50"></div>
+                              <div className="flex items-center gap-2 px-4 py-2 rounded bg-muted/50/50 border border-muted">
+                                <div className="w-3 h-3 rounded bg-muted/50-foreground/50"></div>
                                 <span className="font-medium text-muted-foreground text-lg">
                                   Traditional Apps
                                 </span>
@@ -2022,14 +2022,14 @@ export default function AboutPage() {
                                 <div className="flex justify-center">
                                   <div className="relative">
                                     <div className="absolute inset-0 bg-muted rounded-full blur-sm"></div>
-                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-muted to-muted flex items-center justify-center text-foreground transition-transform">
+                                    <span className="relative w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground transition-transform">
                                       <Check className="w-5 h-5" />
                                     </span>
                                   </div>
                                 </div>
                               ) : (
                                 <div className="flex justify-center">
-                                  <span className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground border border-border">
+                                  <span className="w-10 h-10 rounded bg-muted/50 flex items-center justify-center text-foreground border border-border">
                                     <X className="w-5 h-5" />
                                   </span>
                                 </div>
@@ -2040,7 +2040,7 @@ export default function AboutPage() {
                                 <div className="flex justify-center">
                                   <div className="relative">
                                     <div className="absolute inset-0 bg-muted rounded-full blur-sm"></div>
-                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-muted to-muted flex items-center justify-center text-foreground transition-transform">
+                                    <span className="relative w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground transition-transform">
                                       <Check className="w-5 h-5" />
                                     </span>
                                   </div>
@@ -2049,14 +2049,14 @@ export default function AboutPage() {
                                 <div className="flex justify-center">
                                   <div className="relative">
                                     <div className="absolute inset-0 bg-muted rounded-full blur-sm"></div>
-                                    <span className="relative w-10 h-10 rounded-full bg-gradient-to-br from-muted to-muted flex items-center justify-center text-foreground transition-transform">
+                                    <span className="relative w-10 h-10 rounded-full bg-card flex items-center justify-center text-foreground transition-transform">
                                       <Check className="w-5 h-5 opacity-80" />
                                     </span>
                                   </div>
                                 </div>
                               ) : (
                                 <div className="flex justify-center">
-                                  <span className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground border border-border transition-transform">
+                                  <span className="w-10 h-10 rounded bg-muted/50 flex items-center justify-center text-foreground border border-border transition-transform">
                                     <X className="w-5 h-5" />
                                   </span>
                                 </div>
@@ -2086,10 +2086,10 @@ export default function AboutPage() {
 
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="group relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
-                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20  group-hover:border-primary/30 transition-all">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-lg blur-sm group-hover:blur-md transition-all"></div>
+                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-lg border border-primary/20  group-hover:border-primary/30 transition-all">
                             <div className="flex items-start gap-4">
-                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
+                              <div className="p-3 rounded-md bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
                                 <Network className="w-6 h-6 text-primary" />
                               </div>
                               <div>
@@ -2106,10 +2106,10 @@ export default function AboutPage() {
                         </div>
 
                         <div className="group relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
-                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20  group-hover:border-primary/30 transition-all">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-lg blur-sm group-hover:blur-md transition-all"></div>
+                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-lg border border-primary/20  group-hover:border-primary/30 transition-all">
                             <div className="flex items-start gap-4">
-                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
+                              <div className="p-3 rounded-md bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
                                 <Cpu className="w-6 h-6 text-primary" />
                               </div>
                               <div>
@@ -2126,10 +2126,10 @@ export default function AboutPage() {
                         </div>
 
                         <div className="group relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
-                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-2xl border border-primary/20  group-hover:border-primary/30 transition-all">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/10 rounded-lg blur-sm group-hover:blur-md transition-all"></div>
+                          <div className="relative bg-white/80 dark:bg-gray-900/80 p-6 rounded-lg border border-primary/20  group-hover:border-primary/30 transition-all">
                             <div className="flex items-start gap-4">
-                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
+                              <div className="p-3 rounded-md bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 shrink-0 transition-transform">
                                 <LayoutGrid className="w-6 h-6 text-primary" />
                               </div>
                               <div>

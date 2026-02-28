@@ -70,7 +70,7 @@ function LoginContent() {
             exit={{ opacity: 0, y: -12 }}
             className="fixed top-6 left-1/2 -translate-x-1/2 z-50 max-w-sm w-full mx-4"
           >
-            <div className="bg-card border border-border/60 rounded-xl px-4 py-3 shadow-lg flex items-center gap-3">
+            <div className="bg-card border border-border/60 rounded-md px-4 py-3 shadow-lg flex items-center gap-3">
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                 <CheckCircle2 className="h-4 w-4 text-primary" />
               </div>
@@ -131,7 +131,7 @@ function LoginContent() {
         </Link>
 
         {/* Auth card */}
-        <div className="bg-card/80 backdrop-blur-xl rounded-2xl border border-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] p-8 sm:p-10">
+        <div className="bg-card/80 backdrop-blur-xl rounded-lg border border-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] p-8 sm:p-10">
           <div className="mb-8">
             <div className="mb-6">
               <AuthLogo />

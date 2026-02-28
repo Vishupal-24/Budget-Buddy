@@ -159,7 +159,7 @@ export default function ChangelogPage() {
                       </span>
                     </div>
 
-                    <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-border transition-all">
+                    <div className="bg-card border border-border/50 rounded-lg p-6 shadow-sm hover:shadow-md hover:border-border transition-all">
                       <ul className="space-y-4">
                         {release.commits.map((commit, i) => (
                           <li key={i} className="flex gap-4">

@@ -36,7 +36,7 @@ const AboutSection = dynamic(
 
 // Loading placeholder for animations - memoized
 const BubblePlaceholder = memo(function BubblePlaceholder() {
-  return <div className="absolute inset-0 bg-primary/5 opacity-30 rounded-full" />;
+  return <div className="absolute inset-0 bg-transparent opacity-30 rounded-full" />;
 });
 
 // Optimized dynamic imports for animations - load only when visible

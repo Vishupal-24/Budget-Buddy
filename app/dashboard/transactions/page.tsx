@@ -2245,9 +2245,9 @@ export default function TransactionsPage() {
             <div className="space-y-8 animate-in slide-in-from-top-4 duration-500">
               {/* Quick Stats Overview */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-muted/50 rounded-2xl p-4 border border-border">
+                <div className="bg-muted/50 rounded-lg p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-muted rounded-xl">
+                    <div className="p-2 bg-muted rounded-md">
                       <TrendingUp className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
@@ -2264,9 +2264,9 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-muted/50 rounded-2xl p-4 border border-border">
+                <div className="bg-muted/50 rounded-lg p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-muted rounded-xl">
+                    <div className="p-2 bg-muted rounded-md">
                       <TrendingDown className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
@@ -2283,9 +2283,9 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-muted/50 rounded-2xl p-4 border border-border">
+                <div className="bg-muted/50 rounded-lg p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-muted rounded-xl">
+                    <div className="p-2 bg-muted rounded-md">
                       <PiggyBank className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
@@ -2309,9 +2309,9 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-muted/50 rounded-2xl p-4 border border-border">
+                <div className="bg-muted/50 rounded-lg p-4 border border-border">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-muted rounded-xl">
+                    <div className="p-2 bg-muted rounded-md">
                       <Calendar className="w-5 h-5 text-foreground" />
                     </div>
                     <div>
@@ -2329,11 +2329,11 @@ export default function TransactionsPage() {
               {/* Enhanced Chart Grid */}
               <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
                 {/* Income vs Expenses Chart */}
-                <div className="bg-card rounded-2xl border border-border overflow-hidden">
+                <div className="bg-card rounded-lg border border-border overflow-hidden">
                   <div className="bg-muted/30 p-6 border-b border-border/50">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-muted rounded-xl">
+                        <div className="p-2 bg-muted rounded-md">
                           <BarChart3 className="w-6 h-6 text-primary" />
                         </div>
                         <div>
@@ -2345,9 +2345,9 @@ export default function TransactionsPage() {
                       </div>
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-muted" />
+                          <div className="w-3 h-3 rounded bg-muted/50" />
                           <span className="text-xs text-foreground font-medium">Income</span>
-                          <div className="w-3 h-3 rounded-full bg-muted ml-2" />
+                          <div className="w-3 h-3 rounded bg-muted/50 ml-2" />
                           <span className="text-xs text-foreground font-medium">Expenses</span>
                         </div>
                         <Button
@@ -2394,11 +2394,11 @@ export default function TransactionsPage() {
                 </div>
 
                 {/* Year-over-Year Comparison */}
-                <div className="bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-2xl border border-border/50  backdrop-blur-sm overflow-hidden">
+                <div className="bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-lg border border-border/50  backdrop-blur-sm overflow-hidden">
                   <div className="bg-gradient-to-r from-muted/30 to-muted/10 p-6 border-b border-border/50">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-primary/10 rounded-xl">
+                        <div className="p-2 bg-primary/10 rounded-md">
                           <TrendingUp className="w-6 h-6 text-primary" />
                         </div>
                         <div>
@@ -2459,13 +2459,13 @@ export default function TransactionsPage() {
               </div>
 
               {/* Additional Insights Row */}
-              <div className="bg-gradient-to-br from-muted/10 via-background to-muted/5 rounded-2xl border border-border/50 p-6">
+              <div className="bg-gradient-to-br from-muted/10 via-background to-muted/5 rounded-lg border border-border/50 p-6">
                 <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                   <Lightbulb className="w-5 h-5 text-primary" />
                   Smart Insights
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
+                  <div className="bg-card rounded-md p-4 border border-border">
                     <div className="flex items-start gap-3">
                       <div className="p-1 bg-muted rounded-lg">
                         <Info className="w-4 h-4 text-foreground" />
@@ -2485,7 +2485,7 @@ export default function TransactionsPage() {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
+                  <div className="bg-card rounded-md p-4 border border-border">
                     <div className="flex items-start gap-3">
                       <div className="p-1 bg-muted rounded-lg">
                         <TrendingUp className="w-4 h-4 text-foreground" />
@@ -2505,7 +2505,7 @@ export default function TransactionsPage() {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
+                  <div className="bg-card rounded-md p-4 border border-border">
                     <div className="flex items-start gap-3">
                       <div className="p-1 bg-muted rounded-lg">
                         <Target className="w-4 h-4 text-foreground" />
@@ -2642,7 +2642,7 @@ export default function TransactionsPage() {
           {/* Modal Header */}
           <div className="flex items-center justify-between p-6 border-b border-border/50 bg-gradient-to-r from-muted/30 to-muted/10">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-gradient-to-br from-muted to-muted rounded-xl">
+              <div className="p-3 bg-card rounded-md">
                 <BarChart3 className="w-8 h-8 text-primary" />
               </div>
               <div>
@@ -2657,7 +2657,7 @@ export default function TransactionsPage() {
               variant="ghost"
               size="sm"
               onClick={() => setShowFullscreenChart(false)}
-              className="h-10 w-10 p-0 hover:bg-destructive/10 hover:text-destructive transition-all duration-200 group rounded-xl"
+              className="h-10 w-10 p-0 hover:bg-destructive/10 hover:text-destructive transition-all duration-200 group rounded-md"
               title="Close fullscreen view"
             >
               <X className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
@@ -2666,10 +2666,10 @@ export default function TransactionsPage() {
 
           {/* Modal Content */}
           <div className="flex-1 p-6 overflow-hidden">
-            <div className="h-full bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-2xl border border-border/50  backdrop-blur-sm p-6">
+            <div className="h-full bg-gradient-to-br from-card via-card/95 to-muted/20 rounded-lg border border-border/50  backdrop-blur-sm p-6">
               {/* Enhanced Stats Row for Fullscreen */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
+                <div className="bg-card rounded-md p-4 border border-border">
                   <div className="flex items-center gap-3">
                     <TrendingUp className="w-6 h-6 text-foreground" />
                     <div>
@@ -2683,7 +2683,7 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
+                <div className="bg-card rounded-md p-4 border border-border">
                   <div className="flex items-center gap-3">
                     <TrendingDown className="w-6 h-6 text-foreground" />
                     <div>
@@ -2697,7 +2697,7 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
+                <div className="bg-card rounded-md p-4 border border-border">
                   <div className="flex items-center gap-3">
                     <PiggyBank className="w-6 h-6 text-foreground" />
                     <div>
@@ -2713,7 +2713,7 @@ export default function TransactionsPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted rounded-xl p-4 border border-border">
+                <div className="bg-card rounded-md p-4 border border-border">
                   <div className="flex items-center gap-3">
                     <BarChart3 className="w-6 h-6 text-foreground" />
                     <div>
@@ -2732,7 +2732,7 @@ export default function TransactionsPage() {
               </div>
 
               {/* Fullscreen Chart */}
-              <div className="h-[calc(100%-120px)] min-h-[500px] bg-gradient-to-br from-background/50 to-muted/10 rounded-xl p-4 border border-border/30">
+              <div className="h-[calc(100%-120px)] min-h-[500px] bg-gradient-to-br from-background/50 to-muted/10 rounded-md p-4 border border-border/30">
                 <IncomeExpenseChart
                   monthlyData={monthlyData.map((month) => ({
                     ...month,
@@ -2769,7 +2769,7 @@ export default function TransactionsPage() {
           <div className="p-6 border-t border-border/50 bg-gradient-to-r from-muted/20 to-muted/10">
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-muted" />
+                <div className="w-2 h-2 rounded bg-muted/50" />
                 <span>Click on chart points to filter transactions by month</span>
               </div>
               <div className="flex items-center gap-2">

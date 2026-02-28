@@ -143,7 +143,7 @@ export default function TransactionsDemoPage() {
             </div>
 
             {/* Feature Highlights */}
-            <div className="mt-12 p-6 bg-muted/30 rounded-xl">
+            <div className="mt-12 p-6 bg-muted/30 rounded-md">
                 <h3 className="text-lg font-semibold mb-4">Enhanced Features</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div className="space-y-2">

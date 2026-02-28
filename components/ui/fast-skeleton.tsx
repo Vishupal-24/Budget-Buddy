@@ -20,7 +20,7 @@ export function FastSkeleton({
     default: "h-4 w-full rounded-lg bg-muted/60",
     card: "h-24 w-full rounded-xl bg-muted/60",
     text: "h-4 rounded-lg bg-muted/60",
-    circle: "h-12 w-12 rounded-full bg-muted/60"
+    circle: "h-12 w-12 rounded bg-muted/50/60"
   };
 
   if (lines > 1) {

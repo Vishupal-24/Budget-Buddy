@@ -185,7 +185,7 @@ export function EnhancedRecentTransactions({
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-primary/10">
+              <div className="p-2 rounded-md bg-muted/50 text-foreground">
                 <Eye className="h-5 w-5 text-primary" />
               </div>
               <div>
@@ -217,7 +217,7 @@ export function EnhancedRecentTransactions({
           {showFilters && (
             <div className="flex flex-col sm:flex-row gap-3">
               {/* Filter buttons */}
-              <div className="flex items-center gap-1 p-1 bg-muted/50 rounded-xl backdrop-blur-sm">
+              <div className="flex items-center gap-1 p-1 bg-muted/50 rounded-md backdrop-blur-sm">
                 {filterButtons.map((btn) => (
                   <Button
                     key={btn.key}
@@ -268,7 +268,7 @@ export function EnhancedRecentTransactions({
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-16 text-center">
-              <div className="w-20 h-20 bg-muted rounded-2xl flex items-center justify-center mb-6">
+              <div className="w-20 h-20 bg-muted rounded-lg flex items-center justify-center mb-6">
                 {searchTerm ? (
                   <Search className="h-10 w-10 text-muted-foreground" />
                 ) : (

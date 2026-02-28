@@ -163,7 +163,7 @@ export function InsightsSettings({ settings, onSettingsChange }: InsightsSetting
                   key={option.id}
                   className={`p-4 rounded-lg border cursor-pointer transition-all ${
                     isEnabled 
-                      ? 'border-primary bg-primary/5 dark:bg-primary/10' 
+                      ? 'border-primary bg-transparent dark:bg-primary/10' 
                       : 'border-border hover:border-primary/50'
                   }`}
                   onClick={() => {

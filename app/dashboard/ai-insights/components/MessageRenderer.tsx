@@ -67,7 +67,7 @@ const MarkdownComponents = {
     </pre>
   ),
   blockquote: ({ children, ...props }: any) => (
-    <blockquote className="border-l-4 border-primary/30 pl-4 py-2 bg-primary/5 rounded-r-lg mb-3" {...props}>
+    <blockquote className="border-l-4 border-primary/30 pl-4 py-2 bg-transparent rounded-r-lg mb-3" {...props}>
       <div className="text-sm italic text-foreground/80">
         {children}
       </div>

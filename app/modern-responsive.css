@@ -29,24 +29,28 @@ html {
   font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.2;
   font-weight: 700;
+  font-family: var(--font-syne);
 }
 
 .responsive-h2 {
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   line-height: 1.3;
   font-weight: 600;
+  font-family: var(--font-syne);
 }
 
 .responsive-h3 {
   font-size: clamp(1.25rem, 3vw, 2rem);
   line-height: 1.4;
   font-weight: 600;
+  font-family: var(--font-syne);
 }
 
 .responsive-h4 {
   font-size: clamp(1.125rem, 2.5vw, 1.5rem);
   line-height: 1.4;
   font-weight: 600;
+  font-family: var(--font-syne);
 }
 
 /* ==============================================
@@ -218,6 +222,7 @@ html {
   padding: clamp(0.75rem, 1.5vw, 1rem);
   text-align: left;
   font-weight: 600;
+  font-family: var(--font-syne);
   font-size: 0.875rem;
   color: hsl(var(--foreground));
   border-bottom: 1px solid hsl(var(--border));
@@ -271,6 +276,7 @@ html {
   .responsive-table td::before {
     content: attr(data-label);
     font-weight: 600;
+  font-family: var(--font-syne);
     margin-right: 1rem;
   }
 }

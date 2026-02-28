@@ -70,7 +70,7 @@ export function AnnualBudgetSummary({ budgets, categorySpending }: AnnualBudgetS
   const currentYear = new Date().getFullYear();
   
   return (
-    <div className="rounded-xl border bg-card overflow-hidden mb-6">
+    <div className="rounded-md border bg-card overflow-hidden mb-6">
       <div className="border-b p-5">
         <div className="flex items-center justify-between">
           <div>
@@ -120,7 +120,7 @@ export function AnnualBudgetSummary({ budgets, categorySpending }: AnnualBudgetS
                 <h3 className="text-sm font-medium text-muted-foreground">Projected Annual Spending</h3>
                 <p className="text-2xl font-bold mt-1 text-foreground">{formatCurrency(yearlyTotals.projectedAnnualSpending)}</p>
               </div>
-              <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
+              <div className="h-10 w-10 rounded bg-muted/50 flex items-center justify-center">
                 <CreditCard className="h-5 w-5 text-foreground" />
               </div>
             </div>
@@ -147,7 +147,7 @@ export function AnnualBudgetSummary({ budgets, categorySpending }: AnnualBudgetS
                   {formatCurrency(Math.abs(yearlyTotals.projectedSavingsOrOverage))}
                 </p>
               </div>
-              <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
+              <div className="h-10 w-10 rounded bg-muted/50 flex items-center justify-center">
                 {yearlyTotals.projectedSavingsOrOverage >= 0 ? (
                   <TrendingUp className="h-5 w-5 text-foreground" />
                 ) : (

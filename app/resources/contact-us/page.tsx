@@ -19,7 +19,7 @@ export default function ContactUsPage() {
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div className="bg-card border rounded-xl p-8">
+          <div className="bg-card border rounded-md p-8">
             <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
             
             <form className="space-y-4">
@@ -72,7 +72,7 @@ export default function ContactUsPage() {
           </div>
           
           <div className="space-y-8">
-            <div className="bg-card border rounded-xl p-8">
+            <div className="bg-card border rounded-md p-8">
               <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
               
               <div className="space-y-6">
@@ -102,7 +102,7 @@ export default function ContactUsPage() {
               </div>
             </div>
             
-            <div className="bg-card border rounded-xl p-8">
+            <div className="bg-card border rounded-md p-8">
               <h2 className="text-xl font-semibold mb-4">Frequently Asked Questions</h2>
               
               <div className="space-y-4">

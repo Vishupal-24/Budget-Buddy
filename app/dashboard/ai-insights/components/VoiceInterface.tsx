@@ -921,7 +921,7 @@ export function VoiceInterface({
   const renderCenterMode = () => (
     <div className={cn("text-center", className)} role="region" aria-labelledby="voice-interface-center-title">
       <h2 id="voice-interface-center-title" className="sr-only">Voice Input Center</h2>
-      <div className="inline-flex flex-col items-center gap-4 p-8 bg-gradient-to-br from-primary/5 via-muted to-muted dark:from-primary/10 dark:via-muted dark:to-muted rounded-2xl border-2 border-dashed border-primary/20">
+      <div className="inline-flex flex-col items-center gap-4 p-8 bg-gradient-to-br from-primary/5 via-muted to-muted dark:from-primary/10 dark:via-muted dark:to-muted rounded-lg border-2 border-dashed border-primary/20">
         {/* Large Microphone Button */}
         <Button
           variant={isListening ? "default" : "outline"}

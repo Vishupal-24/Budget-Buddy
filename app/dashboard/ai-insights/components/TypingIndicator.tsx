@@ -37,7 +37,7 @@ export function TypingIndicator() {
         <span className="transition-all duration-500">{thinkingMessages[currentMessage]}</span>
       </div>
       
-      <div className="bg-gradient-to-br from-card/80 to-muted/50 backdrop-blur border border-border/50 rounded-2xl p-4 shadow-sm animate-fade-in">
+      <div className="bg-gradient-to-br from-card/80 to-muted/50 backdrop-blur border border-border/50 rounded-lg p-4 shadow-sm animate-fade-in">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative">

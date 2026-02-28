@@ -151,7 +151,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-card border rounded-xl p-5 text-foreground">
+        <div className="bg-card border rounded-md p-5 text-foreground">
           <div className="flex items-center gap-3 mb-3 pb-3 border-b border-border/50">
             <div 
               className="h-3 w-3 rounded-full" 
@@ -192,7 +192,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
       const categoryData = spendingVsBudgetData.find(item => item.name === label);
       
       return (
-        <div className="bg-card border rounded-xl p-5  text-foreground backdrop-blur-sm min-w-[280px]">
+        <div className="bg-card border rounded-md p-5  text-foreground backdrop-blur-sm min-w-[280px]">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b border-border/50">
             <div 
               className="h-3 w-3 rounded-full" 
@@ -264,7 +264,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
       const data = payload[0].payload;
       
       return (
-        <div className="bg-card border rounded-xl p-5 text-foreground min-w-[280px]">
+        <div className="bg-card border rounded-md p-5 text-foreground min-w-[280px]">
           <div className="flex items-center gap-3 mb-4 pb-3 border-b border-border/50">
             <Calendar className="h-5 w-5 text-primary" />
             <h4 className="font-bold text-lg">{label}</h4>
@@ -353,7 +353,7 @@ export function BudgetCharts({ budgets, categorySpending }: BudgetChartsProps) {
   };
 
   return (
-    <div className="rounded-xl border bg-card shadow-sm overflow-hidden">
+    <div className="rounded-md border bg-card shadow-sm overflow-hidden">
       <div className="border-b p-4 sm:p-5">
         <h2 className="text-xl font-bold">Budget Analytics</h2>
         <p className="text-sm text-muted-foreground mt-1">

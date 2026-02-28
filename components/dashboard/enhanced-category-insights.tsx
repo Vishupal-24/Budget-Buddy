@@ -40,7 +40,7 @@ function CategoryProgressBar({
   const isOverBudget = category.budget && category.total > category.budget;
   
   return (
-    <div className="group p-4 rounded-lg border border-transparent hover:border-border hover:bg-muted/30 transition-all duration-200">
+    <div className="group p-4 rounded-lg border border-transparent hover:border-border hover:bg-transparent transition-all duration-200">
       <div className="flex items-center justify-between mb-3 gap-2">
         <div className="flex items-center gap-3 min-w-0">
           <div 

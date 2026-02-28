@@ -160,7 +160,7 @@ export default function RegisterPage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.15, type: 'spring', stiffness: 300, damping: 25 }}
-              className="bg-card rounded-2xl border border-border/60 p-8 shadow-xl max-w-sm w-full mx-4 text-center"
+              className="bg-card rounded-lg border border-border/60 p-8 shadow-xl max-w-sm w-full mx-4 text-center"
             >
               <motion.div
                 initial={{ scale: 0 }}
@@ -213,7 +213,7 @@ export default function RegisterPage() {
           Back to home
         </Link>
 
-        <div className="bg-card/80 backdrop-blur-xl rounded-2xl border border-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] p-8 sm:p-10">
+        <div className="bg-card/80 backdrop-blur-xl rounded-lg border border-border/60 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] p-8 sm:p-10">
           <div className="mb-8">
             <div className="mb-6">
               <AuthLogo />

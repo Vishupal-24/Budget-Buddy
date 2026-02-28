@@ -387,7 +387,7 @@ function MonthlySpendingTrendComponent({
       const data = payload[0].payload;
       
       return (
-        <div className="bg-card/95 backdrop-blur-sm border border-border rounded-xl  p-5 max-w-sm">
+        <div className="bg-card/95 backdrop-blur-sm border border-border rounded-md  p-5 max-w-sm">
           <div className="flex items-center gap-2 mb-3">
             <Calendar className="h-4 w-4 text-primary" />
             <span className="font-semibold text-foreground">{label}</span>
@@ -555,7 +555,7 @@ function MonthlySpendingTrendComponent({
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center h-80 text-center p-4">
-            <div className="h-12 w-12 rounded-full bg-muted dark:bg-muted flex items-center justify-center mb-4">
+            <div className="h-12 w-12 rounded bg-muted/50 dark:bg-muted flex items-center justify-center mb-4">
               <TrendingDown className="h-6 w-6 text-foreground" />
             </div>
             <p className="text-muted-foreground mb-2">{error}</p>
@@ -583,7 +583,7 @@ function MonthlySpendingTrendComponent({
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center h-80 text-center p-4">
-            <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4">
+            <div className="h-16 w-16 rounded-full bg-transparent flex items-center justify-center mb-4">
               <BarChart3 className="h-8 w-8 text-primary" />
             </div>
             <h3 className="font-medium text-foreground mb-2">No Data Available</h3>
@@ -646,7 +646,7 @@ function MonthlySpendingTrendComponent({
 
         {/* Enhanced Insights Panel */}
         {showInsights && insights && (
-          <div className="mt-4 p-4 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg border border-primary/10">
+          <div className="mt-4 p-4 bg-transparent rounded-lg border border-primary/10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               <div className="text-center">
                 <div className="text-lg font-bold text-primary">{formatCurrency(insights.totalSpending)}</div>
@@ -1115,7 +1115,7 @@ function MonthlySpendingTrendComponent({
               {insights.topCategories.slice(0, 6).map((category, index) => (
                 <div
                   key={category.name}
-                  className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border"
+                  className="flex items-center justify-between p-3 bg-transparent rounded-lg border"
                 >
                   <div className="flex items-center gap-3">
                     <div

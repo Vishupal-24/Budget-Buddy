@@ -136,7 +136,7 @@ export const TransactionFilters: React.FC<TransactionFiltersProps> = ({
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-12 pr-12 py-3 text-base bg-background border border-border rounded-2xl transition-colors focus:ring-2 focus:ring-primary/20 focus:border-primary/50 placeholder:text-muted-foreground/60"
+          className="w-full pl-12 pr-12 py-3 text-base bg-background border border-border rounded-lg transition-colors focus:ring-2 focus:ring-primary/20 focus:border-primary/50 placeholder:text-muted-foreground/60"
           placeholder="Search transactions, descriptions, or categories..."
         />
         {searchTerm && (
@@ -207,14 +207,14 @@ export const TransactionFilters: React.FC<TransactionFiltersProps> = ({
       </div>
 
       {/* Advanced Filters Panel */}
-      <div className="bg-card rounded-2xl border border-border overflow-hidden">
+      <div className="bg-card rounded-lg border border-border overflow-hidden">
         <Collapsible open={filtersOpen} onOpenChange={setFiltersOpen}>
           <div className="p-4 bg-muted/20 border-b border-border">
             <div className="flex items-center justify-between">
               <CollapsibleTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="p-2 -ml-2 flex items-center gap-3 hover:bg-muted/50 rounded-xl transition-all duration-200"
+                  className="p-2 -ml-2 flex items-center gap-3 hover:bg-muted/50 rounded-md transition-all duration-200"
                 >
                   <div className="p-1 bg-primary/10 rounded-lg">
                     <SlidersHorizontal className="w-4 h-4 text-primary" />
@@ -238,7 +238,7 @@ export const TransactionFilters: React.FC<TransactionFiltersProps> = ({
               {/* View Mode Selector */}
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium text-muted-foreground mr-2">View:</span>
-                <div className="flex bg-muted/30 rounded-xl p-1 border border-border/30">
+                <div className="flex bg-transparent rounded-md p-1 border border-border/30">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -295,7 +295,7 @@ export const TransactionFilters: React.FC<TransactionFiltersProps> = ({
                       id="filter-type"
                       value={filterType}
                       onChange={(e) => setFilterType(e.target.value)}
-                      className="w-full appearance-none rounded-xl border border-border/50 bg-gradient-to-r from-background to-muted/20 px-4 py-3 pr-10 text-sm font-medium backdrop-blur-sm transition-all duration-200 focus:ring-2 focus:ring-primary/20 focus:border-primary/50 focus:"
+                      className="w-full appearance-none rounded-md border border-border/50 bg-transparent px-4 py-3 pr-10 text-sm font-medium backdrop-blur-sm transition-all duration-200 focus:ring-2 focus:ring-primary/20 focus:border-primary/50 focus:"
                     >
                       <option value="all">All Types</option>
                       <option value="income">Income Only</option>
@@ -327,7 +327,7 @@ export const TransactionFilters: React.FC<TransactionFiltersProps> = ({
                         type="date"
                         value={dateRange.start}
                         onChange={(e) => setDateRange({ ...dateRange, start: e.target.value })}
-                        className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm font-medium transition-colors focus:ring-2 focus:ring-primary/20 focus:border-primary/50"
+                        className="w-full rounded-md border border-border bg-background px-4 py-3 text-sm font-medium transition-colors focus:ring-2 focus:ring-primary/20 focus:border-primary/50"
                         placeholder="Start date"
                       />
                       <div className="absolute -bottom-6 left-0 text-xs text-muted-foreground">
@@ -339,7 +339,7 @@ export const TransactionFilters: React.FC<TransactionFiltersProps> = ({
                         type="date"
                         value={dateRange.end}
                         onChange={(e) => setDateRange({ ...dateRange, end: e.target.value })}
-                        className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm font-medium transition-colors focus:ring-2 focus:ring-primary/20 focus:border-primary/50"
+                        className="w-full rounded-md border border-border bg-background px-4 py-3 text-sm font-medium transition-colors focus:ring-2 focus:ring-primary/20 focus:border-primary/50"
                         placeholder="End date"
                       />
                       <div className="absolute -bottom-6 left-0 text-xs text-muted-foreground">

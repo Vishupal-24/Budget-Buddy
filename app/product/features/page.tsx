@@ -56,7 +56,7 @@ export default function FeaturesPage() {
           {features.map((feature, index) => (
             <div 
               key={feature.title} 
-              className="bg-card border rounded-xl p-6 hover:shadow-md transition-shadow"
+              className="bg-card border rounded-md p-6 hover:shadow-md transition-shadow"
             >
               <div className="flex flex-col items-center text-center">
                 <div className="mb-5 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">

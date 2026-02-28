@@ -69,8 +69,8 @@ export function ResponsivePageHeader({
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-muted rounded-xl blur-sm"></div>
-                <div className="relative p-3 bg-gradient-to-br from-primary to-muted rounded-xl ">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-muted rounded-md blur-sm"></div>
+                <div className="relative p-3 bg-gradient-to-br from-primary to-muted rounded-md ">
                   <Brain className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -146,7 +146,7 @@ export function ResponsivePageHeader({
                   size="sm"
                   onClick={onRefreshInsights}
                   disabled={insightLoading}
-                  className="flex items-center gap-2 hover:bg-primary/5 hover:border-primary/30 transition-all"
+                  className="flex items-center gap-2 hover:bg-transparent hover:border-primary/30 transition-all"
                 >
                   <RefreshCw className={`h-4 w-4 ${insightLoading ? 'animate-spin' : ''}`} />
                   <span className="hidden xl:inline">Refresh</span>
@@ -156,7 +156,7 @@ export function ResponsivePageHeader({
                   variant="outline" 
                   size="sm"
                   onClick={onOpenSettings}
-                  className="flex items-center gap-2 hover:bg-primary/5 hover:border-primary/30 transition-all"
+                  className="flex items-center gap-2 hover:bg-transparent hover:border-primary/30 transition-all"
                 >
                   <Settings className="h-4 w-4" />
                   <span className="hidden xl:inline">Settings</span>

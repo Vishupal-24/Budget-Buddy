@@ -127,7 +127,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
   };
 
   return (
-    <div className="rounded-2xl border bg-card  overflow-hidden mb-8">
+    <div className="rounded-lg border bg-card  overflow-hidden mb-8">
       <div className="border-b p-6 bg-gradient-to-r from-card to-card/80">
         <div className="flex items-center justify-between">
           <div>
@@ -139,7 +139,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-md bg-transparent border border-border flex items-center justify-center">
               <Target className="h-6 w-6 text-primary" />
             </div>
             <Button
@@ -261,7 +261,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
       <div className="p-6">
         {goals.length === 0 ? (
           <div className="text-center py-12">
-            <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+            <div className="h-16 w-16 rounded bg-muted/50 flex items-center justify-center mx-auto mb-4">
               <Target className="h-8 w-8 text-muted-foreground" />
             </div>
             <h3 className="font-semibold mb-2">No goals set yet</h3>
@@ -282,7 +282,7 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className={`rounded-xl border p-5 transition-all duration-300  ${getGoalStatusColor(goal)}`}
+                  className={`rounded-md border p-5 transition-all duration-300  ${getGoalStatusColor(goal)}`}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-start gap-3">

@@ -71,7 +71,7 @@ const PricingCard = memo(function PricingCard({
                   key={idx}
                   className="flex items-start gap-3 text-sm text-muted-foreground/60 line-through decoration-1"
                 >
-                  <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-muted/50 flex items-center justify-center">
+                  <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded bg-muted/50/50 flex items-center justify-center">
                     <Minus className="h-3 w-3 text-muted-foreground/50" />
                   </div>
                   <span>{limitation}</span>

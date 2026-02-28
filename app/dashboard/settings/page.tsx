@@ -1427,7 +1427,7 @@ export default function SettingsPage() {
                         onClick={() => handleThemeChange('light')}
                         className="h-auto py-4 flex flex-col items-center justify-center gap-2"
                       >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted text-foreground">
+                        <div className="flex items-center justify-center w-10 h-10 rounded bg-muted/50 text-foreground">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"
@@ -1453,7 +1453,7 @@ export default function SettingsPage() {
                         onClick={() => handleThemeChange('dark')}
                         className="h-auto py-4 flex flex-col items-center justify-center gap-2"
                       >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted text-foreground">
+                        <div className="flex items-center justify-center w-10 h-10 rounded bg-muted/50 text-foreground">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"
@@ -1478,7 +1478,7 @@ export default function SettingsPage() {
                         onClick={() => handleThemeChange('system')}
                         className="h-auto py-4 flex flex-col items-center justify-center gap-2"
                       >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted text-foreground">
+                        <div className="flex items-center justify-center w-10 h-10 rounded bg-muted/50 text-foreground">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"

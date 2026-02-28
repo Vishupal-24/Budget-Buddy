@@ -106,8 +106,8 @@ export function ConversationHistory({
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-lg">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted rounded-full blur-sm"></div>
-              <div className="relative w-8 h-8 bg-gradient-to-br from-muted to-muted rounded-full flex items-center justify-center">
+              <div className="absolute inset-0 bg-card rounded-full blur-sm"></div>
+              <div className="relative w-8 h-8 bg-card rounded-full flex items-center justify-center">
                 <MessageCircle className="h-4 w-4 text-white" />
               </div>
             </div>
@@ -231,7 +231,7 @@ export function ConversationHistory({
             <div className="flex flex-col items-center justify-center h-full p-6 text-center">
               {conversations.length === 0 ? (
                 <>
-                  <div className="w-16 h-16 bg-gradient-to-br from-muted to-muted-foreground/20 rounded-full flex items-center justify-center mb-4 shadow-sm">
+                  <div className="w-16 h-16 bg-card-foreground/20 rounded-full flex items-center justify-center mb-4 shadow-sm">
                     <MessageCircle className="h-8 w-8 text-muted-foreground" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">No conversations yet</h3>
@@ -272,7 +272,7 @@ export function ConversationHistory({
                     key={conversation.id}
                     className={`group relative rounded-lg border transition-all duration-200  cursor-pointer ${
                       isActive 
-                        ? 'border-primary/50 bg-primary/5 shadow-sm ring-1 ring-primary/20' 
+                        ? 'border-primary/50 bg-transparent shadow-sm ring-1 ring-primary/20' 
                         : 'border-border/50 bg-card/50 hover:border-border hover:bg-card'
                     }`}
                     onClick={() => onLoadConversation(conversation.id)}

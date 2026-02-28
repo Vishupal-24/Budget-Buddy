@@ -282,7 +282,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                   />
                   <span className="text-muted-foreground text-sm font-medium">{entry.name}:</span>
                 </div>
-                <span className="font-bold text-foreground bg-muted/30 px-2 py-1 rounded-lg">
+                <span className="font-bold text-foreground bg-transparent px-2 py-1 rounded-lg">
                   {formatCurrency(entry.value)}
                 </span>
               </div>
@@ -414,7 +414,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                 size="sm"
                 onClick={refreshData}
                 disabled={loading}
-                className="px-3 py-2 bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/5 hover:border-primary/40"
+                className="px-3 py-2 bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-transparent hover:border-primary/40"
               >
                 <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
               </Button>
@@ -517,10 +517,10 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
         <Card>
           <CardContent className="p-6">
             {/* Main metric growth - Enhanced design */}
-            <div className="bg-muted/30 p-4 rounded-lg border border-border mb-6">
+            <div className="bg-transparent p-4 rounded-lg border border-border mb-6">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-full bg-muted">
+                  <div className="p-2 rounded bg-muted/50">
                     {getMetricGrowth(selectedMetric) > 0 ? (
                       <TrendingUp className="h-5 w-5 text-foreground" />
                     ) : (
@@ -609,7 +609,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                           .map((insight, index) => (
                             <div key={index} className="flex items-start gap-3 p-3 rounded-lg border border-border bg-muted">
                               <div className="flex items-center gap-2">
-                                <div className="p-1 rounded-full bg-muted-foreground/10">
+                                <div className="p-1 rounded bg-muted/50-foreground/10">
                                   {insight.type === 'alert' && <AlertTriangle className="h-3 w-3 text-muted-foreground" />}
                                   {insight.type === 'recommendation' && <Target className="h-3 w-3 text-muted-foreground" />}
                                   {insight.type === 'forecast' && <TrendingUp className="h-3 w-3 text-muted-foreground" />}
@@ -676,7 +676,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
       {/* Main Chart Section - Completely redesigned */}
       <Card className="bg-gradient-to-br from-background via-muted/10 to-background border border-border/50 ">
         <CardContent className="p-6">
-          <div className="bg-gradient-to-br from-muted/20 to-muted/5 rounded-xl p-4 border border-border/30">
+          <div className="bg-gradient-to-br from-muted/20 to-muted/5 rounded-md p-4 border border-border/30">
             <ResponsiveContainer width="100%" height={450}>
               <ChartComponent
                 data={chartData}
@@ -849,7 +849,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
       <Card className="bg-gradient-to-br from-background to-muted/20 border border-border/50 shadow-md">
         <CardContent className="p-6">
           <Tabs defaultValue="metrics" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 bg-muted/30 p-1 rounded-xl">
+            <TabsList className="grid w-full grid-cols-2 bg-transparent p-1 rounded-md">
               <TabsTrigger 
                 value="metrics"
                 className="data-[state=active]:bg-background data-[state=active]:shadow-sm rounded-lg"
@@ -874,7 +874,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
                     variant={selectedCategory === metric ? "default" : "outline"}
                     size="lg"
                     onClick={() => setSelectedCategory(metric)}
-                    className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                    className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
                       selectedCategory === metric 
                         ? 'bg-primary text-primary-foreground' 
                         : 'bg-background hover:bg-muted/80'
@@ -887,7 +887,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
             </TabsContent>
             
             <TabsContent value="categories" className="mt-6">
-              <div className="bg-gradient-to-br from-muted/20 to-muted/5 rounded-xl p-4 border border-border/30">
+              <div className="bg-gradient-to-br from-muted/20 to-muted/5 rounded-md p-4 border border-border/30">
                 <div className="flex flex-wrap justify-center gap-2 max-h-48 overflow-y-auto">
                   {availableCategories.filter(c => !['totalSpending', 'totalIncome'].includes(c)).slice(0, 25).map((category) => (
                     <Button
@@ -926,7 +926,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
               size="default"
               onClick={runValidation}
               disabled={isValidating || !currentUserId}
-              className="bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/5 hover:border-primary/40 px-4 py-2"
+              className="bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-transparent hover:border-primary/40 px-4 py-2"
             >
               {isValidating ? (
                 <>
@@ -943,7 +943,7 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
           </div>
           
           {validationReport && (
-            <div className="bg-gradient-to-br from-muted/30 to-muted/10 p-4 rounded-xl border border-border/30">
+            <div className="bg-gradient-to-br from-muted/30 to-muted/10 p-4 rounded-md border border-border/30">
               <pre className="whitespace-pre-wrap font-mono text-sm overflow-auto max-h-48 text-foreground">
                 {validationReport}
               </pre>

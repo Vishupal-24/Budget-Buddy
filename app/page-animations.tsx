@@ -163,7 +163,7 @@ function OptimizedBubble({
         };
       case 'feature':
         return {
-          className: "absolute rounded-full bg-primary/5",
+          className: "absolute rounded-full bg-transparent",
           style: {
             ...baseStyle,
             borderRadius: bubble.radius,

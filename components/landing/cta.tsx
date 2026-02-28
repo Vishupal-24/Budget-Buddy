@@ -21,7 +21,7 @@ const StatsCard = memo(function StatsCard() {
         </div>
 
         {/* Testimonial */}
-        <div className="flex items-center gap-3 bg-primary/5 rounded-lg p-4 relative z-10">
+        <div className="flex items-center gap-3 bg-transparent rounded-lg p-4 relative z-10">
           <div className="flex-shrink-0 w-10 h-10 bg-primary/10 text-primary rounded-full font-semibold flex items-center justify-center text-sm">
             JD
           </div>
@@ -75,7 +75,7 @@ export const CTASection = memo(function CTASection() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-primary/20 text-foreground hover:bg-primary/5 rounded-xl text-base py-6 px-8"
+                  className="border-primary/20 text-foreground hover:bg-transparent rounded-xl text-base py-6 px-8"
                 >
                   <Link href="/dashboard/enhanced-demo">
                     <span className="flex items-center gap-2">

@@ -158,14 +158,14 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      className="bg-card border rounded-xl shadow-sm overflow-hidden max-w-4xl w-full"
+      className="bg-card border rounded-md shadow-sm overflow-hidden max-w-4xl w-full"
     >
       {/* Header with gradient background */}
       <div className="relative bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border-b p-6">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-transparent rounded-full -mr-16 -mt-16"></div>
         <div className="relative flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center ">
+            <div className="h-12 w-12 rounded-md bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center ">
               <Lightbulb className="h-6 w-6 text-white" />
             </div>
             <div>
@@ -200,7 +200,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
           className="space-y-4"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center shadow-sm">
+            <div className="h-8 w-8 rounded-lg bg-card flex items-center justify-center shadow-sm">
               <Bell className="h-4 w-4 text-white" />
             </div>
             <h3 className="text-lg font-semibold">Smart Alerts</h3>
@@ -215,7 +215,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
                   initial={{ opacity: 0, x: -20, scale: 0.95 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: 20, scale: 0.95 }}
-                  className={`group relative overflow-hidden rounded-xl border p-4 shadow-sm transition-all  ${
+                  className={`group relative overflow-hidden rounded-md border p-4 shadow-sm transition-all  ${
                     alert.type === 'danger'
                       ? 'bg-gradient-to-r from-muted to-muted border-border dark:from-muted dark:to-muted dark:border-border'
                       : alert.type === 'warning'
@@ -276,7 +276,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
           className="space-y-4"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center shadow-sm">
+            <div className="h-8 w-8 rounded-lg bg-card flex items-center justify-center shadow-sm">
               <TrendingUp className="h-4 w-4 text-white" />
             </div>
             <h3 className="text-lg font-semibold">Spending Predictions</h3>
@@ -290,7 +290,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-xl border bg-card p-5 shadow-sm  transition-all"
+                className="group relative overflow-hidden rounded-md border bg-card p-5 shadow-sm  transition-all"
               >
                 {/* Decorative element */}
                 <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-primary/5 to-primary/10 rounded-full -mr-8 -mt-8 group-hover:scale-110 transition-transform"></div>
@@ -345,7 +345,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
           className="space-y-4"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center shadow-sm">
+            <div className="h-8 w-8 rounded-lg bg-card flex items-center justify-center shadow-sm">
               <Target className="h-4 w-4 text-white" />
             </div>
             <h3 className="text-lg font-semibold">Smart Recommendations</h3>
@@ -359,7 +359,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-xl border bg-gradient-to-r from-primary/5 to-primary/10 p-4 shadow-sm  transition-all"
+                className="group relative overflow-hidden rounded-md border bg-gradient-to-r from-primary/5 to-primary/10 p-4 shadow-sm  transition-all"
               >
                 {/* Decorative element */}
                 <div className="absolute top-0 right-0 w-12 h-12 bg-primary/10 rounded-full -mr-6 -mt-6 group-hover:scale-110 transition-transform"></div>
@@ -386,7 +386,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
         className="pt-6 border-t"
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-muted to-muted flex items-center justify-center shadow-sm">
+          <div className="h-8 w-8 rounded-lg bg-card flex items-center justify-center shadow-sm">
             <BarChart3 className="h-4 w-4 text-white" />
           </div>
           <h3 className="text-lg font-semibold">Insights Summary</h3>
@@ -396,7 +396,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="group relative overflow-hidden rounded-xl border bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted p-4 text-center shadow-sm  transition-all"
+            className="group relative overflow-hidden rounded-md border bg-card p-4 text-center shadow-sm  transition-all"
           >
             <div className="absolute top-0 right-0 w-12 h-12 bg-muted rounded-full -mr-6 -mt-6 group-hover:scale-110 transition-transform"></div>
             <div className="relative">
@@ -407,7 +407,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
 
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="group relative overflow-hidden rounded-xl border bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted p-4 text-center shadow-sm  transition-all"
+            className="group relative overflow-hidden rounded-md border bg-card p-4 text-center shadow-sm  transition-all"
           >
             <div className="absolute top-0 right-0 w-12 h-12 bg-muted rounded-full -mr-6 -mt-6 group-hover:scale-110 transition-transform"></div>
             <div className="relative">
@@ -418,7 +418,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
 
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="group relative overflow-hidden rounded-xl border bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted p-4 text-center shadow-sm  transition-all"
+            className="group relative overflow-hidden rounded-md border bg-card p-4 text-center shadow-sm  transition-all"
           >
             <div className="absolute top-0 right-0 w-12 h-12 bg-muted rounded-full -mr-6 -mt-6 group-hover:scale-110 transition-transform"></div>
             <div className="relative">
@@ -429,7 +429,7 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
 
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="group relative overflow-hidden rounded-xl border bg-gradient-to-br from-muted to-muted dark:from-muted dark:to-muted p-4 text-center shadow-sm  transition-all"
+            className="group relative overflow-hidden rounded-md border bg-card p-4 text-center shadow-sm  transition-all"
           >
             <div className="absolute top-0 right-0 w-12 h-12 bg-muted rounded-full -mr-6 -mt-6 group-hover:scale-110 transition-transform"></div>
             <div className="relative">

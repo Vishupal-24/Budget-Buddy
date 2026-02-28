@@ -85,7 +85,7 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
     <motion.div
       ref={setNodeRef}
       style={style}
-      className={`bg-card border rounded-2xl mb-4 sm:mb-5 overflow-hidden shadow-md hover: transition-all duration-300 ${
+      className={`bg-card border rounded-lg mb-4 sm:mb-5 overflow-hidden shadow-md hover: transition-all duration-300 ${
         isDragging ? ' border-primary ring-2 ring-primary/20' : 'hover:border-primary/50'
       } group cursor-pointer backdrop-blur-sm`}
       whileHover={{ scale: 1.01, y: -2 }}
@@ -100,7 +100,7 @@ function SortableBudgetItem({ budget, categorySpending, onEdit, onDelete }: Sort
             <div
               {...attributes}
               {...listeners}
-              className="touch-manipulation cursor-grab active:cursor-grabbing p-2.5 rounded-xl hover:bg-muted/50 transition-colors duration-200 border border-transparent hover:border-border"
+              className="touch-manipulation cursor-grab active:cursor-grabbing p-2.5 rounded-md hover:bg-muted/50 transition-colors duration-200 border border-transparent hover:border-border"
               title="Drag to reorder"
             >
               <GripVertical className="h-5 w-5 text-muted-foreground" />
@@ -311,7 +311,7 @@ export function SortableBudgetList({ budgets, categorySpending, onReorder, onEdi
       {/* Enhanced Filter Controls */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4 sm:mb-6 px-4 sm:px-5">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-muted to-muted shadow-md flex items-center justify-center">
+          <div className="h-10 w-10 rounded-md bg-gradient-to-r from-muted to-muted shadow-md flex items-center justify-center">
             <BarChart3 className="h-5 w-5 text-white" />
           </div>
           <div>
@@ -360,7 +360,7 @@ export function SortableBudgetList({ budgets, categorySpending, onReorder, onEdi
 
       {/* Display empty state if no budgets match the filter */}
       {filteredBudgets.length === 0 ? (
-        <div className="text-center p-8 sm:p-10 rounded-2xl border bg-card shadow-sm">
+        <div className="text-center p-8 sm:p-10 rounded-lg border bg-card shadow-sm">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
