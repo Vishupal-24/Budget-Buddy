@@ -5,7 +5,7 @@ import { ArrowLeft, Check } from "lucide-react";
 export default function PricingPage() {
   const plans = [
     {
-      title: "Free",
+      title: "Starter",
       price: "$0",
       description: "Perfect for getting started with basic budgeting",
       features: [
@@ -18,7 +18,7 @@ export default function PricingPage() {
       popular: false
     },
     {
-      title: "Premium",
+      title: "Pro",
       price: "$9.99",
       per: "month",
       description: "Everything you need for serious money management",
@@ -30,7 +30,7 @@ export default function PricingPage() {
         "Priority support",
         "Bank account sync"
       ],
-      cta: "Upgrade to Premium",
+      cta: "Upgrade to Pro",
       popular: true
     },
     {
@@ -39,7 +39,7 @@ export default function PricingPage() {
       per: "month",
       description: "Manage finances together with your family",
       features: [
-        "All Premium features",
+        "All Pro features",
         "Up to 5 user accounts",
         "Shared budget categories",
         "Family spending insights",

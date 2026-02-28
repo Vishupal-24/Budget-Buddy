@@ -121,12 +121,6 @@ export default function ContactUsPage() {
                   <p className="text-sm text-muted-foreground">Yes, you can cancel your subscription anytime from your account settings.</p>
                 </div>
               </div>
-              
-              <div className="mt-4">
-                <Link href="/resources/contact-us" className="text-primary text-sm hover:underline">
-                  View all FAQs
-                </Link>
-              </div>
             </div>
           </div>
         </div>

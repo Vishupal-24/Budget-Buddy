@@ -1,7 +1,7 @@
 // CSS-only dashboard loading - no JS hydration needed for instant render
 export default function DashboardLoading() {
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-background" role="status" aria-label="Loading dashboard" aria-busy="true">
       {/* Sidebar skeleton */}
       <div className="hidden md:flex w-64 flex-col border-r bg-card p-4 gap-4">
         <div className="h-10 w-full rounded fast-skeleton" />
