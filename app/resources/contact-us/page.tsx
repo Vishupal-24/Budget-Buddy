@@ -123,7 +123,7 @@ export default function ContactUsPage() {
               </div>
               
               <div className="mt-4">
-                <Link href="/resources/help-center" className="text-primary text-sm hover:underline">
+                <Link href="/resources/contact-us" className="text-primary text-sm hover:underline">
                   View all FAQs
                 </Link>
               </div>

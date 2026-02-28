@@ -129,7 +129,7 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-border flex flex-col lg:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
             <p className="text-sm text-muted-foreground flex items-center gap-1.5 flex-wrap justify-center">
-              © 2025 Budget Buddy. Made with
+              © {new Date().getFullYear()} Budget Buddy. Made with
               <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
               for your finances.
             </p>

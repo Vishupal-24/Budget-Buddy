@@ -17,7 +17,7 @@ export default function CookiePolicyPage() {
         <h1 className="text-3xl font-bold mb-8">Cookie Policy</h1>
 
         <div className="prose dark:prose-invert max-w-none">
-          <p className="text-muted-foreground mb-6">Last updated: January 1, 2025</p>
+          <p className="text-muted-foreground mb-6">Last updated: January 1, 2026</p>
 
           <h2 className="text-xl font-semibold mt-8 mb-4">What Are Cookies</h2>
           <p>

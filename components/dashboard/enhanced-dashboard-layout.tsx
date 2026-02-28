@@ -219,7 +219,7 @@ export function EnhancedDashboardLayout({
 
       {/* Loading Overlay - subtle top progress bar instead of blocking modal */}
       {isLoading && (
-        <div className="fixed top-0 left-0 right-0 z-50">
+        <div className="fixed top-0 left-0 right-0 z-50" role="progressbar" aria-label="Loading dashboard data" aria-busy="true">
           <div className="h-1 w-full bg-muted overflow-hidden">
             <div className="h-full w-1/3 bg-primary rounded-full fast-skeleton" style={{ animationDuration: '1s' }} />
           </div>

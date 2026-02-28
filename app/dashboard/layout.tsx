@@ -461,14 +461,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         // Set the user ID in the store
         setUserId(data.user.id);
 
-        // Add detailed console logging to debug user information
-        console.log('User authenticated:', {
-          id: data.user.id,
-          email: data.user.email,
-          name: data.user.user_metadata?.name,
-          metadata: data.user.user_metadata,
-        });
-
         // Extract preferred currency from user metadata if it exists
         const preferredCurrency = data.user.user_metadata?.preferred_currency;
         if (preferredCurrency) {
@@ -490,7 +482,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           );
 
           if (!profileCreated) {
-            console.log('Profile creation failed on first attempt, retrying once...');
+            // Profile creation failed on first attempt, retrying once
             // Wait 1 second before retrying
             await new Promise((resolve) => setTimeout(resolve, 1000));
 
