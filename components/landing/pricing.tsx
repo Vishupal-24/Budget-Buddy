@@ -60,7 +60,7 @@ const PricingCard = memo(function PricingCard({
               <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                 <Check className="h-3 w-3" strokeWidth={2.5} />
               </div>
-              <span className="text-foreground dark:text-gray-200">{feature}</span>
+              <span className="text-foreground">{feature}</span>
             </div>
           ))}
 
@@ -71,7 +71,7 @@ const PricingCard = memo(function PricingCard({
                   key={idx}
                   className="flex items-start gap-3 text-sm text-muted-foreground/60 line-through decoration-1"
                 >
-                  <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded bg-muted/50/50 flex items-center justify-center">
+                  <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded bg-muted/50 flex items-center justify-center">
                     <Minus className="h-3 w-3 text-muted-foreground/50" />
                   </div>
                   <span>{limitation}</span>
@@ -140,19 +140,25 @@ export const PricingSection = memo(function PricingSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              asChild
               size="lg"
               className="rounded-xl gap-2"
             >
-              <Mail className="h-4 w-4" />
-              Contact Sales
+              <Link href="/resources/contact-us">
+                <Mail className="h-4 w-4" />
+                Contact Sales
+              </Link>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="rounded-xl gap-2"
             >
-              <Phone className="h-4 w-4" />
-              Schedule Demo
+              <Link href="/resources/contact-us">
+                <Phone className="h-4 w-4" />
+                Schedule Demo
+              </Link>
             </Button>
           </div>
         </div>

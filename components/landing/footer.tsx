@@ -111,12 +111,12 @@ export function Footer() {
                 <ul className="space-y-3 text-sm">
                   {section.links.map((item) => (
                     <li key={item}>
-                      <a
+                      <Link
                         href={item === 'Changelog' ? '/changelog' : `/${section.title.toLowerCase()}/${item.toLowerCase().replace(/\s+/g, '-')}`}
                         className="text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {item}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -140,13 +140,13 @@ export function Footer() {
                 { href: '/legal/terms-of-service', text: 'Terms' },
                 { href: '/legal/cookie-policy', text: 'Cookies' },
               ].map((link) => (
-                <a
+                <Link
                   key={link.text}
                   href={link.href}
                   className="hover:text-foreground transition-colors"
                 >
                   {link.text}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -155,6 +155,7 @@ export function Footer() {
             {/* Back to top button */}
             <button
               onClick={scrollToTop}
+              aria-label="Back to top"
               className="h-10 w-10 rounded-lg border border-border bg-background text-foreground flex items-center justify-center hover:bg-muted/50 transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <ArrowUpRight className="w-4 h-4 -rotate-45" />
