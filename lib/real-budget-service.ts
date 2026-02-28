@@ -43,11 +43,10 @@ export class RealBudgetService {
           *,
           categories!inner(name)
         `)
-        .eq('user_id', userId)
-        .order('categories(name)');
+        .eq('user_id', userId);
 
       if (error) {
-        console.error('Error fetching budgets:', error);
+        console.error('Error fetching budgets:', JSON.stringify(error, null, 2));
         return [];
       }
 
@@ -57,7 +56,7 @@ export class RealBudgetService {
         category: budget.categories?.name || 'Unknown'
       })) || [];
 
-      return transformedBudgets;
+      return transformedBudgets.sort((a, b) => a.category.localeCompare(b.category));
     } catch (error) {
       console.error('Error in getUserBudgets:', error);
       return [];
