@@ -104,7 +104,7 @@ const AdvancedAnalyticsSection = memo(function AdvancedAnalyticsSection() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + idx * 0.1, duration: 0.4 }}
               >
-                <div className="mt-1 flex-shrink-0 rounded-full p-1 bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-200">
+                <div className="mt-1 flex-shrink-0 rounded-full p-1 bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-200">
                   <Check size={12} />
                 </div>
                 <div>

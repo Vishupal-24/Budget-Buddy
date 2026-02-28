@@ -84,7 +84,7 @@ export function Header() {
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.name}
-                  className="px-3 xl:px-4 py-2 flex items-center text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors whitespace-nowrap"
+                  className="px-3 xl:px-4 py-2 flex items-center text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   onClick={() => scrollToSection(item.href.substring(1))}
                 >
                   {item.name}
@@ -95,7 +95,7 @@ export function Header() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-2 xl:gap-3">
               <ThemeToggle iconOnly />
-              <Link href="/auth/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
+              <Link href="/auth/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                 Sign in
               </Link>
               <Button asChild size="sm" className="rounded-lg">
@@ -124,7 +124,7 @@ export function Header() {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              className="fixed inset-x-0 top-full h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] bg-background/95 backdrop-blur-2xl border-t border-border z-[60] flex flex-col lg:hidden overflow-y-auto"
+              className="fixed inset-x-0 top-full h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] bg-background backdrop-blur-2xl border-t border-border z-[60] flex flex-col lg:hidden overflow-y-auto"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}

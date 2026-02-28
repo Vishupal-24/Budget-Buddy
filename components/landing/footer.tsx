@@ -32,7 +32,7 @@ export function Footer() {
               className="flex-1 px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-primary/60 transition-all"
             />
             <button
-              className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+              className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Subscribe
               <ArrowUpRight className="w-4 h-4" />
@@ -63,7 +63,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg border border-border bg-background flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all"
+                  className="w-10 h-10 rounded-lg border border-border bg-background flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label={social.label}
                 >
                   <svg
@@ -155,7 +155,7 @@ export function Footer() {
             {/* Back to top button */}
             <button
               onClick={scrollToTop}
-              className="h-10 w-10 rounded-lg border border-border bg-background text-foreground flex items-center justify-center hover:bg-muted/50 transition-all active:scale-[0.98]"
+              className="h-10 w-10 rounded-lg border border-border bg-background text-foreground flex items-center justify-center hover:bg-muted/50 transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <ArrowUpRight className="w-4 h-4 -rotate-45" />
             </button>
