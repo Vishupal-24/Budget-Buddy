@@ -106,16 +106,20 @@ export function FinancialInsightsPanel({
       <Card className={className}>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Loader2 className="h-5 w-5 animate-spin" />
-            Loading Financial Insights...
+            <TrendingUp className="h-5 w-5 text-muted-foreground" />
+            Financial Insights
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="animate-pulse">
-                <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
-                <div className="h-3 bg-muted rounded w-1/2"></div>
+              <div key={i} className="flex items-center gap-4 p-4 rounded-lg bg-muted/30">
+                <div className="h-10 w-10 rounded-lg fast-skeleton" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 w-3/4 rounded fast-skeleton" />
+                  <div className="h-3 w-1/2 rounded fast-skeleton" />
+                </div>
+                <div className="h-6 w-16 rounded-full fast-skeleton" />
               </div>
             ))}
           </div>

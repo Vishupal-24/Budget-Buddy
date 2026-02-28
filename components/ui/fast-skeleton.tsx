@@ -74,6 +74,23 @@ export function FastDashboardSkeleton() {
   );
 }
 
+// Chart card skeleton for loading chart components
+export function ChartCardSkeleton({ title, className }: { title?: string; className?: string }) {
+  return (
+    <div className={cn("rounded-xl border border-border bg-card p-5 shadow-sm", className)}>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <FastSkeleton className="h-5 w-5 rounded" />
+          <FastSkeleton className="h-5 w-40" />
+        </div>
+        <FastSkeleton className="h-8 w-20 rounded-lg" />
+      </div>
+      <FastSkeleton className="h-3 w-52 mb-4" />
+      <FastSkeleton className="h-80 w-full rounded-lg" />
+    </div>
+  );
+}
+
 // Fast transaction skeleton
 export function FastTransactionSkeleton() {
   return (

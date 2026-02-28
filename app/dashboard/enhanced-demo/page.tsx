@@ -76,9 +76,22 @@ export default function EnhancedDemoPage() {
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8 max-w-7xl">
-        <div className="animate-pulse">
-          <div className="h-8 w-64 bg-muted rounded mb-8"></div>
-          <div className="h-96 bg-muted rounded"></div>
+        <div className="mb-8">
+          <div className="h-8 w-64 mb-3 rounded fast-skeleton" />
+          <div className="h-4 w-96 rounded fast-skeleton" />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          {Array(3).fill(0).map((_, i) => (
+            <div key={i} className="p-6 rounded-xl border bg-card">
+              <div className="h-4 w-24 mb-3 rounded fast-skeleton" />
+              <div className="h-8 w-32 mb-2 rounded fast-skeleton" />
+              <div className="h-3 w-20 rounded fast-skeleton" />
+            </div>
+          ))}
+        </div>
+        <div className="space-y-6">
+          <div className="h-80 w-full rounded-xl fast-skeleton" />
+          <div className="h-64 w-full rounded-xl fast-skeleton" />
         </div>
       </div>
     );

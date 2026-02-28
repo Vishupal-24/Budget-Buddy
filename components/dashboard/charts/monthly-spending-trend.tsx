@@ -527,13 +527,16 @@ function MonthlySpendingTrendComponent({
             Monthly Spending Trend
           </CardTitle>
           <CardDescription>
-            Loading your financial insights...
+            <span className="h-4 w-48 rounded fast-skeleton inline-block" />
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col items-center justify-center h-80 text-center p-4">
-            <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-primary mb-4"></div>
-            <p className="text-muted-foreground">Analyzing your spending patterns...</p>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="h-8 w-32 rounded fast-skeleton" />
+              <div className="h-8 w-24 rounded-lg fast-skeleton" />
+            </div>
+            <div className="h-80 w-full rounded-lg fast-skeleton" />
           </div>
         </CardContent>
       </Card>

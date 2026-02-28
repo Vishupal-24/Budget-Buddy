@@ -440,6 +440,196 @@ export function AIInsightsPageSkeleton() {
   );
 }
 
+// About Page Skeleton
+export function AboutPageSkeleton() {
+  return (
+    <div className="container mx-auto px-4 py-6 max-w-6xl">
+      {/* Hero Banner */}
+      <div className="mb-12 text-center">
+        <Skeleton className="h-12 w-80 mx-auto mb-4" />
+        <Skeleton className="h-5 w-96 mx-auto mb-2" />
+        <Skeleton className="h-5 w-72 mx-auto" />
+      </div>
+
+      {/* Sticky Nav */}
+      <div className="flex gap-4 justify-center mb-10">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Skeleton key={i} className="h-10 w-28 rounded-full" />
+        ))}
+      </div>
+
+      {/* Mission Card */}
+      <Card className="mb-10">
+        <CardContent className="p-8">
+          <div className="flex items-start gap-6">
+            <Skeleton className="h-16 w-16 rounded-xl shrink-0" />
+            <div className="flex-1 space-y-3">
+              <Skeleton className="h-7 w-48" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-5/6" />
+              <Skeleton className="h-4 w-3/4" />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Feature Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Card key={i}>
+            <CardContent className="p-6">
+              <Skeleton className="h-12 w-12 rounded-lg mb-4" />
+              <Skeleton className="h-6 w-40 mb-3" />
+              <Skeleton className="h-4 w-full mb-1" />
+              <Skeleton className="h-4 w-5/6 mb-1" />
+              <Skeleton className="h-4 w-2/3" />
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Timeline */}
+      <div className="mb-10 space-y-6">
+        <Skeleton className="h-8 w-56 mx-auto" />
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="flex gap-4 items-start">
+            <Skeleton className="h-10 w-10 rounded-full shrink-0" />
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-5 w-40" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-3/4" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* FAQ Section */}
+      <div className="space-y-4">
+        <Skeleton className="h-8 w-48 mx-auto mb-6" />
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Card key={i}>
+            <CardContent className="p-5">
+              <div className="flex items-center justify-between">
+                <Skeleton className="h-5 w-64" />
+                <Skeleton className="h-5 w-5 rounded" />
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Customize Page Skeleton
+export function CustomizePageSkeleton() {
+  return (
+    <div className="container mx-auto px-4 py-6 max-w-6xl">
+      {/* Header with save controls */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+        <div>
+          <Skeleton className="h-10 w-56 mb-2" />
+          <Skeleton className="h-5 w-80" />
+        </div>
+        <div className="flex gap-3">
+          <Skeleton className="h-10 w-28 rounded-lg" />
+          <Skeleton className="h-10 w-36 rounded-lg" />
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="border-b mb-6">
+        <div className="flex space-x-6">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <Skeleton key={i} className="h-10 w-28" />
+          ))}
+        </div>
+      </div>
+
+      {/* Widget Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Card key={i}>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <Skeleton className="h-10 w-10 rounded-lg" />
+                  <Skeleton className="h-5 w-32" />
+                </div>
+                <Skeleton className="h-6 w-12 rounded-full" />
+              </div>
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-3/4" />
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Sessions Page Skeleton
+export function SessionsPageSkeleton() {
+  return (
+    <div className="container mx-auto px-4 py-6 max-w-4xl">
+      {/* Header */}
+      <div className="mb-6">
+        <Skeleton className="h-10 w-48 mb-2" />
+        <Skeleton className="h-5 w-72" />
+      </div>
+
+      {/* Security Info Card */}
+      <Card className="mb-6">
+        <CardContent className="p-6">
+          <div className="flex items-center gap-4">
+            <Skeleton className="h-12 w-12 rounded-lg" />
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-5 w-48" />
+              <Skeleton className="h-4 w-72" />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Sessions Card */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div>
+              <Skeleton className="h-6 w-36 mb-2" />
+              <Skeleton className="h-4 w-28" />
+            </div>
+            <Skeleton className="h-9 w-48 rounded-lg" />
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="p-4 rounded-lg border">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <Skeleton className="h-10 w-10 rounded-lg" />
+                    <div>
+                      <Skeleton className="h-5 w-40 mb-1" />
+                      <Skeleton className="h-3 w-32" />
+                    </div>
+                  </div>
+                  <Skeleton className="h-8 w-20 rounded-lg" />
+                </div>
+                <div className="flex gap-4 ml-13">
+                  <Skeleton className="h-3 w-24" />
+                  <Skeleton className="h-3 w-32" />
+                  <Skeleton className="h-3 w-28" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
 // Transactions Page Skeleton
 export function TransactionsPageSkeleton() {
   return (

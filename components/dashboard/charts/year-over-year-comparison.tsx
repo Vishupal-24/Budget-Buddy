@@ -320,13 +320,20 @@ function YearOverYearComparisonComponent({ onYearClick, className }: YearOverYea
             Year-over-Year Comparison
           </CardTitle>
           <CardDescription>
-            Loading comparison data...
+            <span className="h-4 w-44 rounded fast-skeleton inline-block" />
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col items-center justify-center h-80 text-center p-4">
-            <RefreshCw className="h-8 w-8 text-primary animate-spin mb-4" />
-            <p className="text-muted-foreground">Fetching your financial data...</p>
+          <div className="space-y-4">
+            <div className="grid grid-cols-3 gap-3">
+              {Array(3).fill(0).map((_, i) => (
+                <div key={i} className="p-3 rounded-lg bg-muted/30 text-center">
+                  <div className="h-6 w-16 mx-auto mb-1 rounded fast-skeleton" />
+                  <div className="h-3 w-20 mx-auto rounded fast-skeleton" />
+                </div>
+              ))}
+            </div>
+            <div className="h-80 w-full rounded-lg fast-skeleton" />
           </div>
         </CardContent>
       </Card>

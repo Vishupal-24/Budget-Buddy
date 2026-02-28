@@ -196,25 +196,30 @@ export function EnhancedFinancialInsightsPanel({
       <Card className={`${className} border-0  bg-card`}>
         <CardHeader className="space-y-1">
           <CardTitle className="flex items-center gap-2 text-xl">
-            <Loader2 className="h-6 w-6 animate-spin text-primary" />
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              Analyzing Your Financial Data...
-            </span>
+            <Sparkles className="h-6 w-6 text-muted-foreground" />
+            <span className="text-foreground">Financial Insights</span>
           </CardTitle>
-          <p className="text-muted-foreground">
-            Our AI is processing your transactions and budgets to generate personalized insights
-          </p>
+          <div className="h-4 w-80 rounded fast-skeleton" />
         </CardHeader>
         <CardContent className="space-y-4">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="animate-pulse">
-              <div className="flex items-center gap-4 p-4 rounded-lg bg-muted/50">
-                <div className="h-5 w-5 bg-muted-foreground/20 rounded"></div>
-                <div className="flex-1 space-y-2">
-                  <div className="h-4 bg-muted-foreground/20 rounded w-3/4"></div>
-                  <div className="h-3 bg-muted-foreground/20 rounded w-1/2"></div>
-                </div>
+          {/* Stats overview skeleton */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-2">
+            {Array(4).fill(0).map((_, i) => (
+              <div key={i} className="p-3 rounded-lg bg-muted/30">
+                <div className="h-3 w-16 mb-2 rounded fast-skeleton" />
+                <div className="h-6 w-12 rounded fast-skeleton" />
               </div>
+            ))}
+          </div>
+          {/* Insight items skeleton */}
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="flex items-center gap-4 p-4 rounded-lg bg-muted/30">
+              <div className="h-10 w-10 rounded-lg fast-skeleton" />
+              <div className="flex-1 space-y-2">
+                <div className="h-4 w-3/4 rounded fast-skeleton" />
+                <div className="h-3 w-1/2 rounded fast-skeleton" />
+              </div>
+              <div className="h-6 w-16 rounded-full fast-skeleton" />
             </div>
           ))}
         </CardContent>

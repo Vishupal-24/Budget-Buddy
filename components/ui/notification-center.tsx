@@ -244,8 +244,17 @@ export function NotificationCenter({ className, onNotificationClick }: Notificat
               <CardContent className="p-0">
                 <div className="max-h-96 overflow-y-auto">
                   {loading ? (
-                    <div className="flex items-center justify-center py-8">
-                      <div className="h-6 w-6 animate-spin rounded-full border-b-2 border-primary"></div>
+                    <div className="space-y-2 p-3">
+                      {Array(3).fill(0).map((_, i) => (
+                        <div key={i} className="flex items-start gap-3 p-3 rounded-lg">
+                          <div className="h-8 w-8 rounded-full fast-skeleton" />
+                          <div className="flex-1 space-y-1.5">
+                            <div className="h-4 w-3/4 rounded fast-skeleton" />
+                            <div className="h-3 w-full rounded fast-skeleton" />
+                            <div className="h-3 w-1/3 rounded fast-skeleton" />
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   ) : filteredNotifications.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-8 text-muted-foreground">

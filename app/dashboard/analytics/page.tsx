@@ -479,11 +479,7 @@ export default function AnalyticsPage() {
   }
 
   if (isPageLoading) {
-    return (
-      <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-primary"></div>
-      </div>
-    );
+    return <AnalyticsPageSkeleton />;
   }
 
   return (
@@ -636,9 +632,19 @@ export default function AnalyticsPage() {
 
       {/* Loading state overlay */}
       {isDataLoading && (
-        <div className="mb-6 rounded-lg border bg-card p-8 text-center">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
-          <p className="mt-4 text-muted-foreground">Loading transaction data...</p>
+        <div className="mb-6 rounded-lg border bg-card p-6">
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {Array(4).fill(0).map((_, i) => (
+                <div key={i} className="p-4 rounded-lg bg-muted/30">
+                  <div className="h-4 w-24 mb-3 rounded fast-skeleton" />
+                  <div className="h-6 w-20 mb-2 rounded fast-skeleton" />
+                  <div className="h-3 w-16 rounded fast-skeleton" />
+                </div>
+              ))}
+            </div>
+            <div className="h-64 w-full rounded-lg fast-skeleton" />
+          </div>
         </div>
       )}
 

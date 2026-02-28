@@ -379,10 +379,17 @@ export function InsightsPanel({
       
       {/* Loading indicator for refresh */}
       {loading && insights.length > 0 && (
-        <div className="flex items-center justify-center py-6">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <RefreshCw className="h-4 w-4 animate-spin" />
-            <span className="text-sm">Refreshing insights...</span>
+        <div className="py-4">
+          <div className="space-y-3">
+            {Array(2).fill(0).map((_, i) => (
+              <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-muted/30">
+                <div className="h-8 w-8 rounded-lg fast-skeleton" />
+                <div className="flex-1 space-y-1.5">
+                  <div className="h-4 w-3/4 rounded fast-skeleton" />
+                  <div className="h-3 w-1/2 rounded fast-skeleton" />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}

@@ -36,10 +36,19 @@ export default function AuthCallback() {
   }, [router]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-        <p className="text-muted-foreground">Completing authentication...</p>
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="w-full max-w-sm mx-auto p-8">
+        <div className="flex flex-col items-center space-y-6">
+          <div className="h-12 w-12 rounded-xl fast-skeleton" />
+          <div className="space-y-3 w-full">
+            <div className="h-6 w-48 mx-auto rounded fast-skeleton" />
+            <div className="h-4 w-64 mx-auto rounded fast-skeleton" />
+          </div>
+          <div className="w-full space-y-3 pt-4">
+            <div className="h-12 w-full rounded-lg fast-skeleton" />
+            <div className="h-3 w-40 mx-auto rounded fast-skeleton" />
+          </div>
+        </div>
       </div>
     </div>
   );

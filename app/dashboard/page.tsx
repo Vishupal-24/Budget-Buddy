@@ -29,7 +29,15 @@ const EnhancedExpensePieChart = dynamic(
     import('@/components/dashboard/charts/enhanced-expense-pie-chart').then(
       (mod) => mod.EnhancedExpensePieChart
     ),
-  { ssr: false, loading: () => <div className="h-80 rounded-md fast-skeleton" /> }
+  { ssr: false, loading: () => (
+    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+      <div className="flex items-center gap-2 mb-4">
+        <div className="h-5 w-5 rounded fast-skeleton" />
+        <div className="h-5 w-40 rounded fast-skeleton" />
+      </div>
+      <div className="h-80 w-full rounded-lg fast-skeleton" />
+    </div>
+  )}
 );
 
 const MonthlySpendingTrend = dynamic(
@@ -37,18 +45,66 @@ const MonthlySpendingTrend = dynamic(
     import('@/components/dashboard/charts/monthly-spending-trend').then(
       (mod) => mod.MonthlySpendingTrend
     ),
-  { ssr: false, loading: () => <div className="h-80 rounded-md fast-skeleton" /> }
+  { ssr: false, loading: () => (
+    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+      <div className="flex items-center gap-2 mb-4">
+        <div className="h-5 w-5 rounded fast-skeleton" />
+        <div className="h-5 w-44 rounded fast-skeleton" />
+      </div>
+      <div className="h-3 w-52 mb-4 rounded fast-skeleton" />
+      <div className="h-80 w-full rounded-lg fast-skeleton" />
+    </div>
+  )}
 );
 
 // Lazy load below-the-fold components
 const RecentTransactions = dynamic(
   () => import('@/components/dashboard/recent-transactions').then((mod) => mod.RecentTransactions),
-  { ssr: true, loading: () => <div className="h-64 rounded-md fast-skeleton" /> }
+  { ssr: true, loading: () => (
+    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+      <div className="flex items-center justify-between mb-4">
+        <div className="h-6 w-48 rounded fast-skeleton" />
+        <div className="h-8 w-20 rounded fast-skeleton" />
+      </div>
+      <div className="space-y-3">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div key={i} className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="h-8 w-8 rounded-full fast-skeleton" />
+              <div>
+                <div className="h-4 w-24 mb-1 rounded fast-skeleton" />
+                <div className="h-3 w-16 rounded fast-skeleton" />
+              </div>
+            </div>
+            <div className="h-4 w-16 rounded fast-skeleton" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
 );
 
 const CategoryInsights = dynamic(
   () => import('@/components/dashboard/category-insights').then((mod) => mod.CategoryInsights),
-  { ssr: true, loading: () => <div className="h-48 rounded-md fast-skeleton" /> }
+  { ssr: true, loading: () => (
+    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+      <div className="flex items-center justify-between mb-4">
+        <div className="h-6 w-40 rounded fast-skeleton" />
+        <div className="h-8 w-24 rounded-lg fast-skeleton" />
+      </div>
+      <div className="space-y-3">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-muted/30">
+            <div className="flex items-center gap-3">
+              <div className="h-6 w-6 rounded fast-skeleton" />
+              <div className="h-4 w-24 rounded fast-skeleton" />
+            </div>
+            <div className="h-4 w-16 rounded fast-skeleton" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
 );
 
 const PremiumMetricsSection = dynamic(
@@ -56,7 +112,19 @@ const PremiumMetricsSection = dynamic(
     import('@/components/dashboard/premium-metrics-section').then(
       (mod) => mod.PremiumMetricsSection
     ),
-  { ssr: true, loading: () => <div className="h-32 rounded-md fast-skeleton" /> }
+  { ssr: true, loading: () => (
+    <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+      <div className="h-5 w-40 mb-4 rounded fast-skeleton" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i}>
+            <div className="h-3 w-20 mb-2 rounded fast-skeleton" />
+            <div className="h-6 w-16 rounded fast-skeleton" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
 );
 
 const WidgetSystem = dynamic(

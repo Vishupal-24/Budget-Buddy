@@ -109,10 +109,29 @@ export function HistoricalTrends({ userId }: HistoricalTrendsProps) {
 
   if (loading) {
     return (
-      <div className="rounded-lg border bg-card  overflow-hidden mb-8">
-        <div className="p-12 text-center">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading historical trends...</p>
+      <div className="rounded-lg border bg-card overflow-hidden mb-8">
+        <div className="border-b p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="h-7 w-48 mb-2 rounded fast-skeleton" />
+              <div className="h-4 w-72 rounded fast-skeleton" />
+            </div>
+            <div className="h-12 w-12 rounded-md fast-skeleton" />
+          </div>
+        </div>
+        <div className="p-6 space-y-6">
+          {/* Chart skeleton */}
+          <div className="h-72 w-full rounded-lg fast-skeleton" />
+          {/* Insight cards skeleton */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {Array(3).fill(0).map((_, i) => (
+              <div key={i} className="p-4 rounded-lg border">
+                <div className="h-4 w-24 mb-3 rounded fast-skeleton" />
+                <div className="h-6 w-20 mb-2 rounded fast-skeleton" />
+                <div className="h-3 w-full rounded fast-skeleton" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

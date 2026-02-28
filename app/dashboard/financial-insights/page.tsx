@@ -1003,9 +1003,17 @@ export default function FinancialInsightsPage() {
               </CardHeader>
               <CardContent>
                 {yoyLoading ? (
-                  <div className="text-center py-8">
-                    <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary/20 border-t-primary mx-auto mb-4"></div>
-                    <p className="text-muted-foreground">Loading monthly comparison data...</p>
+                  <div className="py-4 space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {Array(3).fill(0).map((_, i) => (
+                        <div key={i} className="p-4 rounded-lg bg-muted/30 text-center">
+                          <div className="h-8 w-20 mx-auto mb-2 rounded fast-skeleton" />
+                          <div className="h-4 w-24 mx-auto mb-1 rounded fast-skeleton" />
+                          <div className="h-3 w-16 mx-auto rounded fast-skeleton" />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="h-64 w-full rounded-lg fast-skeleton" />
                   </div>
                 ) : yoyMetrics && yoyMetrics.monthlyComparison.length > 0 ? (
                   <div className="space-y-6">

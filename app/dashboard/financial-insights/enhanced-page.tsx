@@ -216,15 +216,44 @@ export default function EnhancedFinancialInsightsPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <div className="flex items-center justify-center min-h-[60vh]">
-            <div className="text-center space-y-6">
-              <div className="relative">
-                <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary/20 border-t-primary mx-auto"></div>
-                <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse"></div>
+          {/* Header skeleton */}
+          <div className="mb-8">
+            <div className="h-10 w-64 mb-3 rounded fast-skeleton" />
+            <div className="h-5 w-96 rounded fast-skeleton" />
+          </div>
+          {/* Stats cards skeleton */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {Array(4).fill(0).map((_, i) => (
+              <div key={i} className="p-6 rounded-xl border bg-card">
+                <div className="h-4 w-24 mb-3 rounded fast-skeleton" />
+                <div className="h-8 w-32 mb-2 rounded fast-skeleton" />
+                <div className="h-3 w-20 rounded fast-skeleton" />
               </div>
-              <div className="space-y-2">
-                <h2 className="text-xl font-semibold text-foreground">Loading Financial Insights</h2>
-                <p className="text-muted-foreground">Analyzing your financial data...</p>
+            ))}
+          </div>
+          {/* Tabs + content skeleton */}
+          <div className="flex gap-4 border-b mb-6">
+            {Array(4).fill(0).map((_, i) => (
+              <div key={i} className="h-10 w-32 rounded fast-skeleton" />
+            ))}
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 space-y-6">
+              <div className="p-6 rounded-xl border bg-card">
+                <div className="h-6 w-48 mb-4 rounded fast-skeleton" />
+                <div className="h-80 w-full rounded-lg fast-skeleton" />
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div className="p-6 rounded-xl border bg-card">
+                <div className="h-6 w-40 mb-4 rounded fast-skeleton" />
+                {Array(4).fill(0).map((_, i) => (
+                  <div key={i} className="mb-3 space-y-2">
+                    <div className="h-4 w-full rounded fast-skeleton" />
+                    <div className="h-4 w-5/6 rounded fast-skeleton" />
+                    <div className="h-6 w-24 rounded-full fast-skeleton" />
+                  </div>
+                ))}
               </div>
             </div>
           </div>

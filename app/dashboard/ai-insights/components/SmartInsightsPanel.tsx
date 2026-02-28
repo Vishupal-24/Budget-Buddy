@@ -127,9 +127,17 @@ export function SmartInsightsPanel({ onSendMessage, className = "" }: SmartInsig
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center justify-center py-8">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-            <span className="ml-2 text-muted-foreground">Analyzing your financial data...</span>
+          <div className="space-y-4">
+            {Array(3).fill(0).map((_, i) => (
+              <div key={i} className="flex items-center gap-4 p-4 rounded-lg bg-muted/30">
+                <div className="h-10 w-10 rounded-lg fast-skeleton" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 w-3/4 rounded fast-skeleton" />
+                  <div className="h-3 w-1/2 rounded fast-skeleton" />
+                </div>
+                <div className="h-6 w-16 rounded-full fast-skeleton" />
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>

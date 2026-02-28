@@ -174,9 +174,16 @@ export function QuickStatsWidget({ data }: Readonly<{ data: any }>) {
   const renderContent = () => {
     if (loadingInsights) {
       return (
-        <div className="flex items-center justify-center py-8">
-          <Loader2 className="h-6 w-6 animate-spin text-primary mr-2" />
-          <span className="text-sm text-muted-foreground">Analyzing your finances...</span>
+        <div className="space-y-3 py-4">
+          {Array(3).fill(0).map((_, i) => (
+            <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-muted/30">
+              <div className="h-8 w-8 rounded-lg fast-skeleton" />
+              <div className="flex-1 space-y-1.5">
+                <div className="h-4 w-3/4 rounded fast-skeleton" />
+                <div className="h-3 w-1/2 rounded fast-skeleton" />
+              </div>
+            </div>
+          ))}
         </div>
       );
     }

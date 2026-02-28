@@ -217,15 +217,12 @@ export function EnhancedDashboardLayout({
         </TabsContent>
       </Tabs>
 
-      {/* Loading Overlay */}
+      {/* Loading Overlay - subtle top progress bar instead of blocking modal */}
       {isLoading && (
-        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
-          <Card className="p-6">
-            <div className="flex items-center gap-3">
-              <RefreshCw className="h-5 w-5 animate-spin text-primary" />
-              <span className="text-sm font-medium">Updating dashboard...</span>
-            </div>
-          </Card>
+        <div className="fixed top-0 left-0 right-0 z-50">
+          <div className="h-1 w-full bg-muted overflow-hidden">
+            <div className="h-full w-1/3 bg-primary rounded-full fast-skeleton" style={{ animationDuration: '1s' }} />
+          </div>
         </div>
       )}
     </div>

@@ -314,8 +314,26 @@ export default function SessionsPage() {
 
         <CardContent>
           {loading ? (
-            <div className="flex items-center justify-center py-12">
-              <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            <div className="space-y-4 py-2">
+              {Array(3).fill(0).map((_, i) => (
+                <div key={i} className="p-4 rounded-lg border">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="h-10 w-10 rounded-lg fast-skeleton" />
+                      <div>
+                        <div className="h-5 w-40 mb-1 rounded fast-skeleton" />
+                        <div className="h-3 w-32 rounded fast-skeleton" />
+                      </div>
+                    </div>
+                    <div className="h-8 w-20 rounded-lg fast-skeleton" />
+                  </div>
+                  <div className="flex gap-4 ml-13">
+                    <div className="h-3 w-24 rounded fast-skeleton" />
+                    <div className="h-3 w-32 rounded fast-skeleton" />
+                    <div className="h-3 w-28 rounded fast-skeleton" />
+                  </div>
+                </div>
+              ))}
             </div>
           ) : sessions.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">

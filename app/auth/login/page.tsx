@@ -187,8 +187,26 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary border-t-transparent"></div>
+        <div className="min-h-screen flex items-center justify-center bg-background">
+          <div className="w-full max-w-md mx-auto p-8 space-y-6">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="h-11 w-11 rounded-xl fast-skeleton" />
+              <div className="h-8 w-48 rounded fast-skeleton" />
+              <div className="h-4 w-64 rounded fast-skeleton" />
+            </div>
+            <div className="space-y-4">
+              <div className="h-11 w-full rounded-lg fast-skeleton" />
+              <div className="h-11 w-full rounded-lg fast-skeleton" />
+              <div className="h-11 w-full rounded-lg fast-skeleton" />
+            </div>
+            <div className="space-y-3">
+              <div className="h-4 w-20 mx-auto rounded fast-skeleton" />
+              <div className="flex gap-3">
+                <div className="h-11 flex-1 rounded-lg fast-skeleton" />
+                <div className="h-11 flex-1 rounded-lg fast-skeleton" />
+              </div>
+            </div>
+          </div>
         </div>
       }
     >
