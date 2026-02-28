@@ -1,8 +1,38 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Mail, Phone, MapPin, MessageSquare } from "lucide-react";
+import { ArrowLeft, Mail, MessageSquare, Loader2, CheckCircle } from "lucide-react";
 
 export default function ContactUsPage() {
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [responseMessage, setResponseMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setStatus('success');
+        setResponseMessage(data.message || 'Message sent!');
+        setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+        setResponseMessage(data.error || 'Failed to send message');
+      }
+    } catch {
+      setStatus('error');
+      setResponseMessage('Network error. Please try again.');
+    }
+  };
   return (
     <main className="flex min-h-screen flex-col bg-background overflow-x-hidden">
       <div className="container mx-auto px-4 py-12">
@@ -22,12 +52,24 @@ export default function ContactUsPage() {
           <div className="bg-card border rounded-md p-8">
             <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
             
-            <form className="space-y-4">
+            {status === 'success' ? (
+              <div className="text-center py-8">
+                <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Message Sent!</h3>
+                <p className="text-muted-foreground mb-4">{responseMessage}</p>
+                <Button variant="outline" onClick={() => setStatus('idle')}>Send Another</Button>
+              </div>
+            ) : (
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
                 <input 
                   type="text" 
                   id="name" 
+                  required
+                  minLength={2}
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
                   className="w-full p-2 rounded-md border bg-background" 
                   placeholder="Your name"
                 />
@@ -38,6 +80,9 @@ export default function ContactUsPage() {
                 <input 
                   type="email" 
                   id="email" 
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="w-full p-2 rounded-md border bg-background" 
                   placeholder="your@email.com"
                 />
@@ -45,7 +90,13 @@ export default function ContactUsPage() {
               
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
-                <select id="subject" className="w-full p-2 rounded-md border bg-background">
+                <select 
+                  id="subject" 
+                  required
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  className="w-full p-2 rounded-md border bg-background"
+                >
                   <option value="">Select a topic</option>
                   <option value="general">General Inquiry</option>
                   <option value="support">Technical Support</option>
@@ -60,15 +111,28 @@ export default function ContactUsPage() {
                 <textarea 
                   id="message" 
                   rows={5} 
+                  required
+                  minLength={10}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="w-full p-2 rounded-md border bg-background" 
                   placeholder="How can we help you?"
                 ></textarea>
               </div>
+
+              {status === 'error' && (
+                <p className="text-sm text-destructive">{responseMessage}</p>
+              )}
               
-              <Button type="submit" className="w-full">
-                Send Message
+              <Button type="submit" className="w-full" disabled={status === 'loading'}>
+                {status === 'loading' ? (
+                  <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Sending...</>
+                ) : (
+                  'Send Message'
+                )}
               </Button>
             </form>
+            )}
           </div>
           
           <div className="space-y-8">

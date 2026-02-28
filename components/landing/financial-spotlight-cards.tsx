@@ -90,7 +90,7 @@ const financialFeatures = [
       'SOC 2 compliance certified',
       'Zero data selling policy',
     ],
-    highlight: 'Trusted by 50,000+ users',
+    highlight: 'Your data stays private and secure',
   },
 ] as const;
 

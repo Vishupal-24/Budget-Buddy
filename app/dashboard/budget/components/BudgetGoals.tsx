@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -18,9 +18,11 @@ import {
   Edit3,
   Trash2,
   Save,
-  X
+  X,
+  Loader2
 } from 'lucide-react';
 import { Budget, CategorySpending } from '../types';
+import { supabase } from '@/lib/supabase';
 
 interface BudgetGoal {
   id: string;
@@ -38,28 +40,11 @@ interface BudgetGoalsProps {
   categorySpending: CategorySpending[];
 }
 
+const GOAL_COLORS = ['bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-orange-500', 'bg-pink-500'];
+
 export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
-  const [goals, setGoals] = useState<BudgetGoal[]>([
-    {
-      id: '1',
-      title: 'Emergency Fund',
-      targetAmount: 10000,
-      currentAmount: 6500,
-      deadline: '2024-12-31',
-      type: 'savings',
-      color: 'bg-muted'
-    },
-    {
-      id: '2',
-      title: 'Monthly Dining Out Limit',
-      targetAmount: 300,
-      currentAmount: 180,
-      deadline: '2024-01-31',
-      category: 'Dining',
-      type: 'spending-limit',
-      color: 'bg-muted'
-    }
-  ]);
+  const [goals, setGoals] = useState<BudgetGoal[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingGoal, setEditingGoal] = useState<string | null>(null);
@@ -70,6 +55,47 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
     type: 'savings' as const,
     category: ''
   });
+
+  // Fetch goals from Supabase on mount
+  useEffect(() => {
+    async function fetchGoals() {
+      setLoading(true);
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const { data, error } = await supabase
+          .from('goals')
+          .select('*')
+          .eq('user_id', user.id)
+          .in('status', ['active', 'completed'])
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('Failed to fetch goals:', error);
+          return;
+        }
+
+        if (data) {
+          setGoals(data.map((g: any, index: number) => ({
+            id: g.id,
+            title: g.title,
+            targetAmount: Number(g.target_amount) || 0,
+            currentAmount: Number(g.current_amount) || 0,
+            deadline: g.deadline || '',
+            category: g.category || undefined,
+            type: g.category ? 'category-target' : 'savings',
+            color: GOAL_COLORS[index % GOAL_COLORS.length],
+          })));
+        }
+      } catch (err) {
+        console.error('Failed to fetch goals:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchGoals();
+  }, []);
 
   const goalStats = useMemo(() => {
     const completed = goals.filter(goal => goal.currentAmount >= goal.targetAmount).length;
@@ -85,27 +111,70 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
     return { completed, inProgress, overdue, total: goals.length };
   }, [goals]);
 
-  const handleAddGoal = () => {
+  const handleAddGoal = async () => {
     if (!newGoal.title || !newGoal.targetAmount || !newGoal.deadline) return;
 
-    const goal: BudgetGoal = {
-      id: Date.now().toString(),
-      title: newGoal.title,
-      targetAmount: parseFloat(newGoal.targetAmount),
-      currentAmount: 0,
-      deadline: newGoal.deadline,
-      type: newGoal.type,
-      category: newGoal.category || undefined,
-      color: `bg-${['blue', 'green', 'purple', 'orange', 'pink'][Math.floor(Math.random() * 5)]}-500`
-    };
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
 
-    setGoals([...goals, goal]);
+      const { data, error } = await supabase
+        .from('goals')
+        .insert({
+          user_id: user.id,
+          title: newGoal.title,
+          target_amount: parseFloat(newGoal.targetAmount),
+          current_amount: 0,
+          deadline: newGoal.deadline,
+          category: newGoal.category || null,
+          status: 'active',
+          priority: 'medium',
+        })
+        .select()
+        .single();
+
+      if (error) {
+        console.error('Failed to create goal:', error);
+        return;
+      }
+
+      if (data) {
+        const goal: BudgetGoal = {
+          id: data.id,
+          title: data.title,
+          targetAmount: Number(data.target_amount),
+          currentAmount: 0,
+          deadline: data.deadline || '',
+          type: newGoal.type,
+          category: newGoal.category || undefined,
+          color: GOAL_COLORS[goals.length % GOAL_COLORS.length],
+        };
+        setGoals([goal, ...goals]);
+      }
+    } catch (err) {
+      console.error('Failed to create goal:', err);
+    }
+
     setNewGoal({ title: '', targetAmount: '', deadline: '', type: 'savings', category: '' });
     setShowAddForm(false);
   };
 
-  const handleDeleteGoal = (id: string) => {
-    setGoals(goals.filter(goal => goal.id !== id));
+  const handleDeleteGoal = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('goals')
+        .update({ status: 'cancelled' })
+        .eq('id', id);
+
+      if (error) {
+        console.error('Failed to delete goal:', error);
+        return;
+      }
+
+      setGoals(goals.filter(goal => goal.id !== id));
+    } catch (err) {
+      console.error('Failed to delete goal:', err);
+    }
   };
 
   const getGoalProgress = (goal: BudgetGoal) => {
@@ -259,7 +328,12 @@ export function BudgetGoals({ budgets, categorySpending }: BudgetGoalsProps) {
 
       {/* Goals List */}
       <div className="p-6">
-        {goals.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-12">
+            <Loader2 className="h-8 w-8 animate-spin text-primary mx-auto mb-4" />
+            <p className="text-muted-foreground">Loading your goals...</p>
+          </div>
+        ) : goals.length === 0 ? (
           <div className="text-center py-12">
             <div className="h-16 w-16 rounded bg-muted/50 flex items-center justify-center mx-auto mb-4">
               <Target className="h-8 w-8 text-muted-foreground" />

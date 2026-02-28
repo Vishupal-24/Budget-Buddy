@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -17,9 +17,11 @@ import {
   Target,
   DollarSign,
   Percent,
-  Activity
+  Activity,
+  Loader2
 } from 'lucide-react';
 import { Budget, CategorySpending } from '../types';
+import { supabase } from '@/lib/supabase';
 
 interface BudgetComparisonProps {
   budgets: Budget[];
@@ -41,9 +43,47 @@ interface CategoryComparison {
   trend: 'up' | 'down' | 'stable';
 }
 
+function getPreviousPeriodRange(period: string): { start: Date; end: Date } {
+  const now = new Date();
+  let start: Date;
+  let end: Date;
+
+  switch (period) {
+    case 'week': {
+      const currentWeekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay());
+      end = new Date(currentWeekStart.getTime() - 1);
+      start = new Date(end.getFullYear(), end.getMonth(), end.getDate() - 6);
+      break;
+    }
+    case 'month': {
+      end = new Date(now.getFullYear(), now.getMonth(), 0); // Last day of prev month
+      start = new Date(end.getFullYear(), end.getMonth(), 1); // First day of prev month
+      break;
+    }
+    case 'quarter': {
+      const currentQuarterStart = new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3, 1);
+      end = new Date(currentQuarterStart.getTime() - 1);
+      start = new Date(end.getFullYear(), end.getMonth() - 2, 1);
+      break;
+    }
+    case 'year': {
+      end = new Date(now.getFullYear() - 1, 11, 31);
+      start = new Date(now.getFullYear() - 1, 0, 1);
+      break;
+    }
+    default: {
+      end = new Date(now.getFullYear(), now.getMonth(), 0);
+      start = new Date(end.getFullYear(), end.getMonth(), 1);
+    }
+  }
+  return { start, end };
+}
+
 export function BudgetComparison({ budgets, categorySpending }: BudgetComparisonProps) {
   const [selectedPeriod, setSelectedPeriod] = useState<string>('month');
   const [comparisonType, setComparisonType] = useState<'spending' | 'budget' | 'efficiency'>('spending');
+  const [historicalData, setHistoricalData] = useState<CategorySpending[]>([]);
+  const [loadingHistory, setLoadingHistory] = useState(false);
 
   const periods: ComparisonPeriod[] = [
     { id: 'week', label: 'vs Last Week', shortLabel: 'Week' },
@@ -52,16 +92,65 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
     { id: 'year', label: 'vs Last Year', shortLabel: 'Year' }
   ];
 
-  // Historical period data (from previous time period)
-  const historicalData = useMemo(() => {
-    return categorySpending.map(cat => ({
-      category_id: cat.category_id,
-      category_name: cat.category_name,
-      spent: cat.spent * (0.8 + Math.random() * 0.4), // Random variation
-      budget: cat.budget * (0.9 + Math.random() * 0.2),
-      percentage: 0
-    }));
-  }, [categorySpending]);
+  // Fetch real historical data from Supabase based on selected period
+  useEffect(() => {
+    async function fetchHistoricalData() {
+      setLoadingHistory(true);
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const { start, end } = getPreviousPeriodRange(selectedPeriod);
+        const startStr = start.toISOString().split('T')[0];
+        const endStr = end.toISOString().split('T')[0];
+
+        const { data: transactions } = await supabase
+          .from('transactions')
+          .select('amount, type, category_id, categories:category_id (name)')
+          .eq('user_id', user.id)
+          .eq('type', 'expense')
+          .gte('date', startStr)
+          .lte('date', endStr);
+
+        if (!transactions || transactions.length === 0) {
+          setHistoricalData([]);
+          return;
+        }
+
+        // Group spending by category
+        const spendingMap = new Map<string, { name: string; spent: number }>();
+        for (const t of transactions) {
+          const catName = (t.categories as any)?.name || 'Uncategorized';
+          const catId = t.category_id;
+          const existing = spendingMap.get(catId) || { name: catName, spent: 0 };
+          existing.spent += Number(t.amount) || 0;
+          spendingMap.set(catId, existing);
+        }
+
+        // Map to CategorySpending, using current budget amounts for comparison
+        const prevData: CategorySpending[] = Array.from(spendingMap.entries()).map(([catId, info]) => {
+          const currentBudget = budgets.find(b => b.category_id === catId);
+          const budgetAmt = currentBudget?.amount || 0;
+          return {
+            category_id: catId,
+            category_name: info.name,
+            spent: info.spent,
+            budget: budgetAmt,
+            percentage: budgetAmt > 0 ? (info.spent / budgetAmt) * 100 : 0,
+          };
+        });
+
+        setHistoricalData(prevData);
+      } catch (err) {
+        console.error('Failed to fetch historical data:', err);
+        setHistoricalData([]);
+      } finally {
+        setLoadingHistory(false);
+      }
+    }
+
+    fetchHistoricalData();
+  }, [selectedPeriod, budgets]);
 
   const comparisonData = useMemo(() => {
     const comparisons: CategoryComparison[] = [];
@@ -266,13 +355,18 @@ export function BudgetComparison({ budgets, categorySpending }: BudgetComparison
           Category Breakdown
         </h3>
 
-        {comparisonData.length === 0 ? (
+        {loadingHistory ? (
+          <div className="text-center py-8">
+            <Loader2 className="h-8 w-8 animate-spin text-primary mx-auto mb-4" />
+            <p className="text-muted-foreground">Loading historical data...</p>
+          </div>
+        ) : comparisonData.length === 0 ? (
           <div className="text-center py-8">
             <div className="h-16 w-16 rounded bg-muted/50 flex items-center justify-center mx-auto mb-4">
               <BarChart3 className="h-8 w-8 text-muted-foreground" />
             </div>
             <h4 className="font-semibold mb-2">No comparison data available</h4>
-            <p className="text-muted-foreground">Start tracking your budget to see comparisons</p>
+            <p className="text-muted-foreground">No spending data found for the previous {selectedPeriod}. Keep tracking to see comparisons!</p>
           </div>
         ) : (
           <div className="space-y-3">

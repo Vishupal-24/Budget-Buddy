@@ -1,8 +1,11 @@
 package handler
 
 import (
+	"encoding/json"
 	"net/http"
-	
+	"net/url"
+	"time"
+
 	"github.com/budget-buddy/api/lib"
 )
 
@@ -29,16 +32,13 @@ func analyticsHandler(w http.ResponseWriter, r *http.Request) {
 	startDate := lib.GetQueryParam(r, "start_date", "")
 	endDate := lib.GetQueryParam(r, "end_date", "")
 
-	_ = startDate
-	_ = endDate
-
 	switch analyticsType {
 	case "summary":
-		handleSummaryAnalytics(w, user)
+		handleSummaryAnalytics(w, r, user, startDate, endDate)
 	case "category":
-		handleCategoryAnalytics(w, user)
+		handleCategoryAnalytics(w, r, user, startDate, endDate)
 	case "trend":
-		handleTrendAnalytics(w, user)
+		handleTrendAnalytics(w, r, user, startDate, endDate)
 	default:
 		lib.ErrorResponse(w, "Invalid analytics type", http.StatusBadRequest, map[string]interface{}{
 			"allowed": []string{"summary", "category", "trend"},
@@ -46,14 +46,75 @@ func analyticsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func handleSummaryAnalytics(w http.ResponseWriter, user *lib.User) {
-	// TODO: Query database and calculate
+// fetchTransactions fetches transactions with optional date range filters
+func fetchTransactions(r *http.Request, client *lib.SupabaseClient, userID, startDate, endDate string) ([]map[string]interface{}, error) {
+	token := lib.GetTokenFromContext(r)
+
+	params := url.Values{}
+	params.Set("select", "id,amount,type,category,date")
+	params.Set("user_id", "eq."+userID)
+	params.Set("order", "date.desc")
+
+	if startDate != "" {
+		params.Set("date", "gte."+startDate)
+	}
+	if endDate != "" {
+		// Use a separate key for the upper bound
+		params.Add("date", "lte."+endDate)
+	}
+
+	body, statusCode, err := client.Query("transactions", params.Encode(), token)
+	if err != nil {
+		return nil, err
+	}
+	if statusCode >= 400 {
+		return []map[string]interface{}{}, nil
+	}
+
+	var transactions []map[string]interface{}
+	if err := json.Unmarshal(body, &transactions); err != nil {
+		return nil, err
+	}
+	return transactions, nil
+}
+
+func handleSummaryAnalytics(w http.ResponseWriter, r *http.Request, user *lib.User, startDate, endDate string) {
+	client, err := lib.NewSupabaseClient()
+	if err != nil {
+		lib.ErrorResponse(w, "Server configuration error", http.StatusInternalServerError, nil)
+		return
+	}
+
+	transactions, err := fetchTransactions(r, client, user.ID, startDate, endDate)
+	if err != nil {
+		lib.ErrorResponse(w, "Failed to fetch transactions", http.StatusInternalServerError, nil)
+		return
+	}
+
+	totalIncome := 0.0
+	totalExpenses := 0.0
+	for _, t := range transactions {
+		amount, _ := t["amount"].(float64)
+		txType, _ := t["type"].(string)
+		if txType == "income" {
+			totalIncome += amount
+		} else {
+			totalExpenses += amount
+		}
+	}
+
+	netSavings := totalIncome - totalExpenses
+	savingsRate := 0.0
+	if totalIncome > 0 {
+		savingsRate = (netSavings / totalIncome) * 100
+	}
+
 	summary := lib.AnalyticsSummary{
-		TotalIncome:      5000.0,
-		TotalExpenses:    3000.0,
-		NetSavings:       2000.0,
-		SavingsRate:      40.0,
-		TransactionCount: 150,
+		TotalIncome:      totalIncome,
+		TotalExpenses:    totalExpenses,
+		NetSavings:       netSavings,
+		SavingsRate:      savingsRate,
+		TransactionCount: len(transactions),
 	}
 
 	lib.SuccessResponse(w, map[string]interface{}{
@@ -61,21 +122,54 @@ func handleSummaryAnalytics(w http.ResponseWriter, user *lib.User) {
 	}, http.StatusOK)
 }
 
-func handleCategoryAnalytics(w http.ResponseWriter, user *lib.User) {
-	// TODO: Query database and aggregate
-	categories := []lib.CategoryAnalytics{
-		{
-			Category:     "Groceries",
-			Income:       0,
-			Expenses:     500.0,
-			Transactions: 12,
-		},
-		{
-			Category:     "Salary",
-			Income:       5000.0,
-			Expenses:     0,
-			Transactions: 1,
-		},
+func handleCategoryAnalytics(w http.ResponseWriter, r *http.Request, user *lib.User, startDate, endDate string) {
+	client, err := lib.NewSupabaseClient()
+	if err != nil {
+		lib.ErrorResponse(w, "Server configuration error", http.StatusInternalServerError, nil)
+		return
+	}
+
+	transactions, err := fetchTransactions(r, client, user.ID, startDate, endDate)
+	if err != nil {
+		lib.ErrorResponse(w, "Failed to fetch transactions", http.StatusInternalServerError, nil)
+		return
+	}
+
+	// Aggregate by category
+	type catStats struct {
+		Income       float64
+		Expenses     float64
+		Transactions int
+	}
+	catMap := make(map[string]*catStats)
+
+	for _, t := range transactions {
+		cat, _ := t["category"].(string)
+		if cat == "" {
+			cat = "Uncategorized"
+		}
+		amount, _ := t["amount"].(float64)
+		txType, _ := t["type"].(string)
+
+		if catMap[cat] == nil {
+			catMap[cat] = &catStats{}
+		}
+		catMap[cat].Transactions++
+		if txType == "income" {
+			catMap[cat].Income += amount
+		} else {
+			catMap[cat].Expenses += amount
+		}
+	}
+
+	categories := make([]lib.CategoryAnalytics, 0, len(catMap))
+	for cat, stats := range catMap {
+		categories = append(categories, lib.CategoryAnalytics{
+			Category:     cat,
+			Income:       stats.Income,
+			Expenses:     stats.Expenses,
+			Transactions: stats.Transactions,
+		})
 	}
 
 	lib.SuccessResponse(w, map[string]interface{}{
@@ -83,21 +177,63 @@ func handleCategoryAnalytics(w http.ResponseWriter, user *lib.User) {
 	}, http.StatusOK)
 }
 
-func handleTrendAnalytics(w http.ResponseWriter, user *lib.User) {
-	// TODO: Query database and aggregate by month
-	trend := []lib.TrendData{
-		{
-			Month:    "2024-01",
-			Income:   5000.0,
-			Expenses: 3000.0,
-			Net:      2000.0,
-		},
-		{
-			Month:    "2024-02",
-			Income:   5200.0,
-			Expenses: 2800.0,
-			Net:      2400.0,
-		},
+func handleTrendAnalytics(w http.ResponseWriter, r *http.Request, user *lib.User, startDate, endDate string) {
+	// Default to last 6 months if no date range specified
+	if startDate == "" {
+		startDate = time.Now().AddDate(0, -6, 0).Format("2006-01-02")
+	}
+
+	client, err := lib.NewSupabaseClient()
+	if err != nil {
+		lib.ErrorResponse(w, "Server configuration error", http.StatusInternalServerError, nil)
+		return
+	}
+
+	transactions, err := fetchTransactions(r, client, user.ID, startDate, endDate)
+	if err != nil {
+		lib.ErrorResponse(w, "Failed to fetch transactions", http.StatusInternalServerError, nil)
+		return
+	}
+
+	// Aggregate by month
+	type monthStats struct {
+		Income   float64
+		Expenses float64
+	}
+	monthMap := make(map[string]*monthStats)
+
+	for _, t := range transactions {
+		dateStr, _ := t["date"].(string)
+		// Extract YYYY-MM from the date
+		month := ""
+		if len(dateStr) >= 7 {
+			month = dateStr[:7]
+		} else {
+			continue
+		}
+
+		amount, _ := t["amount"].(float64)
+		txType, _ := t["type"].(string)
+
+		if monthMap[month] == nil {
+			monthMap[month] = &monthStats{}
+		}
+		if txType == "income" {
+			monthMap[month].Income += amount
+		} else {
+			monthMap[month].Expenses += amount
+		}
+	}
+
+	// Sort months and build trend data
+	trend := make([]lib.TrendData, 0, len(monthMap))
+	for month, stats := range monthMap {
+		trend = append(trend, lib.TrendData{
+			Month:    month,
+			Income:   stats.Income,
+			Expenses: stats.Expenses,
+			Net:      stats.Income - stats.Expenses,
+		})
 	}
 
 	lib.SuccessResponse(w, map[string]interface{}{

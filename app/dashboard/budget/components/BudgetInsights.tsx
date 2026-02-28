@@ -16,6 +16,7 @@ import {
   BarChart3
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { supabase } from '@/lib/supabase';
 
 interface BudgetInsightsProps {
   budgets: Budget[];
@@ -44,10 +45,54 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
   const [alerts, setAlerts] = useState<BudgetAlert[]>([]);
   const [predictions, setPredictions] = useState<SpendingPrediction[]>([]);
   const [recommendations, setRecommendations] = useState<string[]>([]);
+  const [categoryMonthCounts, setCategoryMonthCounts] = useState<Map<string, number>>(new Map());
+
+  // Fetch historical data to calculate real confidence scores
+  useEffect(() => {
+    async function fetchHistoricalMonthCounts() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        // Get all transactions to count months of data per category
+        const sixMonthsAgo = new Date();
+        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+        const { data: transactions } = await supabase
+          .from('transactions')
+          .select('category_id, date')
+          .eq('user_id', user.id)
+          .eq('type', 'expense')
+          .gte('date', sixMonthsAgo.toISOString().split('T')[0]);
+
+        if (!transactions) return;
+
+        // Count distinct months per category
+        const monthsPerCategory = new Map<string, Set<string>>();
+        for (const t of transactions) {
+          const monthKey = t.date.substring(0, 7); // YYYY-MM
+          if (!monthsPerCategory.has(t.category_id)) {
+            monthsPerCategory.set(t.category_id, new Set());
+          }
+          monthsPerCategory.get(t.category_id)!.add(monthKey);
+        }
+
+        const counts = new Map<string, number>();
+        for (const [catId, months] of monthsPerCategory) {
+          counts.set(catId, months.size);
+        }
+        setCategoryMonthCounts(counts);
+      } catch (err) {
+        console.error('Failed to fetch historical month counts:', err);
+      }
+    }
+
+    fetchHistoricalMonthCounts();
+  }, []);
 
   useEffect(() => {
     generateInsights();
-  }, [budgets, categorySpending]);
+  }, [budgets, categorySpending, categoryMonthCounts]);
 
   const generateInsights = () => {
     const newAlerts: BudgetAlert[] = [];
@@ -91,7 +136,9 @@ export function BudgetInsights({ budgets, categorySpending, onClose }: BudgetIns
 
       // Generate spending predictions (simplified)
       const predictedSpending = spending.spent * 1.1; // Simple 10% increase prediction
-      const confidence = Math.random() * 30 + 70; // 70-100% confidence
+      // Calculate confidence based on data quality: months of historical data available
+      const monthsOfData = categoryMonthCounts.get(spending.category_id) || 0;
+      const confidence = Math.min(Math.max(monthsOfData / 6 * 90, 15), 95); // 15-95% based on data volume
 
       let trend: 'increasing' | 'decreasing' | 'stable' = 'stable';
       if (percentage > 80) {

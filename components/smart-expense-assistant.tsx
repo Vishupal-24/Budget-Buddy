@@ -254,33 +254,70 @@ export function SmartExpenseAssistant({
   }, [recentTransactions, currentBudgets, assistantState.totalSavingsIdentified]);
 
   const loadUserAchievements = async () => {
-    // In a real app, this would load from database
-    const userAchievements: Achievement[] = [
-      {
-        id: '1',
-        title: 'Receipt Scanner Pro',
-        description: 'Successfully processed 50+ receipts using OCR technology',
+    // Compute achievements from real data
+    const userAchievements: Achievement[] = [];
+
+    // Achievement: Active Tracker - based on actual transaction count
+    const transactionCount = recentTransactions.length;
+    if (transactionCount >= 10) {
+      userAchievements.push({
+        id: 'active-tracker',
+        title: 'Active Tracker',
+        description: `Logged ${transactionCount} transactions — great tracking habits!`,
         type: 'efficiency',
         earnedAt: new Date(),
-        points: 150
-      },
-      {
-        id: '2',
-        title: 'Budget Champion',
-        description: 'Maintained budget discipline for 6 consecutive months',
+        points: Math.min(transactionCount * 5, 200),
+      });
+    }
+
+    // Achievement: Budget Awareness - if user has budgets set
+    const budgetCount = currentBudgets.size;
+    if (budgetCount >= 3) {
+      userAchievements.push({
+        id: 'budget-planner',
+        title: 'Budget Planner',
+        description: `Set up ${budgetCount} budget categories to track spending`,
         type: 'budget',
         earnedAt: new Date(),
-        points: 300
-      },
-      {
-        id: '3',
-        title: 'Savings Optimizer',
-        description: 'Identified and implemented $500+ in monthly savings',
-        type: 'savings',
-        earnedAt: new Date(),
-        points: 200
+        points: budgetCount * 30,
+      });
+    }
+
+    // Achievement: Under Budget - if most budgets are under control
+    if (budgetCount > 0) {
+      const now = new Date();
+      const currentMonth = now.getMonth();
+      const currentYear = now.getFullYear();
+      const thisMonthTransactions = recentTransactions.filter(t => {
+        const d = new Date(t.date || '');
+        return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
+      });
+      const monthlySpending = thisMonthTransactions.reduce((sum, t) => sum + (t.amount || 0), 0);
+      const totalBudget = Array.from(currentBudgets.values()).reduce((sum, b) => sum + b, 0);
+
+      if (totalBudget > 0 && monthlySpending <= totalBudget * 0.9) {
+        userAchievements.push({
+          id: 'budget-champion',
+          title: 'Budget Champion',
+          description: `Spending is within budget this month — keep it up!`,
+          type: 'savings',
+          earnedAt: new Date(),
+          points: 300,
+        });
       }
-    ];
+    }
+
+    // Achievement: OCR user
+    if (assistantState.receiptsProcessed > 0) {
+      userAchievements.push({
+        id: 'receipt-scanner',
+        title: 'Receipt Scanner',
+        description: `Processed ${assistantState.receiptsProcessed} receipt${assistantState.receiptsProcessed > 1 ? 's' : ''} using OCR`,
+        type: 'efficiency',
+        earnedAt: new Date(),
+        points: assistantState.receiptsProcessed * 10,
+      });
+    }
 
     setDashboardMetrics(prev => ({
       ...prev,

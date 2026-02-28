@@ -128,7 +128,7 @@ func GetEnv(key, defaultValue string) string {
 	return value
 }
 
-// AuthenticateRequest validates authentication token
+// AuthenticateRequest validates authentication token via Supabase Auth
 func AuthenticateRequest(r *http.Request) (*User, error) {
 	// Get token from Authorization header
 	authHeader := r.Header.Get("Authorization")
@@ -143,15 +143,19 @@ func AuthenticateRequest(r *http.Request) (*User, error) {
 	}
 
 	token := parts[1]
-	
-	// TODO: Validate token with Supabase
-	// For now, return a mock user for demonstration
-	_ = token
-	
-	return &User{
-		ID:    "user-id",
-		Email: "user@example.com",
-	}, nil
+
+	// Validate token with Supabase Auth
+	client, err := NewSupabaseClient()
+	if err != nil {
+		return nil, &AuthError{Message: "Server configuration error"}
+	}
+
+	user, err := client.ValidateToken(token)
+	if err != nil {
+		return nil, &AuthError{Message: "Invalid or expired token"}
+	}
+
+	return user, nil
 }
 
 // AuthError represents an authentication error
@@ -169,6 +173,8 @@ type ContextKey string
 const (
 	// UserContextKey is the context key for user
 	UserContextKey ContextKey = "user"
+	// TokenContextKey is the context key for the auth token
+	TokenContextKey ContextKey = "token"
 )
 
 // SetUserContext sets user in request context
@@ -177,10 +183,22 @@ func SetUserContext(r *http.Request, user *User) *http.Request {
 	return r.WithContext(ctx)
 }
 
+// SetTokenContext sets the auth token in request context
+func SetTokenContext(r *http.Request, token string) *http.Request {
+	ctx := context.WithValue(r.Context(), TokenContextKey, token)
+	return r.WithContext(ctx)
+}
+
 // GetUserFromContext retrieves user from request context
 func GetUserFromContext(r *http.Request) (*User, bool) {
 	user, ok := r.Context().Value(UserContextKey).(*User)
 	return user, ok
+}
+
+// GetTokenFromContext retrieves the auth token from request context
+func GetTokenFromContext(r *http.Request) string {
+	token, _ := r.Context().Value(TokenContextKey).(string)
+	return token
 }
 
 // CreateHandler creates a wrapped handler with middleware
@@ -209,6 +227,12 @@ func CreateHandler(handler http.HandlerFunc, config Config) http.HandlerFunc {
 				return
 			}
 			r = SetUserContext(r, user)
+			// Store the token for downstream Supabase API calls
+			authHeader := r.Header.Get("Authorization")
+			parts := strings.Split(authHeader, " ")
+			if len(parts) == 2 {
+				r = SetTokenContext(r, parts[1])
+			}
 		}
 
 		// Call handler

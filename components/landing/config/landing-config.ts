@@ -143,10 +143,10 @@ export const PRICING_PLANS = [
 
 // CTA Stats
 export const CTA_STATS = [
-  { value: '94%', label: 'User satisfaction' },
-  { value: '30%', label: 'Average savings' },
-  { value: '15min', label: 'Setup time' },
-  { value: '100%', label: 'Data security' },
+  { value: 'Free', label: 'Open source' },
+  { value: 'AI', label: 'Powered insights' },
+  { value: '5min', label: 'Quick setup' },
+  { value: '100%', label: 'Data privacy' },
 ] as const;
 
 // Analytics Features
@@ -172,5 +172,5 @@ export const ANALYTICS_FEATURES = [
 // Trust Indicators
 export const TRUST_INDICATORS = [
   { icon: 'pulse', label: '99.9% Uptime' },
-  { icon: 'heart', label: '50k+ Users' },
+  { icon: 'heart', label: 'Open Source' },
 ] as const;

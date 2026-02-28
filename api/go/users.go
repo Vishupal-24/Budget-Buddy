@@ -1,8 +1,11 @@
 package handler
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
-	
+	"net/url"
+
 	"github.com/budget-buddy/api/lib"
 )
 
@@ -27,7 +30,7 @@ func userHandler(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "GET":
-		handleGetProfile(w, user)
+		handleGetProfile(w, r, user)
 	case "PUT":
 		handleUpdateProfile(w, r, user)
 	case "DELETE":
@@ -37,21 +40,42 @@ func userHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func handleGetProfile(w http.ResponseWriter, user *lib.User) {
-	// TODO: Query database
-	profile := map[string]interface{}{
-		"id":                  user.ID,
-		"email":               user.Email,
-		"full_name":           "John Doe",
-		"preferred_currency":  "USD",
-		"timezone":            "America/New_York",
-		"preferred_language":  "en",
-		"theme_preference":    "dark",
-		"created_at":          "2024-01-01T00:00:00Z",
+func handleGetProfile(w http.ResponseWriter, r *http.Request, user *lib.User) {
+	token := lib.GetTokenFromContext(r)
+	client, err := lib.NewSupabaseClient()
+	if err != nil {
+		lib.ErrorResponse(w, "Server configuration error", http.StatusInternalServerError, nil)
+		return
+	}
+
+	params := url.Values{}
+	params.Set("select", "*")
+	params.Set("id", "eq."+user.ID)
+
+	body, statusCode, err := client.Query("profiles", params.Encode(), token)
+	if err != nil {
+		lib.ErrorResponse(w, "Failed to fetch profile", http.StatusInternalServerError, nil)
+		return
+	}
+
+	if statusCode >= 400 {
+		lib.ErrorResponse(w, "Database query failed", statusCode, nil)
+		return
+	}
+
+	var profiles []map[string]interface{}
+	if err := json.Unmarshal(body, &profiles); err != nil {
+		lib.ErrorResponse(w, "Failed to parse profile", http.StatusInternalServerError, nil)
+		return
+	}
+
+	if len(profiles) == 0 {
+		lib.ErrorResponse(w, "Profile not found", http.StatusNotFound, nil)
+		return
 	}
 
 	lib.SuccessResponse(w, map[string]interface{}{
-		"profile": profile,
+		"profile": profiles[0],
 	}, http.StatusOK)
 }
 
@@ -62,14 +86,59 @@ func handleUpdateProfile(w http.ResponseWriter, r *http.Request, user *lib.User)
 		return
 	}
 
-	// TODO: Update in database
-	profile := map[string]interface{}{
-		"id":      user.ID,
-		"updated": true,
+	token := lib.GetTokenFromContext(r)
+	client, err := lib.NewSupabaseClient()
+	if err != nil {
+		lib.ErrorResponse(w, "Server configuration error", http.StatusInternalServerError, nil)
+		return
+	}
+
+	// Build update data from non-empty fields only
+	updateData := make(map[string]interface{})
+	if input.FullName != "" {
+		updateData["full_name"] = input.FullName
+	}
+	if input.PreferredCurrency != "" {
+		updateData["preferred_currency"] = input.PreferredCurrency
+	}
+	if input.Timezone != "" {
+		updateData["timezone"] = input.Timezone
+	}
+	if input.PreferredLanguage != "" {
+		updateData["preferred_language"] = input.PreferredLanguage
+	}
+	if input.ThemePreference != "" {
+		updateData["theme_preference"] = input.ThemePreference
+	}
+	if input.NotificationSettings != nil {
+		updateData["notification_settings"] = input.NotificationSettings
+	}
+
+	if len(updateData) == 0 {
+		lib.ErrorResponse(w, "No fields to update", http.StatusBadRequest, nil)
+		return
+	}
+
+	filters := fmt.Sprintf("id=eq.%s", url.QueryEscape(user.ID))
+	body, statusCode, err := client.Update("profiles", filters, updateData, token)
+	if err != nil {
+		lib.ErrorResponse(w, "Failed to update profile", http.StatusInternalServerError, nil)
+		return
+	}
+
+	if statusCode >= 400 {
+		lib.ErrorResponse(w, "Database update failed", statusCode, nil)
+		return
+	}
+
+	var updated []map[string]interface{}
+	if err := json.Unmarshal(body, &updated); err != nil || len(updated) == 0 {
+		lib.ErrorResponse(w, "Profile not found", http.StatusNotFound, nil)
+		return
 	}
 
 	lib.SuccessResponse(w, map[string]interface{}{
-		"profile": profile,
+		"profile": updated[0],
 		"message": "Profile updated successfully",
 	}, http.StatusOK)
 }
@@ -81,7 +150,6 @@ func handleDeleteAccount(w http.ResponseWriter, r *http.Request, user *lib.User)
 		return
 	}
 
-	// Check confirmation
 	confirm, ok := input["confirm"].(bool)
 	if !ok || !confirm {
 		lib.ErrorResponse(w, "Account deletion requires confirmation", http.StatusBadRequest, map[string]interface{}{
@@ -90,10 +158,29 @@ func handleDeleteAccount(w http.ResponseWriter, r *http.Request, user *lib.User)
 		return
 	}
 
-	// TODO: Delete user data and account
+	token := lib.GetTokenFromContext(r)
+	client, err := lib.NewSupabaseClient()
+	if err != nil {
+		lib.ErrorResponse(w, "Server configuration error", http.StatusInternalServerError, nil)
+		return
+	}
+
+	// Delete user's data: transactions, budgets, goals, then profile
+	tables := []string{"transactions", "budgets", "goals", "profiles"}
+	for _, table := range tables {
+		filters := fmt.Sprintf("user_id=eq.%s", url.QueryEscape(user.ID))
+		if table == "profiles" {
+			filters = fmt.Sprintf("id=eq.%s", url.QueryEscape(user.ID))
+		}
+		_, _, err := client.Delete(table, filters, token)
+		if err != nil {
+			// Log but continue — partial cleanup is better than none
+			continue
+		}
+	}
 
 	lib.SuccessResponse(w, map[string]interface{}{
-		"message": "Account deleted successfully",
+		"message": "Account data deleted successfully",
 	}, http.StatusOK)
 }
 

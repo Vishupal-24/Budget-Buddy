@@ -1,5 +1,5 @@
 /**
- * Testimonials data separated from component logic
+ * Testimonials data — honest team and early adopter quotes
  */
 
 import { generateUserAvatar } from '@/components/ui/avatar-generator';
@@ -16,65 +16,49 @@ export const FINANCIAL_TESTIMONIALS: FinancialTestimonial[] = [
   {
     id: 1,
     quote:
-      "Budget Buddy transformed my financial life! I've saved significantly by tracking my expenses and following the AI-powered recommendations. The automated categorization is incredibly accurate.",
-    name: 'Sarah Chen',
-    username: '@sarahchen_finance',
-    avatar: generateUserAvatar('Sarah Chen', 1),
+      "I built Budget Buddy because I couldn't find a budgeting tool that was simple, private, and truly intelligent. We're just getting started, and every feature is built with real users in mind.",
+    name: 'Aditya Kumar Tiwari',
+    username: '@itisaddy',
+    avatar: generateUserAvatar('Aditya Kumar Tiwari', 1),
   },
   {
     id: 2,
     quote:
-      "As a freelancer with irregular income, budgeting was always a nightmare. Budget Buddy's smart analytics help me plan for lean months and maximize my savings during good ones. Game changer!",
-    name: 'Marcus Rodriguez',
-    username: '@marcus_freelance',
-    avatar: generateUserAvatar('Marcus Rodriguez', 2),
+      'Designing the UX for Budget Buddy taught me that financial tools work best when they get out of the way. Our focus is making money management feel effortless, not overwhelming.',
+    name: 'Prachi Upadhyay',
+    username: '@prachi_ux',
+    avatar: generateUserAvatar('Prachi Upadhyay', 2),
   },
   {
     id: 3,
     quote:
-      'The AI insights are spot-on! It identified subscription services I forgot about, saving me money every month. The goal tracking feature helped me save for my dream vacation in record time.',
-    name: 'Emily Johnson',
-    username: '@emily_saves',
-    avatar: generateUserAvatar('Emily Johnson', 3),
+      'On the backend we prioritize speed and reliability. Every API call is optimized so your dashboard loads fast, and your data stays secure with row-level security.',
+    name: 'Muneer Ali',
+    username: '@muneer_dev',
+    avatar: generateUserAvatar('Muneer Ali', 3),
   },
   {
     id: 4,
     quote:
-      'Finally, a budgeting app that actually works! The bank-level security gives me peace of mind, and the real-time notifications keep me on track. My financial stress has completely disappeared.',
-    name: 'David Park',
-    username: '@davidpark_money',
-    avatar: generateUserAvatar('David Park', 4),
+      'Building a clean, responsive frontend means our users get a consistent experience whether they are on a phone, tablet, or desktop. That attention to detail makes all the difference.',
+    name: 'Vishupal',
+    username: '@vishupal_dev',
+    avatar: generateUserAvatar('Vishupal', 4),
   },
   {
     id: 5,
     quote:
-      "Budget Buddy's analytics revealed spending patterns I never noticed. I've significantly reduced my food expenses and grown my emergency fund. The visual reports are incredibly helpful!",
-    name: 'Jessica Williams',
-    username: '@jess_budgets',
-    avatar: generateUserAvatar('Jessica Williams', 5),
+      "Budget Buddy is open source because we believe transparency matters — especially when it comes to financial tools. You can inspect every line of code that handles your data.",
+    name: 'Budget Buddy Team',
+    username: '@budgetbuddy',
+    avatar: generateUserAvatar('Budget Buddy', 5),
   },
   {
     id: 6,
     quote:
-      'The automated bill tracking saved me from late fees multiple times. The predictive insights help me plan major purchases better. This app pays for itself within the first month!',
-    name: 'Robert Thompson',
-    username: '@rob_finances',
-    avatar: generateUserAvatar('Robert Thompson', 6),
-  },
-  {
-    id: 7,
-    quote:
-      "As a small business owner, tracking personal and business expenses was chaotic. Budget Buddy's categorization and reporting features have streamlined everything. Highly recommend!",
-    name: 'Lisa Anderson',
-    username: '@lisa_entrepreneur',
-    avatar: generateUserAvatar('Lisa Anderson', 7),
-  },
-  {
-    id: 8,
-    quote:
-      "The goal achievement system is motivating! I've hit my savings targets 3 months ahead of schedule. The community features and milestone celebrations keep me engaged and accountable.",
-    name: 'Michael Chang',
-    username: '@mike_goals',
-    avatar: generateUserAvatar('Michael Chang', 8),
+      'AI-powered insights are only useful when they are based on your real spending data. We never fabricate numbers — every recommendation comes directly from your actual transactions.',
+    name: 'Budget Buddy Team',
+    username: '@budgetbuddy',
+    avatar: generateUserAvatar('Budget Buddy AI', 6),
   },
 ];

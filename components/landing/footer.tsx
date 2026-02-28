@@ -1,12 +1,41 @@
 'use client';
 
+import { useState } from 'react';
 import { Logo } from '@/components/ui/logo';
-import { ArrowUpRight, Heart, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Heart, Sparkles, Loader2, CheckCircle } from 'lucide-react';
 import { SOCIAL_LINKS, FOOTER_SECTIONS, TRUST_INDICATORS } from './config/landing-config';
 import { scrollToTop } from './utils/scroll-utils';
 import Link from 'next/link';
 
 export function Footer() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleSubscribe = async () => {
+    if (!email.trim()) return;
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setStatus('success');
+        setMessage(data.message || 'Subscribed!');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(data.error || 'Something went wrong');
+      }
+    } catch {
+      setStatus('error');
+      setMessage('Network error. Please try again.');
+    }
+  };
+
   return (
     <footer className="relative bg-card/50 border-t border-border/60 overflow-hidden pt-20 pb-8">
       <div className="container mx-auto px-4 relative z-10">
@@ -30,15 +59,30 @@ export function Footer() {
               type="email"
               placeholder="Enter your email"
               aria-label="Email address for newsletter"
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); if (status !== 'idle') setStatus('idle'); }}
+              onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
               className="flex-1 px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-primary/60 transition-all"
             />
             <button
-              className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              onClick={handleSubscribe}
+              disabled={status === 'loading' || status === 'success'}
+              className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-70"
             >
-              Subscribe
-              <ArrowUpRight className="w-4 h-4" />
+              {status === 'loading' ? (
+                <><Loader2 className="w-4 h-4 animate-spin" /> Subscribing...</>
+              ) : status === 'success' ? (
+                <><CheckCircle className="w-4 h-4" /> Subscribed</>
+              ) : (
+                <>Subscribe <ArrowUpRight className="w-4 h-4" /></>
+              )}
             </button>
           </div>
+          {message && (
+            <p className={`text-sm mt-2 ${status === 'error' ? 'text-destructive' : 'text-primary'}`}>
+              {message}
+            </p>
+          )}
         </div>
 
         {/* Footer top section with logo and quick links */}

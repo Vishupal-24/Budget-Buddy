@@ -144,41 +144,71 @@ export default function SessionsPage() {
         return;
       }
 
-      // Get session details from Supabase
-      // Note: Supabase doesn't expose all sessions by default, so we'll show the current session
-      // and any session history stored in our own tracking (if implemented)
+      // Get session details from Supabase auth
       const currentSession: SessionInfo = {
-        id: session.access_token.slice(-12), // Use last 12 chars as ID
-        created_at: new Date(session.expires_at! * 1000 - 3600000).toISOString(), // Approximate creation time
+        id: session.access_token.slice(-12),
+        created_at: new Date(session.expires_at! * 1000 - 3600000).toISOString(),
         updated_at: new Date().toISOString(),
         user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown',
-        ip: 'Current IP', // Would need server-side to get actual IP
+        ip: 'Current IP',
         is_current: true,
         ...parseUserAgent(typeof navigator !== 'undefined' ? navigator.userAgent : ''),
       };
 
-      // Load session history from localStorage (for demo purposes)
-      // In production, this would come from a server-side session tracking table
-      const storedSessions = localStorage.getItem('session_history');
-      let sessionHistory: SessionInfo[] = [];
+      // Upsert current session into user_sessions table
+      const userId = session.user?.id;
+      if (userId) {
+        const sessionRecord = {
+          user_id: userId,
+          user_agent: currentSession.user_agent,
+          ip_address: currentSession.ip,
+          device_type: currentSession.device_type,
+          browser: currentSession.browser,
+          os: currentSession.os,
+          last_active_at: new Date().toISOString(),
+          is_current: true,
+        };
 
-      if (storedSessions) {
+        // Try to update existing or insert new session
         try {
-          sessionHistory = JSON.parse(storedSessions);
-          // Mark current session and filter out expired
-          sessionHistory = sessionHistory
-            .filter((s) => s.id !== currentSession.id)
-            .map((s) => ({ ...s, is_current: false }));
+          await supabase
+            .from('user_sessions')
+            .upsert(
+              { id: currentSession.id, ...sessionRecord },
+              { onConflict: 'id', ignoreDuplicates: false }
+            );
         } catch {
-          sessionHistory = [];
+          // Table may not exist yet, fall back gracefully
         }
+
+        // Fetch session history from database
+        const { data: dbSessions } = await supabase
+          .from('user_sessions')
+          .select('*')
+          .eq('user_id', userId)
+          .order('last_active_at', { ascending: false })
+          .limit(10);
+
+        if (dbSessions && dbSessions.length > 0) {
+          const mappedSessions: SessionInfo[] = dbSessions.map((s: any) => ({
+            id: s.id,
+            created_at: s.created_at,
+            updated_at: s.last_active_at,
+            user_agent: s.user_agent || '',
+            ip: s.ip_address || 'Unknown',
+            is_current: s.id === currentSession.id,
+            device_type: s.device_type || 'unknown',
+            browser: s.browser || 'Unknown Browser',
+            os: s.os || 'Unknown OS',
+          }));
+          setSessions(mappedSessions);
+        } else {
+          // Fallback: show only current session if no DB records
+          setSessions([currentSession]);
+        }
+      } else {
+        setSessions([currentSession]);
       }
-
-      // Store current session in history
-      const updatedHistory = [currentSession, ...sessionHistory].slice(0, 10); // Keep last 10
-      localStorage.setItem('session_history', JSON.stringify(updatedHistory));
-
-      setSessions(updatedHistory);
     } catch (error) {
       console.error('Error fetching sessions:', error);
       toast.error('Failed to load sessions');
@@ -205,11 +235,14 @@ export default function SessionsPage() {
         return;
       }
 
-      // For non-current sessions, just remove from history
-      // In production, this would call an API to invalidate the session token
+      // For non-current sessions, remove from database
+      await supabase
+        .from('user_sessions')
+        .delete()
+        .eq('id', sessionId);
+
       const updatedSessions = sessions.filter((s) => s.id !== sessionId);
       setSessions(updatedSessions);
-      localStorage.setItem('session_history', JSON.stringify(updatedSessions));
 
       toast.success('Session revoked successfully');
     } catch (error) {
@@ -225,11 +258,18 @@ export default function SessionsPage() {
     setRevokingAll(true);
 
     try {
-      // In production, this would call an API to invalidate all other session tokens
+      // Remove all non-current sessions from the database
       const currentSession = sessions.find((s) => s.is_current);
       if (currentSession) {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          await supabase
+            .from('user_sessions')
+            .delete()
+            .eq('user_id', user.id)
+            .neq('id', currentSession.id);
+        }
         setSessions([currentSession]);
-        localStorage.setItem('session_history', JSON.stringify([currentSession]));
       }
 
       toast.success('All other sessions have been revoked');

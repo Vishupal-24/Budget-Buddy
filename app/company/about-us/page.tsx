@@ -70,8 +70,8 @@ export default function AboutUsPage() {
                     <Check size={12} className="text-primary" />
                   </div>
                   <div>
-                    <span className="font-medium">1,000+ Users</span>
-                    <p className="text-sm text-muted-foreground">Reached in first month</p>
+                    <span className="font-medium">Growing Community</span>
+                    <p className="text-sm text-muted-foreground">Users joining every day</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-2">
@@ -88,8 +88,8 @@ export default function AboutUsPage() {
                     <Check size={12} className="text-primary" />
                   </div>
                   <div>
-                    <span className="font-medium">$10M+ Tracked</span>
-                    <p className="text-sm text-muted-foreground">In user finances</p>
+                    <span className="font-medium">Real-Time Tracking</span>
+                    <p className="text-sm text-muted-foreground">Every transaction synced instantly</p>
                   </div>
                 </li>
               </ul>
