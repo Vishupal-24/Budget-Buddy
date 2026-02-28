@@ -183,7 +183,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
 
             <th className="px-4 py-3 text-left font-semibold text-sm uppercase tracking-wide">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-transparent />
+                <div className="w-4 h-4 rounded-full bg-transparent" />
                 Type
               </div>
             </th>
